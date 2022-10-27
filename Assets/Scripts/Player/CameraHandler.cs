@@ -62,6 +62,7 @@ public class CameraHandler : MonoBehaviour
         cameraPivotTransform.localRotation = targetRotation;
     }
 
+    //Creates a Sphere that makes the camera collide with certain layers in the scene.
     private void HandleCameraCollision(float delta)
     {
         targetPosition = defaultPosition;

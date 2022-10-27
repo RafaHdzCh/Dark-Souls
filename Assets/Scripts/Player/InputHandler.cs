@@ -10,13 +10,18 @@ public class InputHandler : MonoBehaviour
     public float mouseX;
     public float mouseY;
 
+    public bool b_input;
+
+    public bool rollFlag;
+    public bool isInteracting;
+
     PlayerControls inputActions;
     CameraHandler cameraHandler;
 
     Vector2 movementInput;
     Vector2 cameraInput;
 
-    private void Awake()
+    private void Start()
     {
         cameraHandler = CameraHandler.singleton;
     }
@@ -50,7 +55,7 @@ public class InputHandler : MonoBehaviour
     public void TickInput(float delta)
     {
         MoveInput(delta);
-    }
+        HandleRollInput(delta);    }
     private void MoveInput(float delta)
     {
         horizontal = movementInput.x;
@@ -58,5 +63,15 @@ public class InputHandler : MonoBehaviour
         moveAmount = Mathf.Clamp01(Mathf.Abs(horizontal) + Mathf.Abs(vertical));
         mouseX = cameraInput.x;
         mouseY = cameraInput.y;
+    }
+
+    private void HandleRollInput( float delta)
+    {
+        
+        b_input = inputActions.PlayerActions.Roll.phase == UnityEngine.InputSystem.InputActionPhase.Performed;
+        if (b_input)
+        {
+            rollFlag = true;
+        }
     }
 }
