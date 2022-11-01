@@ -906,7 +906,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTransform: {fileID: 0}
   animatorHandler: {fileID: 0}
-  rigidbody: {fileID: 0}
+  rigidbody: {fileID: 1140830627}
   normalCamera: {fileID: 0}
   movementSpeed: 5
   rotationSpeed: 10

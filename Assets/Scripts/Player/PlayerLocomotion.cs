@@ -106,10 +106,10 @@ public class PlayerLocomotion : MonoBehaviour
                 Quaternion rollRotation = Quaternion.LookRotation(moveDirection);
                 myTransform.rotation = rollRotation;
             }
-        }
-        else
-        {
-            animatorHandler.PlayTargetAnimation(DarkSoulsConsts.STEPBACK, true);
+            else
+            {
+                animatorHandler.PlayTargetAnimation(DarkSoulsConsts.STEPBACK, true);
+            }
         }
     }
     #endregion

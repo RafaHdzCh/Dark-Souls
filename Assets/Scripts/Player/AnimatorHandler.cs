@@ -97,10 +97,10 @@ public class AnimatorHandler : MonoBehaviour
     {
         if (inputHandler.isInteracting == false) return;
         float delta = Time.deltaTime;
-        playerLocomotion.rigidbody.drag = 0;
+        playerLocomotion.GetComponent<Rigidbody>().drag = 0;
         Vector3 deltaPosition = anim.deltaPosition;
         deltaPosition.y = 0;
         Vector3 velocity = deltaPosition / delta;
-        playerLocomotion.rigidbody.velocity = velocity;
+        playerLocomotion.GetComponent<Rigidbody>().velocity = velocity;
     }
 }
