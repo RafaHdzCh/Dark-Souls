@@ -7,7 +7,7 @@ public class PlayerLocomotion : MonoBehaviour
 {
     Transform cameraObject;
     InputHandler inputHandler;
-    Vector3 moveDirection;
+    public Vector3 moveDirection;
 
     [HideInInspector]
     public Transform myTransform;
@@ -17,10 +17,18 @@ public class PlayerLocomotion : MonoBehaviour
     public Rigidbody rigidbody;
     public GameObject normalCamera;
 
+    [Header("Ground & Air Stats")]
+    [SerializeField] float groundDetectionRayStartPoint = 0.5f; //Place our raycast origin 0.5f above our player transform. Placing it where the floating begins
+    [SerializeField] float minimumdistanceToBeginFall = 1f;
+    [SerializeField] float groundDirectionRayDistance = 0.2f;
+    LayerMask ignoreForGroundCheck;
+    public float inAirTimer;
+
     [Header("Movement Stats")]
     [SerializeField] float movementSpeed = 5;
     [SerializeField] float sprintSpeed = 7;
     [SerializeField] float rotationSpeed = 10;
+    [SerializeField] float fallingSpeed = 45;
 
     PlayerManager playerManager;
 
@@ -34,6 +42,9 @@ public class PlayerLocomotion : MonoBehaviour
         myTransform = transform;
         animatorHandler.Initialize();
 
+        playerManager.isGrounded = true;
+        ignoreForGroundCheck = ~(1 << 8) | (1 << 11);
+        
     }
 
     #region Movement
@@ -64,6 +75,7 @@ public class PlayerLocomotion : MonoBehaviour
     public void HandleMovement(float delta)
     {
         if (inputHandler.rollFlag) return;
+        if (playerManager.isInteracting) return;
 
         moveDirection = cameraObject.forward * inputHandler.vertical;
         moveDirection += cameraObject.right * inputHandler.horizontal;
@@ -112,6 +124,84 @@ public class PlayerLocomotion : MonoBehaviour
             else
             {
                 animatorHandler.PlayTargetAnimation(DarkSoulsConsts.STEPBACK, true);
+            }
+        }
+    }
+
+    public void HandleFalling(float delta, Vector3 moveDirection)
+    {
+        playerManager.isGrounded = false;
+        RaycastHit hit;
+        Vector3 origin = myTransform.position;
+        origin.y += groundDetectionRayStartPoint;
+
+        if(Physics.Raycast(origin, myTransform.forward, out hit, 0.4f))
+        {
+            moveDirection = Vector3.zero;
+        }
+
+        if(playerManager.isInAir)
+        {
+            rigidbody.AddForce(-Vector3.up * fallingSpeed);
+            rigidbody.AddForce(moveDirection * fallingSpeed / 5f);
+        }
+
+        Vector3 dir = moveDirection;
+        dir.Normalize();
+        origin = origin + dir * groundDirectionRayDistance;
+
+        targetPosition = myTransform.position;
+        Debug.DrawRay(origin, -Vector3.up * minimumdistanceToBeginFall, Color.red, 0.1f, false);
+        if(Physics.Raycast(origin, -Vector3.up, out hit, minimumdistanceToBeginFall, ignoreForGroundCheck))
+        {
+            normalvector = hit.normal;
+            Vector3 tp = hit.point;
+            playerManager.isGrounded = true;
+            targetPosition.y = tp.y;
+
+            if(playerManager.isInAir)
+            {
+                if(inAirTimer > 0.5f)
+                {
+                    Debug.Log("You were in the air for " + inAirTimer);
+                    animatorHandler.PlayTargetAnimation(DarkSoulsConsts.LAND, true);
+                }
+                else
+                {
+                    animatorHandler.PlayTargetAnimation(DarkSoulsConsts.EMPTY, false);
+                    inAirTimer = 0f;
+                }
+                playerManager.isInAir = false;
+            }
+        }
+        else
+        {
+            if(playerManager.isGrounded)
+            {
+                playerManager.isGrounded = false;
+            }
+            if(playerManager.isInAir == false)
+            {
+                if(playerManager.isInteracting == false)
+                {
+                    animatorHandler.PlayTargetAnimation(DarkSoulsConsts.FALLING, true);
+                }
+
+                Vector3 vel = rigidbody.velocity;
+                vel.Normalize();
+                rigidbody.velocity = vel * (movementSpeed / 2);
+                playerManager.isInAir = true;
+            }
+        }
+        if(playerManager.isGrounded)
+        {
+            if(playerManager.isInteracting || inputHandler.moveAmount > 0)
+            {
+                myTransform.position = Vector3.Lerp(myTransform.position, targetPosition, Time.deltaTime);
+            }
+            else
+            {
+                myTransform.position = targetPosition;
             }
         }
     }
