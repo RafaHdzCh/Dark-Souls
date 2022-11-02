@@ -11,6 +11,7 @@ public class AnimatorHandler : MonoBehaviour
     public bool canRotate;
     public InputHandler inputHandler;
     public PlayerLocomotion playerLocomotion;
+    public PlayerManager playerManager;
 
     public void Initialize()
     {
@@ -21,7 +22,7 @@ public class AnimatorHandler : MonoBehaviour
         horizontal = Animator.StringToHash(DarkSoulsConsts.HORIZONTAL);
     }
 
-    public void UpdateAnimatorValues(float verticalMovement, float horizontalMovement)
+    public void UpdateAnimatorValues(float verticalMovement, float horizontalMovement, bool isSprinting)
     {
         #region Vertical
         float v = 0;
@@ -72,6 +73,12 @@ public class AnimatorHandler : MonoBehaviour
         }
         #endregion
 
+        if(isSprinting)
+        {
+            v = 2;
+            h = horizontalMovement;
+        }
+
         anim.SetFloat(vertical, v, 0.1f, Time.deltaTime);
         anim.SetFloat(horizontal, h, 0.1f, Time.deltaTime);
     }
@@ -95,7 +102,9 @@ public class AnimatorHandler : MonoBehaviour
 
     public void OnAnimatorMove()
     {
-        if (inputHandler.isInteracting == false) return;
+        print(playerManager.isInteracting);
+        if (playerManager.isInteracting == false) return;
+
         float delta = Time.deltaTime;
         playerLocomotion.GetComponent<Rigidbody>().drag = 0;
         Vector3 deltaPosition = anim.deltaPosition;
