@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Security;
 using UnityEngine;
 
 public class AnimatorHandler : MonoBehaviour
@@ -20,6 +17,7 @@ public class AnimatorHandler : MonoBehaviour
         playerLocomotion = GetComponentInParent<PlayerLocomotion>();
         vertical = Animator.StringToHash(DarkSoulsConsts.VERTICAL);
         horizontal = Animator.StringToHash(DarkSoulsConsts.HORIZONTAL);
+        playerManager = GetComponentInParent<PlayerManager>();
     }
 
     public void UpdateAnimatorValues(float verticalMovement, float horizontalMovement, bool isSprinting)
@@ -102,7 +100,6 @@ public class AnimatorHandler : MonoBehaviour
 
     public void OnAnimatorMove()
     {
-        print(playerManager.isInteracting);
         if (playerManager.isInteracting == false) return;
 
         float delta = Time.deltaTime;

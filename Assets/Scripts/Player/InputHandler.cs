@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class InputHandler : MonoBehaviour
@@ -52,7 +50,6 @@ public class InputHandler : MonoBehaviour
 
     private void HandleRollInput( float delta)
     {
-        
         b_input = inputActions.PlayerActions.Roll.phase == UnityEngine.InputSystem.InputActionPhase.Performed;
         if (b_input)
         {

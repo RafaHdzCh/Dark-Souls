@@ -50,7 +50,9 @@ public class PlayerLocomotion : MonoBehaviour
         targetDir.Normalize();
         targetDir.y = 0;
         if(targetDir == Vector3.zero)
+        {
             targetDir = myTransform.forward;
+        }
 
         float rs = rotationSpeed;
         Quaternion tr = Quaternion.LookRotation(targetDir);
@@ -93,16 +95,14 @@ public class PlayerLocomotion : MonoBehaviour
 
     public void HandleRollingAndSprinting(float delta)
     {
-        if (animatorHandler.anim.GetBool(DarkSoulsConsts.ISINTERACTING))
-        {
-            return;
-        }
+        if (animatorHandler.anim.GetBool(DarkSoulsConsts.ISINTERACTING)) return;
+
         if (inputHandler.rollFlag)
         {
             moveDirection = cameraObject.forward * inputHandler.vertical;
             moveDirection += cameraObject.right * inputHandler.horizontal;
 
-            if(inputHandler.moveAmount > 0)
+            if (inputHandler.moveAmount > 0)
             {
                 animatorHandler.PlayTargetAnimation(DarkSoulsConsts.ROLLING, true);
                 moveDirection.y = 0;
