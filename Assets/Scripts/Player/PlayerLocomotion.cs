@@ -143,7 +143,7 @@ public class PlayerLocomotion : MonoBehaviour
         if(playerManager.isInAir)
         {
             rigidbody.AddForce(-Vector3.up * fallingSpeed);
-            rigidbody.AddForce(moveDirection * fallingSpeed / 5f);
+            rigidbody.AddForce(moveDirection * fallingSpeed / 10f);
         }
 
         Vector3 dir = moveDirection;
@@ -165,10 +165,11 @@ public class PlayerLocomotion : MonoBehaviour
                 {
                     Debug.Log("You were in the air for " + inAirTimer);
                     animatorHandler.PlayTargetAnimation(DarkSoulsConsts.LAND, true);
+                    inAirTimer = 0f;
                 }
                 else
                 {
-                    animatorHandler.PlayTargetAnimation(DarkSoulsConsts.EMPTY, false);
+                    animatorHandler.PlayTargetAnimation(DarkSoulsConsts.LOCOMOTION, false);
                     inAirTimer = 0f;
                 }
                 playerManager.isInAir = false;
