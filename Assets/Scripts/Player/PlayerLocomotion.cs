@@ -83,7 +83,7 @@ public class PlayerLocomotion : MonoBehaviour
         moveDirection.y = 0;
 
         float speed = movementSpeed;
-        if(inputHandler.sprintFlag)
+        if(inputHandler.sprintFlag && inputHandler.moveAmount > 0.5f)
         {
             speed = sprintSpeed;
             playerManager.isSprinting = true;
@@ -91,6 +91,7 @@ public class PlayerLocomotion : MonoBehaviour
         }
         else
         {
+            playerManager.isSprinting = false;
             moveDirection *= speed;
         }
         
@@ -169,7 +170,7 @@ public class PlayerLocomotion : MonoBehaviour
                 }
                 else
                 {
-                    animatorHandler.PlayTargetAnimation(DarkSoulsConsts.LOCOMOTION, false);
+                    animatorHandler.PlayTargetAnimation(DarkSoulsConsts.EMPTY, false);
                     inAirTimer = 0f;
                 }
                 playerManager.isInAir = false;

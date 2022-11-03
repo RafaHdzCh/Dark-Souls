@@ -10,6 +10,7 @@ public static class DarkSoulsConsts
     public static readonly string STEPBACK = "Backstep";
     public static readonly string LAND = "Land";
     public static readonly string LOCOMOTION = "Locomotion";
+    public static readonly string EMPTY = "Empty";
     public static readonly string FALLING = "Falling";
 
     //Directions
