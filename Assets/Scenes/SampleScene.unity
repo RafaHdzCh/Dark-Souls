@@ -123,6 +123,32 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &55819935 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 165894, guid: 880858dfd9b1e784e89d45242bf78d2b, type: 3}
+  m_PrefabInstance: {fileID: 793617852}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &55819936 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 496550, guid: 880858dfd9b1e784e89d45242bf78d2b, type: 3}
+  m_PrefabInstance: {fileID: 793617852}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &55819937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55819935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 771b30e3195c3dd448bb90bafa1027da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentOverride: {fileID: 55819936}
+  isLeftHandSlot: 0
+  isRightHandSlot: 1
+  currentWeaponModel: {fileID: 0}
 --- !u!1 &179409722
 GameObject:
   m_ObjectHideFlags: 0
@@ -664,6 +690,18 @@ MonoBehaviour:
   inputHandler: {fileID: 0}
   playerLocomotion: {fileID: 0}
   playerManager: {fileID: 0}
+--- !u!114 &793617857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657987233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de48b423360d1c347af6c2b54d4ebef3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &809601237
 GameObject:
   m_ObjectHideFlags: 0
@@ -761,6 +799,32 @@ Transform:
   m_Father: {fileID: 836850612}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &825540466 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 161890, guid: 880858dfd9b1e784e89d45242bf78d2b, type: 3}
+  m_PrefabInstance: {fileID: 793617852}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &825540467 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 483062, guid: 880858dfd9b1e784e89d45242bf78d2b, type: 3}
+  m_PrefabInstance: {fileID: 793617852}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &825540468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825540466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 771b30e3195c3dd448bb90bafa1027da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentOverride: {fileID: 1525054545}
+  isLeftHandSlot: 1
+  isRightHandSlot: 0
+  currentWeaponModel: {fileID: 0}
 --- !u!1 &836850608
 GameObject:
   m_ObjectHideFlags: 0
@@ -964,6 +1028,7 @@ GameObject:
   - component: {fileID: 1140830630}
   - component: {fileID: 1140830629}
   - component: {fileID: 1140830631}
+  - component: {fileID: 1140830632}
   m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
@@ -1079,6 +1144,20 @@ MonoBehaviour:
   isSprinting: 0
   isInAir: 0
   isGrounded: 0
+--- !u!114 &1140830632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140830625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91d55fec705bab44ca16293b769cf093, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rightWeapon: {fileID: 11400000, guid: 2d6b47695780acb459ec8e6b921546e7, type: 2}
+  leftWeapon: {fileID: 11400000, guid: 2d6b47695780acb459ec8e6b921546e7, type: 2}
 --- !u!1 &1333449122
 GameObject:
   m_ObjectHideFlags: 0
@@ -1232,6 +1311,37 @@ MonoBehaviour:
   cameraSphereRadius: 0.2
   cameraCollisionOffset: 0.2
   minimumCollisionOffset: 0.2
+--- !u!1 &1525054544
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1525054545}
+  m_Layer: 0
+  m_Name: Left Hand Override
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1525054545
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525054544}
+  m_LocalRotation: {x: 0.9261513, y: 0.32657176, z: 0.16613406, w: -0.08941033}
+  m_LocalPosition: {x: -20.5, y: -6.3, z: -4.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 825540467}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 195.91, y: -15.026001, z: -36.734985}
 --- !u!1 &1727447517
 GameObject:
   m_ObjectHideFlags: 0
