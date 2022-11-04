@@ -15,11 +15,11 @@ public static class DarkSoulsConsts
     public static readonly string DAMAGE = "Damage";
     public static readonly string DEATH = "Death";
 
-
     //Directions
     public static readonly string VERTICAL = "Vertical";
     public static readonly string HORIZONTAL = "Horizontal";
 
     //Tags
-    public static readonly string HITTABLE = "Hittable";
+    public static readonly string PLAYER = "Player";
+    public static readonly string ENEMY = "Enemy";
 }

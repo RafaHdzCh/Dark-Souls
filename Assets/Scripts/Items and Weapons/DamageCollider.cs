@@ -15,7 +15,7 @@ public class DamageCollider : MonoBehaviour
         damageCollider.enabled = false;
     }
 
-    public void EnableDamageCollidder()
+    public void EnableDamageCollider()
     {
         damageCollider.enabled = true;
     }
@@ -27,7 +27,7 @@ public class DamageCollider : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.tag == DarkSoulsConsts.HITTABLE);
+        if (collision.CompareTag(DarkSoulsConsts.PLAYER))
         {
             PlayerStats playerStats = collision.GetComponent<PlayerStats>();
 
@@ -36,5 +36,15 @@ public class DamageCollider : MonoBehaviour
                 playerStats.TakeDamage(currentWeaponDamage);
             }
         }
+        if (collision.CompareTag(DarkSoulsConsts.ENEMY))
+        {
+            EnemyStats enemyStats = collision.GetComponent<EnemyStats>();
+            print("enemy hit");
+            if(enemyStats != null)
+            {
+                enemyStats.TakeDamage(currentWeaponDamage);
+            }
+        }
+
     }
 }
