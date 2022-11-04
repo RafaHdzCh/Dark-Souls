@@ -75,7 +75,8 @@ GameObject:
   - component: {fileID: 9046839771103910827}
   - component: {fileID: 9046839771106834529}
   - component: {fileID: 9046839771105970591}
-  - component: {fileID: 9036911234987068849}
+  - component: {fileID: 5166082785807021215}
+  - component: {fileID: 5290293454752567318}
   m_Layer: 0
   m_Name: AxePrefab
   m_TagString: Untagged
@@ -148,8 +149,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &9036911234987068849
-MeshCollider:
+--- !u!65 &5166082785807021215
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -158,7 +159,18 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43026740516804450, guid: bf5d9044930ddc94f8aac4c670130fd7, type: 2}
+  serializedVersion: 2
+  m_Size: {x: 0.06925979, y: 0.42486724, z: 0.5728041}
+  m_Center: {x: 0.000004270187, y: 0.59827363, z: 0.00000016616288}
+--- !u!114 &5290293454752567318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9046839771103749623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec0a93c84c6ede04297a9f661563a60a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

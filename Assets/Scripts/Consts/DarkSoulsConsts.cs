@@ -19,4 +19,7 @@ public static class DarkSoulsConsts
     //Directions
     public static readonly string VERTICAL = "Vertical";
     public static readonly string HORIZONTAL = "Horizontal";
+
+    //Tags
+    public static readonly string HITTABLE = "Hittable";
 }
