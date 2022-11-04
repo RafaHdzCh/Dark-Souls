@@ -12,6 +12,9 @@ public static class DarkSoulsConsts
     public static readonly string LOCOMOTION = "Locomotion";
     public static readonly string EMPTY = "Empty";
     public static readonly string FALLING = "Falling";
+    public static readonly string DAMAGE = "Damage";
+    public static readonly string DEATH = "Death";
+
 
     //Directions
     public static readonly string VERTICAL = "Vertical";
