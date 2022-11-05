@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2489333780313278027}
   - component: {fileID: 2489333780312097165}
   - component: {fileID: 2481370614921311165}
+  - component: {fileID: 2000161390862176208}
   m_Layer: 0
   m_Name: OH_Club_Prefab
   m_TagString: Untagged
@@ -98,6 +99,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43883219209159492, guid: 6e244965407d66344a5d01f7f76cde2a, type: 2}
+--- !u!114 &2000161390862176208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2489333780310186915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec0a93c84c6ede04297a9f661563a60a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWeaponDamage: 25
 --- !u!1 &6175067317518770871
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,15 +135,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6175067317518770871}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.7909308, y: 0.04078295, z: -0.2566617, w: 0.5539766}
+  m_LocalPosition: {x: 10.3, y: 6.1, z: 3}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2489333780309876899}
   m_Father: {fileID: 6175067318616281304}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -58.802, y: 119.423, z: -137.661}
 --- !u!1 &6175067318616281287
 GameObject:
   m_ObjectHideFlags: 0
