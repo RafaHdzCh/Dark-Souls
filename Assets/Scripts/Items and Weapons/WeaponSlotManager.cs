@@ -57,7 +57,6 @@ public class WeaponSlotManager : MonoBehaviour
     }
     public void OpenRightHandDamageCollider()
     {
-        print(rightHandDamageCollider);
         rightHandDamageCollider.EnableDamageCollider();
     }
 
@@ -68,7 +67,6 @@ public class WeaponSlotManager : MonoBehaviour
     }
     public void CloseRightHandDamageCollider()
     {
-        print(rightHandDamageCollider);
         rightHandDamageCollider.DisableDamageCollider();
     }
 

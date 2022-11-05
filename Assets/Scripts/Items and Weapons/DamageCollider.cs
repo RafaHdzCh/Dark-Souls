@@ -42,7 +42,6 @@ public class DamageCollider : MonoBehaviour
             if(enemyStats != null)
             {
                 enemyStats.TakeDamage(currentWeaponDamage);
-                print("enemy hit");
             }
         }
 

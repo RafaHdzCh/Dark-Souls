@@ -98,6 +98,16 @@ public class AnimatorHandler : MonoBehaviour
         canRotate = false;
     }
 
+    public void EnableCombo()
+    {
+        anim.SetBool(DarkSoulsConsts.CANDOCOMBO, true);
+    }
+
+    public void DisableCombo()
+    {
+        anim.SetBool(DarkSoulsConsts.CANDOCOMBO, false);
+    }
+
     public void OnAnimatorMove()
     {
         if (playerManager.isInteracting == false) return;

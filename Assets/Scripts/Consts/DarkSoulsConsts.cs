@@ -6,6 +6,7 @@ public static class DarkSoulsConsts
 {
     //Animations
     public static readonly string ISINTERACTING = "isInteracting";
+    public static readonly string CANDOCOMBO = "canDoCombo";
     public static readonly string ROLLING = "Rolling";
     public static readonly string STEPBACK = "Backstep";
     public static readonly string LAND = "Land";

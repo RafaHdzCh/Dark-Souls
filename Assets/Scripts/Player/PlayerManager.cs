@@ -16,6 +16,7 @@ public class PlayerManager : MonoBehaviour
     public bool isSprinting;
     public bool isInAir;
     public bool isGrounded;
+    public bool canDoCombo;
 
     void Start()
     {
@@ -30,6 +31,7 @@ public class PlayerManager : MonoBehaviour
         float delta = Time.deltaTime;
 
         isInteracting = anim.GetBool(DarkSoulsConsts.ISINTERACTING);
+        canDoCombo = anim.GetBool(DarkSoulsConsts.CANDOCOMBO);
 
         inputHandler.TickInput(delta);
         playerLocomotion.HandleMovement(delta);
