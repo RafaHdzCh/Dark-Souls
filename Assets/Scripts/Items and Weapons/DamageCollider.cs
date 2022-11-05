@@ -39,10 +39,10 @@ public class DamageCollider : MonoBehaviour
         if (collision.CompareTag(DarkSoulsConsts.ENEMY))
         {
             EnemyStats enemyStats = collision.GetComponent<EnemyStats>();
-            print("enemy hit");
             if(enemyStats != null)
             {
                 enemyStats.TakeDamage(currentWeaponDamage);
+                print("enemy hit");
             }
         }
 
