@@ -13,6 +13,7 @@ public class WeaponPickUp : Interactable
         PickUpItem(playerManager);
     }
 
+
     private void PickUpItem(PlayerManager playerManager)
     {
         PlayerInventory playerInventory;

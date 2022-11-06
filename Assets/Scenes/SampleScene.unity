@@ -2444,6 +2444,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4813561448268282754, guid: 7469e4880c1f6df419aa8ca8aa07476b, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 4813561448268282761, guid: 7469e4880c1f6df419aa8ca8aa07476b, type: 3}
       propertyPath: healthBar
       value: 
@@ -2462,7 +2466,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5841565220774658471}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.1564398, y: 0.106, z: 0.83531135}
+  m_LocalPosition: {x: 1.1564398, y: 0.08, z: 0.83531135}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2481,8 +2485,8 @@ GameObject:
   - component: {fileID: 5841565220774374201}
   - component: {fileID: 5841565220777777037}
   - component: {fileID: 5841565220776584435}
-  - component: {fileID: 5841565220777777038}
   - component: {fileID: 5841565220777777039}
+  - component: {fileID: 5841565220777777040}
   m_Layer: 0
   m_Name: Loot
   m_TagString: Interactable
@@ -2540,19 +2544,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5841565220774658471}
   m_Mesh: {fileID: 4300000, guid: 75fa2378250dbe4459e576d99f9bbc79, type: 3}
---- !u!135 &5841565220777777038
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5841565220774658471}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5841565220777777039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2565,9 +2556,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac1ccbae754bb984796077564259eef6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.5
+  radius: 0.6
   interactableText: Pick Up Item
   weapon: {fileID: 11400000, guid: a331157931ca1b545844fb36987cb48d, type: 2}
+--- !u!65 &5841565220777777040
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5841565220774658471}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 0.1, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &6360014061312284796
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2623,6 +2627,10 @@ PrefabInstance:
       propertyPath: targetTransform
       value: 
       objectReference: {fileID: 1140830626}
+    - target: {fileID: 6360014062650217881, guid: 908e6d65ed0b0c245962231207f7a29a, type: 3}
+      propertyPath: ignoreLayers.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
     - target: {fileID: 6360014062650217887, guid: 908e6d65ed0b0c245962231207f7a29a, type: 3}
       propertyPath: m_Name
       value: CameraHolder

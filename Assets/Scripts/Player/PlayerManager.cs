@@ -70,9 +70,12 @@ public class PlayerManager : MonoBehaviour
 
     public void CheckForInteractablObjects()
     {
+        Vector3 rayOrigin = transform.position;
+        rayOrigin.y = rayOrigin.y + 2f;
         RaycastHit hit;
 
-        if (Physics.SphereCast(transform.position, 0.3f, transform.forward, out hit, 1f, cameraHandler.ignoreLayers))
+        if (Physics.SphereCast(transform.position, 0.3f, transform.forward, out hit, 1f, cameraHandler.ignoreLayers)
+            || Physics.SphereCast(rayOrigin, 0.5f, Vector3.down, out hit, 2.5f, cameraHandler.ignoreLayers))
         {
             if(hit.collider.CompareTag(DarkSoulsConsts.INTERACTABLE))
             {
@@ -81,11 +84,10 @@ public class PlayerManager : MonoBehaviour
                 if(interactableObject != null)
                 {
                     string interactableText = interactableObject.interactableText;
-                    //Set the UI Txt to the interactable obects txt
-                    //Set thee text pop up to true
 
                     if(inputHandler.a_input)
                     {
+                        
                         hit.collider.GetComponent<Interactable>().Interact(this);
                     }
                 }
