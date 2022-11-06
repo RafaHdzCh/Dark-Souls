@@ -37,6 +37,8 @@ public class PlayerManager : MonoBehaviour
         playerLocomotion.HandleMovement(delta);
         playerLocomotion.HandleRollingAndSprinting(delta);
         playerLocomotion.HandleFalling(delta, playerLocomotion.moveDirection);
+
+        CheckForInteractablObjects();
     }
 
     private void FixedUpdate()
@@ -58,10 +60,36 @@ public class PlayerManager : MonoBehaviour
         inputHandler.d_pad_Down = false;
         inputHandler.d_pad_Left = false;
         inputHandler.d_pad_Right = false;
+        inputHandler.a_input = false;
 
         if(isInAir)
         {
             playerLocomotion.inAirTimer += Time.deltaTime;
+        }
+    }
+
+    public void CheckForInteractablObjects()
+    {
+        RaycastHit hit;
+
+        if (Physics.SphereCast(transform.position, 0.3f, transform.forward, out hit, 1f, cameraHandler.ignoreLayers))
+        {
+            if(hit.collider.CompareTag(DarkSoulsConsts.INTERACTABLE))
+            {
+                Interactable interactableObject = hit.collider.GetComponent<Interactable>();
+
+                if(interactableObject != null)
+                {
+                    string interactableText = interactableObject.interactableText;
+                    //Set the UI Txt to the interactable obects txt
+                    //Set thee text pop up to true
+
+                    if(inputHandler.a_input)
+                    {
+                        hit.collider.GetComponent<Interactable>().Interact(this);
+                    }
+                }
+            }
         }
     }
 }

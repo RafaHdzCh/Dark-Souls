@@ -64,6 +64,5 @@ public class PlayerStats : MonoBehaviour
     {
         currentStamina = currentStamina - damage;
         staminaBar.SetCurrentStamina(currentStamina);
-        //set bar
     }
 }

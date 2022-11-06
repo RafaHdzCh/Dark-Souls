@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class DarkSoulsConsts
 {
-    //Animations
+    //Actions
     public static readonly string ISINTERACTING = "isInteracting";
     public static readonly string CANDOCOMBO = "canDoCombo";
     public static readonly string ROLLING = "Rolling";
@@ -15,6 +15,7 @@ public static class DarkSoulsConsts
     public static readonly string FALLING = "Falling";
     public static readonly string DAMAGE = "Damage";
     public static readonly string DEATH = "Death";
+    public static readonly string PICKUPITEM = "Pick Up Item";
 
     //Directions
     public static readonly string VERTICAL = "Vertical";
@@ -23,4 +24,5 @@ public static class DarkSoulsConsts
     //Tags
     public static readonly string PLAYER = "Player";
     public static readonly string ENEMY = "Enemy";
+    public static readonly string INTERACTABLE = "Interactable";
 }
