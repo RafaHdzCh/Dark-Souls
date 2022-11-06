@@ -7,12 +7,21 @@ public class WeaponSlotManager : MonoBehaviour
     WeaponHolderSlot leftHandSlot;
     WeaponHolderSlot rightHandSlot;
 
+    public WeaponItem attackingWeapon;
+
     DamageCollider leftHandDamageCollider;
     DamageCollider rightHandDamageCollider;
+
+    QuickSlotsUI quickSlotsUI;
+
+    PlayerStats playerStats;
 
     private void Awake()
     {
         WeaponHolderSlot[] weaponHolderSlots = GetComponentsInChildren<WeaponHolderSlot>();
+        quickSlotsUI = FindObjectOfType<QuickSlotsUI>();
+        playerStats = GetComponentInParent<PlayerStats>();
+
         foreach(WeaponHolderSlot weaponSlot in weaponHolderSlots)
         {
             if(weaponSlot.isLeftHandSlot)
@@ -32,11 +41,13 @@ public class WeaponSlotManager : MonoBehaviour
         {
             leftHandSlot.LoadWeaponModel(weaponItem);
             LoadLeftWeaponDamageCollider();
+            quickSlotsUI.UpdateWeaponQuickSlotsUI(true, weaponItem);
         }
         else
         {
             rightHandSlot.LoadWeaponModel(weaponItem);
             LoadRightWeaponDamageCollider();
+            quickSlotsUI.UpdateWeaponQuickSlotsUI(false, weaponItem);
         }
     }
 
@@ -70,5 +81,16 @@ public class WeaponSlotManager : MonoBehaviour
         rightHandDamageCollider.DisableDamageCollider();
     }
 
+    #endregion
+
+    #region Handle Weapon's Stamina Drainage
+    public void DrainStaminaLightAttack()
+    {
+        playerStats.TakeStaminaDamage(Mathf.RoundToInt(attackingWeapon.baseStamina * attackingWeapon.lightAttackMultiplier));
+    }
+    public void DrainStaminaHeavyAttack()
+    {
+        playerStats.TakeStaminaDamage(Mathf.RoundToInt(attackingWeapon.baseStamina * attackingWeapon.heavyAttackMultiplier));
+    }
     #endregion
 }

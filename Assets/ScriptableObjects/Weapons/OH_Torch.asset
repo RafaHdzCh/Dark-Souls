@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 365e6c259d787864fa5c4bb5002f7119, type: 3}
   m_Name: OH_Torch
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 3ba4521c5fc8b2748addb170637235d1, type: 3}
   itemName: Torch
   modelPrefab: {fileID: 2101587472610615574, guid: 3dd50c647952a444f83390b15bf580a7, type: 3}
   isUnarmed: 0
@@ -20,3 +20,6 @@ MonoBehaviour:
   OH_Light_Attack_1: OH_Light_Attack_1
   OH_Heavy_Attack_0: OH_Heavy_Attack_0
   OH_Heavy_Attack_1: OH_Heavy_Attack_1
+  baseStamina: 10
+  lightAttackMultiplier: 1
+  heavyAttackMultiplier: 2
