@@ -33,7 +33,6 @@ public class DamageCollider : MonoBehaviour
 
             if(playerStats != null)
             {
-                print("Jugador golpeado");
                 playerStats.TakeDamage(currentWeaponDamage);
             }
         }
@@ -42,7 +41,6 @@ public class DamageCollider : MonoBehaviour
             EnemyStats enemyStats = collision.GetComponent<EnemyStats>();
             if(enemyStats != null)
             {
-                print("Enemigo golpeado");
                 enemyStats.TakeDamage(currentWeaponDamage);
             }
         }

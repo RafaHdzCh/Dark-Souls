@@ -2660,6 +2660,10 @@ MonoBehaviour:
   b_input: 0
   rb_Input: 0
   rt_Input: 0
+  d_pad_Up: 0
+  d_pad_Down: 0
+  d_pad_Left: 0
+  d_pad_Right: 0
   rollFlag: 0
   sprintFlag: 0
   comboFlag: 0
@@ -2693,8 +2697,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91d55fec705bab44ca16293b769cf093, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightWeapon: {fileID: 11400000, guid: 430d5d2687198a74faf99f6345a45715, type: 2}
-  leftWeapon: {fileID: 11400000, guid: 8691774cfc33e524195ef8fecd5867d9, type: 2}
+  rightWeapon: {fileID: 11400000, guid: 7624d6e48d46f4a468326f08911c845d, type: 2}
+  leftWeapon: {fileID: 11400000, guid: 430d5d2687198a74faf99f6345a45715, type: 2}
+  unarmedWeapon: {fileID: 11400000, guid: 987b1f82d63c33444bc47e7bb72e5645, type: 2}
+  weaponInRightHandSlots:
+  - {fileID: 11400000, guid: 549db61f852d3dc4192cb40e1df10b8e, type: 2}
+  - {fileID: 11400000, guid: a331157931ca1b545844fb36987cb48d, type: 2}
+  weaponInLeftHandSlots:
+  - {fileID: 11400000, guid: 430d5d2687198a74faf99f6345a45715, type: 2}
+  - {fileID: 11400000, guid: ee6d912ff6531e548862512a87cbb33c, type: 2}
+  currentRightWeaponIndex: 0
+  currentLeftWeaponIndex: 0
 --- !u!114 &1140830633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6434,7 +6447,7 @@ GameObject:
   - component: {fileID: 1744695730}
   - component: {fileID: 1744695729}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: PlayerUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
