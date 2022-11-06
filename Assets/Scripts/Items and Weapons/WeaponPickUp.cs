@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WeaponPickUp : Interactable
 {
@@ -27,6 +29,9 @@ public class WeaponPickUp : Interactable
         playerLocomotion.rigidbody.velocity = Vector3.zero;
         animatorHandler.PlayTargetAnimation(DarkSoulsConsts.PICKUPITEM, true);
         playerInventory.weaponsInventory.Add(weapon);
+        playerManager.itemInteractableGameObject.GetComponentInChildren<TextMeshProUGUI>().text = weapon.itemName;
+        playerManager.itemInteractableGameObject.GetComponentInChildren<RawImage>().texture = weapon.itemIcon.texture;
+        playerManager.itemInteractableGameObject.SetActive(true);
         Destroy(gameObject);
     }
 }

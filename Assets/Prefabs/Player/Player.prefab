@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 4813561448268282761}
   m_Layer: 10
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,6 +87,7 @@ MonoBehaviour:
   moveAmount: 0
   mouseX: 0
   mouseY: 0
+  a_input: 0
   b_input: 0
   rb_Input: 0
   rt_Input: 0
@@ -135,6 +136,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90cc9d7926993c498ac7961075f7667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactableUIGameObject: {fileID: 0}
+  itemInteractableGameObject: {fileID: 0}
   isInteracting: 0
   isSprinting: 0
   isInAir: 0
@@ -157,12 +160,13 @@ MonoBehaviour:
   unarmedWeapon: {fileID: 11400000, guid: 987b1f82d63c33444bc47e7bb72e5645, type: 2}
   weaponInRightHandSlots:
   - {fileID: 11400000, guid: 2d6b47695780acb459ec8e6b921546e7, type: 2}
-  - {fileID: 11400000, guid: 7624d6e48d46f4a468326f08911c845d, type: 2}
+  - {fileID: 11400000, guid: 083bb1a2b7e922e4796d27647f4c5b06, type: 2}
   weaponInLeftHandSlots:
   - {fileID: 11400000, guid: 430d5d2687198a74faf99f6345a45715, type: 2}
-  - {fileID: 11400000, guid: ee6d912ff6531e548862512a87cbb33c, type: 2}
+  - {fileID: 11400000, guid: 7624d6e48d46f4a468326f08911c845d, type: 2}
   currentRightWeaponIndex: 0
   currentLeftWeaponIndex: 0
+  weaponsInventory: []
 --- !u!114 &4813561448268282762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,6 +395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de48b423360d1c347af6c2b54d4ebef3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackingWeapon: {fileID: 0}
 --- !u!1 &4813561447793285117 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 161890, guid: 880858dfd9b1e784e89d45242bf78d2b, type: 3}

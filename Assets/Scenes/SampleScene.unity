@@ -879,6 +879,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 417958, guid: edc836b82587af342b79b01da47827f5, type: 3}
   m_PrefabInstance: {fileID: 414993754}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &522852973 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 478867101257280456, guid: ddbd2ccc9cd997647859bfc60c5f9517, type: 3}
+  m_PrefabInstance: {fileID: 8073224242406704177}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &576364946
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1580,6 +1585,11 @@ Light:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6360014061973484808, guid: 908e6d65ed0b0c245962231207f7a29a, type: 3}
   m_PrefabInstance: {fileID: 6360014061312284796}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &996746366 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4157245530665554001, guid: ddbd2ccc9cd997647859bfc60c5f9517, type: 3}
+  m_PrefabInstance: {fileID: 8073224242406704177}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1007597263 stripped
 Transform:
@@ -2320,7 +2330,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8320134089604902543, guid: b14581f4fe292574f8154a87a90d8745, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.11
+      value: -3.76
       objectReference: {fileID: 0}
     - target: {fileID: 8320134089604902543, guid: b14581f4fe292574f8154a87a90d8745, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2407,10 +2417,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 4813561448268282754, guid: 7469e4880c1f6df419aa8ca8aa07476b, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
+    - target: {fileID: 4813561448268282756, guid: 7469e4880c1f6df419aa8ca8aa07476b, type: 3}
+      propertyPath: interactableUIGameObject
+      value: 
+      objectReference: {fileID: 996746366}
+    - target: {fileID: 4813561448268282756, guid: 7469e4880c1f6df419aa8ca8aa07476b, type: 3}
+      propertyPath: itemInteractableGameObject
+      value: 
+      objectReference: {fileID: 522852973}
     - target: {fileID: 4813561448268282761, guid: 7469e4880c1f6df419aa8ca8aa07476b, type: 3}
       propertyPath: healthBar
       value: 
@@ -2476,10 +2490,6 @@ PrefabInstance:
       propertyPath: targetTransform
       value: 
       objectReference: {fileID: 1140830626}
-    - target: {fileID: 6360014062650217881, guid: 908e6d65ed0b0c245962231207f7a29a, type: 3}
-      propertyPath: ignoreLayers.m_Bits
-      value: 1024
-      objectReference: {fileID: 0}
     - target: {fileID: 6360014062650217887, guid: 908e6d65ed0b0c245962231207f7a29a, type: 3}
       propertyPath: m_Name
       value: CameraHolder
