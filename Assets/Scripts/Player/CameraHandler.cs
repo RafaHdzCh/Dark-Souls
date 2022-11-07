@@ -40,7 +40,8 @@ public class CameraHandler : MonoBehaviour
 
     public void FollowTarget(float delta)
     {
-        Vector3 targetPosition = Vector3.SmoothDamp(myTransform.position, targetTransform.position, ref cameraFollowVelocity, delta / followSpeed);
+        Vector3 targetPosition = Vector3.SmoothDamp(myTransform.position,
+            targetTransform.position, ref cameraFollowVelocity, delta / followSpeed);
         myTransform.position = targetPosition;
         HandleCameraCollision(delta);
     }
@@ -82,7 +83,7 @@ public class CameraHandler : MonoBehaviour
             targetPosition = -minimumCollisionOffset;
         }
 
-        cameraTransformPosition.z = Mathf.Lerp(cameraTransform.localPosition.z, targetPosition, delta / 0.2f);
+        cameraTransformPosition.z = Mathf.MoveTowards(cameraTransform.localPosition.z, targetPosition, 180f);
         cameraTransform.localPosition = cameraTransformPosition;
     }
 }

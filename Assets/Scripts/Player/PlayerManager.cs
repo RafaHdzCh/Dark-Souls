@@ -37,11 +37,13 @@ public class PlayerManager : MonoBehaviour
 
         isInteracting = anim.GetBool(DarkSoulsConsts.ISINTERACTING);
         canDoCombo = anim.GetBool(DarkSoulsConsts.CANDOCOMBO);
+        anim.SetBool(DarkSoulsConsts.ISINAIR, isInAir);
 
         inputHandler.TickInput(delta);
         playerLocomotion.HandleMovement(delta);
         playerLocomotion.HandleRollingAndSprinting(delta);
         playerLocomotion.HandleFalling(delta, playerLocomotion.moveDirection);
+        playerLocomotion.HandleJumping();
 
         CheckForInteractablObjects();
     }
@@ -66,6 +68,7 @@ public class PlayerManager : MonoBehaviour
         inputHandler.d_pad_Left = false;
         inputHandler.d_pad_Right = false;
         inputHandler.a_input = false;
+        inputHandler.jump_Input = false;
 
         if(isInAir)
         {

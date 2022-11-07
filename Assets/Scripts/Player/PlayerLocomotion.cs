@@ -206,5 +206,22 @@ public class PlayerLocomotion : MonoBehaviour
             myTransform.position = targetPosition;
         }
     }
+
+    public void HandleJumping()
+    {
+        if (playerManager.isInteracting) return;
+        if(inputHandler.jump_Input)
+        {
+            if(inputHandler.moveAmount > 0)
+            {
+                moveDirection = cameraObject.forward * inputHandler.vertical;
+                moveDirection += cameraObject.right * inputHandler.horizontal;
+                animatorHandler.PlayTargetAnimation(DarkSoulsConsts.JUMP, true);
+                moveDirection.y = 0;
+                Quaternion jumpRotation = Quaternion.LookRotation(moveDirection);
+                myTransform.rotation = jumpRotation;
+            }
+        }
+    }
     #endregion
 }

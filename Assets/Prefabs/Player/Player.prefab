@@ -89,6 +89,7 @@ MonoBehaviour:
   mouseY: 0
   a_input: 0
   b_input: 0
+  jump_Input: 0
   rb_Input: 0
   rt_Input: 0
   d_pad_Up: 0
@@ -122,7 +123,7 @@ MonoBehaviour:
   inAirTimer: 0
   movementSpeed: 5
   sprintSpeed: 7
-  rotationSpeed: 10
+  rotationSpeed: 2000
   fallingSpeed: 80
 --- !u!114 &4813561448268282756
 MonoBehaviour:
@@ -159,11 +160,11 @@ MonoBehaviour:
   leftWeapon: {fileID: 0}
   unarmedWeapon: {fileID: 11400000, guid: 987b1f82d63c33444bc47e7bb72e5645, type: 2}
   weaponInRightHandSlots:
-  - {fileID: 11400000, guid: 2d6b47695780acb459ec8e6b921546e7, type: 2}
+  - {fileID: 11400000, guid: 7624d6e48d46f4a468326f08911c845d, type: 2}
   - {fileID: 11400000, guid: 083bb1a2b7e922e4796d27647f4c5b06, type: 2}
   weaponInLeftHandSlots:
   - {fileID: 11400000, guid: 430d5d2687198a74faf99f6345a45715, type: 2}
-  - {fileID: 11400000, guid: 7624d6e48d46f4a468326f08911c845d, type: 2}
+  - {fileID: 11400000, guid: 083bb1a2b7e922e4796d27647f4c5b06, type: 2}
   currentRightWeaponIndex: 0
   currentLeftWeaponIndex: 0
   weaponsInventory: []

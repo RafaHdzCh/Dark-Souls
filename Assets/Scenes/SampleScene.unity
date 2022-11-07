@@ -2433,6 +2433,22 @@ PrefabInstance:
       propertyPath: staminaBar
       value: 
       objectReference: {fileID: 8073224242406704178}
+    - target: {fileID: 4813561448268282763, guid: 7469e4880c1f6df419aa8ca8aa07476b, type: 3}
+      propertyPath: weaponInLeftHandSlots.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 430d5d2687198a74faf99f6345a45715, type: 2}
+    - target: {fileID: 4813561448268282763, guid: 7469e4880c1f6df419aa8ca8aa07476b, type: 3}
+      propertyPath: weaponInLeftHandSlots.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 083bb1a2b7e922e4796d27647f4c5b06, type: 2}
+    - target: {fileID: 4813561448268282763, guid: 7469e4880c1f6df419aa8ca8aa07476b, type: 3}
+      propertyPath: weaponInRightHandSlots.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7624d6e48d46f4a468326f08911c845d, type: 2}
+    - target: {fileID: 4813561448268282763, guid: 7469e4880c1f6df419aa8ca8aa07476b, type: 3}
+      propertyPath: weaponInRightHandSlots.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 083bb1a2b7e922e4796d27647f4c5b06, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7469e4880c1f6df419aa8ca8aa07476b, type: 3}
 --- !u!1001 &6360014061312284796
@@ -2554,14 +2570,6 @@ PrefabInstance:
     - target: {fileID: 7992963000750250733, guid: a33c905b111de804f82fbe4fdb0b96d2, type: 3}
       propertyPath: m_Name
       value: TestEnemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 7992963001873736428, guid: a33c905b111de804f82fbe4fdb0b96d2, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7992963001873736428, guid: a33c905b111de804f82fbe4fdb0b96d2, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a33c905b111de804f82fbe4fdb0b96d2, type: 3}

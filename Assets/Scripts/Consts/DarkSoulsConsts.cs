@@ -16,6 +16,8 @@ public static class DarkSoulsConsts
     public static readonly string DAMAGE = "Damage";
     public static readonly string DEATH = "Death";
     public static readonly string PICKUPITEM = "Pick Up Item";
+    public static readonly string JUMP = "Jump";
+    public static readonly string ISINAIR = "isInAir";
 
     //Directions
     public static readonly string VERTICAL = "Vertical";
