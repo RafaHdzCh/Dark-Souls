@@ -69,6 +69,7 @@ public class PlayerManager : MonoBehaviour
         inputHandler.d_pad_Right = false;
         inputHandler.a_input = false;
         inputHandler.jump_Input = false;
+        inputHandler.start_Input = false;
 
         if(isInAir)
         {
