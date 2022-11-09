@@ -5,6 +5,7 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     PlayerInventory playerInventory;
+    EquipmentWindowUI equipmentWindowUI;
 
     [Header("Serializables")]
 
@@ -18,10 +19,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] Transform weaponInventorySlotsParent;
     WeaponInventorySlot[] weaponInventorySlots;
 
+    private void Awake()
+    {
+        equipmentWindowUI = FindObjectOfType<EquipmentWindowUI>();
+        playerInventory = FindObjectOfType<PlayerInventory>();
+    }
     private void Start()
     {
-        playerInventory = FindObjectOfType<PlayerInventory>();
         weaponInventorySlots = weaponInventorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>();
+        equipmentWindowUI.LoadWeaponOnEquipmentSlot(playerInventory);
     }
 
     public void UpdateUI()
