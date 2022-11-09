@@ -12,10 +12,11 @@ public class EquipmentWindowUI : MonoBehaviour
 
     HandEquipmentSlotUI[] handEquipmentSlotUI;
 
-    private void Start()
+    private void Awake()
     {
-        handEquipmentSlotUI = GetComponentsInChildren<HandEquipmentSlotUI>();
+        handEquipmentSlotUI = GetComponentsInChildren<HandEquipmentSlotUI>(true);
     }
+
     public void LoadWeaponOnEquipmentSlot(PlayerInventory playerInventory)
     {
         for(int i = 0; i < handEquipmentSlotUI.Length; i++)

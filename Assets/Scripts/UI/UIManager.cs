@@ -27,6 +27,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         weaponInventorySlots = weaponInventorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>();
+        print(playerInventory);
         equipmentWindowUI.LoadWeaponOnEquipmentSlot(playerInventory);
     }
 

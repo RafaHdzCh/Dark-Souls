@@ -40,9 +40,7 @@ public class PlayerManager : MonoBehaviour
         anim.SetBool(DarkSoulsConsts.ISINAIR, isInAir);
 
         inputHandler.TickInput(delta);
-        playerLocomotion.HandleMovement(delta);
         playerLocomotion.HandleRollingAndSprinting(delta);
-        playerLocomotion.HandleFalling(delta, playerLocomotion.moveDirection);
         playerLocomotion.HandleJumping();
 
         CheckForInteractablObjects();
@@ -50,17 +48,15 @@ public class PlayerManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float delta = Time.fixedDeltaTime;
-        if (cameraHandler != null)
-        {
-            cameraHandler.FollowTarget(delta);
-            cameraHandler.HandleCameraRotation(delta, inputHandler.mouseX, inputHandler.mouseY);
-        }
+        float delta = Time.deltaTime;
+        
+        playerLocomotion.HandleMovement(delta);
+        playerLocomotion.HandleFalling(delta, playerLocomotion.moveDirection);
     }
+
     private void LateUpdate()
     {
         inputHandler.rollFlag = false;
-        inputHandler.sprintFlag = false;
         inputHandler.rb_Input = false;
         inputHandler.rt_Input = false;
         inputHandler.d_pad_Up = false;
@@ -71,7 +67,13 @@ public class PlayerManager : MonoBehaviour
         inputHandler.jump_Input = false;
         inputHandler.start_Input = false;
 
-        if(isInAir)
+        if (cameraHandler != null)
+        {
+            cameraHandler.FollowTarget(Time.deltaTime);
+            cameraHandler.HandleCameraRotation(Time.deltaTime, inputHandler.mouseX, inputHandler.mouseY);
+        }
+
+        if (isInAir)
         {
             playerLocomotion.inAirTimer += Time.deltaTime;
         }
