@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class WeaponSlotManager : MonoBehaviour
 {
+    [HideInInspector] public WeaponItem attackingWeapon;
+
+    [Header("Scripts")]
     WeaponHolderSlot leftHandSlot;
     WeaponHolderSlot rightHandSlot;
-
-    public WeaponItem attackingWeapon;
-
     DamageCollider leftHandDamageCollider;
     DamageCollider rightHandDamageCollider;
-
     QuickSlotsUI quickSlotsUI;
-
     PlayerStats playerStats;
 
     private void Awake()

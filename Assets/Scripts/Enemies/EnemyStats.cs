@@ -5,15 +5,23 @@ using UnityEngine;
 
 public class EnemyStats : MonoBehaviour
 {
-    public int healthLevel = 10;
-    public int maxHealth;
-    public int currentHealth;
+    [Header("Health")]
+    [HideInInspector] public int maxHealth;
+    [HideInInspector] public int currentHealth;
 
+    [Header("Serializables")]
+
+    [Header("Components")]
+    [SerializeField] Transform healthBarTransform;
+    [SerializeField] Transform cameraTransform;
+    [SerializeField] GameObject healthBarGO;
+
+    [Header("Variables")]
+    public int healthLevel = 10;
+
+    [Header("Scripts")]
     AnimatorHandler animatorHandler;
     HealthBar _healthBar;
-    [SerializeField]Transform healthBarTransform;
-    [SerializeField]Transform cameraTransform;
-    [SerializeField] GameObject healthBarGO;
 
     private void Awake()
     {

@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class CharacterManager : MonoBehaviour
 {
+    [Header("Serializable")]
     public Transform lockOnTransform;
 }

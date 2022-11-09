@@ -2,13 +2,18 @@ using UnityEngine;
 
 public class AnimatorHandler : MonoBehaviour
 {
-    public Animator anim;
+    [Header("Variables")]
+    [HideInInspector] public bool canRotate;
     int vertical;
     int horizontal;
-    public bool canRotate;
-    public InputHandler inputHandler;
-    public PlayerLocomotion playerLocomotion;
-    public PlayerManager playerManager;
+
+    [Header("Components")]
+    [HideInInspector] public Animator anim;
+
+    [Header("Scripts")]
+    [HideInInspector] InputHandler inputHandler;
+    [HideInInspector] PlayerLocomotion playerLocomotion;
+    [HideInInspector] PlayerManager playerManager;
 
     public void Initialize()
     {

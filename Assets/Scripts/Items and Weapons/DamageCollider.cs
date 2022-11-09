@@ -5,6 +5,8 @@ using UnityEngine;
 public class DamageCollider : MonoBehaviour
 {
     Collider damageCollider;
+
+    [Header("Assign Weapon Damage")]
     public int currentWeaponDamage = 25;
 
     private void Awake()

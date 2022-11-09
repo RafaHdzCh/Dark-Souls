@@ -129,9 +129,11 @@ MonoBehaviour:
   d_pad_Left: 0
   d_pad_Right: 0
   start_Input: 0
+  lockOnInput: 0
   rollFlag: 0
   sprintFlag: 0
   comboFlag: 0
+  lockOnFlag: 0
   inventoryFlag: 0
   rollInputTimer: 0
 --- !u!114 &4813561448268282758
@@ -146,19 +148,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e72de9dd01af8c479da121128d57f58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveDirection: {x: 0, y: 0, z: 0}
   myTransform: {fileID: 0}
-  animatorHandler: {fileID: 0}
-  rigidbody: {fileID: 4813561448268282752}
+  rigi: {fileID: 0}
   normalCamera: {fileID: 0}
-  groundDetectionRayStartPoint: 0.5
-  minimumdistanceToBeginFall: 1
-  groundDirectionRayDistance: 0.2
   inAirTimer: 0
-  movementSpeed: 5
-  sprintSpeed: 7
-  rotationSpeed: 2000
-  fallingSpeed: 500
+  moveDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &4813561448268282756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90cc9d7926993c498ac7961075f7667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lockOnTransform: {fileID: 0}
+  lockOnTransform: {fileID: 8220825954823748751}
   interactableUIGameObject: {fileID: 0}
   itemInteractableGameObject: {fileID: 0}
   isInteracting: 0
@@ -391,10 +385,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 771b30e3195c3dd448bb90bafa1027da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentWeaponModel: {fileID: 0}
   parentOverride: {fileID: 4813561447793441849}
   isLeftHandSlot: 0
   isRightHandSlot: 1
-  currentWeaponModel: {fileID: 0}
 --- !u!1 &4813561447793284019 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 162860, guid: 880858dfd9b1e784e89d45242bf78d2b, type: 3}
@@ -412,11 +406,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e2f3abbea775364880cb5bc75e5ba4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   canRotate: 1
-  inputHandler: {fileID: 0}
-  playerLocomotion: {fileID: 0}
-  playerManager: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!114 &4813561447793143778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -447,10 +438,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 771b30e3195c3dd448bb90bafa1027da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentWeaponModel: {fileID: 0}
   parentOverride: {fileID: 4813561448688154226}
   isLeftHandSlot: 1
   isRightHandSlot: 0
-  currentWeaponModel: {fileID: 0}
 --- !u!4 &4813561447793441849 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 496550, guid: 880858dfd9b1e784e89d45242bf78d2b, type: 3}

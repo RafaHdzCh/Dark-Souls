@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+    [Header("Serializables")]
     [Header("Health")]
     public int healthLevel = 10;
-    public int maxHealth;
-    public int currentHealth;
+    [HideInInspector] public int maxHealth;
+    [HideInInspector] public int currentHealth;
     public HealthBar healthBar;
 
     [Header("Stamina")]
     public int staminaLevel = 10;
-    public int maxStamina;
-    public int currentStamina;
+    [HideInInspector] public int maxStamina;
+    [HideInInspector] public int currentStamina;
     public StaminaBar staminaBar;
 
+    [Header("Scripts")]
     AnimatorHandler animatorHandler;
 
     private void Awake()

@@ -5,35 +5,38 @@ using UnityEngine;
 
 public class CameraHandler : MonoBehaviour
 {
-    public Transform targetTransform;
-    public Transform cameraTransform;
-    public Transform cameraPivotTransform;
-    private Transform myTransform;
-    private Vector3 cameraTransformPosition;
-    public LayerMask ignoreLayers;
-    private Vector3 cameraFollowVelocity = Vector3.zero;
-
     public static CameraHandler singleton;
 
-    public float lookSpeed = 0.1f;
-    public float followSpeed = 0.1f;
-    public float pivotSpeed = 0.03f;
+    [Header("Serializables")]
+    public Transform cameraTransform;
+    public Transform cameraPivotTransform;
+    public LayerMask ignoreLayers;
 
-    private float targetPosition;
-    private float defaultPosition;
-    private float lookAngle;
-    private float pivotAngle;
-    public float minimumPivot = -35f;
-    public float maximumPivot = 35f;
+    private Vector3 cameraTransformPosition;
+    private Vector3 cameraFollowVelocity = Vector3.zero;
+    private Transform myTransform;
 
-    public float cameraSphereRadius = 0.2f;
-    public float cameraCollisionOffset = 0.2f;
-    public float minimumCollisionOffset = 0.2f;
+    float lookSpeed = 0.005f;
+    float followSpeed = 0.1f;
+    float pivotSpeed = 0.005f;
 
-    [NonSerialized] public float maximumLockOnDistance = 30f;
-    [NonSerialized] public Transform nearestLockOnTarget;
-    [NonSerialized] List<CharacterManager> availableTargets = new List<CharacterManager>();
-    [NonSerialized] public Transform currentLockOnTarget;
+    float targetPosition;
+    float defaultPosition;
+    float lookAngle;
+    float pivotAngle;
+    float minimumPivot = -35f;
+    float maximumPivot = 35f;
+
+    float cameraSphereRadius = 0.2f;
+    float cameraCollisionOffset = 0.2f;
+    float minimumCollisionOffset = 0.2f;
+
+    float maximumLockOnDistance = 30f;
+
+    List<CharacterManager> availableTargets = new List<CharacterManager>();
+    [HideInInspector] public Transform nearestLockOnTarget;
+    [HideInInspector] public Transform currentLockOnTarget;
+    [HideInInspector] public Transform targetTransform;
     InputHandler inputHandler;
 
     private void Awake()
@@ -49,7 +52,7 @@ public class CameraHandler : MonoBehaviour
     public void FollowTarget(float delta)
     {
         Vector3 targetPosition = Vector3.SmoothDamp(myTransform.position,
-            targetTransform.position, ref cameraFollowVelocity, delta / followSpeed);
+        targetTransform.position, ref cameraFollowVelocity, delta / followSpeed);
         myTransform.position = targetPosition;
         HandleCameraCollision(delta);
     }
@@ -132,6 +135,7 @@ public class CameraHandler : MonoBehaviour
                 float distanceFromTarget = Vector3.Distance(targetTransform.position, character.transform.position);
                 float viewableAngle = Vector3.Angle(lockTargetDirection, cameraTransform.forward);
 
+                //Avoid targeting ourselves or far away enemies.
                 if(character.transform.root != targetTransform.transform.root && 
                    viewableAngle > -50 && viewableAngle < 50 && distanceFromTarget <= maximumLockOnDistance)
                 {

@@ -2,32 +2,37 @@ using UnityEngine;
 
 public class InputHandler : MonoBehaviour
 {
-    public float horizontal;
-    public float vertical;
-    public float moveAmount;
-    public float mouseX;
-    public float mouseY;
+    [Header("Directions")]
+    [HideInInspector]public float horizontal;
+    [HideInInspector] public float vertical;
+    [HideInInspector] public float moveAmount;
+    [HideInInspector] public float mouseX;
+    [HideInInspector] public float mouseY;
+    Vector2 movementInput;
+    Vector2 cameraInput;
 
-    public bool a_input;
-    public bool b_input;
-    public bool jump_Input;
-    public bool rb_Input;
-    public bool rt_Input;
-    public bool d_pad_Up;
-    public bool d_pad_Down;
-    public bool d_pad_Left;
-    public bool d_pad_Right;
-    public bool start_Input;
-    public bool lockOnInput;
+    [Header("Inputs")]
+    [HideInInspector] public bool a_input;
+    [HideInInspector] public bool b_input;
+    [HideInInspector] public bool jump_Input;
+    [HideInInspector] public bool rb_Input;
+    [HideInInspector] public bool rt_Input;
+    [HideInInspector] public bool d_pad_Up;
+    [HideInInspector] public bool d_pad_Down;
+    [HideInInspector] public bool d_pad_Left;
+    [HideInInspector] public bool d_pad_Right;
+    [HideInInspector] public bool start_Input;
+    [HideInInspector] public bool lockOnInput;
 
-    public bool rollFlag;
-    public bool sprintFlag;
-    public bool comboFlag;
-    public bool lockOnFlag;
-    public bool inventoryFlag;
-    public float rollInputTimer;
+    [Header("Flags")]
+    [HideInInspector] public bool rollFlag;
+    [HideInInspector] public bool sprintFlag;
+    [HideInInspector] public bool comboFlag;
+    [HideInInspector] public bool lockOnFlag;
+    [HideInInspector] public bool inventoryFlag;
+    [HideInInspector] public float rollInputTimer;
 
-    
+    [Header("Scripts")]
     PlayerControls inputActions;
     PlayerAttacker playerAttacker;
     PlayerInventory playerInventory;
@@ -35,8 +40,6 @@ public class InputHandler : MonoBehaviour
     UIManager uiManager;
     CameraHandler cameraHandler;
    
-    Vector2 movementInput;
-    Vector2 cameraInput;
 
     private void Awake()
     {
@@ -186,12 +189,14 @@ public class InputHandler : MonoBehaviour
 
             if(cameraHandler.nearestLockOnTarget != null)
             {
+                print("unlock");
                 cameraHandler.currentLockOnTarget = cameraHandler.nearestLockOnTarget;
                 lockOnFlag = true;
             }
         }
         else if(lockOnInput && lockOnFlag)
         {
+            print("unlock target");
             lockOnFlag = false;
             lockOnFlag = false;
             cameraHandler.ClearLockOnTargets();

@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class WeaponPickUp : Interactable
 {
+    [Header("Assign the weapon to pick up")]
     public WeaponItem weapon;
     public override void Interact(PlayerManager playerManager)
     {
@@ -26,7 +27,7 @@ public class WeaponPickUp : Interactable
         playerLocomotion = playerManager.GetComponent<PlayerLocomotion>();
         animatorHandler = playerManager.GetComponentInChildren<AnimatorHandler>();
 
-        playerLocomotion.rigidbody.velocity = Vector3.zero;
+        playerLocomotion.rigi.velocity = Vector3.zero;
         animatorHandler.PlayTargetAnimation(DarkSoulsConsts.PICKUPITEM, true);
         playerInventory.weaponsInventory.Add(weapon);
         playerManager.itemInteractableGameObject.GetComponentInChildren<TextMeshProUGUI>().text = weapon.itemName;

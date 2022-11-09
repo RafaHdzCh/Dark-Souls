@@ -8,7 +8,7 @@ public class PlayerAttacker : MonoBehaviour
     AnimatorHandler animatorHandler;
     InputHandler inputHandler;
     WeaponSlotManager weaponSlotManager;
-    public string lastAttack;
+    [HideInInspector] public string lastAttack;
 
     private void Awake()
     {

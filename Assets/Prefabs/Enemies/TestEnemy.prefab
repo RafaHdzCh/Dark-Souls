@@ -1207,11 +1207,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e2f3abbea775364880cb5bc75e5ba4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 7992963000742722253}
   canRotate: 0
-  inputHandler: {fileID: 0}
-  playerLocomotion: {fileID: 0}
-  playerManager: {fileID: 0}
+  anim: {fileID: 7992963000742722253}
 --- !u!1 &7992963000750108659
 GameObject:
   m_ObjectHideFlags: 0
@@ -1443,12 +1440,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d9cb9ab2a6bbec489eb3e509de39702, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthLevel: 10
   maxHealth: 0
   currentHealth: 0
   healthBarTransform: {fileID: 7992963001157502983}
   cameraTransform: {fileID: 0}
   healthBarGO: {fileID: 7992963001157502980}
+  healthLevel: 10
 --- !u!114 &6233019935235005133
 MonoBehaviour:
   m_ObjectHideFlags: 0

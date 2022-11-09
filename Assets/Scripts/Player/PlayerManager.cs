@@ -16,11 +16,11 @@ public class PlayerManager : CharacterManager
     public GameObject itemInteractableGameObject;
 
     [Header("PlayerFlags")]
-    public bool isInteracting;
-    public bool isSprinting;
-    public bool isInAir;
-    public bool isGrounded;
-    public bool canDoCombo;
+    [HideInInspector] public bool isInteracting;
+    [HideInInspector] public bool isSprinting;
+    [HideInInspector] public bool isInAir;
+    [HideInInspector] public bool isGrounded;
+    [HideInInspector] public bool canDoCombo;
 
     void Start()
     {
@@ -56,6 +56,7 @@ public class PlayerManager : CharacterManager
 
     private void LateUpdate()
     {
+        //Reset the button's pressing to false at the end of the frame.
         inputHandler.rollFlag = false;
         inputHandler.rb_Input = false;
         inputHandler.rt_Input = false;
@@ -66,6 +67,7 @@ public class PlayerManager : CharacterManager
         inputHandler.a_input = false;
         inputHandler.jump_Input = false;
         inputHandler.start_Input = false;
+        inputHandler.lockOnInput = false;
 
         if (cameraHandler != null)
         {

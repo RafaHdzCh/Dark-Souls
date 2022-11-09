@@ -161,17 +161,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1eb923a575028944843f5dbd65c2a3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetTransform: {fileID: 0}
   cameraTransform: {fileID: 6360014061973484808}
   cameraPivotTransform: {fileID: 6360014061156141895}
   ignoreLayers:
     serializedVersion: 2
     m_Bits: 1024
-  lookSpeed: 0.005
-  followSpeed: 0.1
-  pivotSpeed: 0.005
-  minimumPivot: -35
-  maximumPivot: 35
-  cameraSphereRadius: 0.2
-  cameraCollisionOffset: 0.2
-  minimumCollisionOffset: 0.2
+  nearestLockOnTarget: {fileID: 0}
+  currentLockOnTarget: {fileID: 0}
+  targetTransform: {fileID: 0}

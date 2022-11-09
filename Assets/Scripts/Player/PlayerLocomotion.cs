@@ -5,36 +5,34 @@ using UnityEngine;
 
 public class PlayerLocomotion : MonoBehaviour
 {
-    Transform cameraObject;
+    [Header("Scripts")]
+    PlayerManager playerManager;
     InputHandler inputHandler;
-    public Vector3 moveDirection;
+    AnimatorHandler animatorHandler;
 
-    [HideInInspector]
-    public Transform myTransform;
-
-    [HideInInspector]
-    public AnimatorHandler animatorHandler;
-    public Rigidbody rigidbody;
-    public GameObject normalCamera;
+    [Header("Components")]
+    [HideInInspector] public Transform myTransform;
+    [HideInInspector] public Rigidbody rigi;
+    [HideInInspector] public GameObject normalCamera;
+    Transform cameraObject;
 
     [Header("Ground & Air Stats")]
-    [SerializeField] float groundDetectionRayStartPoint = 0.5f; //Place our raycast origin 0.5f above our player transform. Placing it where the floating begins
-    [SerializeField] float minimumdistanceToBeginFall = 1f;
-    [SerializeField] float groundDirectionRayDistance = 0.2f;
+    [HideInInspector] public float inAirTimer;
+    float groundDetectionRayStartPoint = 0.5f; //Place our raycast origin 0.5f above our player transform. Placing it where the floating begins
+    float minimumdistanceToBeginFall = 1f;
+    float groundDirectionRayDistance = 0.2f;
     LayerMask ignoreForGroundCheck;
-    public float inAirTimer;
 
     [Header("Movement Stats")]
-    [SerializeField] float movementSpeed = 5;
-    [SerializeField] float sprintSpeed = 7;
-    [SerializeField] float rotationSpeed = 10;
-    [SerializeField] float fallingSpeed = 45;
-
-    PlayerManager playerManager;
+    [HideInInspector] public Vector3 moveDirection;
+    float movementSpeed = 5;
+    float sprintSpeed = 7;
+    float rotationSpeed = 2000;
+    float fallingSpeed = 500;
 
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody>();
+        rigi = GetComponent<Rigidbody>();
         inputHandler = GetComponent<InputHandler>();
         animatorHandler = GetComponentInChildren<AnimatorHandler>();
         playerManager = GetComponent<PlayerManager>();
@@ -44,7 +42,6 @@ public class PlayerLocomotion : MonoBehaviour
 
         playerManager.isGrounded = true;
         ignoreForGroundCheck = ~(1 << 8) | (1 << 11);
-        
     }
 
     #region Movement
@@ -96,7 +93,7 @@ public class PlayerLocomotion : MonoBehaviour
         }
         
         Vector3 projectedVelocity = Vector3.ProjectOnPlane(moveDirection, normalvector);
-        rigidbody.velocity = projectedVelocity;
+        rigi.velocity = projectedVelocity;
 
         animatorHandler.UpdateAnimatorValues(inputHandler.moveAmount, 0, playerManager.isSprinting);
 
@@ -143,8 +140,8 @@ public class PlayerLocomotion : MonoBehaviour
 
         if(playerManager.isInAir)
         {
-            rigidbody.AddForce(-Vector3.up * fallingSpeed);
-            rigidbody.AddForce(moveDirection * fallingSpeed / 10f);
+            rigi.AddForce(-Vector3.up * fallingSpeed);
+            rigi.AddForce(moveDirection * fallingSpeed / 10f);
         }
 
         Vector3 dir = moveDirection;
@@ -189,9 +186,9 @@ public class PlayerLocomotion : MonoBehaviour
                     animatorHandler.PlayTargetAnimation(DarkSoulsConsts.FALLING, true);
                 }
 
-                Vector3 vel = rigidbody.velocity;
+                Vector3 vel = rigi.velocity;
                 vel.Normalize();
-                rigidbody.velocity = vel * (movementSpeed / 2);
+                rigi.velocity = vel * (movementSpeed / 2);
                 playerManager.isInAir = true;
             }
         }
