@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5826229180287094496
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7144005301959917368}
+  m_Layer: 10
+  m_Name: LockOnTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7144005301959917368
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5826229180287094496}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.278, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7992963000749922065}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7992963000191336190
 GameObject:
   m_ObjectHideFlags: 0
@@ -1322,6 +1353,7 @@ GameObject:
   - component: {fileID: 7992963000750126650}
   - component: {fileID: 7992963000750126653}
   - component: {fileID: 7992963000750126651}
+  - component: {fileID: 6233019935235005133}
   m_Layer: 0
   m_Name: TestEnemy
   m_TagString: Enemy
@@ -1345,6 +1377,7 @@ Transform:
   - {fileID: 7992963000749963461}
   - {fileID: 7992963000724900279}
   - {fileID: 7992963001157502983}
+  - {fileID: 7144005301959917368}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -1416,6 +1449,19 @@ MonoBehaviour:
   healthBarTransform: {fileID: 7992963001157502983}
   cameraTransform: {fileID: 0}
   healthBarGO: {fileID: 7992963001157502980}
+--- !u!114 &6233019935235005133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7992963000750250733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26a4b8f709a558342ac44a70457f5804, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lockOnTransform: {fileID: 7144005301959917368}
 --- !u!1 &7992963000750251363
 GameObject:
   m_ObjectHideFlags: 0
