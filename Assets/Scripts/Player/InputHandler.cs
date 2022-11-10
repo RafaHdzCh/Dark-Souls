@@ -82,14 +82,14 @@ public class InputHandler : MonoBehaviour
 
     public void TickInput(float delta)
     {
-        MoveInput(delta);
+        HandleMoveInput(delta);
         HandleRollInput(delta);
         HandleAttackInput(delta);
         HandleQuickSlotsInput();
         HandleInventoryInput();
         HandleLockOnInput();
     }
-    private void MoveInput(float delta)
+    private void HandleMoveInput(float delta)
     {
         horizontal = movementInput.x;
         vertical = movementInput.y;
@@ -205,16 +205,6 @@ public class InputHandler : MonoBehaviour
             cameraHandler.ClearLockOnTargets();
         }
 
-        if(lockOnFlag && switch_To_Right_Target_Input)
-        {
-            switch_To_Right_Target_Input = false;
-            cameraHandler.HandleLockOn();
-            if(cameraHandler.rightLockTarget != null)
-            {
-                cameraHandler.currentLockOnTarget = cameraHandler.rightLockTarget;
-            }
-        }
-
         if(lockOnFlag && switch_To_Left_Target_Input)
         {
             switch_To_Left_Target_Input = false;
@@ -224,5 +214,15 @@ public class InputHandler : MonoBehaviour
                 cameraHandler.currentLockOnTarget = cameraHandler.leftLockTarget;
             }
         }
+        if(lockOnFlag && switch_To_Right_Target_Input)
+        {
+            switch_To_Right_Target_Input = false;
+            cameraHandler.HandleLockOn();
+            if(cameraHandler.rightLockTarget != null)
+            {
+                cameraHandler.currentLockOnTarget = cameraHandler.rightLockTarget;
+            }
+        }
+        cameraHandler.SetCameraHeight();
     }
 }

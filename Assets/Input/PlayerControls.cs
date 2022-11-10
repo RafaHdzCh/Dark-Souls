@@ -47,21 +47,21 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""LockOnTargetLeft"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""9917470d-882d-439c-b078-c89acacbefe4"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
                     ""name"": ""LockOnTargetRight"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""24117993-d30b-495b-a543-8ae382d03379"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -146,7 +146,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""172ee1fc-f5a5-466c-9336-50a3bdc9d552"",
                     ""path"": ""<Keyboard>/o"",
-                    ""interactions"": """",
+                    ""interactions"": ""Tap"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""LockOnTargetLeft"",
@@ -157,7 +157,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""fd7ffcc3-cb83-485c-9263-0fef559863fe"",
                     ""path"": ""<Keyboard>/p"",
-                    ""interactions"": """",
+                    ""interactions"": ""Tap"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""LockOnTargetRight"",

@@ -27,4 +27,7 @@ public static class DarkSoulsConsts
     public static readonly string PLAYER = "Player";
     public static readonly string ENEMY = "Enemy";
     public static readonly string INTERACTABLE = "Interactable";
+
+    //Layers
+    public static readonly string ENVIRONMENT = "Environment";
 }
