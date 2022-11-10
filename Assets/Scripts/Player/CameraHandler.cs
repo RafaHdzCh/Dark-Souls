@@ -16,9 +16,9 @@ public class CameraHandler : MonoBehaviour
     private Vector3 cameraFollowVelocity = Vector3.zero;
     private Transform myTransform;
 
-    float lookSpeed = 0.005f;
+    public float lookSpeed = 0.005f;
     float followSpeed = 0.1f;
-    float pivotSpeed = 0.005f;
+    public float pivotSpeed = 0.005f;
 
     float targetPosition;
     float defaultPosition;
