@@ -23,6 +23,8 @@ public class InputHandler : MonoBehaviour
     [HideInInspector] public bool d_pad_Right;
     [HideInInspector] public bool start_Input;
     [HideInInspector] public bool lockOnInput;
+    [HideInInspector] public bool switch_To_Right_Target_Input;
+    [HideInInspector] public bool switch_To_Left_Target_Input;
 
     [Header("Flags")]
     [HideInInspector] public bool rollFlag;
@@ -65,6 +67,10 @@ public class InputHandler : MonoBehaviour
             inputActions.PlayerActions.Jump.performed += i => jump_Input = true;
             inputActions.PlayerActions.Start.performed += i => start_Input = true;
             inputActions.PlayerActions.LockOn.performed += i => lockOnInput = true;
+            inputActions.PlayerMovement.LockOnTargetRight.performed += i => switch_To_Right_Target_Input = true;
+            inputActions.PlayerMovement.LockOnTargetLeft.performed += i => switch_To_Left_Target_Input = true;
+
+
         }
         inputActions.Enable();
     }
@@ -183,23 +189,40 @@ public class InputHandler : MonoBehaviour
     {
         if(lockOnInput && lockOnFlag == false)
         {
-            cameraHandler.ClearLockOnTargets();
             lockOnInput = false;
             cameraHandler.HandleLockOn();
 
             if(cameraHandler.nearestLockOnTarget != null)
             {
-                print("unlock");
                 cameraHandler.currentLockOnTarget = cameraHandler.nearestLockOnTarget;
                 lockOnFlag = true;
             }
         }
         else if(lockOnInput && lockOnFlag)
         {
-            print("unlock target");
             lockOnFlag = false;
             lockOnFlag = false;
             cameraHandler.ClearLockOnTargets();
+        }
+
+        if(lockOnFlag && switch_To_Right_Target_Input)
+        {
+            switch_To_Right_Target_Input = false;
+            cameraHandler.HandleLockOn();
+            if(cameraHandler.rightLockTarget != null)
+            {
+                cameraHandler.currentLockOnTarget = cameraHandler.rightLockTarget;
+            }
+        }
+
+        if(lockOnFlag && switch_To_Left_Target_Input)
+        {
+            switch_To_Left_Target_Input = false;
+            cameraHandler.HandleLockOn();
+            if(cameraHandler.leftLockTarget != null)
+            {
+                cameraHandler.currentLockOnTarget = cameraHandler.leftLockTarget;
+            }
         }
     }
 }
