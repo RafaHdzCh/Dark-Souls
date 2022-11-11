@@ -153,6 +153,7 @@ public class CameraHandler : MonoBehaviour
                 float distanceFromTarget = Vector3.Distance(targetTransform.position, character.transform.position);
                 float viewableAngle = Vector3.Angle(lockTargetDirection, cameraTransform.forward);
                 RaycastHit hit;
+
                 //Avoid targeting ourselves or far away enemies.
                 if(character.transform.root != targetTransform.transform.root && 
                    viewableAngle > -50 && viewableAngle < 50 && distanceFromTarget <= maximumLockOnDistance)
@@ -183,7 +184,6 @@ public class CameraHandler : MonoBehaviour
             }
             if(inputHandler.lockOnFlag)
             {
-                //Vector3 relativeEnemyPosition = currentLockOnTarget.transform.InverseTransformPoint(availableTargets[k].transform.position);
                 Vector3 relativeEnemyPosition = inputHandler.transform.InverseTransformPoint(availableTargets[k].transform.position);
                 var distanceFromLeftTarget = relativeEnemyPosition.x;
                 var distanceFromRightTarget = relativeEnemyPosition.x;
