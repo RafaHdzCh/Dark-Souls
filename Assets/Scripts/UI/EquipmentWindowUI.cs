@@ -10,12 +10,8 @@ public class EquipmentWindowUI : MonoBehaviour
     [NonSerialized] public bool leftHandSlot01Selected;
     [NonSerialized] public bool leftHandSlot02Selected;
 
-    HandEquipmentSlotUI[] handEquipmentSlotUI;
+    [SerializeField] HandEquipmentSlotUI[] handEquipmentSlotUI;
 
-    private void Awake()
-    {
-        handEquipmentSlotUI = GetComponentsInChildren<HandEquipmentSlotUI>(true);
-    }
 
     public void LoadWeaponOnEquipmentSlot(PlayerInventory playerInventory)
     {

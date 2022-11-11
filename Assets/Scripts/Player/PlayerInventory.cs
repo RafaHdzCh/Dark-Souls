@@ -14,8 +14,8 @@ public class PlayerInventory : MonoBehaviour
     public WeaponItem[] weaponInRightHandSlots = new WeaponItem[1];
     public WeaponItem[] weaponInLeftHandSlots = new WeaponItem[1];
 
-    private int currentRightWeaponIndex = -1;
-    private int currentLeftWeaponIndex = -1;
+    [HideInInspector] public int currentRightWeaponIndex;
+    [HideInInspector] public int currentLeftWeaponIndex;
 
     public List<WeaponItem> weaponsInventory;
 
@@ -26,10 +26,12 @@ public class PlayerInventory : MonoBehaviour
 
     private void Start()
     {
-        rightWeapon = unarmedWeapon;
-        leftWeapon = unarmedWeapon;
-        weaponSlotManager.LoadWeaponOnSlot(unarmedWeapon, false);
-        weaponSlotManager.LoadWeaponOnSlot(unarmedWeapon, true);
+        currentRightWeaponIndex = 0;
+        currentLeftWeaponIndex = 0;
+        rightWeapon = weaponInRightHandSlots[0];
+        leftWeapon = weaponInLeftHandSlots[0];
+        weaponSlotManager.LoadWeaponOnSlot(rightWeapon, false);
+        weaponSlotManager.LoadWeaponOnSlot(leftWeapon, true);
     }
 
     public void ChangeRightWeapon()

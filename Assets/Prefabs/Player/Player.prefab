@@ -130,6 +130,8 @@ MonoBehaviour:
   d_pad_Right: 0
   start_Input: 0
   lockOnInput: 0
+  switch_To_Right_Target_Input: 0
+  switch_To_Left_Target_Input: 0
   rollFlag: 0
   sprintFlag: 0
   comboFlag: 0
