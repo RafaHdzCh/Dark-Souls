@@ -43,7 +43,7 @@ public class InputHandler : MonoBehaviour
     CameraHandler cameraHandler;
    
 
-    private void Awake()
+    private void Start()
     {
         playerManager = GetComponent<PlayerManager>();
         playerAttacker = GetComponent<PlayerAttacker>();
@@ -56,6 +56,7 @@ public class InputHandler : MonoBehaviour
     {
         if(inputActions == null)
         {
+            //Se genera un nuevo PlayerControls  y su mapeo.
             inputActions = new PlayerControls();
             inputActions.PlayerMovement.Movement.performed += inputActions => movementInput = inputActions.ReadValue<Vector2>();
             inputActions.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
@@ -69,8 +70,6 @@ public class InputHandler : MonoBehaviour
             inputActions.PlayerActions.LockOn.performed += i => lockOnInput = true;
             inputActions.PlayerMovement.LockOnTargetRight.performed += i => switch_To_Right_Target_Input = true;
             inputActions.PlayerMovement.LockOnTargetLeft.performed += i => switch_To_Left_Target_Input = true;
-
-
         }
         inputActions.Enable();
     }
@@ -80,6 +79,7 @@ public class InputHandler : MonoBehaviour
         inputActions.Disable();
     }
 
+    //Detecta los inputs por el usuario.
     public void TickInput(float delta)
     {
         HandleMoveInput(delta);

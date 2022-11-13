@@ -25,6 +25,7 @@ public class AnimatorHandler : MonoBehaviour
         playerManager = GetComponentInParent<PlayerManager>();
     }
 
+    //Establecer la velocidad de movimiento en el Animator.
     public void UpdateAnimatorValues(float verticalMovement, float horizontalMovement, bool isSprinting)
     {
         #region Vertical
@@ -86,6 +87,7 @@ public class AnimatorHandler : MonoBehaviour
         anim.SetFloat(horizontal, h, 0.1f, Time.deltaTime);
     }
 
+    //Ejecuta la animacion que llegue por parametro.
     public void PlayTargetAnimation(string targetAnim, bool isInteracting)
     {
         anim.applyRootMotion = isInteracting;
