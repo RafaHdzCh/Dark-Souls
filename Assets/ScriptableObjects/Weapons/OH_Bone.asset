@@ -16,6 +16,9 @@ MonoBehaviour:
   itemName: Bone
   modelPrefab: {fileID: 6005332832191392535, guid: 6154f196d8418424785991927c98f389, type: 3}
   isUnarmed: 0
+  Right_Arm_Idle: Right_Arm_Idle_0
+  Left_Arm_Idle: Left_Arm_Idle_0
+  TH_Idle: Both_Arms_Idle_0
   OH_Light_Attack_0: OH_Light_Attack_0
   OH_Light_Attack_1: OH_Light_Attack_1
   OH_Heavy_Attack_0: OH_Heavy_Attack_0

@@ -16,6 +16,9 @@ MonoBehaviour:
   itemName: Machete
   modelPrefab: {fileID: 5574810274403532763, guid: 06412f25c94db314789bd86591cd8d9a, type: 3}
   isUnarmed: 0
+  Right_Arm_Idle: Right_Arm_Idle_0
+  Left_Arm_Idle: Left_Arm_Idle_0
+  TH_Idle: Both_Arms_Idle_0
   OH_Light_Attack_0: OH_Light_Attack_0
   OH_Light_Attack_1: OH_Light_Attack_1
   OH_Heavy_Attack_0: OH_Heavy_Attack_0

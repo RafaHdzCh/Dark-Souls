@@ -72,6 +72,7 @@ public class PlayerManager : CharacterManager
         inputHandler.jump_Input = false;
         inputHandler.start_Input = false;
         inputHandler.lockOnInput = false;
+        inputHandler.twoHand_input = false;
 
         //Si hay un cameraHandler...
         if (cameraHandler != null)

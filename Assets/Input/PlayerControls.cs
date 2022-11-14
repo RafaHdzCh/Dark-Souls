@@ -295,6 +295,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TwoHand"",
+                    ""type"": ""Button"",
+                    ""id"": ""1895c186-3f27-479b-846f-ffae99483430"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -528,6 +537,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Confirm"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ba1e77b6-d86f-4bde-bced-72da3a454983"",
+                    ""path"": ""<Keyboard>/v"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TwoHand"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -688,6 +708,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_PlayerActions_Cancel = m_PlayerActions.FindAction("Cancel", throwIfNotFound: true);
         m_PlayerActions_Confirm = m_PlayerActions.FindAction("Confirm", throwIfNotFound: true);
         m_PlayerActions_RemoveEquipment = m_PlayerActions.FindAction("RemoveEquipment", throwIfNotFound: true);
+        m_PlayerActions_TwoHand = m_PlayerActions.FindAction("TwoHand", throwIfNotFound: true);
         // Player Quick Slots
         m_PlayerQuickSlots = asset.FindActionMap("Player Quick Slots", throwIfNotFound: true);
         m_PlayerQuickSlots_DPadUp = m_PlayerQuickSlots.FindAction("D-Pad Up", throwIfNotFound: true);
@@ -824,6 +845,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActions_Cancel;
     private readonly InputAction m_PlayerActions_Confirm;
     private readonly InputAction m_PlayerActions_RemoveEquipment;
+    private readonly InputAction m_PlayerActions_TwoHand;
     public struct PlayerActionsActions
     {
         private @PlayerControls m_Wrapper;
@@ -842,6 +864,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Cancel => m_Wrapper.m_PlayerActions_Cancel;
         public InputAction @Confirm => m_Wrapper.m_PlayerActions_Confirm;
         public InputAction @RemoveEquipment => m_Wrapper.m_PlayerActions_RemoveEquipment;
+        public InputAction @TwoHand => m_Wrapper.m_PlayerActions_TwoHand;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -893,6 +916,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @RemoveEquipment.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnRemoveEquipment;
                 @RemoveEquipment.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnRemoveEquipment;
                 @RemoveEquipment.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnRemoveEquipment;
+                @TwoHand.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnTwoHand;
+                @TwoHand.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnTwoHand;
+                @TwoHand.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnTwoHand;
             }
             m_Wrapper.m_PlayerActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -939,6 +965,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @RemoveEquipment.started += instance.OnRemoveEquipment;
                 @RemoveEquipment.performed += instance.OnRemoveEquipment;
                 @RemoveEquipment.canceled += instance.OnRemoveEquipment;
+                @TwoHand.started += instance.OnTwoHand;
+                @TwoHand.performed += instance.OnTwoHand;
+                @TwoHand.canceled += instance.OnTwoHand;
             }
         }
     }
@@ -1023,6 +1052,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnCancel(InputAction.CallbackContext context);
         void OnConfirm(InputAction.CallbackContext context);
         void OnRemoveEquipment(InputAction.CallbackContext context);
+        void OnTwoHand(InputAction.CallbackContext context);
     }
     public interface IPlayerQuickSlotsActions
     {

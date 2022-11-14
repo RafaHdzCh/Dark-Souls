@@ -13,12 +13,15 @@ public class WeaponSlotManager : MonoBehaviour
     DamageCollider rightHandDamageCollider;
     QuickSlotsUI quickSlotsUI;
     PlayerStats playerStats;
-
+    InputHandler inputHandler;
+    Animator animator;
     private void Awake()
     {
         WeaponHolderSlot[] weaponHolderSlots = GetComponentsInChildren<WeaponHolderSlot>();
         quickSlotsUI = FindObjectOfType<QuickSlotsUI>();
+        inputHandler = GetComponentInParent<InputHandler>();
         playerStats = GetComponentInParent<PlayerStats>();
+        animator = GetComponent<Animator>();
 
         foreach(WeaponHolderSlot weaponSlot in weaponHolderSlots)
         {
@@ -40,9 +43,42 @@ public class WeaponSlotManager : MonoBehaviour
             leftHandSlot.LoadWeaponModel(weaponItem);
             LoadLeftWeaponDamageCollider();
             quickSlotsUI.UpdateWeaponQuickSlotsUI(true, weaponItem);
+
+            #region Handle Left Weapon Idle Animation
+            if (weaponItem != null)
+            {
+                animator.CrossFade(weaponItem.Left_Arm_Idle, 0.2f);
+            }
+            else
+            {
+                animator.CrossFade(DarkSoulsConsts.LEFTARMEMPTY, 0.2f);
+            }
+            #endregion
         }
         else
         {
+            if(inputHandler.twoHandFlag)
+            {
+                //Move current left hand weapon to back
+                animator.CrossFade(weaponItem.TH_Idle, 0.2f);
+            }
+            else
+            {
+                #region Handle Right Weapon Idle Animation
+
+                animator.CrossFade(DarkSoulsConsts.BOTHARMSEMPTY, 0.2f);
+                if (weaponItem != null)
+                {
+
+                    animator.CrossFade(weaponItem.Right_Arm_Idle, 0.2f);
+                }
+                else
+                {
+                    animator.CrossFade(DarkSoulsConsts.RIGHTARMEMPTY, 0.2f);
+                }
+
+                #endregion
+            }
             rightHandSlot.LoadWeaponModel(weaponItem);
             LoadRightWeaponDamageCollider();
             quickSlotsUI.UpdateWeaponQuickSlotsUI(false, weaponItem);

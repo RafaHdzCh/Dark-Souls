@@ -18,6 +18,9 @@ public static class DarkSoulsConsts
     public static readonly string PICKUPITEM = "Pick Up Item";
     public static readonly string JUMP = "Jump";
     public static readonly string ISINAIR = "isInAir";
+    public static readonly string RIGHTARMEMPTY = "Right Arm Empty";
+    public static readonly string LEFTARMEMPTY = "Left Arm Empty";
+    public static readonly string BOTHARMSEMPTY = "Both Arms Empty";
 
     //Directions
     public static readonly string VERTICAL = "Vertical";

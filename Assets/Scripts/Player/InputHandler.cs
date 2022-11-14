@@ -14,6 +14,7 @@ public class InputHandler : MonoBehaviour
     [Header("Inputs")]
     [HideInInspector] public bool a_input;
     [HideInInspector] public bool b_input;
+    [HideInInspector] public bool twoHand_input;
     [HideInInspector] public bool jump_Input;
     [HideInInspector] public bool rb_Input;
     [HideInInspector] public bool rt_Input;
@@ -28,6 +29,7 @@ public class InputHandler : MonoBehaviour
 
     [Header("Flags")]
     [HideInInspector] public bool rollFlag;
+    [HideInInspector] public bool twoHandFlag;
     [HideInInspector] public bool sprintFlag;
     [HideInInspector] public bool comboFlag;
     [HideInInspector] public bool lockOnFlag;
@@ -41,6 +43,7 @@ public class InputHandler : MonoBehaviour
     PlayerManager playerManager;
     UIManager uiManager;
     CameraHandler cameraHandler;
+    WeaponSlotManager weaponSlotManager;
    
 
     private void Start()
@@ -50,6 +53,7 @@ public class InputHandler : MonoBehaviour
         playerInventory = GetComponent<PlayerInventory>();
         uiManager = FindObjectOfType<UIManager>();
         cameraHandler = FindObjectOfType<CameraHandler>();
+        weaponSlotManager = GetComponentInChildren<WeaponSlotManager>();
     }
 
     public void OnEnable()
@@ -70,6 +74,7 @@ public class InputHandler : MonoBehaviour
             inputActions.PlayerActions.LockOn.performed += i => lockOnInput = true;
             inputActions.PlayerMovement.LockOnTargetRight.performed += i => switch_To_Right_Target_Input = true;
             inputActions.PlayerMovement.LockOnTargetLeft.performed += i => switch_To_Left_Target_Input = true;
+            inputActions.PlayerActions.TwoHand.performed += i => twoHand_input = true;
         }
         inputActions.Enable();
     }
@@ -88,6 +93,7 @@ public class InputHandler : MonoBehaviour
         HandleQuickSlotsInput();
         HandleInventoryInput();
         HandleLockOnInput();
+        HandleTwoHandInput();
     }
     private void HandleMoveInput(float delta)
     {
@@ -224,5 +230,23 @@ public class InputHandler : MonoBehaviour
             }
         }
         cameraHandler.SetCameraHeight();
+    }
+
+    private void HandleTwoHandInput()
+    {
+        if(twoHand_input)
+        {
+            twoHand_input = false;
+            twoHandFlag = !twoHandFlag;
+            if(twoHandFlag)
+            {
+                weaponSlotManager.LoadWeaponOnSlot(playerInventory.rightWeapon, false);
+            }
+            else
+            {
+                weaponSlotManager.LoadWeaponOnSlot(playerInventory.rightWeapon, false);
+                weaponSlotManager.LoadWeaponOnSlot(playerInventory.leftWeapon, true);
+            }
+        }
     }
 }
