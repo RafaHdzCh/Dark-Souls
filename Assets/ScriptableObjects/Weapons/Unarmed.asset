@@ -16,10 +16,10 @@ MonoBehaviour:
   itemName: Unarmed
   modelPrefab: {fileID: 5882732480609434746, guid: 654e4f0933c26594d86442cef24d51fe, type: 3}
   isUnarmed: 1
-  OH_Light_Attack_0: OH_Light_Attack_0
-  OH_Light_Attack_1: OH_Light_Attack_1
-  OH_Heavy_Attack_0: OH_Heavy_Attack_0
-  OH_Heavy_Attack_1: OH_Heavy_Attack_1
+  OH_Light_Attack_0: Unarmed_Light_Attack_Right
+  OH_Light_Attack_1: Unarmed_Light_Attack_Left
+  OH_Heavy_Attack_0: Unarmed_Heavy_Attack_0
+  OH_Heavy_Attack_1: Unarmed_Heavy_Attack_1
   baseStamina: 5
   lightAttackMultiplier: 1
   heavyAttackMultiplier: 2
