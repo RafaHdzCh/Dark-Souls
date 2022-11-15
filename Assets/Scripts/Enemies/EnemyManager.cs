@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyManager : CharacterManager
 {
-    bool isPerformingAction;
+    [HideInInspector] public bool isPerformingAction;
 
     [Header("Serializables")]
     [Header("Detection")]
@@ -22,7 +22,14 @@ public class EnemyManager : CharacterManager
 
     private void Update()
     {
+        
+    }
+
+    private void FixedUpdate()
+    {
         HandleCurrentAction();
+
+        
     }
 
     private void HandleCurrentAction()
@@ -30,6 +37,10 @@ public class EnemyManager : CharacterManager
         if(enemyLocomotionManager.currentTarget == null)
         {
             enemyLocomotionManager.HandleDetection();
+        }
+        else 
+        {
+            enemyLocomotionManager.HandleMoveToTarget();
         }
     }
 }

@@ -1,14 +1,11 @@
 using UnityEngine;
 
-public class AnimatorHandler : MonoBehaviour
+public class AnimatorHandler : AnimatorManager
 {
     [Header("Variables")]
     [HideInInspector] public bool canRotate;
     int vertical;
     int horizontal;
-
-    [Header("Components")]
-    [HideInInspector] public Animator anim;
 
     [Header("Scripts")]
     [HideInInspector] InputHandler inputHandler;
@@ -85,14 +82,6 @@ public class AnimatorHandler : MonoBehaviour
 
         anim.SetFloat(vertical, v, 0.1f, Time.deltaTime);
         anim.SetFloat(horizontal, h, 0.1f, Time.deltaTime);
-    }
-
-    //Ejecuta la animacion que llegue por parametro.
-    public void PlayTargetAnimation(string targetAnim, bool isInteracting)
-    {
-        anim.applyRootMotion = isInteracting;
-        anim.SetBool(DarkSoulsConsts.ISINTERACTING, isInteracting);
-        anim.CrossFade(targetAnim, 0.2f);
     }
 
     public void CanRotate()
