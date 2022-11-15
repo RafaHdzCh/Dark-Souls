@@ -3,21 +3,14 @@ using System.Collections.Generic;
 using TMPro.EditorUtilities;
 using UnityEngine;
 
-public class EnemyStats : MonoBehaviour
+public class EnemyStats : CharacterStats
 {
-    [Header("Health")]
-    [HideInInspector] public int maxHealth;
-    [HideInInspector] public int currentHealth;
-
     [Header("Serializables")]
-
     [Header("Components")]
     [SerializeField] Transform healthBarTransform;
     [SerializeField] Transform cameraTransform;
     [SerializeField] GameObject healthBarGO;
 
-    [Header("Variables")]
-    public int healthLevel = 10;
 
     [Header("Scripts")]
     AnimatorHandler animatorHandler;

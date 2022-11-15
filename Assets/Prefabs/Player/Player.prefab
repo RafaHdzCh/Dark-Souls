@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 4813561448268282763}
   - component: {fileID: 4813561448268282762}
   - component: {fileID: 4813561448268282761}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -279,10 +279,10 @@ MonoBehaviour:
   healthLevel: 10
   maxHealth: 0
   currentHealth: 0
-  healthBar: {fileID: 0}
   staminaLevel: 10
   maxStamina: 0
   currentStamina: 0
+  healthBar: {fileID: 0}
   staminaBar: {fileID: 0}
 --- !u!1 &4813561448688154227
 GameObject:

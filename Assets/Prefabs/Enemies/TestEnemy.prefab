@@ -1351,6 +1351,7 @@ GameObject:
   - component: {fileID: 7992963000750126653}
   - component: {fileID: 7992963000750126651}
   - component: {fileID: 6233019935235005133}
+  - component: {fileID: 6237637558143008310}
   m_Layer: 0
   m_Name: TestEnemy
   m_TagString: Enemy
@@ -1440,12 +1441,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d9cb9ab2a6bbec489eb3e509de39702, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthLevel: 10
   maxHealth: 0
   currentHealth: 0
+  staminaLevel: 10
+  maxStamina: 0
+  currentStamina: 0
   healthBarTransform: {fileID: 7992963001157502983}
   cameraTransform: {fileID: 0}
   healthBarGO: {fileID: 7992963001157502980}
-  healthLevel: 10
 --- !u!114 &6233019935235005133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1459,6 +1463,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lockOnTransform: {fileID: 7144005301959917368}
+  detectionRadius: 20
+  minimumDetectionAngle: -50
+  maximumDetectionAngle: 50
+--- !u!114 &6237637558143008310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7992963000750250733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c324c597a6223ed4488e3ace81d9abcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentTarget: {fileID: 0}
+  detectionLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &7992963000750251363
 GameObject:
   m_ObjectHideFlags: 0

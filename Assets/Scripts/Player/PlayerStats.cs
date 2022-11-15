@@ -2,19 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStats : MonoBehaviour
+public class PlayerStats : CharacterStats
 {
-    [Header("Serializables")]
-    [Header("Health")]
-    public int healthLevel = 10;
-    [HideInInspector] public int maxHealth;
-    [HideInInspector] public int currentHealth;
     public HealthBar healthBar;
-
-    [Header("Stamina")]
-    public int staminaLevel = 10;
-    [HideInInspector] public int maxStamina;
-    [HideInInspector] public int currentStamina;
     public StaminaBar staminaBar;
 
     [Header("Scripts")]
