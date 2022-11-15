@@ -25,6 +25,7 @@ public class PlayerAttacker : MonoBehaviour
             //Se desactiva de inmediato el bool que permite hacer un combo y se ejecuta la animacion del segundo ataque segun el tipo de ataque.
             animatorHandler.anim.SetBool(DarkSoulsConsts.CANDOCOMBO, false);
             //Si el ultimo ataque realizado fue el primer ataque ligero...
+
             if (lastAttack == weapon.OH_Light_Attack_0)
             {
                 //Se ejecuta el segundo ataque ligero y se activa el bool isInteracting para evitar realizar otras acciones.
@@ -36,6 +37,16 @@ public class PlayerAttacker : MonoBehaviour
                 //Se ejecuta el segundo ataque pesado y se activa el bool isInteracting para evitar realizar otras acciones.
                 animatorHandler.PlayTargetAnimation(weapon.OH_Heavy_Attack_1, true);
             }
+
+            if(lastAttack == weapon.TH_Light_Attack_0)
+            {
+                animatorHandler.PlayTargetAnimation(weapon.TH_Light_Attack_1, true);
+            }
+
+            if (lastAttack == weapon.TH_Heavy_Attack_0)
+            {
+                animatorHandler.PlayTargetAnimation(weapon.TH_Heavy_Attack_1, true);
+            }
         }
     }
 
@@ -44,10 +55,19 @@ public class PlayerAttacker : MonoBehaviour
     {
         //Establece el arma de ataque del slotManager como item de ataque.
         weaponSlotManager.attackingWeapon = weapon;
-        //Ejecuta su animacion y se activa el bool isInteracting para evitar realizar otras acciones.
-        animatorHandler.PlayTargetAnimation(weapon.OH_Light_Attack_0, true);
-        //El ultimo ataque es el ataque realizado.
-        lastAttack = weapon.OH_Light_Attack_0;
+
+        if (inputHandler.twoHandFlag)
+        {
+            animatorHandler.PlayTargetAnimation(weapon.TH_Light_Attack_0, true);
+            lastAttack = weapon.TH_Light_Attack_0;
+        }
+        else
+        {
+            //Ejecuta su animacion y se activa el bool isInteracting para evitar realizar otras acciones.
+            animatorHandler.PlayTargetAnimation(weapon.OH_Light_Attack_0, true);
+            //El ultimo ataque es el ataque realizado.
+            lastAttack = weapon.OH_Light_Attack_0;
+        }
     }
 
     //Realizar un ataque pesado.
@@ -55,9 +75,18 @@ public class PlayerAttacker : MonoBehaviour
     {
         //Establece el arma de ataque del slotManager como item de ataque.
         weaponSlotManager.attackingWeapon = weapon;
-        //Ejecuta su animacion y se activa el bool isInteracting para evitar realizar otras acciones.
-        animatorHandler.PlayTargetAnimation(weapon.OH_Heavy_Attack_0, true);
-        //El ultimo ataque es el ataque realizado.
-        lastAttack = weapon.OH_Heavy_Attack_0;
+
+        if (inputHandler.twoHandFlag)
+        {
+            animatorHandler.PlayTargetAnimation(weapon.TH_Heavy_Attack_0, true);
+            lastAttack = weapon.TH_Heavy_Attack_0;
+        }
+        else
+        {
+            //Ejecuta su animacion y se activa el bool isInteracting para evitar realizar otras acciones.
+            animatorHandler.PlayTargetAnimation(weapon.OH_Heavy_Attack_0, true);
+            //El ultimo ataque es el ataque realizado.
+            lastAttack = weapon.OH_Heavy_Attack_0;
+        }
     }
 }

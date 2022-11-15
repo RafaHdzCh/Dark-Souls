@@ -9,12 +9,16 @@ public class WeaponSlotManager : MonoBehaviour
     [Header("Scripts")]
     WeaponHolderSlot leftHandSlot;
     WeaponHolderSlot rightHandSlot;
+    WeaponHolderSlot backSlot;
+
     DamageCollider leftHandDamageCollider;
     DamageCollider rightHandDamageCollider;
+
     QuickSlotsUI quickSlotsUI;
     PlayerStats playerStats;
     InputHandler inputHandler;
     Animator animator;
+
     private void Awake()
     {
         WeaponHolderSlot[] weaponHolderSlots = GetComponentsInChildren<WeaponHolderSlot>();
@@ -33,6 +37,10 @@ public class WeaponSlotManager : MonoBehaviour
             {
                 rightHandSlot = weaponSlot;
             }
+            else if(weaponSlot.isBackSlot)
+            {
+                backSlot = weaponSlot;
+            }
         }
     }
 
@@ -40,6 +48,7 @@ public class WeaponSlotManager : MonoBehaviour
     {
         if(isLeft)
         {
+            leftHandSlot.currentWeapon = weaponItem;
             leftHandSlot.LoadWeaponModel(weaponItem);
             LoadLeftWeaponDamageCollider();
             quickSlotsUI.UpdateWeaponQuickSlotsUI(true, weaponItem);
@@ -59,7 +68,8 @@ public class WeaponSlotManager : MonoBehaviour
         {
             if(inputHandler.twoHandFlag)
             {
-                //Move current left hand weapon to back
+                backSlot.LoadWeaponModel(leftHandSlot.currentWeapon);
+                leftHandSlot.UnloadWeaponAndDestroy();
                 animator.CrossFade(weaponItem.TH_Idle, 0.2f);
             }
             else
@@ -67,6 +77,8 @@ public class WeaponSlotManager : MonoBehaviour
                 #region Handle Right Weapon Idle Animation
 
                 animator.CrossFade(DarkSoulsConsts.BOTHARMSEMPTY, 0.2f);
+
+                backSlot.UnloadWeaponAndDestroy();
                 if (weaponItem != null)
                 {
 
@@ -79,6 +91,7 @@ public class WeaponSlotManager : MonoBehaviour
 
                 #endregion
             }
+            rightHandSlot.currentWeapon = weaponItem;
             rightHandSlot.LoadWeaponModel(weaponItem);
             LoadRightWeaponDamageCollider();
             quickSlotsUI.UpdateWeaponQuickSlotsUI(false, weaponItem);
