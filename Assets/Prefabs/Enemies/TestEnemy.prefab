@@ -1125,6 +1125,7 @@ GameObject:
   - component: {fileID: 7992963000749931709}
   - component: {fileID: 7992963000746923467}
   - component: {fileID: 176547810126715761}
+  - component: {fileID: 3046668075922728482}
   m_Layer: 0
   m_Name: Character_Skeleton_Slave_01
   m_TagString: Untagged
@@ -1261,7 +1262,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b585a38a2bc026f45b5ff2017133b3e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 7992963000742722253}
+  anim: {fileID: 0}
+--- !u!95 &3046668075922728482
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7992963000750108505}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: b69174d668ba02d44b14a084b217670a, type: 3}
+  m_Controller: {fileID: 9100000, guid: 27e26aee2828bec489eb76944b91f1f2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7992963000750108659
 GameObject:
   m_ObjectHideFlags: 0
@@ -1399,7 +1420,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7992963000749922065}
-  - component: {fileID: 7992963000742722253}
   - component: {fileID: 7992963000750126650}
   - component: {fileID: 7992963000750126653}
   - component: {fileID: 7992963000750126651}
@@ -1433,26 +1453,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!95 &7992963000742722253
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7992963000750250733}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: b69174d668ba02d44b14a084b217670a, type: 3}
-  m_Controller: {fileID: 9100000, guid: 27e26aee2828bec489eb76944b91f1f2, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!54 &7992963000750126650
 Rigidbody:
   m_ObjectHideFlags: 0
