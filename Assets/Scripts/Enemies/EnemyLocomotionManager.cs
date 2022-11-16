@@ -8,7 +8,7 @@ public class EnemyLocomotionManager : MonoBehaviour
     [Header("Variables")]
     [HideInInspector] public float distanceFromTarget;
     public float stoppingDistance = 1f;
-    [HideInInspector] public float rotationSpeed = 15f;
+    [HideInInspector] public float rotationSpeed = 30f;
 
     [Header("Scripts")]
     [HideInInspector] public CharacterStats currentTarget;
@@ -58,6 +58,8 @@ public class EnemyLocomotionManager : MonoBehaviour
     }
     public void HandleMoveToTarget()
     {
+        if (enemyManager.isPerformingAction) return;
+
         Vector3 targetDirection = currentTarget.transform.position - transform.position;
         distanceFromTarget = Vector3.Distance(currentTarget.transform.position, transform.position);
         float viewableAngle = Vector3.Angle(targetDirection, transform.position);
@@ -111,8 +113,6 @@ public class EnemyLocomotionManager : MonoBehaviour
             enemyRigidbody.velocity = targetVelocity;
             transform.rotation = Quaternion.Slerp(transform.rotation, navMeshAgent.transform.rotation, rotationSpeed / Time.deltaTime);
         }
-
-        
         navMeshAgent.transform.localPosition = Vector3.zero;
         navMeshAgent.transform.localRotation = Quaternion.identity;
     }
