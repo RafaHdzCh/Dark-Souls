@@ -79,7 +79,7 @@ public class EnemyLocomotionManager : MonoBehaviour
                 enemyAnimatorManager.anim.SetFloat(DarkSoulsConsts.VERTICAL, 0, 0.1f, Time.deltaTime);
             }
         }
-
+        HandleRotateTowardsTarget();
         navMeshAgent.transform.localPosition = Vector3.zero;
         navMeshAgent.transform.localRotation = Quaternion.identity;
     }
@@ -98,8 +98,7 @@ public class EnemyLocomotionManager : MonoBehaviour
                 direction = transform.forward;
             }
             Quaternion targetRotation = Quaternion.LookRotation(direction);
-            // *
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed / Time.deltaTime);
         }
         //Rotate with pathfinding (navmesh)
         else
@@ -110,11 +109,10 @@ public class EnemyLocomotionManager : MonoBehaviour
             navMeshAgent.enabled = true;
             navMeshAgent.SetDestination(currentTarget.transform.position);
             enemyRigidbody.velocity = targetVelocity;
-            // *
-            transform.rotation = Quaternion.Slerp(transform.rotation, navMeshAgent.transform.rotation, rotationSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, navMeshAgent.transform.rotation, rotationSpeed / Time.deltaTime);
         }
 
-        HandleRotateTowardsTarget();
+        
         navMeshAgent.transform.localPosition = Vector3.zero;
         navMeshAgent.transform.localRotation = Quaternion.identity;
     }

@@ -28,8 +28,6 @@ public class EnemyManager : CharacterManager
     private void FixedUpdate()
     {
         HandleCurrentAction();
-
-        
     }
 
     private void HandleCurrentAction()

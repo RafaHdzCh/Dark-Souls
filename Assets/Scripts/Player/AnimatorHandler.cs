@@ -14,7 +14,6 @@ public class AnimatorHandler : AnimatorManager
 
     public void Initialize()
     {
-        anim = GetComponent<Animator>();
         inputHandler = GetComponentInParent<InputHandler>(); 
         playerLocomotion = GetComponentInParent<PlayerLocomotion>();
         vertical = Animator.StringToHash(DarkSoulsConsts.VERTICAL);
@@ -107,7 +106,6 @@ public class AnimatorHandler : AnimatorManager
     public void OnAnimatorMove()
     {
         if (playerManager.isInteracting == false) return;
-
         float delta = Time.deltaTime;
         playerLocomotion.GetComponent<Rigidbody>().drag = 0;
         Vector3 deltaPosition = anim.deltaPosition;
