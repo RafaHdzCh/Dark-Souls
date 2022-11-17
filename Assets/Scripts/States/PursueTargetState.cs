@@ -5,16 +5,14 @@ using UnityEngine.AI;
 
 public class PursueTargetState : State
 {
-    CombatStanceState combatStanceState;
+    [SerializeField] CombatStanceState combatStanceState;
 
-    private void Awake()
-    {
-        combatStanceState = GetComponent<CombatStanceState>();
-    }
     public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
     {
-        //Chase the target
-        if (enemyManager.isPerformingAction) return this;
+        if (enemyManager.isPerformingAction)
+        {
+            return this;
+        }
 
         Vector3 targetDirection = enemyManager.currentTarget.transform.position - transform.position;
         enemyManager.distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, transform.position);
@@ -44,6 +42,7 @@ public class PursueTargetState : State
         //Rotate manually
         if (enemyManager.isPerformingAction)
         {
+            print("esta realizando una accion");
             Vector3 direction = enemyManager.currentTarget.transform.position - transform.position;
             direction.y = 0;
             direction.Normalize();
@@ -58,15 +57,16 @@ public class PursueTargetState : State
         //Rotate with pathfinding (navmesh)
         else
         {
+            print("Rotando por NavMeshAgent");
             Vector3 relativeDirection = transform.InverseTransformDirection(enemyManager.navMeshAgent.desiredVelocity);
             Vector3 targetVelocity = enemyManager.enemyRigidbody.velocity;
 
             enemyManager.navMeshAgent.enabled = true;
             enemyManager.navMeshAgent.SetDestination(enemyManager.currentTarget.transform.position);
             enemyManager.enemyRigidbody.velocity = targetVelocity;
-            transform.rotation = Quaternion.Slerp(transform.rotation, enemyManager.navMeshAgent.transform.rotation, enemyManager.rotationSpeed / Time.deltaTime);
+            transform.rotation = Quaternion.Slerp
+            (transform.rotation, enemyManager.navMeshAgent.transform.rotation, enemyManager.rotationSpeed / Time.deltaTime);
         }
-        enemyManager.navMeshAgent.transform.localPosition = Vector3.zero;
-        enemyManager.navMeshAgent.transform.localRotation = Quaternion.identity;
+        enemyManager.navMeshAgent.angularSpeed = 0;
     }
 }

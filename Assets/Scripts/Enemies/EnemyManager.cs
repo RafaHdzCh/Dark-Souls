@@ -29,14 +29,16 @@ public class EnemyManager : CharacterManager
     EnemyStats enemyStats;
     [HideInInspector] public NavMeshAgent navMeshAgent;
 
-    private void Start()
+    private void Awake()
     {
         enemyLocomotionManager = GetComponent<EnemyLocomotionManager>();
         enemyAnimatorManager = GetComponentInChildren<EnemyAnimatorManager>();
         enemyStats = GetComponent<EnemyStats>();
         navMeshAgent = GetComponentInChildren<NavMeshAgent>();
         enemyRigidbody = GetComponent<Rigidbody>();
-
+    }
+    private void Start()
+    {
         navMeshAgent.enabled = false;
         enemyRigidbody.isKinematic = false;
     }

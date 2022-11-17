@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class IdleState : State
 {
-    PursueTargetState pursueTargetState;
+    [SerializeField] PursueTargetState pursueTargetState;
 
     [Header("Serializables")]
     public LayerMask detectionLayer;
 
-    private void Awake()
-    {
-        pursueTargetState = GetComponent<PursueTargetState>();
-    }
     public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
     {
         #region Handle Enemy Target Detection
@@ -31,7 +27,6 @@ public class IdleState : State
                 if (viewableAngle > enemyManager.minimumDetectionAngle && viewableAngle < enemyManager.maximumDetectionAngle)
                 {
                     enemyManager.currentTarget = characterStats;
-
                 }
             }
         }

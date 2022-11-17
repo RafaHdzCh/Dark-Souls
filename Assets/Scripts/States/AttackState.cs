@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class AttackState : State
 {
-    CombatStanceState combatStanceState;
+    [SerializeField] CombatStanceState combatStanceState;
 
     public EnemyAttackAction[] enemyAttacks;
     private EnemyAttackAction currentAttack;
 
-    private void Awake()
-    {
-        combatStanceState = GetComponent<CombatStanceState>();
-    }
     public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
     {
         Vector3 targetDirection = enemyManager.currentTarget.transform.position - transform.position;

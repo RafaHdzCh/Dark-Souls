@@ -4,14 +4,9 @@ using UnityEngine;
 
 public class CombatStanceState : State
 {
-    AttackState attackState;
-    PursueTargetState pursueTargetState;
+    [SerializeField] AttackState attackState;
+    [SerializeField] PursueTargetState pursueTargetState;
 
-    private void Awake()
-    {
-        attackState = GetComponent<AttackState>();
-        pursueTargetState = GetComponent<PursueTargetState>();
-    }
     public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
     {
         enemyManager.distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
