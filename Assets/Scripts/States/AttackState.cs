@@ -7,25 +7,28 @@ public class AttackState : State
     [SerializeField] CombatStanceState combatStanceState;
 
     public EnemyAttackAction[] enemyAttacks;
-    private EnemyAttackAction currentAttack;
+    public EnemyAttackAction currentAttack;
 
     public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
     {
         Vector3 targetDirection = enemyManager.currentTarget.transform.position - transform.position;
-        float viewableAngle = Vector3.Angle(targetDirection, transform.position);
+        enemyManager.viewableAngle = Vector3.Angle(targetDirection, transform.forward);
 
-        if (enemyManager.isPerformingAction) return combatStanceState;
+        if (enemyManager.isPerformingAction)
+        {
+            return combatStanceState;
+        }
 
         if(currentAttack != null)
         {
-            if(enemyManager.distanceFromTarget < currentAttack.minimumDistanceNeededToAttack)
+            if (enemyManager.distanceFromTarget < currentAttack.minimumDistanceNeededToAttack)
             {
                 return this;
             }
-            else if(enemyManager.distanceFromTarget < currentAttack.maximumAttackDistanceToAttack)
+            else if(enemyManager.distanceFromTarget <= currentAttack.maximumAttackDistanceToAttack)
             {
-                if(viewableAngle <= currentAttack.maximumAttackAngle && 
-                   viewableAngle >= currentAttack.minimumAttackAngle)
+                if(enemyManager.viewableAngle <= currentAttack.maximumAttackAngle &&
+                   enemyManager.viewableAngle >= currentAttack.minimumAttackAngle)
                 {
                     if(enemyManager.currentRecoveryTime <= 0 &&
                        enemyManager.isPerformingAction == false)

@@ -8,13 +8,13 @@ public class EnemyManager : CharacterManager
     [HideInInspector] public bool isPerformingAction;
     [HideInInspector] public CharacterStats currentTarget;
     [HideInInspector] public Rigidbody enemyRigidbody;
-
     
     [Header("Variables")]
     [HideInInspector] public float distanceFromTarget;
-    [HideInInspector] public float rotationSpeed = 30f;
+    [HideInInspector] public float rotationSpeed = 50f;
     [HideInInspector] public float maximumAttackRange = 1.5f;
     [HideInInspector] public float currentRecoveryTime = 0;
+    [HideInInspector] public float viewableAngle;
 
     [Header("Serializables")]
     [Header("Detection")]
@@ -24,22 +24,20 @@ public class EnemyManager : CharacterManager
     public State currentState;
 
     [Header("Detection")]
-    EnemyLocomotionManager enemyLocomotionManager;
     EnemyAnimatorManager enemyAnimatorManager;
     EnemyStats enemyStats;
     [HideInInspector] public NavMeshAgent navMeshAgent;
 
     private void Awake()
     {
-        enemyLocomotionManager = GetComponent<EnemyLocomotionManager>();
         enemyAnimatorManager = GetComponentInChildren<EnemyAnimatorManager>();
         enemyStats = GetComponent<EnemyStats>();
         navMeshAgent = GetComponentInChildren<NavMeshAgent>();
         enemyRigidbody = GetComponent<Rigidbody>();
+        navMeshAgent.enabled = false;
     }
     private void Start()
     {
-        navMeshAgent.enabled = false;
         enemyRigidbody.isKinematic = false;
     }
 

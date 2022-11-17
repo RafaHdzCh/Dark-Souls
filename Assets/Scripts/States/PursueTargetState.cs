@@ -57,16 +57,15 @@ public class PursueTargetState : State
         //Rotate with pathfinding (navmesh)
         else
         {
-            print("Rotando por NavMeshAgent");
             Vector3 relativeDirection = transform.InverseTransformDirection(enemyManager.navMeshAgent.desiredVelocity);
-            Vector3 targetVelocity = enemyManager.enemyRigidbody.velocity;
+            Vector3 targetVelocity = enemyManager.navMeshAgent.desiredVelocity;
 
             enemyManager.navMeshAgent.enabled = true;
             enemyManager.navMeshAgent.SetDestination(enemyManager.currentTarget.transform.position);
             enemyManager.enemyRigidbody.velocity = targetVelocity;
-            transform.rotation = Quaternion.Slerp
+            enemyManager.navMeshAgent.angularSpeed = 180;
+            enemyManager.transform.rotation = Quaternion.Slerp
             (transform.rotation, enemyManager.navMeshAgent.transform.rotation, enemyManager.rotationSpeed / Time.deltaTime);
         }
-        enemyManager.navMeshAgent.angularSpeed = 0;
     }
 }
