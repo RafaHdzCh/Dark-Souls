@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class EnemyManager : CharacterManager
 {
     [HideInInspector] public bool isPerformingAction;
+    [HideInInspector] public bool isInteracting;
     [HideInInspector] public CharacterStats currentTarget;
     [HideInInspector] public Rigidbody enemyRigidbody;
     
@@ -44,6 +45,7 @@ public class EnemyManager : CharacterManager
     private void Update()
     {
         HandleRecoveryTimer();
+        isInteracting = enemyAnimatorManager.anim.GetBool(DarkSoulsConsts.ISINTERACTING);
     }
 
     private void FixedUpdate()
