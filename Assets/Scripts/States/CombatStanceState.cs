@@ -9,13 +9,18 @@ public class CombatStanceState : State
 
     public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
     {
-        enemyManager.distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
+        float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
 
-        if (enemyManager.currentRecoveryTime <= 0 && enemyManager.distanceFromTarget <= enemyManager.maximumAttackRange)
+        if(enemyManager.isPerformingAction)
+        {
+            enemyAnimatorManager.anim.SetFloat(DarkSoulsConsts.VERTICAL, 0, 0.1f, Time.deltaTime);
+        }
+
+        if (enemyManager.currentRecoveryTime <= 0 && distanceFromTarget <= enemyManager.maximumAttackRange)
         {
             return attackState;
         }
-        else if(enemyManager.distanceFromTarget > enemyManager.maximumAttackRange)
+        else if(distanceFromTarget > enemyManager.maximumAttackRange)
         {
             return pursueTargetState;
         }

@@ -11,14 +11,15 @@ public class PursueTargetState : State
     {
         if (enemyManager.isPerformingAction)
         {
+            enemyAnimatorManager.anim.SetFloat(DarkSoulsConsts.VERTICAL, 0, 0.1f, Time.deltaTime);
             return this;
         }
 
         Vector3 targetDirection = enemyManager.currentTarget.transform.position - transform.position;
-        enemyManager.distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, transform.position);
-        float viewableAngle = Vector3.Angle(targetDirection, transform.position);
+        float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
+        float viewableAngle = Vector3.Angle(targetDirection, enemyManager.transform.position);
 
-        if (enemyManager.distanceFromTarget > enemyManager.maximumAttackRange)
+        if (distanceFromTarget > enemyManager.maximumAttackRange)
         {
             enemyAnimatorManager.anim.SetFloat(DarkSoulsConsts.VERTICAL, 1, 0.1f, Time.deltaTime);
         }
@@ -27,7 +28,7 @@ public class PursueTargetState : State
         enemyManager.navMeshAgent.transform.localPosition = Vector3.zero;
         enemyManager.navMeshAgent.transform.localRotation = Quaternion.identity;
 
-        if(enemyManager.distanceFromTarget <= enemyManager.maximumAttackRange)
+        if(distanceFromTarget <= enemyManager.maximumAttackRange)
         {
             return combatStanceState;
         }

@@ -11,11 +11,9 @@ public class EnemyManager : CharacterManager
     [HideInInspector] public Rigidbody enemyRigidbody;
     
     [Header("Variables")]
-    [HideInInspector] public float distanceFromTarget;
     [HideInInspector] public float rotationSpeed = 50f;
     [HideInInspector] public float maximumAttackRange = 1.5f;
     [HideInInspector] public float currentRecoveryTime = 0;
-    [HideInInspector] public float viewableAngle;
 
     [Header("Serializables")]
     [Header("Detection")]

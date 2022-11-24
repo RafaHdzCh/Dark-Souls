@@ -12,7 +12,8 @@ public class AttackState : State
     public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
     {
         Vector3 targetDirection = enemyManager.currentTarget.transform.position - transform.position;
-        enemyManager.viewableAngle = Vector3.Angle(targetDirection, transform.forward);
+        float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
+        float viewableAngle = Vector3.Angle(targetDirection, transform.forward);
 
         if (enemyManager.isPerformingAction)
         {
@@ -21,14 +22,14 @@ public class AttackState : State
 
         if(currentAttack != null)
         {
-            if (enemyManager.distanceFromTarget < currentAttack.minimumDistanceNeededToAttack)
+            if (distanceFromTarget < currentAttack.minimumDistanceNeededToAttack)
             {
                 return this;
             }
-            else if(enemyManager.distanceFromTarget <= currentAttack.maximumAttackDistanceToAttack)
+            else if(distanceFromTarget <= currentAttack.maximumAttackDistanceToAttack)
             {
-                if(enemyManager.viewableAngle <= currentAttack.maximumAttackAngle &&
-                   enemyManager.viewableAngle >= currentAttack.minimumAttackAngle)
+                if(viewableAngle <= currentAttack.maximumAttackAngle &&
+                   viewableAngle >= currentAttack.minimumAttackAngle)
                 {
                     if(enemyManager.currentRecoveryTime <= 0 &&
                        enemyManager.isPerformingAction == false)
@@ -55,15 +56,15 @@ public class AttackState : State
     {
         Vector3 targetDirection = enemyManager.currentTarget.transform.position - transform.position;
         float viewableAngle = Vector3.Angle(targetDirection, transform.forward);
-        enemyManager.distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, transform.position);
+        float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, transform.position);
 
         int maxScore = 0;
         for(int i = 0; i < enemyAttacks.Length; i++)
         {
             EnemyAttackAction enemyAttackAction = enemyAttacks[i];
 
-            if(enemyManager.distanceFromTarget <= enemyAttackAction.maximumAttackDistanceToAttack
-                && enemyManager.distanceFromTarget >= enemyAttackAction.minimumDistanceNeededToAttack)
+            if(distanceFromTarget <= enemyAttackAction.maximumAttackDistanceToAttack
+                && distanceFromTarget >= enemyAttackAction.minimumDistanceNeededToAttack)
             {
                 if(viewableAngle <= enemyAttackAction.maximumAttackAngle 
                     && viewableAngle >= enemyAttackAction.minimumAttackAngle)
@@ -80,8 +81,8 @@ public class AttackState : State
         {
             EnemyAttackAction enemyAttackAction = enemyAttacks[j];
 
-            if (enemyManager.distanceFromTarget <= enemyAttackAction.maximumAttackDistanceToAttack
-                && enemyManager.distanceFromTarget >= enemyAttackAction.minimumDistanceNeededToAttack)
+            if (distanceFromTarget <= enemyAttackAction.maximumAttackDistanceToAttack
+                && distanceFromTarget >= enemyAttackAction.minimumDistanceNeededToAttack)
             {
                 if (viewableAngle <= enemyAttackAction.maximumAttackAngle
                     && viewableAngle >= enemyAttackAction.minimumAttackAngle)

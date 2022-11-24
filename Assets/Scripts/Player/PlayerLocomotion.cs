@@ -31,6 +31,9 @@ public class PlayerLocomotion : MonoBehaviour
     float rotationSpeed = 2000;
     float fallingSpeed = 500;
 
+    public CapsuleCollider characterCollider;
+    public CapsuleCollider characterCollisionBlocker;
+
     void Start()
     {
         rigi = GetComponent<Rigidbody>();
@@ -44,6 +47,8 @@ public class PlayerLocomotion : MonoBehaviour
 
         playerManager.isGrounded = true;
         ignoreForGroundCheck = ~(1 << 8) | (1 << 11);
+
+        Physics.IgnoreCollision(characterCollider, characterCollisionBlocker, true);
     }
 
     #region Movement
