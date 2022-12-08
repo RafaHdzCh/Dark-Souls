@@ -21,6 +21,8 @@ public class PlayerManager : CharacterManager
     [HideInInspector] public bool isInAir;
     [HideInInspector] public bool isGrounded;
     [HideInInspector] public bool canDoCombo;
+    [HideInInspector] public bool isUsingRightHand;
+    [HideInInspector] public bool isUsingLeftHand;
 
     void Start()
     {
@@ -39,6 +41,8 @@ public class PlayerManager : CharacterManager
         isInteracting = anim.GetBool(DarkSoulsConsts.ISINTERACTING);
         canDoCombo = anim.GetBool(DarkSoulsConsts.CANDOCOMBO);
         anim.SetBool(DarkSoulsConsts.ISINAIR, isInAir);
+        isUsingRightHand = anim.GetBool(DarkSoulsConsts.ISUSINGRIGHTHAND);
+        isUsingLeftHand = anim.GetBool(DarkSoulsConsts.ISUSINGLEFTHAND);
 
         //Detecta los inputs del control del jugador.
         inputHandler.TickInput(delta);

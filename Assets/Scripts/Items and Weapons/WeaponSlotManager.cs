@@ -18,15 +18,17 @@ public class WeaponSlotManager : MonoBehaviour
     PlayerStats playerStats;
     InputHandler inputHandler;
     Animator animator;
+    PlayerManager playerManager;
 
     private void Awake()
     {
-        WeaponHolderSlot[] weaponHolderSlots = GetComponentsInChildren<WeaponHolderSlot>();
         quickSlotsUI = FindObjectOfType<QuickSlotsUI>();
         inputHandler = GetComponentInParent<InputHandler>();
         playerStats = GetComponentInParent<PlayerStats>();
         animator = GetComponent<Animator>();
+        playerManager = GetComponentInParent<PlayerManager>();
 
+        WeaponHolderSlot[] weaponHolderSlots = GetComponentsInChildren<WeaponHolderSlot>();
         foreach(WeaponHolderSlot weaponSlot in weaponHolderSlots)
         {
             if(weaponSlot.isLeftHandSlot)
@@ -109,23 +111,24 @@ public class WeaponSlotManager : MonoBehaviour
         rightHandDamageCollider = rightHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
     }
 
-    public void OpenLeftHandDamageCollider()
+    public void OpenDamageCollider()
     {
-        leftHandDamageCollider.EnableDamageCollider();
-    }
-    public void OpenRightHandDamageCollider()
-    {
-        rightHandDamageCollider.EnableDamageCollider();
+        if(playerManager.isUsingRightHand)
+        {
+            rightHandDamageCollider.EnableDamageCollider();
+            print("collider derecho abierto");
+        }
+        else if(playerManager.isUsingLeftHand)
+        {
+            leftHandDamageCollider.EnableDamageCollider();
+            print("collider izquierdo abierto");
+        }
     }
 
-    public void CloseLeftHandDamageCollider()
-    {
-        
-        leftHandDamageCollider.DisableDamageCollider();
-    }
-    public void CloseRightHandDamageCollider()
+    public void CloseDamageCollider()
     {
         rightHandDamageCollider.DisableDamageCollider();
+        leftHandDamageCollider.DisableDamageCollider();
     }
 
     #endregion

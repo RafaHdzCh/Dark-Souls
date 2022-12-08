@@ -8,13 +8,11 @@ public class AnimatorHandler : AnimatorManager
     int horizontal;
 
     [Header("Scripts")]
-    [HideInInspector] InputHandler inputHandler;
     [HideInInspector] PlayerLocomotion playerLocomotion;
     [HideInInspector] PlayerManager playerManager;
 
     public void Initialize()
     {
-        inputHandler = GetComponentInParent<InputHandler>(); 
         playerLocomotion = GetComponentInParent<PlayerLocomotion>();
         vertical = Animator.StringToHash(DarkSoulsConsts.VERTICAL);
         horizontal = Animator.StringToHash(DarkSoulsConsts.HORIZONTAL);
@@ -106,6 +104,7 @@ public class AnimatorHandler : AnimatorManager
     public void OnAnimatorMove()
     {
         if (playerManager.isInteracting == false) return;
+
         float delta = Time.deltaTime;
         playerLocomotion.GetComponent<Rigidbody>().drag = 0;
         Vector3 deltaPosition = anim.deltaPosition;
