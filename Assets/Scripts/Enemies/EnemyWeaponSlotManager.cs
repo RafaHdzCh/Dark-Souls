@@ -15,7 +15,7 @@ public class EnemyWeaponSlotManager : MonoBehaviour
 
     private void Awake()
     {
-        WeaponHolderSlot[] weaponHolderSlots = new WeaponHolderSlot[] {rightHandSlot,leftHandSlot};
+        WeaponHolderSlot[] weaponHolderSlots = new WeaponHolderSlot[] { rightHandSlot, leftHandSlot };
 
         foreach (WeaponHolderSlot weaponSlot in weaponHolderSlots)
         {
@@ -37,7 +37,7 @@ public class EnemyWeaponSlotManager : MonoBehaviour
 
     public void LoadWeaponOnSlot(WeaponItem weapon, bool isLeft)
     {
-        if(isLeft)
+        if (isLeft)
         {
             leftHandSlot.currentWeapon = weapon;
             leftHandSlot.LoadWeaponModel(weapon);
@@ -65,7 +65,7 @@ public class EnemyWeaponSlotManager : MonoBehaviour
 
     public void LoadWeaponsDamageCollider(bool isLeft)
     {
-        if(isLeft)
+        if (isLeft)
         {
             leftHandDamageCollider = leftHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
         }
@@ -83,5 +83,22 @@ public class EnemyWeaponSlotManager : MonoBehaviour
     public void CloseDamageCollider()
     {
         rightHandDamageCollider.DisableDamageCollider();
+    }
+    public void DrainStaminaLightAttack()
+    {
+        print("Se bajo light la stamina del enemigo");
+    }
+    public void DrainStaminaHeavyAttack()
+    {
+        print("Se bajo heavy la stamina del enemigo");
+    }
+    public void EnableCombo()
+    {
+        print("Se habilito el combo");
+    }
+
+    public void DisableCombo()
+    {
+        print("Se deshabilito el combo del enemigo");
     }
 }

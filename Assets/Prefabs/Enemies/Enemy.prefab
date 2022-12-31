@@ -536,10 +536,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4058946893978266622}
-  - component: {fileID: 6992278325434734422}
   - component: {fileID: 4058946893972641542}
   - component: {fileID: 4058946893972641540}
-  - component: {fileID: 4058946893972641539}
   - component: {fileID: 929883227584466738}
   m_Layer: 8
   m_Name: EnemyModel
@@ -563,26 +561,6 @@ Transform:
   m_Father: {fileID: 4058946893978219942}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &6992278325434734422
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4058946893977861526}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: b69174d668ba02d44b14a084b217670a, type: 3}
-  m_Controller: {fileID: 9100000, guid: 27e26aee2828bec489eb76944b91f1f2, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!137 &4058946893972641542
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -698,20 +676,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 4058946893968436040}
---- !u!114 &4058946893972641539
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4058946893977861526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e2f3abbea775364880cb5bc75e5ba4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 4058946893968436040}
-  canRotate: 0
 --- !u!114 &929883227584466738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2666,7 +2630,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4058946893977939094}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: b69174d668ba02d44b14a084b217670a, type: 3}
   m_Controller: {fileID: 9100000, guid: 27e26aee2828bec489eb76944b91f1f2, type: 2}
   m_CullingMode: 0
@@ -2685,7 +2649,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4058946893977939094}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1652f02b6f808b541adbc4a017a6926f, type: 3}
   m_Name: 

@@ -113,6 +113,7 @@ public class WeaponSlotManager : MonoBehaviour
 
     public void OpenDamageCollider()
     {
+        print("OpenDamageCollider");
         if(playerManager.isUsingRightHand)
         {
             rightHandDamageCollider.EnableDamageCollider();
