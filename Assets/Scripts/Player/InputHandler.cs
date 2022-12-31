@@ -37,6 +37,7 @@ public class InputHandler : MonoBehaviour
     [HideInInspector] public float rollInputTimer;
 
     [Header("Scripts")]
+    AnimatorHandler animatorHandler;
     PlayerControls inputActions;
     PlayerAttacker playerAttacker;
     PlayerInventory playerInventory;
@@ -54,6 +55,7 @@ public class InputHandler : MonoBehaviour
         uiManager = FindObjectOfType<UIManager>();
         cameraHandler = FindObjectOfType<CameraHandler>();
         weaponSlotManager = GetComponentInChildren<WeaponSlotManager>();
+        animatorHandler = GetComponentInChildren<AnimatorHandler>();
     }
 
     public void OnEnable()
@@ -153,6 +155,7 @@ public class InputHandler : MonoBehaviour
             {
                 if (playerManager.isInteracting) return;
                 if (playerManager.canDoCombo) return;
+                animatorHandler.anim.SetBool(DarkSoulsConsts.ISUSINGRIGHTHAND, true);
                 playerAttacker.HandleHeavyAttack(playerInventory.rightWeapon);
             }
         }

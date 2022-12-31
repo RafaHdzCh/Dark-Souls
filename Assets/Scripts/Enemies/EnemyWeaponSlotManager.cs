@@ -83,22 +83,23 @@ public class EnemyWeaponSlotManager : MonoBehaviour
     public void CloseDamageCollider()
     {
         rightHandDamageCollider.DisableDamageCollider();
+        leftHandDamageCollider.DisableDamageCollider();
     }
     public void DrainStaminaLightAttack()
     {
-        print("Se bajo light la stamina del enemigo");
+
     }
     public void DrainStaminaHeavyAttack()
     {
-        print("Se bajo heavy la stamina del enemigo");
+
     }
     public void EnableCombo()
     {
-        print("Se habilito el combo");
+
     }
 
     public void DisableCombo()
     {
-        print("Se deshabilito el combo del enemigo");
+
     }
 }

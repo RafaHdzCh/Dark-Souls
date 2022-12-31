@@ -293,6 +293,8 @@ MonoBehaviour:
   isInAir: 0
   isGrounded: 0
   canDoCombo: 0
+  isUsingRightHand: 0
+  isUsingLeftHand: 0
 --- !u!114 &4813561448268282763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,6 +350,7 @@ MonoBehaviour:
   staminaLevel: 10
   maxStamina: 0
   currentStamina: 0
+  isDead: 0
   healthBar: {fileID: 0}
   staminaBar: {fileID: 0}
 --- !u!1 &4813561448688154227
@@ -826,7 +829,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e2f3abbea775364880cb5bc75e5ba4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
+  anim: {fileID: 4813561447800395595}
   canRotate: 1
 --- !u!114 &4813561447793143778
 MonoBehaviour:
@@ -882,5 +885,10 @@ Transform:
 --- !u!4 &4813561447793530401 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 407998, guid: 880858dfd9b1e784e89d45242bf78d2b, type: 3}
+  m_PrefabInstance: {fileID: 4813561447793143711}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &4813561447800395595 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9566420, guid: 880858dfd9b1e784e89d45242bf78d2b, type: 3}
   m_PrefabInstance: {fileID: 4813561447793143711}
   m_PrefabAsset: {fileID: 0}

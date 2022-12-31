@@ -43,7 +43,6 @@ public class PursueTargetState : State
         //Rotate manually
         if (enemyManager.isPerformingAction)
         {
-            print("esta realizando una accion");
             Vector3 direction = enemyManager.currentTarget.transform.position - transform.position;
             direction.y = 0;
             direction.Normalize();

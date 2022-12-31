@@ -19,7 +19,7 @@ public class EnemyStats : CharacterStats
     private void Awake()
     {
         _healthBar = GetComponentInChildren<HealthBar>();
-        animatorHandler = GetComponentInChildren<AnimatorHandler>();
+        animatorHandler = GetComponent<AnimatorHandler>();
     }
 
     void Start()
@@ -42,6 +42,8 @@ public class EnemyStats : CharacterStats
 
     public void TakeDamage(int damage)
     {
+        if (isDead) return;
+
         currentHealth = currentHealth - damage;
         _healthBar.SetCurrentHealth(currentHealth);
         animatorHandler.PlayTargetAnimation(DarkSoulsConsts.DAMAGE, true);
@@ -51,7 +53,7 @@ public class EnemyStats : CharacterStats
             currentHealth = 0;
             animatorHandler.PlayTargetAnimation(DarkSoulsConsts.DEATH, true);
             Invoke(nameof(HideHealthBarOnDeath), 3f);
-            //Handle player death
+            isDead = true;
         }
     }
 

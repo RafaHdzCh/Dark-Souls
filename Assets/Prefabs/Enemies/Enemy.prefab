@@ -606,7 +606,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4300074, guid: b69174d668ba02d44b14a084b217670a, type: 3}
+  m_Mesh: {fileID: 4300052, guid: b69174d668ba02d44b14a084b217670a, type: 3}
   m_Bones:
   - {fileID: 4058946893978200842}
   - {fileID: 4058946893978157620}
@@ -2503,6 +2503,7 @@ GameObject:
   - component: {fileID: 4058946893968436045}
   - component: {fileID: 4058946893968436040}
   - component: {fileID: 5969494493747736268}
+  - component: {fileID: 3831703387056951683}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
@@ -2580,6 +2581,7 @@ MonoBehaviour:
   staminaLevel: 10
   maxStamina: 0
   currentStamina: 0
+  isDead: 0
   healthBarTransform: {fileID: 2400626767415522420}
   cameraTransform: {fileID: 0}
   healthBarGO: {fileID: 2400626767415522423}
@@ -2658,6 +2660,20 @@ MonoBehaviour:
   leftHandWeapon: {fileID: 11400000, guid: 430d5d2687198a74faf99f6345a45715, type: 2}
   rightHandSlot: {fileID: 3688254485540149900}
   leftHandSlot: {fileID: 4128272116082020726}
+--- !u!114 &3831703387056951683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4058946893977939094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e2f3abbea775364880cb5bc75e5ba4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 4058946893968436040}
+  canRotate: 0
 --- !u!1 &4058946893977940240
 GameObject:
   m_ObjectHideFlags: 0

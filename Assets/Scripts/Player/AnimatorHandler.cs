@@ -103,8 +103,19 @@ public class AnimatorHandler : AnimatorManager
 
     public void OnAnimatorMove()
     {
-        if (playerManager.isInteracting == false) return;
+        if(this.gameObject.CompareTag("Enemy"))
+        {
 
+        }
+        else if (playerManager.isInteracting == false) return;
+        else
+        {
+            Move();
+        }
+    }
+
+    public void Move()
+    {
         float delta = Time.deltaTime;
         playerLocomotion.GetComponent<Rigidbody>().drag = 0;
         Vector3 deltaPosition = anim.deltaPosition;

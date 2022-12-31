@@ -40,6 +40,9 @@ public class PlayerStats : CharacterStats
 
     public void TakeDamage(int damage)
     {
+        if (isDead) return;
+
+
         currentHealth = currentHealth - damage;
         healthBar.SetCurrentHealth(currentHealth);
         animatorHandler.PlayTargetAnimation(DarkSoulsConsts.DAMAGE, true);
@@ -48,7 +51,7 @@ public class PlayerStats : CharacterStats
         {
             currentHealth = 0;
             animatorHandler.PlayTargetAnimation(DarkSoulsConsts.DEATH, true);
-            //Handle player death
+            isDead = true;
         }
     }
 

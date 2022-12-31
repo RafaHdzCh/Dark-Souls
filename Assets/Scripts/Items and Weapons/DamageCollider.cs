@@ -24,6 +24,7 @@ public class DamageCollider : MonoBehaviour
 
     public void DisableDamageCollider()
     {
+        if (damageCollider == null) return;
         damageCollider.enabled = false;
     }
 
