@@ -12,8 +12,8 @@ public class CharacterStats : MonoBehaviour
 
     [Header("Stamina")]
     public int staminaLevel = 10;
-    [HideInInspector] public int maxStamina;
-    [HideInInspector] public int currentStamina;
+    [HideInInspector] public float maxStamina;
+    [HideInInspector] public float currentStamina;
 
     [HideInInspector] public bool isDead;
 }

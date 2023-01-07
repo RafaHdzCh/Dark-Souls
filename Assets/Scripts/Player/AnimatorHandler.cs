@@ -101,6 +101,15 @@ public class AnimatorHandler : AnimatorManager
         anim.SetBool(DarkSoulsConsts.CANDOCOMBO, false);
     }
 
+    public void EnableIsInvulnerable()
+    {
+        anim.SetBool(DarkSoulsConsts.ISINVULNERABLE, true);
+    }
+    public void DisableIsInvulnerable()
+    {
+        anim.SetBool(DarkSoulsConsts.ISINVULNERABLE, false);
+    }
+
     public void OnAnimatorMove()
     {
         if(this.gameObject.CompareTag("Enemy"))

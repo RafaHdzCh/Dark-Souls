@@ -10,6 +10,7 @@ public class PlayerManager : CharacterManager
     Animator anim;
     CameraHandler cameraHandler;
     PlayerLocomotion playerLocomotion;
+    PlayerStats playerStats;
 
     InteractableUI interactableUI;
     public GameObject interactableUIGameObject;
@@ -23,6 +24,7 @@ public class PlayerManager : CharacterManager
     [HideInInspector] public bool canDoCombo;
     [HideInInspector] public bool isUsingRightHand;
     [HideInInspector] public bool isUsingLeftHand;
+    [HideInInspector] public bool isInvulnerable;
 
     void Start()
     {
@@ -31,6 +33,7 @@ public class PlayerManager : CharacterManager
         anim = GetComponentInChildren<Animator>();
         playerLocomotion = GetComponent<PlayerLocomotion>();
         interactableUI = FindObjectOfType<InteractableUI>();
+        playerStats = GetComponent<PlayerStats>();
     }
 
     void Update()
@@ -43,11 +46,13 @@ public class PlayerManager : CharacterManager
         anim.SetBool(DarkSoulsConsts.ISINAIR, isInAir);
         isUsingRightHand = anim.GetBool(DarkSoulsConsts.ISUSINGRIGHTHAND);
         isUsingLeftHand = anim.GetBool(DarkSoulsConsts.ISUSINGLEFTHAND);
+        isInvulnerable = anim.GetBool(DarkSoulsConsts.ISINVULNERABLE);
 
         //Detecta los inputs del control del jugador.
         inputHandler.TickInput(delta);
         playerLocomotion.HandleRollingAndSprinting(delta);
         playerLocomotion.HandleJumping();
+        playerStats.RegenerateStamina();
 
         //Busca si estas cerca de objetos interactuables como puerats o items.
         CheckForInteractableObjects();

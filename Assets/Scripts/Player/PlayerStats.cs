@@ -9,9 +9,15 @@ public class PlayerStats : CharacterStats
 
     [Header("Scripts")]
     AnimatorHandler animatorHandler;
+    PlayerManager playerManager;
+
+    private float staminaRegenerationAmount = 30f;
+    private float staminaRegenTimer = 0;
+
 
     private void Awake()
     {
+        playerManager = GetComponent<PlayerManager>();
         animatorHandler = GetComponentInChildren<AnimatorHandler>();
     }
 
@@ -32,7 +38,7 @@ public class PlayerStats : CharacterStats
         return maxHealth;
     }
 
-    private int SetMaxStaminaFromStaminaLevel()
+    private float SetMaxStaminaFromStaminaLevel()
     {
         maxStamina = staminaLevel * 10;
         return maxStamina;
@@ -40,6 +46,7 @@ public class PlayerStats : CharacterStats
 
     public void TakeDamage(int damage)
     {
+        if (playerManager.isInvulnerable) return;
         if (isDead) return;
 
 
@@ -59,5 +66,22 @@ public class PlayerStats : CharacterStats
     {
         currentStamina = currentStamina - damage;
         staminaBar.SetCurrentStamina(currentStamina);
+    }
+
+    public void RegenerateStamina()
+    {
+        if(playerManager.isInteracting)
+        {
+            staminaRegenTimer = 0;
+        }
+        else
+        {
+            staminaRegenTimer += Time.deltaTime;
+            if (currentStamina < maxStamina && staminaRegenTimer > 1f)
+            {
+                currentStamina += staminaRegenerationAmount * Time.deltaTime;
+                staminaBar.SetCurrentStamina(Mathf.RoundToInt(currentStamina));
+            }
+        }
     }
 }
