@@ -50,7 +50,7 @@ public class InputHandler : MonoBehaviour
     private void Start()
     {
         playerManager = GetComponent<PlayerManager>();
-        playerAttacker = GetComponent<PlayerAttacker>();
+        playerAttacker = GetComponentInChildren<PlayerAttacker>();
         playerInventory = GetComponent<PlayerInventory>();
         uiManager = FindObjectOfType<UIManager>();
         cameraHandler = FindObjectOfType<CameraHandler>();
@@ -130,18 +130,7 @@ public class InputHandler : MonoBehaviour
     {
         if(rb_Input)
         {
-            if(playerManager.canDoCombo)
-            {
-                comboFlag = true;
-                playerAttacker.HandleWeaponCombo(playerInventory.rightWeapon);
-                comboFlag = false;
-            }
-            else
-            {
-                if (playerManager.isInteracting) return;
-                if (playerManager.canDoCombo) return;
-                playerAttacker.HandleLightAttack(playerInventory.rightWeapon);
-            }
+            playerAttacker.HandleRBAction();
         }
         if(rt_Input)
         {
