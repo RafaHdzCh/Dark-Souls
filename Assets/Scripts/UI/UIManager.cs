@@ -11,9 +11,10 @@ public class UIManager : MonoBehaviour
 
     [Header("UI Windows")]
     [SerializeField] GameObject equipmentScreenWindow;
+    [SerializeField] GameObject weaponInventoryWindow;
+    [SerializeField] GameObject settingsWindow;
     [SerializeField] GameObject selectWindow;
     [SerializeField] public GameObject hudWindow;
-    [SerializeField] GameObject weaponInventoryWindow;
 
     [Header("Weapon Inventory")]
     [SerializeField] GameObject weaponInventorySlotPrefab;
@@ -75,6 +76,7 @@ public class UIManager : MonoBehaviour
         ResetAllSelectedSlots();
         weaponInventoryWindow.SetActive(false);
         equipmentScreenWindow.SetActive(false);
+        settingsWindow.SetActive(false);
     }
 
     public void ResetAllSelectedSlots()
