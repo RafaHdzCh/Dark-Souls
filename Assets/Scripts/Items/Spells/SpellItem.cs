@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpellItem : MonoBehaviour
+public class SpellItem : Item
 {
     public GameObject spellWarmUpFX;
     public GameObject spellCastFX;
@@ -17,12 +17,12 @@ public class SpellItem : MonoBehaviour
     [TextArea]
     public string spellDescription;
 
-    public virtual void AttemptToCastSpell()
+    public virtual void AttemptToCastSpell(AnimatorHandler animatorHandler, PlayerStats playerStats)
     {
-        print("You attempted to cast a spell");
+        Debug.Log("You attempted to cast a spell");
     }
-    public virtual void SuccessfullyCastSpell()
+    public virtual void SuccessfullyCastSpell(AnimatorHandler animatorHandler, PlayerStats playerStats)
     {
-        print("You succesfully casted a spell");
+        Debug.Log("You succesfully casted a spell");
     }
 }

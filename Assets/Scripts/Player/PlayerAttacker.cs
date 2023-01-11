@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerAttacker : MonoBehaviour
 {
     PlayerManager playerManager;
+    PlayerStats playerStats;
     PlayerInventory playerInventory;
     AnimatorHandler animatorHandler;
     InputHandler inputHandler;
@@ -14,6 +15,7 @@ public class PlayerAttacker : MonoBehaviour
 
     private void Awake()
     {
+        playerManager = GetComponentInParent<PlayerManager>();
         playerInventory = GetComponentInParent<PlayerInventory>();
         playerManager = GetComponentInParent<PlayerManager>();
         animatorHandler = GetComponent<AnimatorHandler>();
@@ -135,9 +137,14 @@ public class PlayerAttacker : MonoBehaviour
             if(playerInventory.currentSpell != null && playerInventory.currentSpell.isFaithSpell)
             {
                 //CHECK FOR FP
-                //ATTEMP TO CAST SPELL
+                playerInventory.currentSpell.AttemptToCastSpell(animatorHandler, playerStats);
             }
         }
+    }
+
+    private void SuccessfullyCastSpell()
+    {
+        playerInventory.currentSpell.SuccessfullyCastSpell(animatorHandler, playerStats);
     }
 
     #endregion
