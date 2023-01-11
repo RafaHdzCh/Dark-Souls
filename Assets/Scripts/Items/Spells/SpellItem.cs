@@ -14,17 +14,19 @@ public class SpellItem : Item
     public bool isMagicSpell;
     public bool isPyroSpell;
 
+    [Header("Spell Cost")]
+    public int manaCost;
+
     [Header("Spell Description")]
     [TextArea]
     public string spellDescription;
 
     public virtual void AttemptToCastSpell(AnimatorHandler animatorHandler, PlayerStats playerStats)
     {
-        Debug.Log("You attempted to cast a spell");
+
     }
     public virtual void SuccessfullyCastSpell(AnimatorHandler animatorHandler, PlayerStats playerStats)
     {
-        Debug.Log(playerStats);
-        Debug.Log("You succesfully casted a spell");
+        playerStats.DeductMana(manaCost);
     }
 }

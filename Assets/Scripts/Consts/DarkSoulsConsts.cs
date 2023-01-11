@@ -16,6 +16,7 @@ public static class DarkSoulsConsts
     public static readonly string JUMP = "Jump";
     public static readonly string SLEEP = "Sleep";
     public static readonly string WAKE = "Wake";
+    public static readonly string SHRUGGING = "Shrugging";
 
     //Actions
     public static readonly string LOCOMOTION = "Locomotion";

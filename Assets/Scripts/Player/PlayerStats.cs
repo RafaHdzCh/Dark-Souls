@@ -6,6 +6,7 @@ public class PlayerStats : CharacterStats
 {
     public HealthBar healthBar;
     public StaminaBar staminaBar;
+    public ManaBar manaBar;
 
     [Header("Scripts")]
     AnimatorHandler animatorHandler;
@@ -26,10 +27,17 @@ public class PlayerStats : CharacterStats
         maxHealth = SetMaxHealthFromHealthLevel();
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+        healthBar.SetCurrentHealth(currentHealth);
 
         maxStamina = SetMaxStaminaFromStaminaLevel();
         currentStamina = maxStamina;
         staminaBar.SetMaxStamina(maxStamina);
+        staminaBar.SetCurrentStamina(currentStamina);
+
+        maxMana = SetMaxManaFromManaLevel();
+        currentMana = maxMana;
+        manaBar.SetMaxMana(maxMana);
+        manaBar.SetCurrentMana(currentMana);
     }
 
     private int SetMaxHealthFromHealthLevel()
@@ -44,6 +52,11 @@ public class PlayerStats : CharacterStats
         return maxStamina;
     }
 
+    private float SetMaxManaFromManaLevel()
+    {
+        maxMana = manaLevel * 10;
+        return maxMana;
+    }
     public void TakeDamage(int damage)
     {
         if (playerManager.isInvulnerable) return;
@@ -95,5 +108,17 @@ public class PlayerStats : CharacterStats
         }
 
         healthBar.SetCurrentHealth(currentHealth);
+    }
+
+    public void DeductMana(int manaAmount)
+    {
+        currentMana = currentMana - manaAmount;
+
+        if(currentMana < 0)
+        {
+            currentMana = 0;
+        }
+
+        manaBar.SetCurrentMana(currentMana);
     }
 }

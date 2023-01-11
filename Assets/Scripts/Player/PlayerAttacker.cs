@@ -133,12 +133,19 @@ public class PlayerAttacker : MonoBehaviour
 
     private void PerformRBMagicAction(WeaponItem weapon)
     {
+        if (playerManager.isInteracting) return;
         if(weapon.isFaithCaster)
         {
             if(playerInventory.currentSpell != null && playerInventory.currentSpell.isFaithSpell)
             {
-                //CHECK FOR FP
-                playerInventory.currentSpell.AttemptToCastSpell(animatorHandler, playerStats);
+                if(playerStats.currentMana >= playerInventory.currentSpell.manaCost)
+                {
+                    playerInventory.currentSpell.AttemptToCastSpell(animatorHandler, playerStats);
+                }
+                else
+                {
+                    animatorHandler.PlayTargetAnimation(DarkSoulsConsts.SHRUGGING, true);
+                }
             }
         }
     }
