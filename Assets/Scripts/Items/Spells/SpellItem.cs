@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 public class SpellItem : Item
@@ -23,6 +24,7 @@ public class SpellItem : Item
     }
     public virtual void SuccessfullyCastSpell(AnimatorHandler animatorHandler, PlayerStats playerStats)
     {
+        Debug.Log(playerStats);
         Debug.Log("You succesfully casted a spell");
     }
 }

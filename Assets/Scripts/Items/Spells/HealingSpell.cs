@@ -15,6 +15,7 @@ public class HealingSpell : SpellItem
     public override void SuccessfullyCastSpell(AnimatorHandler animatorHandler, PlayerStats playerStats)
     {
         GameObject instantiateSpellFX = Instantiate(spellCastFX, animatorHandler.transform);
+        Debug.Log(playerStats);
         playerStats.currentHealth += healAmount;
         Debug.Log("Spell casted.");
     }
