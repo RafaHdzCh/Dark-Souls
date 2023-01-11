@@ -16,6 +16,7 @@ public class PlayerAttacker : MonoBehaviour
     private void Awake()
     {
         playerManager = GetComponentInParent<PlayerManager>();
+        playerStats = GetComponentInParent<PlayerStats>();
         playerInventory = GetComponentInParent<PlayerInventory>();
         playerManager = GetComponentInParent<PlayerManager>();
         animatorHandler = GetComponent<AnimatorHandler>();
