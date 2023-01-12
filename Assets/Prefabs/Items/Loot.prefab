@@ -193,9 +193,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac1ccbae754bb984796077564259eef6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.6
   interactableText: Pick Up Item
-  weapon: {fileID: 11400000, guid: a331157931ca1b545844fb36987cb48d, type: 2}
+  weapon: {fileID: 11400000, guid: ee6d912ff6531e548862512a87cbb33c, type: 2}
 --- !u!65 &8320134089607778854
 BoxCollider:
   m_ObjectHideFlags: 0

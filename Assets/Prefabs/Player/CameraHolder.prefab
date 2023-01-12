@@ -57,7 +57,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6360014061973484813}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.96, z: -2.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -165,10 +165,10 @@ MonoBehaviour:
   cameraPivotTransform: {fileID: 6360014061156141895}
   ignoreLayers:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 257
   environmentLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1
   lookSpeed: 100
   pivotSpeed: 100
   nearestLockOnTarget: {fileID: 0}

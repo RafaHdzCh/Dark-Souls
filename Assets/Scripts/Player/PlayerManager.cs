@@ -29,6 +29,7 @@ public class PlayerManager : CharacterManager
     void Start()
     {
         cameraHandler = FindObjectOfType<CameraHandler>();
+        backstabCollider = GetComponentInChildren<BackstabCollider>();
         inputHandler = GetComponent<InputHandler>(); 
         anim = GetComponentInChildren<Animator>();
         playerLocomotion = GetComponent<PlayerLocomotion>();

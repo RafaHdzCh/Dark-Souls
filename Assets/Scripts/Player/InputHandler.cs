@@ -14,6 +14,7 @@ public class InputHandler : MonoBehaviour
     [Header("Inputs")]
     [HideInInspector] public bool a_input;
     [HideInInspector] public bool b_input;
+    [HideInInspector] public bool critical_Attack_Input;
     [HideInInspector] public bool twoHand_input;
     [HideInInspector] public bool jump_Input;
     [HideInInspector] public bool rb_Input;
@@ -35,6 +36,8 @@ public class InputHandler : MonoBehaviour
     [HideInInspector] public bool lockOnFlag;
     [HideInInspector] public bool inventoryFlag;
     [HideInInspector] public float rollInputTimer;
+
+    public Transform criticalAttackRayCastStartPoint;
 
     [Header("Scripts")]
     AnimatorHandler animatorHandler;
@@ -77,6 +80,7 @@ public class InputHandler : MonoBehaviour
             inputActions.PlayerMovement.LockOnTargetRight.performed += i => switch_To_Right_Target_Input = true;
             inputActions.PlayerMovement.LockOnTargetLeft.performed += i => switch_To_Left_Target_Input = true;
             inputActions.PlayerActions.TwoHand.performed += i => twoHand_input = true;
+            inputActions.PlayerActions.CriticalAttack.performed += i => critical_Attack_Input = true;
         }
         inputActions.Enable();
     }
@@ -96,6 +100,7 @@ public class InputHandler : MonoBehaviour
         HandleInventoryInput();
         HandleLockOnInput();
         HandleTwoHandInput();
+        HandleCriticalAttackInput();
     }
     private void HandleMoveInput(float delta)
     {
@@ -239,6 +244,15 @@ public class InputHandler : MonoBehaviour
                 weaponSlotManager.LoadWeaponOnSlot(playerInventory.rightWeapon, false);
                 weaponSlotManager.LoadWeaponOnSlot(playerInventory.leftWeapon, true);
             }
+        }
+    }
+
+    private void HandleCriticalAttackInput()
+    {
+        if(critical_Attack_Input)
+        {
+            critical_Attack_Input = false;
+            playerAttacker.AttemptBackStabOrRiposte();
         }
     }
 }

@@ -29,6 +29,8 @@ public static class DarkSoulsConsts
     public static readonly string ISUSINGRIGHTHAND = "isUsingRightHand";
     public static readonly string ISUSINGLEFTHAND = "isUsingLeftHand";
     public static readonly string ISINVULNERABLE = "isInvulnerable";
+    public static readonly string BACKSTAB = "Backstab";
+    public static readonly string BACKSTABBED = "Backstabbed";
 
     //Directions
     public static readonly string VERTICAL = "Vertical";
