@@ -8,10 +8,14 @@ public class EnemyAnimatorManager : AnimatorManager
     EnemyStats enemyStats;
     private void Awake()
     {
-        enemyStats.GetComponentInParent<EnemyStats>();
+        enemyStats = GetComponentInParent<EnemyStats>();
         enemyManager = GetComponentInParent<EnemyManager>();
     }
-
+    public override void TakeCriticalDamageAnimationEvent()
+    {
+        enemyStats.TakeDamage(enemyManager.pendingCriticalDamage, false);
+        enemyManager.pendingCriticalDamage = 0;
+    }
     private void OnAnimatorMove()
     {
         float delta = Time.deltaTime;

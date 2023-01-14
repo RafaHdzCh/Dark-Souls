@@ -45,6 +45,7 @@ public class PlayerManager : CharacterManager
         isInteracting = anim.GetBool(DarkSoulsConsts.ISINTERACTING);
         canDoCombo = anim.GetBool(DarkSoulsConsts.CANDOCOMBO);
         anim.SetBool(DarkSoulsConsts.ISINAIR, isInAir);
+        anim.SetBool(DarkSoulsConsts.ISDEAD, playerStats.isDead);
         isUsingRightHand = anim.GetBool(DarkSoulsConsts.ISUSINGRIGHTHAND);
         isUsingLeftHand = anim.GetBool(DarkSoulsConsts.ISUSINGLEFTHAND);
         isInvulnerable = anim.GetBool(DarkSoulsConsts.ISINVULNERABLE);

@@ -44,7 +44,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 1, z: 0.05}
+  m_Size: {x: 0.3, y: 1, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &906612027
 MonoBehaviour:
@@ -2625,7 +2625,7 @@ GameObject:
   - component: {fileID: 4058946893968436045}
   - component: {fileID: 4058946893968436040}
   - component: {fileID: 5969494493747736268}
-  - component: {fileID: 3831703387056951683}
+  - component: {fileID: 1519783937}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
@@ -2726,6 +2726,7 @@ MonoBehaviour:
   lockOnTransform: {fileID: 8121742789243380356}
   backStabBoxCollider: {fileID: 906612026}
   backstabCollider: {fileID: 0}
+  pendingCriticalDamage: 0
   isPerformingAction: 0
   isInteracting: 0
   currentTarget: {fileID: 0}
@@ -2788,7 +2789,7 @@ MonoBehaviour:
   leftHandWeapon: {fileID: 11400000, guid: 430d5d2687198a74faf99f6345a45715, type: 2}
   rightHandSlot: {fileID: 3688254485540149900}
   leftHandSlot: {fileID: 4128272116082020726}
---- !u!114 &3831703387056951683
+--- !u!114 &1519783937
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2797,11 +2798,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4058946893977939094}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e2f3abbea775364880cb5bc75e5ba4d, type: 3}
+  m_Script: {fileID: 11500000, guid: b585a38a2bc026f45b5ff2017133b3e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 4058946893968436040}
-  canRotate: 0
 --- !u!1 &4058946893977940240
 GameObject:
   m_ObjectHideFlags: 0

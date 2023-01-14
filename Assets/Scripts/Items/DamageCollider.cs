@@ -36,7 +36,7 @@ public class DamageCollider : MonoBehaviour
 
             if(playerStats != null)
             {
-                playerStats.TakeDamage(currentWeaponDamage);
+                playerStats.TakeDamage(currentWeaponDamage, true);
             }
         }
         if (collision.CompareTag(DarkSoulsConsts.ENEMY))
@@ -44,7 +44,7 @@ public class DamageCollider : MonoBehaviour
             EnemyStats enemyStats = collision.GetComponent<EnemyStats>();
             if(enemyStats != null)
             {
-                enemyStats.TakeDamage(currentWeaponDamage);
+                enemyStats.TakeDamage(currentWeaponDamage, true);
             }
         }
     }

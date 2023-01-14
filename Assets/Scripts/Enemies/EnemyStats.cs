@@ -13,13 +13,13 @@ public class EnemyStats : CharacterStats
 
 
     [Header("Scripts")]
-    PlayerAnimatorManager animatorHandler;
+    EnemyAnimatorManager animatorHandler;
     HealthBar _healthBar;
 
     private void Awake()
     {
         _healthBar = GetComponentInChildren<HealthBar>();
-        animatorHandler = GetComponent<PlayerAnimatorManager>();
+        animatorHandler = GetComponent<EnemyAnimatorManager>();
     }
 
     void Start()
@@ -40,18 +40,37 @@ public class EnemyStats : CharacterStats
         return maxHealth;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamageNoAnimation(int damage)
     {
-        if (isDead) return;
-
         currentHealth = currentHealth - damage;
-        _healthBar.SetCurrentHealth(currentHealth);
-        animatorHandler.PlayTargetAnimation(DarkSoulsConsts.DAMAGE, true);
 
         if (currentHealth <= 0)
         {
             currentHealth = 0;
-            animatorHandler.PlayTargetAnimation(DarkSoulsConsts.DEATH, true);
+            Invoke(nameof(HideHealthBarOnDeath), 3f);
+            isDead = true;
+        }
+    }
+
+    public void TakeDamage(int damage, bool playAnimation)
+    {
+        if (isDead) return;
+
+        currentHealth = currentHealth - damage;
+
+        _healthBar.SetCurrentHealth(currentHealth);
+        if(playAnimation)
+        {
+            animatorHandler.PlayTargetAnimation(DarkSoulsConsts.DAMAGE, true);
+        }
+
+        if (currentHealth <= 0)
+        {
+            currentHealth = 0;
+            if(playAnimation)
+            {
+                animatorHandler.PlayTargetAnimation(DarkSoulsConsts.DEATH, true);
+            }
             Invoke(nameof(HideHealthBarOnDeath), 3f);
             isDead = true;
         }

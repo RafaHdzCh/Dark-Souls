@@ -31,6 +31,7 @@ public static class DarkSoulsConsts
     public static readonly string ISINVULNERABLE = "isInvulnerable";
     public static readonly string BACKSTAB = "Backstab";
     public static readonly string BACKSTABBED = "Backstabbed";
+    public static readonly string ISDEAD = "isDead";
 
     //Directions
     public static readonly string VERTICAL = "Vertical";

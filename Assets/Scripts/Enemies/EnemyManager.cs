@@ -45,6 +45,7 @@ public class EnemyManager : CharacterManager
     {
         HandleRecoveryTimer();
         isInteracting = enemyAnimatorManager.anim.GetBool(DarkSoulsConsts.ISINTERACTING);
+        enemyAnimatorManager.anim.SetBool(DarkSoulsConsts.ISDEAD, enemyStats.isDead);
     }
 
     private void FixedUpdate()
