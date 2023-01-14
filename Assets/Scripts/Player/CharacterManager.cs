@@ -9,4 +9,8 @@ public class CharacterManager : MonoBehaviour
     public Transform lockOnTransform;
     public BoxCollider backStabBoxCollider;
     [HideInInspector] public BackstabCollider backstabCollider;
+
+    //damage will be inflicted during an animation event
+    //used during backstab
+    public int pendingCriticalDamage;
 }

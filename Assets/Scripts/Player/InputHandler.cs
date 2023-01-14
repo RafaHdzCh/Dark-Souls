@@ -135,6 +135,7 @@ public class InputHandler : MonoBehaviour
     {
         if(rb_Input)
         {
+            animatorHandler.anim.SetBool(DarkSoulsConsts.ISUSINGRIGHTHAND, true);
             playerAttacker.HandleRBAction();
         }
         if(rt_Input)
