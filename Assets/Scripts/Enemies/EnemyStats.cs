@@ -13,13 +13,13 @@ public class EnemyStats : CharacterStats
 
 
     [Header("Scripts")]
-    AnimatorHandler animatorHandler;
+    PlayerAnimatorManager animatorHandler;
     HealthBar _healthBar;
 
     private void Awake()
     {
         _healthBar = GetComponentInChildren<HealthBar>();
-        animatorHandler = GetComponent<AnimatorHandler>();
+        animatorHandler = GetComponent<PlayerAnimatorManager>();
     }
 
     void Start()

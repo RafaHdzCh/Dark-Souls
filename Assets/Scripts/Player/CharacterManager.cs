@@ -13,4 +13,6 @@ public class CharacterManager : MonoBehaviour
     //damage will be inflicted during an animation event
     //used during backstab
     public int pendingCriticalDamage;
+
+
 }

@@ -9,7 +9,7 @@ public class PlayerStats : CharacterStats
     public ManaBar manaBar;
 
     [Header("Scripts")]
-    AnimatorHandler animatorHandler;
+    PlayerAnimatorManager animatorHandler;
     PlayerManager playerManager;
 
     private float staminaRegenerationAmount = 30f;
@@ -19,7 +19,7 @@ public class PlayerStats : CharacterStats
     private void Awake()
     {
         playerManager = GetComponent<PlayerManager>();
-        animatorHandler = GetComponentInChildren<AnimatorHandler>();
+        animatorHandler = GetComponentInChildren<PlayerAnimatorManager>();
     }
 
     void Start()

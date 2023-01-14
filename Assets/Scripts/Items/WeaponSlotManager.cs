@@ -11,17 +11,19 @@ public class WeaponSlotManager : MonoBehaviour
     WeaponHolderSlot rightHandSlot;
     WeaponHolderSlot backSlot;
 
-    DamageCollider leftHandDamageCollider;
-    DamageCollider rightHandDamageCollider;
+    [System.NonSerialized] public DamageCollider leftHandDamageCollider;
+    [System.NonSerialized] public DamageCollider rightHandDamageCollider;
 
     QuickSlotsUI quickSlotsUI;
     PlayerStats playerStats;
     InputHandler inputHandler;
     Animator animator;
     PlayerManager playerManager;
+    PlayerInventory playerInventory;
 
     private void Awake()
     {
+        playerInventory = GetComponentInParent<PlayerInventory>();
         quickSlotsUI = FindObjectOfType<QuickSlotsUI>();
         inputHandler = GetComponentInParent<InputHandler>();
         playerStats = GetComponentInParent<PlayerStats>();
@@ -105,10 +107,12 @@ public class WeaponSlotManager : MonoBehaviour
     private void LoadLeftWeaponDamageCollider()
     {
         leftHandDamageCollider = leftHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
+            leftHandDamageCollider.currentWeaponDamage = playerInventory.leftWeapon.baseDamage;
     }
     private void LoadRightWeaponDamageCollider()
     {
         rightHandDamageCollider = rightHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
+        rightHandDamageCollider.currentWeaponDamage = playerInventory.rightWeapon.baseDamage;
     }
 
     public void OpenDamageCollider()

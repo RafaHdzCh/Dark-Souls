@@ -7,15 +7,15 @@ public class AnimatorManager : MonoBehaviour
     [Header("Components")]
     public Animator anim;
 
-    private void Start()
-    {
-
-    }
-    //Ejecuta la animacion que llegue por parametro.
     public void PlayTargetAnimation(string targetAnim, bool isInteracting)
     {
         anim.applyRootMotion = isInteracting;
         anim.SetBool(DarkSoulsConsts.ISINTERACTING, isInteracting);
         anim.CrossFade(targetAnim, 0.2f);
+    }
+
+    public virtual void TakeCriticalDamageAnimationEvent()
+    {
+
     }
 }

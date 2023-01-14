@@ -8,7 +8,7 @@ public class PlayerAttacker : MonoBehaviour
     PlayerManager playerManager;
     PlayerStats playerStats;
     PlayerInventory playerInventory;
-    AnimatorHandler animatorHandler;
+    PlayerAnimatorManager animatorHandler;
     InputHandler inputHandler;
     WeaponSlotManager weaponSlotManager;
     [HideInInspector] public string lastAttack;
@@ -21,7 +21,7 @@ public class PlayerAttacker : MonoBehaviour
         playerStats = GetComponentInParent<PlayerStats>();
         playerInventory = GetComponentInParent<PlayerInventory>();
         playerManager = GetComponentInParent<PlayerManager>();
-        animatorHandler = GetComponent<AnimatorHandler>();
+        animatorHandler = GetComponent<PlayerAnimatorManager>();
         weaponSlotManager = GetComponent<WeaponSlotManager>();
         inputHandler = GetComponentInParent<InputHandler>();
     }
@@ -162,6 +162,9 @@ public class PlayerAttacker : MonoBehaviour
     public void AttemptBackStabOrRiposte()
     {
         RaycastHit hit;
+
+        DamageCollider rightWeapon = weaponSlotManager.rightHandDamageCollider;
+
         if (Physics.Raycast(inputHandler.criticalAttackRayCastStartPoint.position,
             transform.TransformDirection(Vector3.forward), out hit, 0.5f, backStabLayer))
         {
@@ -178,6 +181,9 @@ public class PlayerAttacker : MonoBehaviour
                 Quaternion tr= Quaternion.LookRotation(rotationDirection);
                 Quaternion targetRotation = Quaternion.Slerp(playerManager.transform.rotation, tr, 500 * Time.deltaTime);
                 playerManager.transform.rotation = targetRotation;
+
+                int criticalDamage = playerInventory.rightWeapon.criticalDamageMultiplier * rightWeapon.currentWeaponDamage;
+                enemyCharacterManager.pendingCriticalDamage = criticalDamage;
 
                 animatorHandler.PlayTargetAnimation(DarkSoulsConsts.BACKSTAB, true);
                 enemyCharacterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation(DarkSoulsConsts.BACKSTABBED, true);

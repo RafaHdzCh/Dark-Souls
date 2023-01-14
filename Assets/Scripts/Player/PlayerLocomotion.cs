@@ -8,7 +8,7 @@ public class PlayerLocomotion : MonoBehaviour
     [Header("Scripts")]
     PlayerManager playerManager;
     InputHandler inputHandler;
-    AnimatorHandler animatorHandler;
+    PlayerAnimatorManager animatorHandler;
     CameraHandler cameraHandler;
 
     [Header("Components")]
@@ -38,7 +38,7 @@ public class PlayerLocomotion : MonoBehaviour
     {
         rigi = GetComponent<Rigidbody>();
         inputHandler = GetComponent<InputHandler>();
-        animatorHandler = GetComponentInChildren<AnimatorHandler>();
+        animatorHandler = GetComponentInChildren<PlayerAnimatorManager>();
         playerManager = GetComponent<PlayerManager>();
         cameraHandler = FindObjectOfType<CameraHandler>();
         cameraObject = Camera.main.transform;

@@ -40,7 +40,7 @@ public class InputHandler : MonoBehaviour
     public Transform criticalAttackRayCastStartPoint;
 
     [Header("Scripts")]
-    AnimatorHandler animatorHandler;
+    PlayerAnimatorManager animatorHandler;
     PlayerControls inputActions;
     PlayerAttacker playerAttacker;
     PlayerInventory playerInventory;
@@ -58,7 +58,7 @@ public class InputHandler : MonoBehaviour
         uiManager = FindObjectOfType<UIManager>();
         cameraHandler = FindObjectOfType<CameraHandler>();
         weaponSlotManager = GetComponentInChildren<WeaponSlotManager>();
-        animatorHandler = GetComponentInChildren<AnimatorHandler>();
+        animatorHandler = GetComponentInChildren<PlayerAnimatorManager>();
     }
 
     public void OnEnable()

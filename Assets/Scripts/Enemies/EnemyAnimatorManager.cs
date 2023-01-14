@@ -5,8 +5,10 @@ using UnityEngine;
 public class EnemyAnimatorManager : AnimatorManager
 {
     EnemyManager enemyManager;
-    private void Start()
+    EnemyStats enemyStats;
+    private void Awake()
     {
+        enemyStats.GetComponentInParent<EnemyStats>();
         enemyManager = GetComponentInParent<EnemyManager>();
     }
 

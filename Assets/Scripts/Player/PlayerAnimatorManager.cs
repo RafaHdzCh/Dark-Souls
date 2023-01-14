@@ -1,15 +1,15 @@
 using UnityEngine;
 
-public class AnimatorHandler : AnimatorManager
+public class PlayerAnimatorManager : AnimatorManager
 {
     [Header("Variables")]
     [HideInInspector] public bool canRotate;
     int vertical;
     int horizontal;
 
-    [Header("Scripts")]
-    [HideInInspector] PlayerLocomotion playerLocomotion;
-    [HideInInspector] PlayerManager playerManager;
+    PlayerLocomotion playerLocomotion;
+    PlayerManager playerManager;
+    PlayerStats playerStats;
 
     public void Initialize()
     {
@@ -17,6 +17,7 @@ public class AnimatorHandler : AnimatorManager
         vertical = Animator.StringToHash(DarkSoulsConsts.VERTICAL);
         horizontal = Animator.StringToHash(DarkSoulsConsts.HORIZONTAL);
         playerManager = GetComponentInParent<PlayerManager>();
+        playerStats = GetComponentInParent<PlayerStats>();
     }
 
     //Establecer la velocidad de movimiento en el Animator.
@@ -108,6 +109,12 @@ public class AnimatorHandler : AnimatorManager
     public void DisableIsInvulnerable()
     {
         anim.SetBool(DarkSoulsConsts.ISINVULNERABLE, false);
+    }
+
+    public override void TakeCriticalDamageAnimationEvent()
+    {
+        playerStats.TakeDamage(playerManager.pendingCriticalDamage);
+        playerManager.pendingCriticalDamage = 0;
     }
 
     public void OnAnimatorMove()

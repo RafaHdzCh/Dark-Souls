@@ -21,11 +21,11 @@ public class WeaponPickUp : Interactable
     {
         PlayerInventory playerInventory;
         PlayerLocomotion playerLocomotion;
-        AnimatorHandler animatorHandler;
+        PlayerAnimatorManager animatorHandler;
 
         playerInventory = playerManager.GetComponent<PlayerInventory>();
         playerLocomotion = playerManager.GetComponent<PlayerLocomotion>();
-        animatorHandler = playerManager.GetComponentInChildren<AnimatorHandler>();
+        animatorHandler = playerManager.GetComponentInChildren<PlayerAnimatorManager>();
 
         playerLocomotion.rigi.velocity = Vector3.zero;
         animatorHandler.PlayTargetAnimation(DarkSoulsConsts.PICKUPITEM, true);
