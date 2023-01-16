@@ -11,6 +11,7 @@ public class PlayerManager : CharacterManager
     CameraHandler cameraHandler;
     PlayerLocomotion playerLocomotion;
     PlayerStats playerStats;
+    PlayerAnimatorManager playerAnimatorManager;
 
     InteractableUI interactableUI;
     public GameObject interactableUIGameObject;
@@ -35,6 +36,7 @@ public class PlayerManager : CharacterManager
         playerLocomotion = GetComponent<PlayerLocomotion>();
         interactableUI = FindObjectOfType<InteractableUI>();
         playerStats = GetComponent<PlayerStats>();
+        playerAnimatorManager = GetComponentInChildren<PlayerAnimatorManager>();
     }
 
     void Update()
@@ -49,6 +51,7 @@ public class PlayerManager : CharacterManager
         isUsingRightHand = anim.GetBool(DarkSoulsConsts.ISUSINGRIGHTHAND);
         isUsingLeftHand = anim.GetBool(DarkSoulsConsts.ISUSINGLEFTHAND);
         isInvulnerable = anim.GetBool(DarkSoulsConsts.ISINVULNERABLE);
+        playerAnimatorManager.canRotate = anim.GetBool(DarkSoulsConsts.CANROTATE);
 
         //Detecta los inputs del control del jugador.
         inputHandler.TickInput(delta);
@@ -67,6 +70,7 @@ public class PlayerManager : CharacterManager
         //Detecta el movimiento y/o caida del personaje.
         playerLocomotion.HandleMovement(delta);
         playerLocomotion.HandleFalling(delta, playerLocomotion.moveDirection);
+        playerLocomotion.HandleRotation(delta);
     }
 
     private void LateUpdate()

@@ -3,7 +3,6 @@ using UnityEngine;
 public class PlayerAnimatorManager : AnimatorManager
 {
     [Header("Variables")]
-    [HideInInspector] public bool canRotate;
     int vertical;
     int horizontal;
 
@@ -84,12 +83,12 @@ public class PlayerAnimatorManager : AnimatorManager
 
     public void CanRotate()
     {
-        canRotate = true;
+        anim.SetBool(DarkSoulsConsts.CANROTATE, true);
     }
 
     public void StopRotation()
     {
-        canRotate = false;
+        anim.SetBool(DarkSoulsConsts.CANROTATE, false);
     }
 
     public void EnableCombo()
