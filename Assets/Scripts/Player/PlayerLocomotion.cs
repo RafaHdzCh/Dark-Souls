@@ -7,6 +7,7 @@ public class PlayerLocomotion : MonoBehaviour
 {
     [Header("Scripts")]
     PlayerManager playerManager;
+    PlayerStats playerStats;
     InputHandler inputHandler;
     PlayerAnimatorManager animatorHandler;
     CameraHandler cameraHandler;
@@ -31,6 +32,11 @@ public class PlayerLocomotion : MonoBehaviour
     float rotationSpeed = 2000;
     float fallingSpeed = 500;
 
+    [Header("Stamina cost")]
+    int rollStaminaCost = 15;
+    int backstepStaminaCost = 10;
+    int sprintStaminaCost = 1;
+
     public CapsuleCollider characterCollider;
     public CapsuleCollider characterCollisionBlocker;
 
@@ -40,6 +46,7 @@ public class PlayerLocomotion : MonoBehaviour
         inputHandler = GetComponent<InputHandler>();
         animatorHandler = GetComponentInChildren<PlayerAnimatorManager>();
         playerManager = GetComponent<PlayerManager>();
+        playerStats = GetComponent<PlayerStats>();
         cameraHandler = FindObjectOfType<CameraHandler>();
         cameraObject = Camera.main.transform;
         myTransform = transform;
@@ -130,6 +137,7 @@ public class PlayerLocomotion : MonoBehaviour
             speed = sprintSpeed;
             playerManager.isSprinting = true;
             moveDirection *= speed;
+            playerStats.TakeStaminaDamage(sprintStaminaCost);
         }
         else
         {
@@ -156,6 +164,8 @@ public class PlayerLocomotion : MonoBehaviour
     {
         if (animatorHandler.anim.GetBool(DarkSoulsConsts.ISINTERACTING)) return;
 
+        if (playerStats.currentStamina <= 0) return;
+
         if (inputHandler.rollFlag)
         {
             moveDirection = cameraObject.forward * inputHandler.vertical;
@@ -167,10 +177,12 @@ public class PlayerLocomotion : MonoBehaviour
                 moveDirection.y = 0;
                 Quaternion rollRotation = Quaternion.LookRotation(moveDirection);
                 myTransform.rotation = rollRotation;
+                playerStats.TakeStaminaDamage(rollStaminaCost);
             }
             else
             {
                 animatorHandler.PlayTargetAnimation(DarkSoulsConsts.STEPBACK, true);
+                playerStats.TakeStaminaDamage(backstepStaminaCost);
             }
         }
     }
@@ -256,7 +268,8 @@ public class PlayerLocomotion : MonoBehaviour
     public void HandleJumping()
     {
         if (playerManager.isInteracting) return;
-        if(inputHandler.jump_Input)
+        if (playerStats.currentStamina <= 0) return;
+        if (inputHandler.jump_Input)
         {
             if(inputHandler.moveAmount > 0)
             {

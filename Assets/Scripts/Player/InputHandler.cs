@@ -3,39 +3,39 @@ using UnityEngine;
 public class InputHandler : MonoBehaviour
 {
     [Header("Directions")]
-    [HideInInspector]public float horizontal;
-    [HideInInspector] public float vertical;
-    [HideInInspector] public float moveAmount;
-    [HideInInspector] public float mouseX;
-    [HideInInspector] public float mouseY;
+    [System.NonSerialized] public float horizontal;
+    [System.NonSerialized] public float vertical;
+    [System.NonSerialized] public float moveAmount;
+    [System.NonSerialized] public float mouseX;
+    [System.NonSerialized] public float mouseY;
     Vector2 movementInput;
     Vector2 cameraInput;
 
     [Header("Inputs")]
-    [HideInInspector] public bool a_input;
-    [HideInInspector] public bool b_input;
-    [HideInInspector] public bool critical_Attack_Input;
-    [HideInInspector] public bool twoHand_input;
-    [HideInInspector] public bool jump_Input;
-    [HideInInspector] public bool rb_Input;
-    [HideInInspector] public bool rt_Input;
-    [HideInInspector] public bool d_pad_Up;
-    [HideInInspector] public bool d_pad_Down;
-    [HideInInspector] public bool d_pad_Left;
-    [HideInInspector] public bool d_pad_Right;
-    [HideInInspector] public bool start_Input;
-    [HideInInspector] public bool lockOnInput;
-    [HideInInspector] public bool switch_To_Right_Target_Input;
-    [HideInInspector] public bool switch_To_Left_Target_Input;
+    [System.NonSerialized] public bool a_input;
+    [System.NonSerialized] public bool b_input;
+    [System.NonSerialized] public bool critical_Attack_Input;
+    [System.NonSerialized] public bool twoHand_input;
+    [System.NonSerialized] public bool jump_Input;
+    [System.NonSerialized] public bool rb_Input;
+    [System.NonSerialized] public bool rt_Input;
+    [System.NonSerialized] public bool d_pad_Up;
+    [System.NonSerialized] public bool d_pad_Down;
+    [System.NonSerialized] public bool d_pad_Left;
+    [System.NonSerialized] public bool d_pad_Right;
+    [System.NonSerialized] public bool start_Input;
+    [System.NonSerialized] public bool lockOnInput;
+    [System.NonSerialized] public bool switch_To_Right_Target_Input;
+    [System.NonSerialized] public bool switch_To_Left_Target_Input;
 
     [Header("Flags")]
-    [HideInInspector] public bool rollFlag;
-    [HideInInspector] public bool twoHandFlag;
-    [HideInInspector] public bool sprintFlag;
-    [HideInInspector] public bool comboFlag;
-    [HideInInspector] public bool lockOnFlag;
-    [HideInInspector] public bool inventoryFlag;
-    [HideInInspector] public float rollInputTimer;
+    [System.NonSerialized] public bool rollFlag;
+    [System.NonSerialized] public bool twoHandFlag;
+    [System.NonSerialized] public bool sprintFlag;
+    [System.NonSerialized] public bool comboFlag;
+    [System.NonSerialized] public bool lockOnFlag;
+    [System.NonSerialized] public bool inventoryFlag;
+    [System.NonSerialized] public float rollInputTimer;
 
     public Transform criticalAttackRayCastStartPoint;
 
@@ -48,11 +48,13 @@ public class InputHandler : MonoBehaviour
     UIManager uiManager;
     CameraHandler cameraHandler;
     WeaponSlotManager weaponSlotManager;
+    PlayerStats playerStats;
    
 
     private void Start()
     {
         playerManager = GetComponent<PlayerManager>();
+        playerStats = GetComponent<PlayerStats>();
         playerAttacker = GetComponentInChildren<PlayerAttacker>();
         playerInventory = GetComponent<PlayerInventory>();
         uiManager = FindObjectOfType<UIManager>();
@@ -74,6 +76,10 @@ public class InputHandler : MonoBehaviour
             inputActions.PlayerQuickSlots.DPadRight.performed += i => d_pad_Right = true;
             inputActions.PlayerQuickSlots.DPadLeft.performed += i => d_pad_Left = true;
             inputActions.PlayerActions.A.performed += i => a_input = true;
+
+            inputActions.PlayerActions.Roll.performed += i => b_input = true;
+            inputActions.PlayerActions.Roll.canceled += i => b_input = false;
+
             inputActions.PlayerActions.Jump.performed += i => jump_Input = true;
             inputActions.PlayerActions.Start.performed += i => start_Input = true;
             inputActions.PlayerActions.LockOn.performed += i => lockOnInput = true;
@@ -113,15 +119,24 @@ public class InputHandler : MonoBehaviour
 
     private void HandleRollInput( float delta)
     {
-        b_input = inputActions.PlayerActions.Roll.phase == UnityEngine.InputSystem.InputActionPhase.Performed;
-        sprintFlag = b_input;
-
         if (b_input)
         {
             rollInputTimer += delta;
+
+            if(playerStats.currentStamina <= 0)
+            {
+                b_input = false;
+                sprintFlag = false;
+            }
+
+            if(moveAmount > 0.5f && playerStats.currentStamina > 0)
+            {
+                sprintFlag = true;
+            }
         }
         else
         {
+            sprintFlag = false;
             if(rollInputTimer > 0 && rollInputTimer < 0.5f)
             {
                 sprintFlag = false;

@@ -28,8 +28,9 @@ public class PlayerAttacker : MonoBehaviour
 
     public void HandleWeaponCombo(WeaponItem weapon)
     {
+        if (playerStats.currentStamina <= 0) return;
         //Si se activa el combo...
-        if(inputHandler.comboFlag)
+        if (inputHandler.comboFlag)
         {
             //Se desactiva de inmediato el bool que permite hacer un combo y se ejecuta la animacion del segundo ataque segun el tipo de ataque.
             animatorHandler.anim.SetBool(DarkSoulsConsts.CANDOCOMBO, false);
@@ -62,6 +63,7 @@ public class PlayerAttacker : MonoBehaviour
     //Realizar un ataque ligero.
     public void HandleLightAttack(WeaponItem weapon)
     {
+        if (playerStats.currentStamina <= 0) return;
         //Establece el arma de ataque del slotManager como item de ataque.
         weaponSlotManager.attackingWeapon = weapon;
 
@@ -82,6 +84,7 @@ public class PlayerAttacker : MonoBehaviour
     //Realizar un ataque pesado.
     public void HandleHeavyAttack(WeaponItem weapon)
     {
+        if (playerStats.currentStamina <= 0) return;
         //Establece el arma de ataque del slotManager como item de ataque.
         weaponSlotManager.attackingWeapon = weapon;
 
@@ -161,6 +164,8 @@ public class PlayerAttacker : MonoBehaviour
 
     public void AttemptBackStabOrRiposte()
     {
+        if (playerStats.currentStamina <= 0) return;
+
         RaycastHit hit;
 
         DamageCollider rightWeapon = weaponSlotManager.rightHandDamageCollider;
