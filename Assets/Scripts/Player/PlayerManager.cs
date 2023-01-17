@@ -106,6 +106,7 @@ public class PlayerManager : CharacterManager
         }
     }
 
+    #region Player Interactions
     public void CheckForInteractableObjects()
     {
         Vector3 rayOrigin = transform.position;
@@ -154,4 +155,14 @@ public class PlayerManager : CharacterManager
             }
         }
     }
+
+    public void OpenChestInteraction(Transform playerStandHereWhenOpeningChest)
+    {
+        playerLocomotion.rigi.velocity = Vector3.zero;
+        transform.position = playerStandHereWhenOpeningChest.transform.position;
+        playerAnimatorManager.PlayTargetAnimation(DarkSoulsConsts.OPENCHEST, true);
+
+    }
+
+    #endregion
 }

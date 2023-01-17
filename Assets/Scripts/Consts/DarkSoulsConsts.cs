@@ -33,6 +33,7 @@ public static class DarkSoulsConsts
     public static readonly string BACKSTAB = "Backstab";
     public static readonly string BACKSTABBED = "Backstabbed";
     public static readonly string ISDEAD = "isDead";
+    public static readonly string OPENCHEST = "Open Chest";
 
     //Directions
     public static readonly string VERTICAL = "Vertical";
@@ -45,4 +46,7 @@ public static class DarkSoulsConsts
 
     //Layers
     public static readonly string ENVIRONMENT = "Environment";
+
+    //Props
+    public static readonly string CHESTOPEN = "Chest Open";
 }
