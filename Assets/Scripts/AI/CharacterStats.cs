@@ -20,5 +20,8 @@ public class CharacterStats : MonoBehaviour
     [HideInInspector] public float maxMana;
     [HideInInspector] public float currentMana;
 
+    [Header("Souls")]
+    [HideInInspector] public int soulCount = 0;
+
     [HideInInspector] public bool isDead;
 }

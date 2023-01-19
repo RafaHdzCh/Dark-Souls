@@ -25,4 +25,19 @@ public class EnemyAnimatorManager : AnimatorManager
         Vector3 velocity = deltaPosition / delta;
         enemyManager.enemyRigidbody.velocity = velocity;
     }
+
+    public void AwardSoulsOnDeath()
+    {
+        PlayerStats playerStats = FindObjectOfType<PlayerStats>();
+        SoulCounter soulCounter = FindObjectOfType<SoulCounter>();
+        if (playerStats != null)
+        {
+            playerStats.AddSouls(enemyStats.soulsAwardedOnDeath);
+
+            if(soulCounter != null)
+            {
+                soulCounter.SetSoulCountText(enemyStats.soulsAwardedOnDeath);
+            }
+        }
+    }
 }

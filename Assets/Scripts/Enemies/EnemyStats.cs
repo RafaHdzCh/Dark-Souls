@@ -11,15 +11,16 @@ public class EnemyStats : CharacterStats
     [SerializeField] Transform cameraTransform;
     [SerializeField] GameObject healthBarGO;
 
-
     [Header("Scripts")]
-    EnemyAnimatorManager animatorHandler;
+    EnemyAnimatorManager enemyAnimatorManager;
     HealthBar _healthBar;
+
+    public int soulsAwardedOnDeath = 50;
 
     private void Awake()
     {
         _healthBar = GetComponentInChildren<HealthBar>();
-        animatorHandler = GetComponent<EnemyAnimatorManager>();
+        enemyAnimatorManager = GetComponent<EnemyAnimatorManager>();
     }
 
     void Start()
@@ -61,23 +62,28 @@ public class EnemyStats : CharacterStats
         _healthBar.SetCurrentHealth(currentHealth);
         if(playAnimation)
         {
-            animatorHandler.PlayTargetAnimation(DarkSoulsConsts.DAMAGE, true);
+            enemyAnimatorManager.PlayTargetAnimation(DarkSoulsConsts.DAMAGE, true);
         }
 
         if (currentHealth <= 0)
         {
-            currentHealth = 0;
-            if(playAnimation)
-            {
-                animatorHandler.PlayTargetAnimation(DarkSoulsConsts.DEATH, true);
-            }
-            Invoke(nameof(HideHealthBarOnDeath), 3f);
-            isDead = true;
+            HandleDeath(playAnimation);
         }
     }
 
     private void HideHealthBarOnDeath()
     {
         healthBarGO.SetActive(false);
+    }
+
+    private void HandleDeath(bool playAnimation)
+    {
+        currentHealth = 0;
+        if (playAnimation)
+        {
+            enemyAnimatorManager.PlayTargetAnimation(DarkSoulsConsts.DEATH, true);
+        }
+        Invoke(nameof(HideHealthBarOnDeath), 3f);
+        isDead = true;
     }
 }
