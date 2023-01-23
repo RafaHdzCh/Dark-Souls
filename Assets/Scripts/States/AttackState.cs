@@ -11,6 +11,8 @@ public class AttackState : State
 
     public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
     {
+        if (enemyStats.currentHealth <= 0) return null;
+
         Vector3 targetDirection = enemyManager.currentTarget.transform.position - transform.position;
         float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
         float viewableAngle = Vector3.Angle(targetDirection, transform.forward);

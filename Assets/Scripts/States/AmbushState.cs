@@ -12,7 +12,8 @@ public class AmbushState : State
     [SerializeField] LayerMask detectionLayer;
     public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
     {
-        if(isSleeping && enemyManager.isInteracting == false)
+        if (enemyStats.currentHealth <= 0) return null;
+        if (isSleeping && enemyManager.isInteracting == false)
         {
             enemyAnimatorManager.PlayTargetAnimation(DarkSoulsConsts.SLEEP, true);
         }

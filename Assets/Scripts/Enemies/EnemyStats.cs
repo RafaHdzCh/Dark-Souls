@@ -15,6 +15,7 @@ public class EnemyStats : CharacterStats
     EnemyAnimatorManager enemyAnimatorManager;
     HealthBar _healthBar;
 
+
     public int soulsAwardedOnDeath = 50;
 
     private void Awake()
@@ -76,9 +77,22 @@ public class EnemyStats : CharacterStats
         healthBarGO.SetActive(false);
     }
 
+    private void DeactivateCollidersOnDeath()
+    {
+        CapsuleCollider mainCollider = gameObject.GetComponent<CapsuleCollider>();
+        Collider[] colliders = gameObject.GetComponentsInChildren<Collider>();
+
+        mainCollider.enabled = false;
+        foreach(Collider collider in colliders)
+        {
+            collider.enabled = false;
+        }
+    }
+
     private void HandleDeath(bool playAnimation)
     {
         currentHealth = 0;
+        //DeactivateCollidersOnDeath();
         if (playAnimation)
         {
             enemyAnimatorManager.PlayTargetAnimation(DarkSoulsConsts.DEATH, true);
