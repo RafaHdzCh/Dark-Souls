@@ -30,7 +30,6 @@ public class EnemyManager : CharacterManager
     private void Awake()
     {
         enemyAnimatorManager = GetComponentInChildren<EnemyAnimatorManager>();
-        backstabCollider = GetComponentInChildren<BackstabCollider>();
         enemyStats = GetComponent<EnemyStats>();
         navMeshAgent = GetComponentInChildren<NavMeshAgent>();
         enemyRigidbody = GetComponent<Rigidbody>();

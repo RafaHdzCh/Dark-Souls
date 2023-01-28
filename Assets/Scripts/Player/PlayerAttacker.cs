@@ -14,6 +14,7 @@ public class PlayerAttacker : MonoBehaviour
     [HideInInspector] public string lastAttack;
 
     [SerializeField] LayerMask backStabLayer;
+    [SerializeField] LayerMask riposteLayer;
 
     private void Awake()
     {
@@ -177,7 +178,7 @@ public class PlayerAttacker : MonoBehaviour
             if(enemyCharacterManager != null)
             {
                 //Check for team ID (so you cant attack allis)
-                playerManager.transform.position = enemyCharacterManager.backstabCollider.backStabberStandPoint.position;
+                playerManager.transform.position = enemyCharacterManager.backstabCollider.criticalDamagerStandPosition.position;
 
                 Vector3 rotationDirection = playerManager.transform.root.eulerAngles;
                 rotationDirection = hit.transform.position - playerManager.transform.position;
@@ -195,6 +196,31 @@ public class PlayerAttacker : MonoBehaviour
                 //enemy plays animation
                 //do damage
             }
+        }
+        else if (Physics.Raycast(inputHandler.criticalAttackRayCastStartPoint.position,
+                 transform.TransformDirection(Vector3.forward), out hit, 0.5f, riposteLayer))
+        {
+            //Check for team ID (so you cant attack allis)
+            CharacterManager enemyCharacterManager = hit.transform.gameObject.GetComponentInParent<CharacterManager>();
+            if (enemyCharacterManager == null) return;
+            if (!enemyCharacterManager.canBeRiposted) return;
+            playerManager.transform.position = enemyCharacterManager.riposteCollider.criticalDamagerStandPosition.position;
+
+            Vector3 rotationDirection = playerManager.transform.root.eulerAngles;
+            rotationDirection = hit.transform.position - playerManager.transform.position;
+            rotationDirection.y = 0;
+            rotationDirection.Normalize();
+            Quaternion tr = Quaternion.LookRotation(rotationDirection);
+            Quaternion targetRotation = Quaternion.Slerp(playerManager.transform.rotation, tr, 500 * Time.deltaTime);
+            playerManager.transform.rotation = targetRotation;
+
+            int criticalDamage = playerInventory.rightWeapon.criticalDamageMultiplier * rightWeapon.currentWeaponDamage;
+            enemyCharacterManager.pendingCriticalDamage = criticalDamage;
+
+            animatorHandler.PlayTargetAnimation(DarkSoulsConsts.RIPOSTE, true);
+            enemyCharacterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation(DarkSoulsConsts.RIPOSTED, true);
+            //enemy plays animation
+            //do damage
         }
     }
 }

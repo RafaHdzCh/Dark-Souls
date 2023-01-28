@@ -30,7 +30,7 @@ public class PlayerManager : CharacterManager
     void Start()
     {
         cameraHandler = FindObjectOfType<CameraHandler>();
-        backstabCollider = GetComponentInChildren<BackstabCollider>();
+        backstabCollider = GetComponentInChildren<CriticalDamageCollider>();
         inputHandler = GetComponent<InputHandler>(); 
         anim = GetComponentInChildren<Animator>();
         playerLocomotion = GetComponent<PlayerLocomotion>();
