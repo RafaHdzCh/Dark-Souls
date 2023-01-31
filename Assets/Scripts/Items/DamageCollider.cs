@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DamageCollider : MonoBehaviour
 {
+    [System.NonSerialized] public CharacterManager characterManager;
     Collider damageCollider;
 
     [Header("Assign Weapon Damage")]
@@ -33,6 +34,16 @@ public class DamageCollider : MonoBehaviour
         if (collision.CompareTag(DarkSoulsConsts.PLAYER))
         {
             PlayerStats playerStats = collision.GetComponent<PlayerStats>();
+            CharacterManager enemyCaracterManager = collision.GetComponent<CharacterManager>();
+
+            if(characterManager != null)
+            {
+                if(characterManager.isParrying)
+                {
+                    characterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation(DarkSoulsConsts.RIPOSTED, true);
+                    return;
+                }
+            }
 
             if(playerStats != null)
             {
@@ -42,7 +53,18 @@ public class DamageCollider : MonoBehaviour
         if (collision.CompareTag(DarkSoulsConsts.ENEMY))
         {
             EnemyStats enemyStats = collision.GetComponent<EnemyStats>();
-            if(enemyStats != null)
+            CharacterManager enemyCaracterManager = collision.GetComponent<CharacterManager>();
+
+            if (characterManager != null)
+            {
+                if (characterManager.isParrying)
+                {
+                    characterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation(DarkSoulsConsts.RIPOSTED, true);
+                    return;
+                }
+            }
+
+            if (enemyStats != null)
             {
                 enemyStats.TakeDamage(currentWeaponDamage, true);
             }

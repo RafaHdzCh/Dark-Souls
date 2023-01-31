@@ -34,6 +34,9 @@ public static class DarkSoulsConsts
     public static readonly string BACKSTABBED = "Backstabbed";
     public static readonly string RIPOSTE = "Riposte";
     public static readonly string RIPOSTED = "Riposted";
+    public static readonly string PARRY = "Parry";
+    public static readonly string PARRIED = "Parried";
+
     public static readonly string ISDEAD = "isDead";
     public static readonly string OPENCHEST = "Open Chest";
 

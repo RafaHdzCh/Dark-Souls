@@ -168,20 +168,18 @@ public class PlayerAttacker : MonoBehaviour
         }
     }
 
-    private void PerformLTWeaponArt(bool isLeftHand)
+    private void PerformLTWeaponArt(bool isTwoHanding)
     {
         if (playerManager.isInteracting) return;
 
-        if(isLeftHand)
+        if(isTwoHanding)
         {
-            animatorHandler.PlayTargetAnimation(playerInventory.leftWeapon.Weapon_Art, true);
+            //If we are two handing, perform right weapon art
         }
         else
         {
-
+            animatorHandler.PlayTargetAnimation(playerInventory.leftWeapon.Weapon_Art, true);
         }
-        //If we are two handing, perform right weapon art
-        //else perform weapon art for left hand
     }
 
     private void SuccessfullyCastSpell()

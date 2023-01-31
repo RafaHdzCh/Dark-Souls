@@ -110,6 +110,24 @@ public class PlayerAnimatorManager : AnimatorManager
         anim.SetBool(DarkSoulsConsts.ISINVULNERABLE, false);
     }
 
+    public void EnableIsParrying()
+    {
+        playerManager.isParrying = true;
+    }
+
+    public void DisableIsParrying()
+    {
+        playerManager.isParrying = false;
+    }
+
+    public void EnableCanBeRiposted()
+    {
+        playerManager.canBeRiposted = true;
+    }
+    public void DisableCanBeRiposted()
+    {
+        playerManager.canBeRiposted = false;
+    }
     public override void TakeCriticalDamageAnimationEvent()
     {
         playerStats.TakeDamage(playerManager.pendingCriticalDamage, false);
