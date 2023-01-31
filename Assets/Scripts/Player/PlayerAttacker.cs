@@ -193,8 +193,6 @@ public class PlayerAttacker : MonoBehaviour
 
                 animatorHandler.PlayTargetAnimation(DarkSoulsConsts.BACKSTAB, true);
                 enemyCharacterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation(DarkSoulsConsts.BACKSTABBED, true);
-                //enemy plays animation
-                //do damage
             }
         }
         else if (Physics.Raycast(inputHandler.criticalAttackRayCastStartPoint.position,
@@ -219,8 +217,6 @@ public class PlayerAttacker : MonoBehaviour
 
             animatorHandler.PlayTargetAnimation(DarkSoulsConsts.RIPOSTE, true);
             enemyCharacterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation(DarkSoulsConsts.RIPOSTED, true);
-            //enemy plays animation
-            //do damage
         }
     }
 }

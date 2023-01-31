@@ -44,7 +44,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 1, z: 0.2}
+  m_Size: {x: 0.4, y: 1, z: 0.05}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &649496344
 MonoBehaviour:
@@ -245,7 +245,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1297716198442967243}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Riposter Standing Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -405,7 +405,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 1, z: 0.2}
+  m_Size: {x: 0.4, y: 1, z: 0.05}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8712806785238415778
 MonoBehaviour:
@@ -2189,7 +2189,7 @@ MonoBehaviour:
     m_Bits: 2048
   riposteLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4096
 --- !u!1 &4813561447793285117 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 161890, guid: 880858dfd9b1e784e89d45242bf78d2b, type: 3}
