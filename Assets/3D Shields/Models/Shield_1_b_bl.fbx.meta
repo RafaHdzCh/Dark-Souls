@@ -1,0 +1,168 @@
+fileFormatVersion: 2
+guid: 6d8263e377427594e99b80ef1fb27b74
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Circle.274
+    100002: Circle.275
+    100004: Cone.303
+    100006: Cone.304
+    100008: Cone.305
+    100010: Cone.306
+    100012: Cone.307
+    100014: Cone.308
+    100016: Cone.309
+    100018: Cone.310
+    100020: Cylinder.240
+    100022: Cylinder.241
+    100024: Cylinder.242
+    100026: Cylinder.243
+    100028: Plane.155
+    100030: //RootNode
+    400000: Circle.274
+    400002: Circle.275
+    400004: Cone.303
+    400006: Cone.304
+    400008: Cone.305
+    400010: Cone.306
+    400012: Cone.307
+    400014: Cone.308
+    400016: Cone.309
+    400018: Cone.310
+    400020: Cylinder.240
+    400022: Cylinder.241
+    400024: Cylinder.242
+    400026: Cylinder.243
+    400028: Plane.155
+    400030: //RootNode
+    2100000: material_333
+    2100002: material_7
+    2100004: material_1
+    2100006: material_000
+    2300000: Circle.274
+    2300002: Circle.275
+    2300004: Cone.303
+    2300006: Cone.304
+    2300008: Cone.305
+    2300010: Cone.306
+    2300012: Cone.307
+    2300014: Cone.308
+    2300016: Cone.309
+    2300018: Cone.310
+    2300020: Cylinder.240
+    2300022: Cylinder.241
+    2300024: Cylinder.242
+    2300026: Cylinder.243
+    2300028: Plane.155
+    3300000: Circle.274
+    3300002: Circle.275
+    3300004: Cone.303
+    3300006: Cone.304
+    3300008: Cone.305
+    3300010: Cone.306
+    3300012: Cone.307
+    3300014: Cone.308
+    3300016: Cone.309
+    3300018: Cone.310
+    3300020: Cylinder.240
+    3300022: Cylinder.241
+    3300024: Cylinder.242
+    3300026: Cylinder.243
+    3300028: Plane.155
+    4300000: Circle.275
+    4300002: Cone.310
+    4300004: Cone.309
+    4300006: Cone.308
+    4300008: Cone.307
+    4300010: Cone.306
+    4300012: Cone.305
+    4300014: Cone.304
+    4300016: Cone.303
+    4300018: Circle.274
+    4300020: Plane.155
+    4300022: Cylinder.243
+    4300024: Cylinder.242
+    4300026: Cylinder.241
+    4300028: Cylinder.240
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

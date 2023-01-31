@@ -77,12 +77,17 @@ public class PlayerManager : CharacterManager
     {
         //Se establece el bool de cada boton como falso al final de cada frame para que pueda volver a usarse en el siguiente.
         inputHandler.rollFlag = false;
+
         inputHandler.rb_Input = false;
         inputHandler.rt_Input = false;
+        inputHandler.lb_Input = false;
+        inputHandler.lt_Input = false;
+
         inputHandler.d_pad_Up = false;
         inputHandler.d_pad_Down = false;
         inputHandler.d_pad_Left = false;
         inputHandler.d_pad_Right = false;
+
         inputHandler.a_input = false;
         inputHandler.jump_Input = false;
         inputHandler.start_Input = false;

@@ -19,6 +19,8 @@ public class InputHandler : MonoBehaviour
     [System.NonSerialized] public bool jump_Input;
     [System.NonSerialized] public bool rb_Input;
     [System.NonSerialized] public bool rt_Input;
+    [System.NonSerialized] public bool lb_Input;
+    [System.NonSerialized] public bool lt_Input;
     [System.NonSerialized] public bool d_pad_Up;
     [System.NonSerialized] public bool d_pad_Down;
     [System.NonSerialized] public bool d_pad_Left;
@@ -71,8 +73,12 @@ public class InputHandler : MonoBehaviour
             inputActions = new PlayerControls();
             inputActions.PlayerMovement.Movement.performed += inputActions => movementInput = inputActions.ReadValue<Vector2>();
             inputActions.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
+
             inputActions.PlayerActions.RB.performed += i => rb_Input = true;
             inputActions.PlayerActions.RT.performed += i => rt_Input = true;
+            inputActions.PlayerActions.LB.performed += i => lb_Input = true;
+            inputActions.PlayerActions.LT.performed += i => lt_Input = true;
+
             inputActions.PlayerQuickSlots.DPadRight.performed += i => d_pad_Right = true;
             inputActions.PlayerQuickSlots.DPadLeft.performed += i => d_pad_Left = true;
             inputActions.PlayerActions.A.performed += i => a_input = true;
@@ -108,6 +114,7 @@ public class InputHandler : MonoBehaviour
         HandleTwoHandInput();
         HandleCriticalAttackInput();
     }
+
     private void HandleMoveInput(float delta)
     {
         horizontal = movementInput.x;
@@ -168,6 +175,24 @@ public class InputHandler : MonoBehaviour
                 animatorHandler.anim.SetBool(DarkSoulsConsts.ISUSINGRIGHTHAND, true);
                 playerAttacker.HandleHeavyAttack(playerInventory.rightWeapon);
             }
+        }
+        if(lb_Input)
+        {
+
+        }
+        if(lt_Input)
+        {
+            if(twoHandFlag)
+            {
+
+            }
+            else
+            {
+                playerAttacker.HandleLTAction();
+            }
+            //if two handling, handle weapon art
+            //else handle light attack if melee weapon
+            //handle weapon art if shield
         }
     }
 

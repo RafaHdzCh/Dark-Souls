@@ -1,0 +1,198 @@
+fileFormatVersion: 2
+guid: 74ac3193307d9e448a6e17ca61af1082
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Circle.351
+    100002: Circle.352
+    100004: Circle.353
+    100006: Circle.354
+    100008: Circle.355
+    100010: Circle.356
+    100012: Cone.431
+    100014: Cone.432
+    100016: Cone.433
+    100018: Cone.434
+    100020: Cone.435
+    100022: Cone.436
+    100024: Cone.437
+    100026: Cone.438
+    100028: Cone.439
+    100030: Cone.440
+    100032: Cylinder.396
+    100034: Cylinder.397
+    100036: Cylinder.398
+    100038: Cylinder.399
+    100040: Plane.270
+    100042: //RootNode
+    400000: Circle.351
+    400002: Circle.352
+    400004: Circle.353
+    400006: Circle.354
+    400008: Circle.355
+    400010: Circle.356
+    400012: Cone.431
+    400014: Cone.432
+    400016: Cone.433
+    400018: Cone.434
+    400020: Cone.435
+    400022: Cone.436
+    400024: Cone.437
+    400026: Cone.438
+    400028: Cone.439
+    400030: Cone.440
+    400032: Cylinder.396
+    400034: Cylinder.397
+    400036: Cylinder.398
+    400038: Cylinder.399
+    400040: Plane.270
+    400042: //RootNode
+    2100000: material_7
+    2100002: material_000
+    2100004: material_1
+    2100006: material_100
+    2300000: Circle.351
+    2300002: Circle.352
+    2300004: Circle.353
+    2300006: Circle.354
+    2300008: Circle.355
+    2300010: Circle.356
+    2300012: Cone.431
+    2300014: Cone.432
+    2300016: Cone.433
+    2300018: Cone.434
+    2300020: Cone.435
+    2300022: Cone.436
+    2300024: Cone.437
+    2300026: Cone.438
+    2300028: Cone.439
+    2300030: Cone.440
+    2300032: Cylinder.396
+    2300034: Cylinder.397
+    2300036: Cylinder.398
+    2300038: Cylinder.399
+    2300040: Plane.270
+    3300000: Circle.351
+    3300002: Circle.352
+    3300004: Circle.353
+    3300006: Circle.354
+    3300008: Circle.355
+    3300010: Circle.356
+    3300012: Cone.431
+    3300014: Cone.432
+    3300016: Cone.433
+    3300018: Cone.434
+    3300020: Cone.435
+    3300022: Cone.436
+    3300024: Cone.437
+    3300026: Cone.438
+    3300028: Cone.439
+    3300030: Cone.440
+    3300032: Cylinder.396
+    3300034: Cylinder.397
+    3300036: Cylinder.398
+    3300038: Cylinder.399
+    3300040: Plane.270
+    4300000: Circle.354
+    4300002: Cone.440
+    4300004: Cone.439
+    4300006: Cone.438
+    4300008: Cone.437
+    4300010: Cone.436
+    4300012: Cone.435
+    4300014: Cone.434
+    4300016: Cone.433
+    4300018: Cone.432
+    4300020: Cone.431
+    4300022: Plane.270
+    4300024: Cylinder.399
+    4300026: Cylinder.398
+    4300028: Cylinder.397
+    4300030: Cylinder.396
+    4300032: Circle.356
+    4300034: Circle.355
+    4300036: Circle.353
+    4300038: Circle.352
+    4300040: Circle.351
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

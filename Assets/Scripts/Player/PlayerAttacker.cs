@@ -118,6 +118,18 @@ public class PlayerAttacker : MonoBehaviour
         }
     }
 
+    public void HandleLTAction()
+    {
+        if(playerInventory.leftWeapon.isShieldWeapon)
+        {
+            PerformLTWeaponArt(inputHandler.twoHandFlag);
+        }
+        else if(playerInventory.leftWeapon.isMeleeWeapon)
+        {
+            //Do a light attack
+        }
+    }
+
     #endregion
 
     #region Attack Actions
@@ -154,6 +166,22 @@ public class PlayerAttacker : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void PerformLTWeaponArt(bool isLeftHand)
+    {
+        if (playerManager.isInteracting) return;
+
+        if(isLeftHand)
+        {
+            animatorHandler.PlayTargetAnimation(playerInventory.leftWeapon.Weapon_Art, true);
+        }
+        else
+        {
+
+        }
+        //If we are two handing, perform right weapon art
+        //else perform weapon art for left hand
     }
 
     private void SuccessfullyCastSpell()

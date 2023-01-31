@@ -45,4 +45,8 @@ public class WeaponItem : Item
     public bool isFaithCaster;
     public bool isPyroCaster;
     public bool isMeleeWeapon;
+    public bool isShieldWeapon;
+
+    [Header("Weapon Art")]
+    public string Weapon_Art;
 }

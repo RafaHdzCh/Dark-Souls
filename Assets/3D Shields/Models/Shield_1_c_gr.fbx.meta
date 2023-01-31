@@ -1,0 +1,173 @@
+fileFormatVersion: 2
+guid: 7e5010b800b40bb41bece03d8d0f2987
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Circle.308
+    100002: Circle.309
+    100004: Circle.313
+    100006: Cone.363
+    100008: Cone.364
+    100010: Cone.365
+    100012: Cone.366
+    100014: Cone.367
+    100016: Cone.368
+    100018: Cone.369
+    100020: Cone.370
+    100022: Cylinder.284
+    100024: Cylinder.285
+    100026: Cylinder.286
+    100028: Cylinder.287
+    100030: Plane.166
+    100032: //RootNode
+    400000: Circle.308
+    400002: Circle.309
+    400004: Circle.313
+    400006: Cone.363
+    400008: Cone.364
+    400010: Cone.365
+    400012: Cone.366
+    400014: Cone.367
+    400016: Cone.368
+    400018: Cone.369
+    400020: Cone.370
+    400022: Cylinder.284
+    400024: Cylinder.285
+    400026: Cylinder.286
+    400028: Cylinder.287
+    400030: Plane.166
+    400032: //RootNode
+    2100000: material_100
+    2100002: material_1
+    2100004: material_7
+    2100006: material_000
+    2300000: Circle.308
+    2300002: Circle.309
+    2300004: Circle.313
+    2300006: Cone.363
+    2300008: Cone.364
+    2300010: Cone.365
+    2300012: Cone.366
+    2300014: Cone.367
+    2300016: Cone.368
+    2300018: Cone.369
+    2300020: Cone.370
+    2300022: Cylinder.284
+    2300024: Cylinder.285
+    2300026: Cylinder.286
+    2300028: Cylinder.287
+    2300030: Plane.166
+    3300000: Circle.308
+    3300002: Circle.309
+    3300004: Circle.313
+    3300006: Cone.363
+    3300008: Cone.364
+    3300010: Cone.365
+    3300012: Cone.366
+    3300014: Cone.367
+    3300016: Cone.368
+    3300018: Cone.369
+    3300020: Cone.370
+    3300022: Cylinder.284
+    3300024: Cylinder.285
+    3300026: Cylinder.286
+    3300028: Cylinder.287
+    3300030: Plane.166
+    4300000: Circle.313
+    4300002: Circle.309
+    4300004: Cone.370
+    4300006: Cone.369
+    4300008: Cone.368
+    4300010: Cone.367
+    4300012: Cone.366
+    4300014: Cone.365
+    4300016: Cone.364
+    4300018: Cone.363
+    4300020: Circle.308
+    4300022: Plane.166
+    4300024: Cylinder.287
+    4300026: Cylinder.286
+    4300028: Cylinder.285
+    4300030: Cylinder.284
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

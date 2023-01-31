@@ -1,0 +1,171 @@
+fileFormatVersion: 2
+guid: f618203ae2de1d24f82d0b38351c3b1f
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Circle.062
+    100002: Circle.063
+    100004: Cone.177
+    100006: Cone.178
+    100008: Cylinder.096
+    100010: Cylinder.097
+    100012: Cylinder.098
+    100014: Cylinder.099
+    100016: Plane.099
+    100018: Plane.112
+    100020: Plane.114
+    100022: Plane.115
+    100024: Plane.116
+    100026: Plane.117
+    100028: Plane.118
+    100030: //RootNode
+    400000: Circle.062
+    400002: Circle.063
+    400004: Cone.177
+    400006: Cone.178
+    400008: Cylinder.096
+    400010: Cylinder.097
+    400012: Cylinder.098
+    400014: Cylinder.099
+    400016: Plane.099
+    400018: Plane.112
+    400020: Plane.114
+    400022: Plane.115
+    400024: Plane.116
+    400026: Plane.117
+    400028: Plane.118
+    400030: //RootNode
+    2100000: material_14
+    2100002: material_1
+    2100004: material_200
+    2100006: material_000
+    2100008: material_7
+    2100010: material_11
+    2100012: material_10
+    2300000: Circle.062
+    2300002: Circle.063
+    2300004: Cone.177
+    2300006: Cone.178
+    2300008: Cylinder.096
+    2300010: Cylinder.097
+    2300012: Cylinder.098
+    2300014: Cylinder.099
+    2300016: Plane.099
+    2300018: Plane.112
+    2300020: Plane.114
+    2300022: Plane.115
+    2300024: Plane.116
+    2300026: Plane.117
+    2300028: Plane.118
+    3300000: Circle.062
+    3300002: Circle.063
+    3300004: Cone.177
+    3300006: Cone.178
+    3300008: Cylinder.096
+    3300010: Cylinder.097
+    3300012: Cylinder.098
+    3300014: Cylinder.099
+    3300016: Plane.099
+    3300018: Plane.112
+    3300020: Plane.114
+    3300022: Plane.115
+    3300024: Plane.116
+    3300026: Plane.117
+    3300028: Plane.118
+    4300000: Cone.177
+    4300002: Plane.118
+    4300004: Plane.117
+    4300006: Plane.116
+    4300008: Cylinder.099
+    4300010: Cylinder.098
+    4300012: Cylinder.097
+    4300014: Cylinder.096
+    4300016: Plane.115
+    4300018: Plane.114
+    4300020: Cone.178
+    4300022: Plane.112
+    4300024: Circle.063
+    4300026: Circle.062
+    4300028: Plane.099
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
