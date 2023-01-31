@@ -241,8 +241,8 @@ public class PlayerAttacker : MonoBehaviour
             int criticalDamage = playerInventory.rightWeapon.criticalDamageMultiplier * rightWeapon.currentWeaponDamage;
             enemyCharacterManager.pendingCriticalDamage = criticalDamage;
 
-            animatorHandler.PlayTargetAnimation(DarkSoulsConsts.RIPOSTE, true);
-            enemyCharacterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation(DarkSoulsConsts.RIPOSTED, true);
+            animatorHandler.PlayTargetAnimation(DarkSoulsConsts.PARRY, true);
+            enemyCharacterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation(DarkSoulsConsts.PARRIED, true);
         }
     }
 }
