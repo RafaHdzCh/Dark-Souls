@@ -541,6 +541,8 @@ MonoBehaviour:
   backstabCollider: {fileID: 649496344}
   riposteCollider: {fileID: 8712806785238415778}
   canBeRiposted: 0
+  canBeParried: 0
+  isParrying: 0
   pendingCriticalDamage: 0
   interactableUIGameObject: {fileID: 0}
   itemInteractableGameObject: {fileID: 0}
@@ -572,7 +574,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 083bb1a2b7e922e4796d27647f4c5b06, type: 2}
   - {fileID: 11400000, guid: 549db61f852d3dc4192cb40e1df10b8e, type: 2}
   weaponInLeftHandSlots:
-  - {fileID: 11400000, guid: 5f2e554870077c944a85b44a40c985de, type: 2}
+  - {fileID: 11400000, guid: 8b4c2450f0c93364e8f138bc1a4e4e13, type: 2}
   - {fileID: 11400000, guid: 430d5d2687198a74faf99f6345a45715, type: 2}
   currentRightWeaponIndex: 0
   currentLeftWeaponIndex: 0
