@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro.EditorUtilities;
 using UnityEngine;
+using static TreeEditor.TreeGroup;
 
 public class EnemyStats : CharacterStats
 {
@@ -10,6 +11,7 @@ public class EnemyStats : CharacterStats
     [SerializeField] Transform healthBarTransform;
     [SerializeField] Transform cameraTransform;
     [SerializeField] GameObject healthBarGO;
+    [SerializeField] Rigidbody rigi;
 
     [Header("Scripts")]
     EnemyAnimatorManager enemyAnimatorManager;
@@ -75,6 +77,8 @@ public class EnemyStats : CharacterStats
     private void HideHealthBarOnDeath()
     {
         healthBarGO.SetActive(false);
+        FindObjectOfType<InputHandler>().lockOnFlag = false;
+        FindObjectOfType<CameraHandler>().ClearLockOnTargets();
     }
 
     private void DeactivateCollidersOnDeath()
@@ -87,12 +91,14 @@ public class EnemyStats : CharacterStats
         {
             collider.enabled = false;
         }
+        rigi.isKinematic = true;
     }
 
     private void HandleDeath(bool playAnimation)
     {
         currentHealth = 0;
-        //DeactivateCollidersOnDeath();
+        DeactivateCollidersOnDeath();
+        
         if (playAnimation)
         {
             enemyAnimatorManager.PlayTargetAnimation(DarkSoulsConsts.DEATH, true);

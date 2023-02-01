@@ -6,10 +6,12 @@ using UnityEngine.AI;
 public class PursueTargetState : State
 {
     [SerializeField] CombatStanceState combatStanceState;
+    [SerializeField] Animator anim;
 
     public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
     {
         if (enemyStats.currentHealth <= 0) return null;
+        //if (anim.GetBool(DarkSoulsConsts.ISINTERACTING) == true) return null;
         if (enemyManager.isPerformingAction)
         {
             enemyAnimatorManager.anim.SetFloat(DarkSoulsConsts.VERTICAL, 0, 0.1f, Time.deltaTime);

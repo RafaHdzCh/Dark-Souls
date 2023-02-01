@@ -16,6 +16,9 @@ public class PlayerAttacker : MonoBehaviour
     [SerializeField] LayerMask backStabLayer;
     [SerializeField] LayerMask riposteLayer;
 
+    const int attemptCriticalDamageCost = 10;
+    const int criticalDamageCost = 15;
+
     private void Awake()
     {
         playerManager = GetComponentInParent<PlayerManager>();
@@ -120,7 +123,9 @@ public class PlayerAttacker : MonoBehaviour
 
     public void HandleLTAction()
     {
-        if(playerInventory.leftWeapon.isShieldWeapon)
+        if (playerStats.currentStamina <= 0) return;
+
+        if (playerInventory.leftWeapon.isShieldWeapon)
         {
             PerformLTWeaponArt(inputHandler.twoHandFlag);
         }
@@ -179,6 +184,7 @@ public class PlayerAttacker : MonoBehaviour
         else
         {
             animatorHandler.PlayTargetAnimation(playerInventory.leftWeapon.Weapon_Art, true);
+            playerStats.TakeStaminaDamage(attemptCriticalDamageCost);
         }
     }
 
@@ -194,8 +200,8 @@ public class PlayerAttacker : MonoBehaviour
         if (playerStats.currentStamina <= 0) return;
 
         RaycastHit hit;
-
         DamageCollider rightWeapon = weaponSlotManager.rightHandDamageCollider;
+        
 
         if (Physics.Raycast(inputHandler.criticalAttackRayCastStartPoint.position,
             transform.TransformDirection(Vector3.forward), out hit, 0.5f, backStabLayer))
@@ -204,6 +210,7 @@ public class PlayerAttacker : MonoBehaviour
             if (enemyCharacterManager == null) return;
 
             //Check for team ID (so you cant attack allis)
+            playerStats.TakeStaminaDamage(criticalDamageCost);
             playerManager.transform.position = enemyCharacterManager.backstabCollider.criticalDamagerStandPosition.position;
 
             Vector3 rotationDirection = playerManager.transform.root.eulerAngles;
@@ -228,6 +235,7 @@ public class PlayerAttacker : MonoBehaviour
             if (enemyCharacterManager == null) return;
             if (!enemyCharacterManager.canBeRiposted) return;
 
+            playerStats.TakeStaminaDamage(criticalDamageCost);
             playerManager.transform.position = enemyCharacterManager.riposteCollider.criticalDamagerStandPosition.position;
 
             Vector3 rotationDirection = playerManager.transform.root.eulerAngles;

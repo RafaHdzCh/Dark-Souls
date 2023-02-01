@@ -17,7 +17,7 @@ public class EnemyManager : CharacterManager
 
     [Header("Serializables")]
     [Header("Detection")]
-    public float detectionRadius = 20f;
+    public float detectionRadius = 40f;
     public float minimumDetectionAngle = -50f;
     public float maximumDetectionAngle = 50f;
     public State currentState;

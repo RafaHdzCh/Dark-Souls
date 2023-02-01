@@ -6,13 +6,15 @@ using UnityEngine.UI;
 public class AmbushState : State
 {
     private bool isSleeping = true;
-    private float detctionRadius = 2;
+    private float detctionRadius = 5;
 
+    [SerializeField] Animator anim;
     [SerializeField] PursueTargetState pursurTargetState;
     [SerializeField] LayerMask detectionLayer;
     public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
     {
         if (enemyStats.currentHealth <= 0) return null;
+        //if (anim.GetBool(DarkSoulsConsts.ISINTERACTING) == true) return null;
         if (isSleeping && enemyManager.isInteracting == false)
         {
             enemyAnimatorManager.PlayTargetAnimation(DarkSoulsConsts.SLEEP, true);

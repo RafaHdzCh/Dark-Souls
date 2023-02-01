@@ -242,7 +242,6 @@ public class InputHandler : MonoBehaviour
         else if(lockOnInput && lockOnFlag)
         {
             lockOnFlag = false;
-            lockOnFlag = false;
             cameraHandler.ClearLockOnTargets();
         }
 
