@@ -36,11 +36,11 @@ public class DamageCollider : MonoBehaviour
             PlayerStats playerStats = collision.GetComponent<PlayerStats>();
             CharacterManager enemyCaracterManager = collision.GetComponent<CharacterManager>();
 
-            if(characterManager != null)
+            if(enemyCaracterManager != null)
             {
-                if(characterManager.isParrying)
+                if(enemyCaracterManager.isParrying)
                 {
-                    characterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation(DarkSoulsConsts.RIPOSTED, true);
+                    characterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation(DarkSoulsConsts.PARRIED, true);
                     return;
                 }
             }
@@ -55,11 +55,11 @@ public class DamageCollider : MonoBehaviour
             EnemyStats enemyStats = collision.GetComponent<EnemyStats>();
             CharacterManager enemyCaracterManager = collision.GetComponent<CharacterManager>();
 
-            if (characterManager != null)
+            if (enemyCaracterManager != null)
             {
-                if (characterManager.isParrying)
+                if (enemyCaracterManager.isParrying)
                 {
-                    characterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation(DarkSoulsConsts.RIPOSTED, true);
+                    characterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation(DarkSoulsConsts.PARRIED, true);
                     return;
                 }
             }

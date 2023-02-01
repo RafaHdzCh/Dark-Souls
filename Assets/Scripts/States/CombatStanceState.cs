@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CombatStanceState : State
 {
-    [SerializeField] AttackState attackState;
+    [SerializeField] AttackState attackState; 
     [SerializeField] PursueTargetState pursueTargetState;
 
     public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)

@@ -34,7 +34,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Riposte
+  m_Name: Parry
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -887,7 +887,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Parried
+  m_Name: Riposted
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -1042,7 +1042,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Parry_Stabbed_Get_Up
+  m_Name: Riposte_Stabbed_Get_Up
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -1560,7 +1560,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Parry
+  m_Name: Riposte
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -1587,7 +1587,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Riposted
+  m_Name: Parried
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -2131,7 +2131,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Parry_Death
+  m_Name: Riposte_Death
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []

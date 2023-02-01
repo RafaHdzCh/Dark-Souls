@@ -59,4 +59,13 @@ public class EnemyAnimatorManager : AnimatorManager
     {
         enemyManager.canBeRiposted = false;
     }
+    public void CanRotate()
+    {
+        anim.SetBool(DarkSoulsConsts.CANROTATE, true);
+    }
+
+    public void StopRotation()
+    {
+        anim.SetBool(DarkSoulsConsts.CANROTATE, false);
+    }
 }

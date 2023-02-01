@@ -184,15 +184,12 @@ public class InputHandler : MonoBehaviour
         {
             if(twoHandFlag)
             {
-
+                //handle weapon art
             }
             else
             {
                 playerAttacker.HandleLTAction();
             }
-            //if two handling, handle weapon art
-            //else handle light attack if melee weapon
-            //handle weapon art if shield
         }
     }
 

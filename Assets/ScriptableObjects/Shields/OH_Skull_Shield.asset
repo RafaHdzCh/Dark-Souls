@@ -37,4 +37,4 @@ MonoBehaviour:
   isPyroCaster: 0
   isMeleeWeapon: 0
   isShieldWeapon: 1
-  Weapon_Art: Riposte
+  Weapon_Art: Parry

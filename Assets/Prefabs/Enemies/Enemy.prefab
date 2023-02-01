@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 7041544812122922142}
   - component: {fileID: 3441362740728242246}
   m_Layer: 12
-  m_Name: RiposterCollider
+  m_Name: Riposte Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2801,7 +2801,7 @@ MonoBehaviour:
   lockOnTransform: {fileID: 8121742789243380356}
   backstabCollider: {fileID: 906612027}
   riposteCollider: {fileID: 3441362740728242246}
-  canBeRiposted: 1
+  canBeRiposted: 0
   canBeParried: 0
   isParrying: 0
   pendingCriticalDamage: 0

@@ -174,7 +174,7 @@ public class PlayerAttacker : MonoBehaviour
 
         if(isTwoHanding)
         {
-            //If we are two handing, perform right weapon art
+            //perform right weapon art
         }
         else
         {
@@ -201,25 +201,24 @@ public class PlayerAttacker : MonoBehaviour
             transform.TransformDirection(Vector3.forward), out hit, 0.5f, backStabLayer))
         {
             CharacterManager enemyCharacterManager = hit.transform.gameObject.GetComponentInParent<CharacterManager>();
-            if(enemyCharacterManager != null)
-            {
-                //Check for team ID (so you cant attack allis)
-                playerManager.transform.position = enemyCharacterManager.backstabCollider.criticalDamagerStandPosition.position;
+            if (enemyCharacterManager == null) return;
 
-                Vector3 rotationDirection = playerManager.transform.root.eulerAngles;
-                rotationDirection = hit.transform.position - playerManager.transform.position;
-                rotationDirection.y = 0;
-                rotationDirection.Normalize();
-                Quaternion tr= Quaternion.LookRotation(rotationDirection);
-                Quaternion targetRotation = Quaternion.Slerp(playerManager.transform.rotation, tr, 500 * Time.deltaTime);
-                playerManager.transform.rotation = targetRotation;
+            //Check for team ID (so you cant attack allis)
+            playerManager.transform.position = enemyCharacterManager.backstabCollider.criticalDamagerStandPosition.position;
 
-                int criticalDamage = playerInventory.rightWeapon.criticalDamageMultiplier * rightWeapon.currentWeaponDamage;
-                enemyCharacterManager.pendingCriticalDamage = criticalDamage;
+            Vector3 rotationDirection = playerManager.transform.root.eulerAngles;
+            rotationDirection = hit.transform.position - playerManager.transform.position;
+            rotationDirection.y = 0;
+            rotationDirection.Normalize();
+            Quaternion tr = Quaternion.LookRotation(rotationDirection);
+            Quaternion targetRotation = Quaternion.Slerp(playerManager.transform.rotation, tr, 500 * Time.deltaTime);
+            playerManager.transform.rotation = targetRotation;
 
-                animatorHandler.PlayTargetAnimation(DarkSoulsConsts.BACKSTAB, true);
-                enemyCharacterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation(DarkSoulsConsts.BACKSTABBED, true);
-            }
+            int criticalDamage = playerInventory.rightWeapon.criticalDamageMultiplier * rightWeapon.currentWeaponDamage;
+            enemyCharacterManager.pendingCriticalDamage = criticalDamage;
+
+            animatorHandler.PlayTargetAnimation(DarkSoulsConsts.BACKSTAB, true);
+            enemyCharacterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation(DarkSoulsConsts.BACKSTABBED, true);
         }
         else if (Physics.Raycast(inputHandler.criticalAttackRayCastStartPoint.position,
                  transform.TransformDirection(Vector3.forward), out hit, 0.5f, riposteLayer))
@@ -228,6 +227,7 @@ public class PlayerAttacker : MonoBehaviour
             CharacterManager enemyCharacterManager = hit.transform.gameObject.GetComponentInParent<CharacterManager>();
             if (enemyCharacterManager == null) return;
             if (!enemyCharacterManager.canBeRiposted) return;
+
             playerManager.transform.position = enemyCharacterManager.riposteCollider.criticalDamagerStandPosition.position;
 
             Vector3 rotationDirection = playerManager.transform.root.eulerAngles;
@@ -241,8 +241,8 @@ public class PlayerAttacker : MonoBehaviour
             int criticalDamage = playerInventory.rightWeapon.criticalDamageMultiplier * rightWeapon.currentWeaponDamage;
             enemyCharacterManager.pendingCriticalDamage = criticalDamage;
 
-            animatorHandler.PlayTargetAnimation(DarkSoulsConsts.PARRY, true);
-            enemyCharacterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation(DarkSoulsConsts.PARRIED, true);
+            animatorHandler.PlayTargetAnimation(DarkSoulsConsts.RIPOSTE, true);
+            enemyCharacterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation(DarkSoulsConsts.RIPOSTED, true);
         }
     }
 }
