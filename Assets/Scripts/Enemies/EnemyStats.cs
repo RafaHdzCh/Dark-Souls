@@ -10,19 +10,18 @@ public class EnemyStats : CharacterStats
     [Header("Components")]
     [SerializeField] Transform healthBarTransform;
     [SerializeField] Transform cameraTransform;
-    [SerializeField] GameObject healthBarGO;
     [SerializeField] Rigidbody rigi;
 
     [Header("Scripts")]
+    EnemyHealthBar enemyHealthBar;
     EnemyAnimatorManager enemyAnimatorManager;
-    HealthBar _healthBar;
 
 
     public int soulsAwardedOnDeath = 50;
 
     private void Awake()
     {
-        _healthBar = GetComponentInChildren<HealthBar>();
+        enemyHealthBar = GetComponentInChildren<EnemyHealthBar>();  
         enemyAnimatorManager = GetComponent<EnemyAnimatorManager>();
     }
 
@@ -30,6 +29,7 @@ public class EnemyStats : CharacterStats
     {
         maxHealth = SetMaxHealthFromHealthLevel();
         currentHealth = maxHealth;
+        enemyHealthBar.SetMaxHealth(maxHealth);
     }
 
     private void Update()
@@ -40,7 +40,6 @@ public class EnemyStats : CharacterStats
     private int SetMaxHealthFromHealthLevel()
     {
         maxHealth = healthLevel * 10;
-        _healthBar.SetMaxHealth(maxHealth);
         return maxHealth;
     }
 
@@ -48,10 +47,11 @@ public class EnemyStats : CharacterStats
     {
         currentHealth = currentHealth - damage;
 
+        enemyHealthBar.SetHealth(currentHealth);
+
         if (currentHealth <= 0)
         {
             currentHealth = 0;
-            Invoke(nameof(HideHealthBarOnDeath), 3f);
             isDead = true;
         }
     }
@@ -61,9 +61,9 @@ public class EnemyStats : CharacterStats
         if (isDead) return;
 
         currentHealth = currentHealth - damage;
+        enemyHealthBar.SetHealth(currentHealth);
 
-        _healthBar.SetCurrentHealth(currentHealth);
-        if(playAnimation)
+        if (playAnimation)
         {
             enemyAnimatorManager.PlayTargetAnimation(DarkSoulsConsts.DAMAGE, true);
         }
@@ -76,7 +76,6 @@ public class EnemyStats : CharacterStats
 
     private void HideHealthBarOnDeath()
     {
-        healthBarGO.SetActive(false);
         FindObjectOfType<InputHandler>().lockOnFlag = false;
         FindObjectOfType<CameraHandler>().ClearLockOnTargets();
     }

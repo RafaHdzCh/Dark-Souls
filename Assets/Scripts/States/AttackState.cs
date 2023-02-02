@@ -8,12 +8,12 @@ public class AttackState : State
 
     public EnemyAttackAction[] enemyAttacks;
     public EnemyAttackAction currentAttack;
-    [SerializeField] Animator anim;
 
     public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
     {
         if (enemyStats.currentHealth <= 0) return null;
-        if(anim.GetBool(DarkSoulsConsts.ISINTERACTING) == true) return null;
+
+        if (enemyManager.isInteracting) return this;
 
         Vector3 targetDirection = enemyManager.currentTarget.transform.position - transform.position;
         float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
@@ -22,7 +22,7 @@ public class AttackState : State
         HandleRotateTowardsTarget(enemyManager);
 
         if (enemyManager.isPerformingAction)
-        {
+        { 
             return combatStanceState;
         }
 
@@ -44,9 +44,18 @@ public class AttackState : State
                         enemyAnimatorManager.anim.SetFloat(DarkSoulsConsts.HORIZONTAL, 0, 0.1f, Time.deltaTime);
                         enemyAnimatorManager.PlayTargetAnimation(currentAttack.actionAnimation, true);
                         enemyManager.isPerformingAction = true;
-                        enemyManager.currentRecoveryTime = currentAttack.recoveryTime;
-                        currentAttack = null;
-                        return combatStanceState;
+
+                        if(currentAttack.canCombo)
+                        {
+                            currentAttack = currentAttack.comboAction;
+                            return this;
+                        }
+                        else
+                        {
+                            enemyManager.currentRecoveryTime = currentAttack.recoveryTime;
+                            currentAttack = null;
+                            return combatStanceState;
+                        }
                     }
                 }
             }

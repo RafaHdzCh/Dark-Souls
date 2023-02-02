@@ -14,7 +14,6 @@ public class AmbushState : State
     public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
     {
         if (enemyStats.currentHealth <= 0) return null;
-        //if (anim.GetBool(DarkSoulsConsts.ISINTERACTING) == true) return null;
         if (isSleeping && enemyManager.isInteracting == false)
         {
             enemyAnimatorManager.PlayTargetAnimation(DarkSoulsConsts.SLEEP, true);

@@ -13,7 +13,6 @@ public class IdleState : State
     public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
     {
         if (enemyStats.currentHealth <= 0) return null;
-        //if (anim.GetBool(DarkSoulsConsts.ISINTERACTING) == true) return null;
 
         #region Handle Enemy Target Detection
         Collider[] colliders = Physics.OverlapSphere(transform.position, enemyManager.detectionRadius, detectionLayer);

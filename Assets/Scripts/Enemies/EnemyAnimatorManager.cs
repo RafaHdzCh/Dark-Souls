@@ -68,4 +68,24 @@ public class EnemyAnimatorManager : AnimatorManager
     {
         anim.SetBool(DarkSoulsConsts.CANROTATE, false);
     }
+
+    public void EnableCombo()
+    {
+        anim.SetBool(DarkSoulsConsts.CANDOCOMBO, true);
+    }
+
+    public void DisableCombo()
+    {
+        anim.SetBool(DarkSoulsConsts.CANDOCOMBO, false);
+    }
+
+    public void EnableIsInvulnerable()
+    {
+        anim.SetBool(DarkSoulsConsts.ISINVULNERABLE, true);
+    }
+    public void DisableIsInvulnerable()
+    {
+        anim.SetBool(DarkSoulsConsts.ISINVULNERABLE, false);
+    }
+
 }

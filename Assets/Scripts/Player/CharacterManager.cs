@@ -11,12 +11,11 @@ public class CharacterManager : MonoBehaviour
     public CriticalDamageCollider riposteCollider;
 
     [Header("Combat Flags")]
-    public bool canBeRiposted;
-    public bool canBeParried;
-    public bool isParrying;
-    //damage will be inflicted during an animation event
-    //used during backstab
-    public int pendingCriticalDamage;
+    [System.NonSerialized] public bool canBeRiposted;
+    [System.NonSerialized] public bool canBeParried;
+    [System.NonSerialized] public bool isParrying;
+
+    [System.NonSerialized] public int pendingCriticalDamage;
 
 
 }

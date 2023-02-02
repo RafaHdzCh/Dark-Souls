@@ -2784,7 +2784,6 @@ MonoBehaviour:
   isDead: 0
   healthBarTransform: {fileID: 2400626767415522420}
   cameraTransform: {fileID: 0}
-  healthBarGO: {fileID: 2400626767415522423}
   rigi: {fileID: 4058946893968436041}
   soulsAwardedOnDeath: 50
 --- !u!114 &4058946893968436044
@@ -2802,10 +2801,6 @@ MonoBehaviour:
   lockOnTransform: {fileID: 8121742789243380356}
   backstabCollider: {fileID: 906612027}
   riposteCollider: {fileID: 3441362740728242246}
-  canBeRiposted: 0
-  canBeParried: 0
-  isParrying: 0
-  pendingCriticalDamage: 0
   isPerformingAction: 0
   isInteracting: 0
   currentTarget: {fileID: 0}
@@ -2813,6 +2808,7 @@ MonoBehaviour:
   rotationSpeed: 30
   maximumAttackRange: 1.5
   currentRecoveryTime: 0
+  canDoCombo: 0
   detectionRadius: 20
   minimumDetectionAngle: -50
   maximumDetectionAngle: 50
@@ -3273,7 +3269,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackState: {fileID: 8121742790248960659}
   pursueTargetState: {fileID: 8121742789075955620}
-  anim: {fileID: 4058946893968436040}
 --- !u!1 &8121742788558432129
 GameObject:
   m_ObjectHideFlags: 0
@@ -3467,7 +3462,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   combatStanceState: {fileID: 8121742788556270836}
-  anim: {fileID: 4058946893968436040}
 --- !u!1 &8121742789188542678
 GameObject:
   m_ObjectHideFlags: 0
@@ -3631,7 +3625,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e4bf88671450c2f4dbe1412d3374dee4, type: 2}
   - {fileID: 11400000, guid: 893d18303867de1419d5f51edfad1be0, type: 2}
   currentAttack: {fileID: 0}
-  anim: {fileID: 4058946893968436040}
 --- !u!1 &8189318952124576661
 GameObject:
   m_ObjectHideFlags: 0
@@ -3891,10 +3884,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 5901553184322667547, guid: 07ccc515e0893a345a838faecf81113b, type: 3}
-      propertyPath: followTransform
-      value: 
-      objectReference: {fileID: 4058946893978266622}
     - target: {fileID: 5901553184322667549, guid: 07ccc515e0893a345a838faecf81113b, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -3904,10 +3893,5 @@ PrefabInstance:
 --- !u!224 &2400626767415522420 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5901553182965400736, guid: 07ccc515e0893a345a838faecf81113b, type: 3}
-  m_PrefabInstance: {fileID: 8121742789607305428}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2400626767415522423 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5901553182965400739, guid: 07ccc515e0893a345a838faecf81113b, type: 3}
   m_PrefabInstance: {fileID: 8121742789607305428}
   m_PrefabAsset: {fileID: 0}

@@ -6,12 +6,11 @@ public class CombatStanceState : State
 {
     [SerializeField] AttackState attackState; 
     [SerializeField] PursueTargetState pursueTargetState;
-    [SerializeField] Animator anim;
 
     public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
     {
         if (enemyStats.currentHealth <= 0) return null;
-        if (anim.GetBool(DarkSoulsConsts.ISINTERACTING) == true) return null;
+        if (enemyManager.isInteracting) return this;
 
         float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
 

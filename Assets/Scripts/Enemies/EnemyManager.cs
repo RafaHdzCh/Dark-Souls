@@ -15,6 +15,10 @@ public class EnemyManager : CharacterManager
     [HideInInspector] public float maximumAttackRange = 1.5f;
     [HideInInspector] public float currentRecoveryTime = 0;
 
+    [Header("Combat Flags")]
+
+    public bool canDoCombo;
+
     [Header("Serializables")]
     [Header("Detection")]
     public float detectionRadius = 40f;
@@ -43,13 +47,17 @@ public class EnemyManager : CharacterManager
     private void Update()
     {
         HandleRecoveryTimer();
+        HandleStateMachine();
+
         isInteracting = enemyAnimatorManager.anim.GetBool(DarkSoulsConsts.ISINTERACTING);
+        canDoCombo = enemyAnimatorManager.anim.GetBool(DarkSoulsConsts.CANDOCOMBO);
         enemyAnimatorManager.anim.SetBool(DarkSoulsConsts.ISDEAD, enemyStats.isDead);
     }
 
-    private void FixedUpdate()
+    private void LateUpdate()
     {
-        HandleStateMachine();
+        navMeshAgent.transform.localPosition = Vector3.zero;
+        navMeshAgent.transform.localRotation = Quaternion.identity;
     }
 
     private void HandleStateMachine()
