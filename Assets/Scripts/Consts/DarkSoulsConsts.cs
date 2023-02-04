@@ -24,6 +24,7 @@ public static class DarkSoulsConsts
     public static readonly string CANDOCOMBO = "canDoCombo";
     public static readonly string CANROTATE = "canRotate";
     public static readonly string ISINAIR = "isInAir";
+    public static readonly string ISFIRINGSPELL = "isFiringSpell";
     public static readonly string RIGHTARMEMPTY = "Right Arm Empty";
     public static readonly string LEFTARMEMPTY = "Left Arm Empty";
     public static readonly string BOTHARMSEMPTY = "Both Arms Empty";

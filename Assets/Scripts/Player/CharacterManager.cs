@@ -15,6 +15,9 @@ public class CharacterManager : MonoBehaviour
     [System.NonSerialized] public bool canBeParried;
     [System.NonSerialized] public bool isParrying;
 
+    [Header("Spells")]
+    [System.NonSerialized] public bool isFiringSpell;
+
     [System.NonSerialized] public int pendingCriticalDamage;
 
 

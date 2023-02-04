@@ -159,11 +159,25 @@ public class PlayerAttacker : MonoBehaviour
         if (playerManager.isInteracting) return;
         if(weapon.isFaithCaster)
         {
-            if(playerInventory.currentSpell != null && playerInventory.currentSpell.isFaithSpell)
+            if (playerInventory.currentSpell != null && playerInventory.currentSpell.isFaithSpell)
             {
-                if(playerStats.currentMana >= playerInventory.currentSpell.manaCost)
+                if (playerStats.currentMana >= playerInventory.currentSpell.manaCost)
                 {
-                    playerInventory.currentSpell.AttemptToCastSpell(animatorHandler, playerStats);
+                    playerInventory.currentSpell.AttemptToCastSpell(animatorHandler, playerStats, weaponSlotManager);
+                }
+                else
+                {
+                    animatorHandler.PlayTargetAnimation(DarkSoulsConsts.SHRUGGING, true);
+                }
+            }
+        }
+        else if (weapon.isPyroCaster)
+        {
+            if (playerInventory.currentSpell != null && playerInventory.currentSpell.isPyroSpell)
+            {
+                if (playerStats.currentMana >= playerInventory.currentSpell.manaCost)
+                {
+                    playerInventory.currentSpell.AttemptToCastSpell(animatorHandler, playerStats, weaponSlotManager);
                 }
                 else
                 {
@@ -190,7 +204,8 @@ public class PlayerAttacker : MonoBehaviour
 
     private void SuccessfullyCastSpell()
     {
-        playerInventory.currentSpell.SuccessfullyCastSpell(animatorHandler, playerStats);
+        playerInventory.currentSpell.SuccessfullyCastSpell(animatorHandler, playerStats, weaponSlotManager);
+        animatorHandler.anim.SetBool(DarkSoulsConsts.ISFIRINGSPELL, true);
     }
 
     #endregion

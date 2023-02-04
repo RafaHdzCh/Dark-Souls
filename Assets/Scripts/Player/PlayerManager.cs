@@ -45,6 +45,7 @@ public class PlayerManager : CharacterManager
 
         //Se establecen los booleanos segun lo que indique la animacion.
         isInteracting = anim.GetBool(DarkSoulsConsts.ISINTERACTING);
+        isFiringSpell = anim.GetBool(DarkSoulsConsts.ISFIRINGSPELL);
         canDoCombo = anim.GetBool(DarkSoulsConsts.CANDOCOMBO);
         anim.SetBool(DarkSoulsConsts.ISINAIR, isInAir);
         anim.SetBool(DarkSoulsConsts.ISDEAD, playerStats.isDead);

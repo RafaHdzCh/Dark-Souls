@@ -4,7 +4,7 @@ using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 public class SpellItem : Item
-{
+{ 
     public GameObject spellWarmUpFX;
     public GameObject spellCastFX;
     public string spellAnimation;
@@ -21,11 +21,15 @@ public class SpellItem : Item
     [TextArea]
     public string spellDescription;
 
-    public virtual void AttemptToCastSpell(PlayerAnimatorManager animatorHandler, PlayerStats playerStats)
+    public virtual void AttemptToCastSpell(PlayerAnimatorManager animatorHandler, 
+                                            PlayerStats playerStats, 
+                                            WeaponSlotManager weaponSlotManager)
     {
 
     }
-    public virtual void SuccessfullyCastSpell(PlayerAnimatorManager animatorHandler, PlayerStats playerStats)
+    public virtual void SuccessfullyCastSpell(PlayerAnimatorManager animatorHandler, 
+                                                PlayerStats playerStats,
+                                                WeaponSlotManager weaponSlotManager)
     {
         playerStats.DeductMana(manaCost);
     }

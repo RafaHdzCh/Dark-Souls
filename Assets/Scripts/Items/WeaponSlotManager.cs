@@ -7,9 +7,9 @@ public class WeaponSlotManager : MonoBehaviour
     [HideInInspector] public WeaponItem attackingWeapon;
 
     [Header("Scripts")]
-    WeaponHolderSlot leftHandSlot;
-    WeaponHolderSlot rightHandSlot;
-    WeaponHolderSlot backSlot;
+    [System.NonSerialized] public WeaponHolderSlot leftHandSlot;
+    [System.NonSerialized] public WeaponHolderSlot rightHandSlot;
+    [System.NonSerialized] public WeaponHolderSlot backSlot;
 
     [System.NonSerialized] public DamageCollider leftHandDamageCollider;
     [System.NonSerialized] public DamageCollider rightHandDamageCollider;

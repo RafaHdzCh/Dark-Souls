@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class ResetAnimatorBool : StateMachineBehaviour
 {
-    public string targetBool;
-    public bool status;
+    [System.NonSerialized] public bool isInteractingStatus = false;
+    [System.NonSerialized] public bool isFiringSpellStatus = false;
+    [System.NonSerialized] public bool canRotateStatus = true;
     //OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.SetBool(targetBool, status);
+        animator.SetBool(DarkSoulsConsts.ISINTERACTING, isInteractingStatus);
+        animator.SetBool(DarkSoulsConsts.ISFIRINGSPELL, isFiringSpellStatus);
+        animator.SetBool(DarkSoulsConsts.CANROTATE, canRotateStatus);
     }
 
 }
