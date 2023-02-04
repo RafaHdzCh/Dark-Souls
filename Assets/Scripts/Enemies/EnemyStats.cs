@@ -56,7 +56,7 @@ public class EnemyStats : CharacterStats
         }
     }
 
-    public void TakeDamage(int damage, bool playAnimation)
+    public override void TakeDamage(int damage, bool playAnimation)
     {
         if (isDead) return;
 

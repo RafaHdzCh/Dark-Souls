@@ -24,4 +24,9 @@ public class CharacterStats : MonoBehaviour
     [HideInInspector] public int soulCount = 0;
 
     [HideInInspector] public bool isDead;
+
+    public virtual void TakeDamage(int damage, bool playAnimation)
+    {
+
+    }
 }

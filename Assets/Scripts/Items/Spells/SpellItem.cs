@@ -27,9 +27,10 @@ public class SpellItem : Item
     {
 
     }
-    public virtual void SuccessfullyCastSpell(PlayerAnimatorManager animatorHandler, 
+    public virtual void SuccessfullyCastSpell(PlayerAnimatorManager animatorHandler,
                                                 PlayerStats playerStats,
-                                                WeaponSlotManager weaponSlotManager)
+                                                WeaponSlotManager weaponSlotManager,
+                                                CameraHandler cameraHandler)
     {
         playerStats.DeductMana(manaCost);
     }

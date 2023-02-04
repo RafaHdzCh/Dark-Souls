@@ -57,7 +57,7 @@ public class PlayerStats : CharacterStats
         maxMana = manaLevel * 10;
         return maxMana;
     }
-    public void TakeDamage(int damage, bool playAnimation)
+    public override void TakeDamage(int damage, bool playAnimation)
     {
         if (playerManager.isInvulnerable) return;
         if (isDead) return;

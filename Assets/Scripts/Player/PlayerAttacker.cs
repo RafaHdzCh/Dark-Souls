@@ -10,6 +10,7 @@ public class PlayerAttacker : MonoBehaviour
     PlayerInventory playerInventory;
     PlayerAnimatorManager animatorHandler;
     InputHandler inputHandler;
+    CameraHandler cameraHandler;
     WeaponSlotManager weaponSlotManager;
     [HideInInspector] public string lastAttack;
 
@@ -28,6 +29,7 @@ public class PlayerAttacker : MonoBehaviour
         animatorHandler = GetComponent<PlayerAnimatorManager>();
         weaponSlotManager = GetComponent<WeaponSlotManager>();
         inputHandler = GetComponentInParent<InputHandler>();
+        cameraHandler = FindObjectOfType<CameraHandler>();
     }
 
     public void HandleWeaponCombo(WeaponItem weapon)
@@ -204,7 +206,7 @@ public class PlayerAttacker : MonoBehaviour
 
     private void SuccessfullyCastSpell()
     {
-        playerInventory.currentSpell.SuccessfullyCastSpell(animatorHandler, playerStats, weaponSlotManager);
+        playerInventory.currentSpell.SuccessfullyCastSpell(animatorHandler, playerStats, weaponSlotManager, cameraHandler);
         animatorHandler.anim.SetBool(DarkSoulsConsts.ISFIRINGSPELL, true);
     }
 

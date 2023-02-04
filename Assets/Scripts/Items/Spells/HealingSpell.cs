@@ -17,9 +17,9 @@ public class HealingSpell : SpellItem
         animatorHandler.PlayTargetAnimation(spellAnimation, true);
         
     }
-    public override void SuccessfullyCastSpell(PlayerAnimatorManager animatorHandler, PlayerStats playerStats, WeaponSlotManager weaponSlotManager)
+    public override void SuccessfullyCastSpell(PlayerAnimatorManager animatorHandler, PlayerStats playerStats, WeaponSlotManager weaponSlotManager, CameraHandler cameraHandler)
     {
-        base.SuccessfullyCastSpell(animatorHandler, playerStats, weaponSlotManager);
+        base.SuccessfullyCastSpell(animatorHandler, playerStats, weaponSlotManager, cameraHandler);
         GameObject instantiateSpellFX = Instantiate(spellCastFX, animatorHandler.transform);
         Destroy(instantiateSpellFX, instantiateSpellFX.GetComponent<ParticleSystem>().main.duration);
         playerStats.HealPlayer(healAmount);

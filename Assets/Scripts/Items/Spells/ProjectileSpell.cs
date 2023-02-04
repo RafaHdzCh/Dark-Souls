@@ -5,8 +5,14 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Spell/Projectile Spell")]
 public class ProjectileSpell : SpellItem
 {
+    [Header("Projectile Damage")]
     public float baseDamage;
-    public float projectileVelocity;
+
+    [Header("Projectile Physics")]
+    public float projectileForwardVelocity;
+    public float projectileUpwardVelocity;
+    public float projectileMass;
+    public bool isEffectedByGravity;
     Rigidbody rigi;
 
     public override void AttemptToCastSpell(PlayerAnimatorManager animatorHandler, 
@@ -21,8 +27,28 @@ public class ProjectileSpell : SpellItem
         //play animation to cast the spell
     }
 
-    public override void SuccessfullyCastSpell(PlayerAnimatorManager animatorHandler, PlayerStats playerStats, WeaponSlotManager weaponSlotManager)
+    public override void SuccessfullyCastSpell(PlayerAnimatorManager animatorHandler, 
+                                                PlayerStats playerStats, 
+                                                WeaponSlotManager weaponSlotManager,
+                                                CameraHandler cameraHandler)
     {
-        base.SuccessfullyCastSpell(animatorHandler, playerStats, weaponSlotManager);
+        base.SuccessfullyCastSpell(animatorHandler, playerStats, weaponSlotManager, cameraHandler);
+        GameObject instantiateSpellVFX = Instantiate(spellCastFX, weaponSlotManager.rightHandSlot.transform.position, cameraHandler.cameraPivotTransform.transform.rotation);
+        rigi = instantiateSpellVFX.GetComponent<Rigidbody>();
+        //SpellDamageCollider sdc = instantiateSpellVFX.GetComponent<SpellDamagCollider>();
+        if(cameraHandler.currentLockOnTarget != null)
+        {
+            instantiateSpellVFX.transform.LookAt(cameraHandler.currentLockOnTarget.transform);
+        }
+        else
+        {
+            instantiateSpellVFX.transform.rotation = Quaternion.Euler(cameraHandler.cameraPivotTransform.eulerAngles.x, playerStats.transform.eulerAngles.y, 0);
+        }
+
+        rigi.AddForce(instantiateSpellVFX.transform.forward * projectileForwardVelocity);
+        rigi.AddForce(instantiateSpellVFX.transform.up * projectileUpwardVelocity);
+        rigi.useGravity = isEffectedByGravity;
+        rigi.mass = projectileMass;
+        instantiateSpellVFX.transform.parent = null;
     }
 }
