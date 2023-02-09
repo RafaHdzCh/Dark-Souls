@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a2b8cdc0f934a24f8cd03957dc360e2, type: 3}
+  m_Name: Estus Magic Flask
+  m_EditorClassIdentifier: 
+  itemIcon: {fileID: 21300000, guid: e14e88053cf51f8479df2f6d6fe38f8d, type: 3}
+  itemName: Estus Flask
+  maxItemAmount: 5
+  currentItemAmount: 3
+  itemModel: {fileID: 8519442543609581028, guid: ca2323331e9ffba4aa5a3649a1c3e9e3, type: 3}
+  consumableAnimation: Drink
+  isInteracting: 1
+  estusFlask: 0
+  ashenFlask: 1
+  healthRecoveryAmount: 0
+  manaRecoveryAmount: 20
+  recoveryFX: {fileID: 1592372973558972, guid: 721cfe8018b2cd04abd0748143d2a312, type: 3}

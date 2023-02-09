@@ -58,7 +58,6 @@ public class PlayerLocomotion : MonoBehaviour
         Physics.IgnoreCollision(characterCollider, characterCollisionBlocker, true);
     }
 
-    #region Movement
     Vector3 normalvector;
     Vector3 targetPosition;
 
@@ -264,23 +263,4 @@ public class PlayerLocomotion : MonoBehaviour
             myTransform.position = targetPosition;
         }
     }
-
-    public void HandleJumping()
-    {
-        if (playerManager.isInteracting) return;
-        if (playerStats.currentStamina <= 0) return;
-        if (inputHandler.jump_Input)
-        {
-            if(inputHandler.moveAmount > 0)
-            {
-                moveDirection = cameraObject.forward * inputHandler.vertical;
-                moveDirection += cameraObject.right * inputHandler.horizontal;
-                animatorHandler.PlayTargetAnimation(DarkSoulsConsts.JUMP, true);
-                moveDirection.y = 0;
-                Quaternion jumpRotation = Quaternion.LookRotation(moveDirection);
-                myTransform.rotation = jumpRotation;
-            }
-        }
-    }
-    #endregion
 }

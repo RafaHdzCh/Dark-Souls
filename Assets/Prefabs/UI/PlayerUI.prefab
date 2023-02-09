@@ -4582,7 +4582,7 @@ GameObject:
   - component: {fileID: 9218219239975381352}
   - component: {fileID: 4890048860851207640}
   m_Layer: 5
-  m_Name: LeftSlotIcon
+  m_Name: RightSlotIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4595,9 +4595,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1721710199187433045}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8073224242075778077}
@@ -18142,7 +18142,7 @@ GameObject:
   - component: {fileID: 481223024375772379}
   - component: {fileID: 8696212521098564423}
   m_Layer: 5
-  m_Name: RightSlotIcon
+  m_Name: LeftSlotIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18157,7 +18157,7 @@ RectTransform:
   m_GameObject: {fileID: 6804457720420809543}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8073224243008100829}
@@ -20575,7 +20575,7 @@ GameObject:
   - component: {fileID: 8073224242075778079}
   - component: {fileID: 8073224242075778076}
   m_Layer: 5
-  m_Name: Left
+  m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21163,7 +21163,7 @@ GameObject:
   - component: {fileID: 8073224243008100831}
   - component: {fileID: 8073224243008100828}
   m_Layer: 5
-  m_Name: Right
+  m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21349,6 +21349,8 @@ MonoBehaviour:
   settingsWindow: {fileID: 2999026553053389193}
   selectWindow: {fileID: 8772593875358889133}
   hudWindow: {fileID: 3225644217172692506}
+  spellIcon: {fileID: 7991935572698010906}
+  consumableItemIcon: {fileID: 1371146390770382337}
   weaponInventorySlotPrefab: {fileID: 7798261174335470794, guid: 3984edc11de5b3d45b8028c0a7e85e5f, type: 3}
   weaponInventorySlotsParent: {fileID: 2858980214671332974}
   rightHandSlot01Selected: 0

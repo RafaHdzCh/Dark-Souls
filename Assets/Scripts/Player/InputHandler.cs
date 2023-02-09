@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class InputHandler : MonoBehaviour
 {
+    #region Directions Input
     [Header("Directions")]
     [System.NonSerialized] public float horizontal;
     [System.NonSerialized] public float vertical;
@@ -10,26 +11,38 @@ public class InputHandler : MonoBehaviour
     [System.NonSerialized] public float mouseY;
     Vector2 movementInput;
     Vector2 cameraInput;
+    #endregion
 
+    #region Buttons Input
     [Header("Inputs")]
     [System.NonSerialized] public bool a_input;
     [System.NonSerialized] public bool b_input;
-    [System.NonSerialized] public bool critical_Attack_Input;
-    [System.NonSerialized] public bool twoHand_input;
-    [System.NonSerialized] public bool jump_Input;
+    [System.NonSerialized] public bool x_input;
+    [System.NonSerialized] public bool y_input;
+
     [System.NonSerialized] public bool rb_Input;
     [System.NonSerialized] public bool rt_Input;
+
     [System.NonSerialized] public bool lb_Input;
     [System.NonSerialized] public bool lt_Input;
+
     [System.NonSerialized] public bool d_pad_Up;
     [System.NonSerialized] public bool d_pad_Down;
     [System.NonSerialized] public bool d_pad_Left;
     [System.NonSerialized] public bool d_pad_Right;
+
     [System.NonSerialized] public bool start_Input;
-    [System.NonSerialized] public bool lockOnInput;
+    [System.NonSerialized] public bool select_Input;
+
+    [System.NonSerialized] public bool right_Stick_Press;
+    [System.NonSerialized] public bool left_Stick_Press;
+
+    [System.NonSerialized] public bool critical_Attack_Input;
     [System.NonSerialized] public bool switch_To_Right_Target_Input;
     [System.NonSerialized] public bool switch_To_Left_Target_Input;
+    #endregion
 
+    #region Flags
     [Header("Flags")]
     [System.NonSerialized] public bool rollFlag;
     [System.NonSerialized] public bool twoHandFlag;
@@ -38,20 +51,25 @@ public class InputHandler : MonoBehaviour
     [System.NonSerialized] public bool lockOnFlag;
     [System.NonSerialized] public bool inventoryFlag;
     [System.NonSerialized] public float rollInputTimer;
+    #endregion
 
-    public Transform criticalAttackRayCastStartPoint;
-
+    #region Scripts
     [Header("Scripts")]
-    PlayerAnimatorManager animatorHandler;
+
+    PlayerAnimatorManager playerAnimatorManager;
     PlayerControls inputActions;
     PlayerAttacker playerAttacker;
     PlayerInventory playerInventory;
     PlayerManager playerManager;
+    PlayerEffectsManager playerEffectsManager;
     UIManager uiManager;
     CameraHandler cameraHandler;
     WeaponSlotManager weaponSlotManager;
     PlayerStats playerStats;
-   
+    #endregion
+
+    public Transform criticalAttackRayCastStartPoint;
+
 
     private void Start()
     {
@@ -59,10 +77,11 @@ public class InputHandler : MonoBehaviour
         playerStats = GetComponent<PlayerStats>();
         playerAttacker = GetComponentInChildren<PlayerAttacker>();
         playerInventory = GetComponent<PlayerInventory>();
+        playerEffectsManager = GetComponentInChildren<PlayerEffectsManager>();
         uiManager = FindObjectOfType<UIManager>();
         cameraHandler = FindObjectOfType<CameraHandler>();
         weaponSlotManager = GetComponentInChildren<WeaponSlotManager>();
-        animatorHandler = GetComponentInChildren<PlayerAnimatorManager>();
+        playerAnimatorManager = GetComponentInChildren<PlayerAnimatorManager>();
     }
 
     public void OnEnable()
@@ -71,27 +90,33 @@ public class InputHandler : MonoBehaviour
         {
             //Se genera un nuevo PlayerControls  y su mapeo.
             inputActions = new PlayerControls();
-            inputActions.PlayerMovement.Movement.performed += inputActions => movementInput = inputActions.ReadValue<Vector2>();
-            inputActions.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
+
+            inputActions.PlayerActions.A.performed += i => a_input = true;
+            inputActions.PlayerActions.B.performed += i => b_input = true;
+            inputActions.PlayerActions.B.canceled += i => b_input = false;
+            inputActions.PlayerActions.X.performed += i => x_input = true;
+            inputActions.PlayerActions.Y.performed += i => y_input = true;
 
             inputActions.PlayerActions.RB.performed += i => rb_Input = true;
             inputActions.PlayerActions.RT.performed += i => rt_Input = true;
+
             inputActions.PlayerActions.LB.performed += i => lb_Input = true;
             inputActions.PlayerActions.LT.performed += i => lt_Input = true;
 
-            inputActions.PlayerQuickSlots.DPadRight.performed += i => d_pad_Right = true;
+            inputActions.PlayerQuickSlots.DPadUp.performed += i => d_pad_Up = true;
+            inputActions.PlayerQuickSlots.DPadDown.performed += i => d_pad_Down = true;
             inputActions.PlayerQuickSlots.DPadLeft.performed += i => d_pad_Left = true;
-            inputActions.PlayerActions.A.performed += i => a_input = true;
+            inputActions.PlayerQuickSlots.DPadRight.performed += i => d_pad_Right = true;
 
-            inputActions.PlayerActions.Roll.performed += i => b_input = true;
-            inputActions.PlayerActions.Roll.canceled += i => b_input = false;
-
-            inputActions.PlayerActions.Jump.performed += i => jump_Input = true;
             inputActions.PlayerActions.Start.performed += i => start_Input = true;
-            inputActions.PlayerActions.LockOn.performed += i => lockOnInput = true;
+            inputActions.PlayerActions.Select.performed += i => select_Input = true;
+
+            inputActions.PlayerMovement.Movement.performed += inputActions => movementInput = inputActions.ReadValue<Vector2>();
+            inputActions.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
+
+            inputActions.PlayerActions.RightSickPress.performed += i => right_Stick_Press = true;
             inputActions.PlayerMovement.LockOnTargetRight.performed += i => switch_To_Right_Target_Input = true;
             inputActions.PlayerMovement.LockOnTargetLeft.performed += i => switch_To_Left_Target_Input = true;
-            inputActions.PlayerActions.TwoHand.performed += i => twoHand_input = true;
             inputActions.PlayerActions.CriticalAttack.performed += i => critical_Attack_Input = true;
         }
         inputActions.Enable();
@@ -113,6 +138,7 @@ public class InputHandler : MonoBehaviour
         HandleLockOnInput();
         HandleTwoHandInput();
         HandleCriticalAttackInput();
+        HandleUseConsumableInput();
     }
 
     private void HandleMoveInput(float delta)
@@ -157,7 +183,7 @@ public class InputHandler : MonoBehaviour
     {
         if(rb_Input)
         {
-            animatorHandler.anim.SetBool(DarkSoulsConsts.ISUSINGRIGHTHAND, true);
+            playerAnimatorManager.anim.SetBool(DarkSoulsConsts.ISUSINGRIGHTHAND, true);
             playerAttacker.HandleRBAction();
         }
         if(rt_Input)
@@ -172,7 +198,7 @@ public class InputHandler : MonoBehaviour
             {
                 if (playerManager.isInteracting) return;
                 if (playerManager.canDoCombo) return;
-                animatorHandler.anim.SetBool(DarkSoulsConsts.ISUSINGRIGHTHAND, true);
+                playerAnimatorManager.anim.SetBool(DarkSoulsConsts.ISUSINGRIGHTHAND, true);
                 playerAttacker.HandleHeavyAttack(playerInventory.rightWeapon);
             }
         }
@@ -228,9 +254,9 @@ public class InputHandler : MonoBehaviour
 
     private void HandleLockOnInput()
     {
-        if(lockOnInput && lockOnFlag == false)
+        if(right_Stick_Press && lockOnFlag == false)
         {
-            lockOnInput = false;
+            right_Stick_Press = false;
             cameraHandler.HandleLockOn();
 
             if(cameraHandler.nearestLockOnTarget != null)
@@ -239,7 +265,7 @@ public class InputHandler : MonoBehaviour
                 lockOnFlag = true;
             }
         }
-        else if(lockOnInput && lockOnFlag)
+        else if(right_Stick_Press && lockOnFlag)
         {
             lockOnFlag = false;
             cameraHandler.ClearLockOnTargets();
@@ -268,9 +294,9 @@ public class InputHandler : MonoBehaviour
 
     private void HandleTwoHandInput()
     {
-        if(twoHand_input)
+        if(y_input)
         {
-            twoHand_input = false;
+            y_input = false;
             twoHandFlag = !twoHandFlag;
             if(twoHandFlag)
             {
@@ -290,6 +316,16 @@ public class InputHandler : MonoBehaviour
         {
             critical_Attack_Input = false;
             playerAttacker.AttemptBackStabOrRiposte();
+        }
+    }
+
+    private void HandleUseConsumableInput()
+    {
+        if(x_input)
+        {
+            x_input = false;
+            playerInventory.currentConsumableItem.AttemptToConsumeItem(playerAnimatorManager, weaponSlotManager, playerEffectsManager);
+
         }
     }
 }

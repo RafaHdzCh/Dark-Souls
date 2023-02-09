@@ -562,19 +562,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91d55fec705bab44ca16293b769cf093, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentSpell: {fileID: 11400000, guid: 6fc5015bde9be60419bc574cf0081fca, type: 2}
-  rightWeapon: {fileID: 0}
-  leftWeapon: {fileID: 0}
+  currentSpell: {fileID: 11400000, guid: 410181619b22a514d9ae959d5b939170, type: 2}
+  currentConsumableItem: {fileID: 11400000, guid: 9c93a6f8fa0843f4bb69293f237f4373, type: 2}
   unarmedWeapon: {fileID: 11400000, guid: 987b1f82d63c33444bc47e7bb72e5645, type: 2}
   weaponInRightHandSlots:
-  - {fileID: 11400000, guid: 38fcf9c1aaa0cf344b59faf408b02bc9, type: 2}
+  - {fileID: 11400000, guid: e3c01472b89680441875615630ed5759, type: 2}
   - {fileID: 11400000, guid: 549db61f852d3dc4192cb40e1df10b8e, type: 2}
   weaponInLeftHandSlots:
   - {fileID: 11400000, guid: 8b4c2450f0c93364e8f138bc1a4e4e13, type: 2}
   - {fileID: 11400000, guid: 430d5d2687198a74faf99f6345a45715, type: 2}
-  currentRightWeaponIndex: 0
-  currentLeftWeaponIndex: 0
-  weaponsInventory: []
 --- !u!114 &4813561448268282761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2155,6 +2151,18 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 162860, guid: 880858dfd9b1e784e89d45242bf78d2b, type: 3}
   m_PrefabInstance: {fileID: 4813561447793143711}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &860414395460797952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4813561447793284019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efdf3d324bde17f47822dc048beaadf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4813561447793143708
 MonoBehaviour:
   m_ObjectHideFlags: 0

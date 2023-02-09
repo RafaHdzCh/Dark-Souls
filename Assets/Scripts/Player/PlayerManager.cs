@@ -57,7 +57,6 @@ public class PlayerManager : CharacterManager
         //Detecta los inputs del control del jugador.
         inputHandler.TickInput(delta);
         playerLocomotion.HandleRollingAndSprinting(delta);
-        playerLocomotion.HandleJumping();
         playerStats.RegenerateStamina();
 
         //Busca si estas cerca de objetos interactuables como puerats o items.
@@ -79,8 +78,14 @@ public class PlayerManager : CharacterManager
         //Se establece el bool de cada boton como falso al final de cada frame para que pueda volver a usarse en el siguiente.
         inputHandler.rollFlag = false;
 
+        inputHandler.a_input = false;
+        inputHandler.b_input = false;
+        inputHandler.x_input = false;
+        inputHandler.y_input = false;
+
         inputHandler.rb_Input = false;
         inputHandler.rt_Input = false;
+
         inputHandler.lb_Input = false;
         inputHandler.lt_Input = false;
 
@@ -89,11 +94,11 @@ public class PlayerManager : CharacterManager
         inputHandler.d_pad_Left = false;
         inputHandler.d_pad_Right = false;
 
-        inputHandler.a_input = false;
-        inputHandler.jump_Input = false;
         inputHandler.start_Input = false;
-        inputHandler.lockOnInput = false;
-        inputHandler.twoHand_input = false;
+        inputHandler.select_Input = false;
+
+        inputHandler.right_Stick_Press = false;
+        inputHandler.left_Stick_Press = false;
 
         //Si hay un cameraHandler...
         if (cameraHandler != null)
