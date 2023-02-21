@@ -123,6 +123,11 @@ public class PlayerAttacker : MonoBehaviour
         }
     }
 
+    public void HandleLBAction()
+    {
+        PerformLBBlockingAction();
+    }
+
     public void HandleLTAction()
     {
         if (playerStats.currentStamina <= 0) return;
@@ -212,6 +217,17 @@ public class PlayerAttacker : MonoBehaviour
 
     #endregion
 
+    private void PerformLBBlockingAction()
+    {
+        if (playerManager.isInteracting) return;
+        if (playerManager.isBlocking) return;
+
+        animatorHandler.PlayTargetAnimation(DarkSoulsConsts.BLOCKSTART, false);
+        playerManager.isBlocking = true;
+    }
+
+    #region Defense Actions
+
     public void AttemptBackStabOrRiposte()
     {
         if (playerStats.currentStamina <= 0) return;
@@ -270,4 +286,6 @@ public class PlayerAttacker : MonoBehaviour
             enemyCharacterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation(DarkSoulsConsts.RIPOSTED, true);
         }
     }
+
+    #endregion
 }

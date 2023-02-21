@@ -18,14 +18,15 @@ public class PlayerManager : CharacterManager
     public GameObject itemInteractableGameObject;
 
     [Header("PlayerFlags")]
-    [HideInInspector] public bool isInteracting;
-    [HideInInspector] public bool isSprinting;
-    [HideInInspector] public bool isInAir;
-    [HideInInspector] public bool isGrounded;
-    [HideInInspector] public bool canDoCombo;
-    [HideInInspector] public bool isUsingRightHand;
-    [HideInInspector] public bool isUsingLeftHand;
-    [HideInInspector] public bool isInvulnerable;
+    [System.NonSerialized] public bool isInteracting;
+    [System.NonSerialized] public bool isSprinting;
+    [System.NonSerialized] public bool isInAir;
+    [System.NonSerialized] public bool isGrounded;
+    [System.NonSerialized] public bool canDoCombo;
+    [System.NonSerialized] public bool isUsingRightHand;
+    [System.NonSerialized] public bool isUsingLeftHand;
+    [System.NonSerialized] public bool isInvulnerable;
+    [System.NonSerialized] public bool isBlocking;
 
     void Start()
     {
@@ -49,6 +50,7 @@ public class PlayerManager : CharacterManager
         canDoCombo = anim.GetBool(DarkSoulsConsts.CANDOCOMBO);
         anim.SetBool(DarkSoulsConsts.ISINAIR, isInAir);
         anim.SetBool(DarkSoulsConsts.ISDEAD, playerStats.isDead);
+        anim.SetBool(DarkSoulsConsts.ISBLOCKING, isBlocking);
         isUsingRightHand = anim.GetBool(DarkSoulsConsts.ISUSINGRIGHTHAND);
         isUsingLeftHand = anim.GetBool(DarkSoulsConsts.ISUSINGLEFTHAND);
         isInvulnerable = anim.GetBool(DarkSoulsConsts.ISINVULNERABLE);

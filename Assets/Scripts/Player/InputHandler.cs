@@ -54,6 +54,7 @@ public class InputHandler : MonoBehaviour
     #endregion
 
     #region Scripts
+
     [Header("Scripts")]
 
     PlayerAnimatorManager playerAnimatorManager;
@@ -101,6 +102,7 @@ public class InputHandler : MonoBehaviour
             inputActions.PlayerActions.RT.performed += i => rt_Input = true;
 
             inputActions.PlayerActions.LB.performed += i => lb_Input = true;
+            inputActions.PlayerActions.LB.canceled += i => lb_Input = false;
             inputActions.PlayerActions.LT.performed += i => lt_Input = true;
 
             inputActions.PlayerQuickSlots.DPadUp.performed += i => d_pad_Up = true;
@@ -132,7 +134,7 @@ public class InputHandler : MonoBehaviour
     {
         HandleMoveInput(delta);
         HandleRollInput(delta);
-        HandleAttackInput(delta);
+        HandleCombatInput(delta);
         HandleQuickSlotsInput();
         HandleInventoryInput();
         HandleLockOnInput();
@@ -179,7 +181,7 @@ public class InputHandler : MonoBehaviour
         }
     }
 
-    private void HandleAttackInput(float delta)
+    private void HandleCombatInput(float delta)
     {
         if(rb_Input)
         {
@@ -204,8 +206,13 @@ public class InputHandler : MonoBehaviour
         }
         if(lb_Input)
         {
-
+            playerAttacker.HandleLBAction();
         }
+        else
+        {
+            playerManager.isBlocking = false;
+        }
+
         if(lt_Input)
         {
             if(twoHandFlag)
