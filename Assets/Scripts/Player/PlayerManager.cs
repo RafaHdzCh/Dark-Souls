@@ -26,7 +26,6 @@ public class PlayerManager : CharacterManager
     [System.NonSerialized] public bool isUsingRightHand;
     [System.NonSerialized] public bool isUsingLeftHand;
     [System.NonSerialized] public bool isInvulnerable;
-    [System.NonSerialized] public bool isBlocking;
 
     void Start()
     {

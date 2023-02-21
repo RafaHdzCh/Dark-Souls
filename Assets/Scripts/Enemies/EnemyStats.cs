@@ -56,21 +56,18 @@ public class EnemyStats : CharacterStats
         }
     }
 
-    public override void TakeDamage(int damage, bool playAnimation)
+    public override void TakeDamage(int damage, string damageAnimation = "Damage")
     {
         if (isDead) return;
 
         currentHealth = currentHealth - damage;
         enemyHealthBar.SetHealth(currentHealth);
 
-        if (playAnimation)
-        {
-            enemyAnimatorManager.PlayTargetAnimation(DarkSoulsConsts.DAMAGE, true);
-        }
+        enemyAnimatorManager.PlayTargetAnimation(DarkSoulsConsts.DAMAGE, true);
 
         if (currentHealth <= 0)
         {
-            HandleDeath(playAnimation);
+            HandleDeath();
         }
     }
 
@@ -93,15 +90,12 @@ public class EnemyStats : CharacterStats
         rigi.isKinematic = true;
     }
 
-    private void HandleDeath(bool playAnimation)
+    private void HandleDeath()
     {
         currentHealth = 0;
         DeactivateCollidersOnDeath();
         
-        if (playAnimation)
-        {
-            enemyAnimatorManager.PlayTargetAnimation(DarkSoulsConsts.DEATH, true);
-        }
+        enemyAnimatorManager.PlayTargetAnimation(DarkSoulsConsts.DEATH, true);
         Invoke(nameof(HideHealthBarOnDeath), 3f);
         isDead = true;
     }

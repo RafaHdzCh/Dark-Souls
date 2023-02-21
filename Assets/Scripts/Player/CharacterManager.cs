@@ -14,11 +14,10 @@ public class CharacterManager : MonoBehaviour
     [System.NonSerialized] public bool canBeRiposted;
     [System.NonSerialized] public bool canBeParried;
     [System.NonSerialized] public bool isParrying;
+    [System.NonSerialized] public bool isBlocking;
 
     [Header("Spells")]
     [System.NonSerialized] public bool isFiringSpell;
 
     [System.NonSerialized] public int pendingCriticalDamage;
-
-
 }

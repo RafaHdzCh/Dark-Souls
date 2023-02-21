@@ -25,7 +25,7 @@ public class CharacterStats : MonoBehaviour
 
     [HideInInspector] public bool isDead;
 
-    public virtual void TakeDamage(int damage, bool playAnimation)
+    public virtual void TakeDamage(int damage, string damageAnimation = "Damage")
     {
 
     }

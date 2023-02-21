@@ -12,7 +12,7 @@ public class DamagePlayer : MonoBehaviour
         PlayerStats playerStats = other.GetComponent<PlayerStats>();
         if(playerStats != null)
         {
-            playerStats.TakeDamage(damage, true);
+            playerStats.TakeDamage(damage);
         }
     }
 }

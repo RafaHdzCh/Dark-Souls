@@ -12,6 +12,9 @@ public class WeaponItem : Item
     public int baseDamage = 25;
     public int criticalDamageMultiplier = 3;
 
+    [Header("Absorption")]
+    public float physicalDamageAbsortion;
+
     [Header("Idle Animations")]
     public string Right_Arm_Idle;
     public string Left_Arm_Idle;

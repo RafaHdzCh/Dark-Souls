@@ -57,7 +57,7 @@ public class PlayerStats : CharacterStats
         maxMana = manaLevel * 10;
         return maxMana;
     }
-    public override void TakeDamage(int damage, bool playAnimation)
+    public override void TakeDamage(int damage, string damageAnimation = "Damage")
     {
         if (playerManager.isInvulnerable) return;
         if (isDead) return;
@@ -65,18 +65,12 @@ public class PlayerStats : CharacterStats
 
         currentHealth = currentHealth - damage;
         healthBar.SetCurrentHealth(currentHealth);
-        if(playAnimation)
-        {
-            animatorHandler.PlayTargetAnimation(DarkSoulsConsts.DAMAGE, true);
-        }
+        animatorHandler.PlayTargetAnimation(DarkSoulsConsts.DAMAGE, true);
 
         if(currentHealth <= 0)
         {
             currentHealth = 0;
-            if (playAnimation)
-            {
-                animatorHandler.PlayTargetAnimation(DarkSoulsConsts.DEATH, true);
-            }
+            animatorHandler.PlayTargetAnimation(DarkSoulsConsts.DEATH, true);
             isDead = true;
         }
     }

@@ -36,6 +36,7 @@ public class DamageCollider : MonoBehaviour
         {
             PlayerStats playerStats = collision.GetComponent<PlayerStats>();
             CharacterManager enemyCaracterManager = collision.GetComponent<CharacterManager>();
+            BlockingCollider shield = collision.transform.GetComponentInChildren<BlockingCollider>();
 
             if(enemyCaracterManager != null)
             {
@@ -44,17 +45,27 @@ public class DamageCollider : MonoBehaviour
                     characterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation(DarkSoulsConsts.PARRIED, true);
                     return;
                 }
+                else if(shield != null && enemyCaracterManager.isBlocking)
+                {
+                    float physicalDamageAfterBlock = currentWeaponDamage - (currentWeaponDamage * shield.blockingPhysicalDamageAbsorbtion) / 100;
+                    if (playerStats != null)
+                    {
+                        playerStats.TakeDamage(Mathf.RoundToInt(physicalDamageAfterBlock), DarkSoulsConsts.BLOCKIMPACT);
+                        return;
+                    }
+                }
             }
 
             if(playerStats != null)
             {
-                playerStats.TakeDamage(currentWeaponDamage, true);
+                playerStats.TakeDamage(currentWeaponDamage, DarkSoulsConsts.DAMAGE);
             }
         }
         if (collision.CompareTag(DarkSoulsConsts.ENEMY))
         {
             EnemyStats enemyStats = collision.GetComponent<EnemyStats>();
             CharacterManager enemyCaracterManager = collision.GetComponent<CharacterManager>();
+            BlockingCollider shield = collision.transform.GetComponentInChildren<BlockingCollider>();
 
             if (enemyCaracterManager != null)
             {
@@ -64,10 +75,19 @@ public class DamageCollider : MonoBehaviour
                     return;
                 }
             }
+            else if (shield != null && enemyCaracterManager.isBlocking)
+            {
+                float physicalDamageAfterBlock = currentWeaponDamage - (currentWeaponDamage * shield.blockingPhysicalDamageAbsorbtion) / 100;
+                if (enemyStats != null)
+                {
+                    enemyStats.TakeDamage(Mathf.RoundToInt(physicalDamageAfterBlock), DarkSoulsConsts.BLOCKIMPACT);
+                    return;
+                }
+            }
 
             if (enemyStats != null)
             {
-                enemyStats.TakeDamage(currentWeaponDamage, true);
+                enemyStats.TakeDamage(currentWeaponDamage, DarkSoulsConsts.DAMAGE);
             }
         }
     }

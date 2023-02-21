@@ -42,6 +42,7 @@ public static class DarkSoulsConsts
     public static readonly string BLOCKSTART = "Block Start";
     public static readonly string BLOCKLOOP = "Block Loop";
     public static readonly string BLOCKEND = "Block End";
+    public static readonly string BLOCKIMPACT = "Block Impact";
 
     public static readonly string ISDEAD = "isDead";
     public static readonly string OPENCHEST = "Open Chest";

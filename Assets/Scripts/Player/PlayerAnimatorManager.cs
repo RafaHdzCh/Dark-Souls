@@ -130,7 +130,7 @@ public class PlayerAnimatorManager : AnimatorManager
     }
     public override void TakeCriticalDamageAnimationEvent()
     {
-        playerStats.TakeDamage(playerManager.pendingCriticalDamage, false);
+        playerStats.TakeDamage(playerManager.pendingCriticalDamage);
         playerManager.pendingCriticalDamage = 0;
     }
 

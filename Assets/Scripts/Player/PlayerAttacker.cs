@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerAttacker : MonoBehaviour
 {
     PlayerManager playerManager;
+    PlayerEquipmentManager playerEquipmentManager;
     PlayerStats playerStats;
     PlayerInventory playerInventory;
     PlayerAnimatorManager animatorHandler;
@@ -22,6 +23,7 @@ public class PlayerAttacker : MonoBehaviour
 
     private void Awake()
     {
+        playerEquipmentManager= GetComponent<PlayerEquipmentManager>(); 
         playerManager = GetComponentInParent<PlayerManager>();
         playerStats = GetComponentInParent<PlayerStats>();
         playerInventory = GetComponentInParent<PlayerInventory>();
@@ -223,6 +225,7 @@ public class PlayerAttacker : MonoBehaviour
         if (playerManager.isBlocking) return;
 
         animatorHandler.PlayTargetAnimation(DarkSoulsConsts.BLOCKSTART, false);
+        playerEquipmentManager.OpenBlockingCollider();
         playerManager.isBlocking = true;
     }
 

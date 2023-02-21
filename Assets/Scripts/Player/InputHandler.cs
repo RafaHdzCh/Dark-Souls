@@ -67,6 +67,7 @@ public class InputHandler : MonoBehaviour
     CameraHandler cameraHandler;
     WeaponSlotManager weaponSlotManager;
     PlayerStats playerStats;
+    BlockingCollider blockingCollider;
     #endregion
 
     public Transform criticalAttackRayCastStartPoint;
@@ -83,6 +84,7 @@ public class InputHandler : MonoBehaviour
         cameraHandler = FindObjectOfType<CameraHandler>();
         weaponSlotManager = GetComponentInChildren<WeaponSlotManager>();
         playerAnimatorManager = GetComponentInChildren<PlayerAnimatorManager>();
+        blockingCollider = GetComponentInChildren<BlockingCollider>();
     }
 
     public void OnEnable()
@@ -211,6 +213,10 @@ public class InputHandler : MonoBehaviour
         else
         {
             playerManager.isBlocking = false;
+            if(blockingCollider.blockingCollider.enabled)
+            {
+                blockingCollider.DisableBlockingCollider();
+            }
         }
 
         if(lt_Input)
