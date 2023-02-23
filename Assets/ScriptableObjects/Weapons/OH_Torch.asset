@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 365e6c259d787864fa5c4bb5002f7119, type: 3}
   m_Name: OH_Torch
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 21300000, guid: 3ba4521c5fc8b2748addb170637235d1, type: 3}
   itemName: Torch
+  itemIcon: {fileID: 21300000, guid: 3ba4521c5fc8b2748addb170637235d1, type: 3}
   modelPrefab: {fileID: 2101587472610615574, guid: 3dd50c647952a444f83390b15bf580a7, type: 3}
   isUnarmed: 0
+  baseDamage: 8
+  criticalDamageMultiplier: 3
+  physicalDamageAbsortion: 0
   Right_Arm_Idle: Right_Arm_Idle_0
   Left_Arm_Idle: Left_Arm_Idle_0
   TH_Idle: Both_Arms_Idle_0
@@ -34,3 +37,5 @@ MonoBehaviour:
   isFaithCaster: 0
   isPyroCaster: 0
   isMeleeWeapon: 1
+  isShieldWeapon: 0
+  Weapon_Art: 

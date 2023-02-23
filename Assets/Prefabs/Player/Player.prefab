@@ -315,7 +315,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6243807259662321074
 Transform:
   m_ObjectHideFlags: 0
@@ -613,14 +613,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4813561448688154227}
-  m_LocalRotation: {x: 0.83319485, y: 0.5459797, z: 0.0860398, w: -0.017023467}
-  m_LocalPosition: {x: -18.75, y: -9.8, z: -1.39}
+  m_LocalRotation: {x: 0.58274007, y: 0.77723026, z: -0.21103239, w: 0.10859311}
+  m_LocalPosition: {x: -8.5, y: -16.1, z: 1.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4813561447793488233}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 187.026, y: -7.2230225, z: -66.028015}
+  m_LocalEulerAnglesHint: {x: 152.95999, y: 4.968994, z: -105.082}
 --- !u!1 &5424647145324673020
 GameObject:
   m_ObjectHideFlags: 0
@@ -662,7 +662,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5424647145324673020}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.9, y: 1.25, z: 0.1}
@@ -679,7 +679,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66ec1eff213df7145ab52e31f9e981e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockingCollider: {fileID: 5214391302879984086}
 --- !u!1 &5531585972877772374
 GameObject:
   m_ObjectHideFlags: 0
@@ -2216,6 +2215,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efdf3d324bde17f47822dc048beaadf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2761313883545803924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4813561447793284019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f53f7a877382544491f83abf462838b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blockingCollider: {fileID: 4392865494408264183}
 --- !u!114 &4813561447793143708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2261,19 +2273,6 @@ MonoBehaviour:
   riposteLayer:
     serializedVersion: 2
     m_Bits: 4096
---- !u!114 &2761313883545803924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4813561447793284019}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f53f7a877382544491f83abf462838b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blockingCollider: {fileID: 4392865494408264183}
 --- !u!1 &4813561447793285117 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 161890, guid: 880858dfd9b1e784e89d45242bf78d2b, type: 3}

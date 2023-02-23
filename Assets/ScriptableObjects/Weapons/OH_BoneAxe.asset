@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 365e6c259d787864fa5c4bb5002f7119, type: 3}
   m_Name: OH_BoneAxe
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 21300000, guid: e20662f49f44f2f48afcc452320f00c0, type: 3}
   itemName: Bone Axe
+  itemIcon: {fileID: 21300000, guid: e20662f49f44f2f48afcc452320f00c0, type: 3}
   modelPrefab: {fileID: 922192489052387330, guid: 91e1eef8c9ca09d4abe4edc507a1796f, type: 3}
   isUnarmed: 0
+  baseDamage: 18
+  criticalDamageMultiplier: 3
+  physicalDamageAbsortion: 0
   Right_Arm_Idle: Right_Arm_Idle_0
   Left_Arm_Idle: Left_Arm_Idle_0
   TH_Idle: Both_Arms_Idle_0
@@ -34,3 +37,5 @@ MonoBehaviour:
   isFaithCaster: 0
   isPyroCaster: 0
   isMeleeWeapon: 1
+  isShieldWeapon: 0
+  Weapon_Art: 

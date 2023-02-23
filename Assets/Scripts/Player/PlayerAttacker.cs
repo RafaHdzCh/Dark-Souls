@@ -264,7 +264,7 @@ public class PlayerAttacker : MonoBehaviour
         animatorHandler.PlayTargetAnimation(DarkSoulsConsts.BACKSTAB, true);
             enemyCharacterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation(DarkSoulsConsts.BACKSTABBED, true);
  
-            print("Reproduciendo backstabeo");
+                //print("Reproduciendo backstabeo");
         }
         else if (Physics.Raycast(inputHandler.criticalAttackRayCastStartPoint.position,
                  transform.TransformDirection(Vector3.forward), out hit, 0.5f, riposteLayer))
@@ -291,7 +291,7 @@ public class PlayerAttacker : MonoBehaviour
         animatorHandler.PlayTargetAnimation(DarkSoulsConsts.RIPOSTE, true);
 
             enemyCharacterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation(DarkSoulsConsts.RIPOSTED, true);
-            print("Reproduciendo riposteo");
+                //print("Reproduciendo riposteo");
         }
     }
 }

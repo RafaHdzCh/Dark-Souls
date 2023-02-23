@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 365e6c259d787864fa5c4bb5002f7119, type: 3}
   m_Name: OH_Talisman
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 21300000, guid: a18a1bce801bfe247a2c65fb668aff8b, type: 3}
   itemName: Talisman
+  itemIcon: {fileID: 21300000, guid: a18a1bce801bfe247a2c65fb668aff8b, type: 3}
   modelPrefab: {fileID: 2101587472610615574, guid: 06b2d29110ed73d45ab885b9918cdac1, type: 3}
   isUnarmed: 0
+  baseDamage: 7
+  criticalDamageMultiplier: 3
+  physicalDamageAbsortion: 0
   Right_Arm_Idle: Right_Arm_Idle_0
   Left_Arm_Idle: Left_Arm_Idle_0
   TH_Idle: Both_Arms_Idle_0
@@ -34,3 +37,5 @@ MonoBehaviour:
   isFaithCaster: 1
   isPyroCaster: 0
   isMeleeWeapon: 0
+  isShieldWeapon: 0
+  Weapon_Art: 

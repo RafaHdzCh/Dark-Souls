@@ -9,7 +9,7 @@ public class DamageCollider : MonoBehaviour
     public bool enableDamagColliderOnStartUp = false;
 
     [Header("Assign Weapon Damage")]
-    public int currentWeaponDamage = 25;
+    public int currentWeaponDamage;
 
     private void Awake()
     {

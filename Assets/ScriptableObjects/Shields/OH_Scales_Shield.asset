@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 365e6c259d787864fa5c4bb5002f7119, type: 3}
   m_Name: OH_Scales_Shield
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 21300000, guid: a9d9883607c64564199b703256b1d998, type: 3}
   itemName: Scales Shield
+  itemIcon: {fileID: 21300000, guid: a9d9883607c64564199b703256b1d998, type: 3}
   modelPrefab: {fileID: 6005332832191392535, guid: e7914afd6247166449dc7ce438442b48, type: 3}
   isUnarmed: 0
-  baseDamage: 25
+  baseDamage: 5
   criticalDamageMultiplier: 3
+  physicalDamageAbsortion: 0
   Right_Arm_Idle: Right_Arm_Idle_0
   Left_Arm_Idle: Left_Arm_Idle_0
   TH_Idle: Both_Arms_Idle_0

@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 365e6c259d787864fa5c4bb5002f7119, type: 3}
   m_Name: OH_Club
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 21300000, guid: 4c44eb75d5fc00f49928df85ea47e4e9, type: 3}
   itemName: Club
+  itemIcon: {fileID: 21300000, guid: 4c44eb75d5fc00f49928df85ea47e4e9, type: 3}
   modelPrefab: {fileID: 6175067318616281287, guid: 2fcad7ecf840b974eb9781ca0ed5f3b3, type: 3}
   isUnarmed: 0
+  baseDamage: 18
+  criticalDamageMultiplier: 3
+  physicalDamageAbsortion: 0
   Right_Arm_Idle: Right_Arm_Idle_0
   Left_Arm_Idle: Left_Arm_Idle_0
   TH_Idle: Both_Arms_Idle_0
@@ -34,3 +37,5 @@ MonoBehaviour:
   isFaithCaster: 0
   isPyroCaster: 0
   isMeleeWeapon: 1
+  isShieldWeapon: 0
+  Weapon_Art: 

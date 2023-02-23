@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 365e6c259d787864fa5c4bb5002f7119, type: 3}
   m_Name: Unarmed
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
   itemName: Unarmed
+  itemIcon: {fileID: 0}
   modelPrefab: {fileID: 5882732480609434746, guid: 654e4f0933c26594d86442cef24d51fe, type: 3}
   isUnarmed: 1
+  baseDamage: 5
+  criticalDamageMultiplier: 3
+  physicalDamageAbsortion: 0
   Right_Arm_Idle: Right_Arm_Idle_0
   Left_Arm_Idle: Left_Arm_Idle_0
   TH_Idle: Both_Arms_Idle_0
@@ -34,3 +37,5 @@ MonoBehaviour:
   isFaithCaster: 0
   isPyroCaster: 0
   isMeleeWeapon: 1
+  isShieldWeapon: 0
+  Weapon_Art: 

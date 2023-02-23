@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 365e6c259d787864fa5c4bb5002f7119, type: 3}
   m_Name: OH_Mace
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 21300000, guid: ed625f3026ddafd4c8c48a9e92dff0da, type: 3}
   itemName: Mace
+  itemIcon: {fileID: 21300000, guid: ed625f3026ddafd4c8c48a9e92dff0da, type: 3}
   modelPrefab: {fileID: 3971547018297228709, guid: 8c34206e76701ca4584c3bf0a1b65fe1, type: 3}
   isUnarmed: 0
+  baseDamage: 20
+  criticalDamageMultiplier: 3
+  physicalDamageAbsortion: 0
   Right_Arm_Idle: Right_Arm_Idle_0
   Left_Arm_Idle: Left_Arm_Idle_0
   TH_Idle: Both_Arms_Idle_0
@@ -34,3 +37,5 @@ MonoBehaviour:
   isFaithCaster: 0
   isPyroCaster: 0
   isMeleeWeapon: 1
+  isShieldWeapon: 0
+  Weapon_Art: 
