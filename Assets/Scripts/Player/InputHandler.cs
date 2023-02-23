@@ -218,7 +218,6 @@ public class InputHandler : MonoBehaviour
                 blockingCollider.DisableBlockingCollider();
             }
         }
-
         if(lt_Input)
         {
             if(twoHandFlag)

@@ -219,18 +219,19 @@ public class PlayerAttacker : MonoBehaviour
 
     #endregion
 
+
+    #region Defense Actions
     private void PerformLBBlockingAction()
     {
         if (playerManager.isInteracting) return;
         if (playerManager.isBlocking) return;
 
-        animatorHandler.PlayTargetAnimation(DarkSoulsConsts.BLOCKSTART, false);
+        animatorHandler.PlayTargetAnimation(DarkSoulsConsts.BLOCKSTART, false, true);
         playerEquipmentManager.OpenBlockingCollider();
         playerManager.isBlocking = true;
     }
 
-    #region Defense Actions
-
+    #endregion
     public void AttemptBackStabOrRiposte()
     {
         if (playerStats.currentStamina <= 0) return;
@@ -260,8 +261,10 @@ public class PlayerAttacker : MonoBehaviour
             int criticalDamage = playerInventory.rightWeapon.criticalDamageMultiplier * rightWeapon.currentWeaponDamage;
             enemyCharacterManager.pendingCriticalDamage = criticalDamage;
 
-            animatorHandler.PlayTargetAnimation(DarkSoulsConsts.BACKSTAB, true);
+        animatorHandler.PlayTargetAnimation(DarkSoulsConsts.BACKSTAB, true);
             enemyCharacterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation(DarkSoulsConsts.BACKSTABBED, true);
+ 
+            print("Reproduciendo backstabeo");
         }
         else if (Physics.Raycast(inputHandler.criticalAttackRayCastStartPoint.position,
                  transform.TransformDirection(Vector3.forward), out hit, 0.5f, riposteLayer))
@@ -285,10 +288,10 @@ public class PlayerAttacker : MonoBehaviour
             int criticalDamage = playerInventory.rightWeapon.criticalDamageMultiplier * rightWeapon.currentWeaponDamage;
             enemyCharacterManager.pendingCriticalDamage = criticalDamage;
 
-            animatorHandler.PlayTargetAnimation(DarkSoulsConsts.RIPOSTE, true);
+        animatorHandler.PlayTargetAnimation(DarkSoulsConsts.RIPOSTE, true);
+
             enemyCharacterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation(DarkSoulsConsts.RIPOSTED, true);
+            print("Reproduciendo riposteo");
         }
     }
-
-    #endregion
 }

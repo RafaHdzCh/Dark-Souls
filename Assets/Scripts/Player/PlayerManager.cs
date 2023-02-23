@@ -49,7 +49,9 @@ public class PlayerManager : CharacterManager
         canDoCombo = anim.GetBool(DarkSoulsConsts.CANDOCOMBO);
         anim.SetBool(DarkSoulsConsts.ISINAIR, isInAir);
         anim.SetBool(DarkSoulsConsts.ISDEAD, playerStats.isDead);
+
         anim.SetBool(DarkSoulsConsts.ISBLOCKING, isBlocking);
+
         isUsingRightHand = anim.GetBool(DarkSoulsConsts.ISUSINGRIGHTHAND);
         isUsingLeftHand = anim.GetBool(DarkSoulsConsts.ISUSINGLEFTHAND);
         isInvulnerable = anim.GetBool(DarkSoulsConsts.ISINVULNERABLE);
@@ -87,7 +89,6 @@ public class PlayerManager : CharacterManager
         inputHandler.rb_Input = false;
         inputHandler.rt_Input = false;
 
-        inputHandler.lb_Input = false;
         inputHandler.lt_Input = false;
 
         inputHandler.d_pad_Up = false;

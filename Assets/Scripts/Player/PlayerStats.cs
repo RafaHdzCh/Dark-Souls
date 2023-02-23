@@ -57,15 +57,14 @@ public class PlayerStats : CharacterStats
         maxMana = manaLevel * 10;
         return maxMana;
     }
-    public override void TakeDamage(int damage, string damageAnimation = "Damage")
+    public override void TakeDamage(int damage, string damageAnimation = "Damage") 
     {
         if (playerManager.isInvulnerable) return;
         if (isDead) return;
 
-
         currentHealth = currentHealth - damage;
         healthBar.SetCurrentHealth(currentHealth);
-        animatorHandler.PlayTargetAnimation(DarkSoulsConsts.DAMAGE, true);
+        animatorHandler.PlayTargetAnimation(damageAnimation, true);
 
         if(currentHealth <= 0)
         {

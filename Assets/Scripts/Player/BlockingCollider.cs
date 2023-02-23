@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class BlockingCollider : MonoBehaviour
 {
-    public BoxCollider blockingCollider;
+    [System.NonSerialized] public BoxCollider blockingCollider;
     [System.NonSerialized] public float blockingPhysicalDamageAbsorbtion;
 
     private void Awake()
     {
-        blockingCollider= GetComponent<BoxCollider>();
+        blockingCollider = GetComponent<BoxCollider>();
     }
 
     public void SetColliderDamageAbsortion(WeaponItem weapon)

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Build;
 using UnityEngine;
 
 public class AnimatorManager : MonoBehaviour
@@ -8,10 +9,10 @@ public class AnimatorManager : MonoBehaviour
     public Animator anim;
     [System.NonSerialized] public bool canRotate;
 
-    public void PlayTargetAnimation(string targetAnim, bool isInteracting)
+    public void PlayTargetAnimation(string targetAnim, bool isInteracting, bool canRotate = false)
     {
         anim.applyRootMotion = isInteracting;
-        anim.SetBool(DarkSoulsConsts.CANROTATE, false);
+        anim.SetBool(DarkSoulsConsts.CANROTATE, canRotate);
         anim.SetBool(DarkSoulsConsts.ISINTERACTING, isInteracting);
         anim.CrossFade(targetAnim, 0.2f);
     }
