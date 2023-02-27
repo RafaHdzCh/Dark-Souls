@@ -38,6 +38,7 @@ public static class DarkSoulsConsts
     public const string PARRY = "Parry";
     public const string PARRIED = "Parried";
 
+    //BLOCK
     public const string ISBLOCKING = "isBlocking";
     public const string BLOCKSTART = "Block Start";
     public const string BLOCKLOOP = "Block Loop";
@@ -61,4 +62,29 @@ public static class DarkSoulsConsts
 
     //Props
     public const string CHESTOPEN = "Chest Open";
+
+    //UI
+    public const string LOW = "Low";
+    public const string MEDIUM = "Medium";
+    public const string HIGH = "High";
+    public const string ON = "On";
+    public const string OFF = "Off";
+
+    public const string HASSAVEDSETTINGS = "Has saved settings";
+
+    public const string RESOLUTION = "Resolution";
+    public const string WIDTH = "Width";
+    public const string HEIGHT = "Height";
+    public const string FULLSCREEN = "Fullscreen";
+    public const string VSYNC = "VSYNC";
+    public const string QUALITY = "Quality";
+    public const string SHADOWQUALITY = "ShadowQuality";
+
+    public const string RESOLUTIONINDEX = "Resolution Index";
+    public const string WIDTHINDEX = "Width Index";
+    public const string HEIGHTINDEX = "Height Index";
+    public const string FULLSCREENINDEX = "Fullscreen Index";
+    public const string VSYNCINDEX = "VSync Index";
+    public const string QUALITYINDEX = "Quality Index";
+    public const string SHADOWQUALITYINDEX = "ShadowQuality Index";
 }

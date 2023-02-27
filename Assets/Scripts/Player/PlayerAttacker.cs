@@ -239,7 +239,6 @@ public class PlayerAttacker : MonoBehaviour
         RaycastHit hit;
         DamageCollider rightWeapon = weaponSlotManager.rightHandDamageCollider;
         
-
         if (Physics.Raycast(inputHandler.criticalAttackRayCastStartPoint.position,
             transform.TransformDirection(Vector3.forward), out hit, 0.5f, backStabLayer))
         {
