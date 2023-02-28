@@ -18,6 +18,11 @@ public static class DarkSoulsConsts
     public const string WAKE = "Wake";
     public const string SHRUGGING = "Shrugging";
 
+    public const string TURNRIGHT = "Turn Right";
+    public const string TURNLEFT = "Turn Left";
+    public const string TURNBEHIND = "Turn Behind";
+    public const string ISROTATINGWITHROOTMOTION = "isRotatingWithRootMotion";
+
     //Actions
     public const string LOCOMOTION = "Locomotion";
     public const string ISINTERACTING = "isInteracting";

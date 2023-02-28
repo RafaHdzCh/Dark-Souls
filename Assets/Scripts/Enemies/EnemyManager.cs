@@ -5,15 +5,15 @@ using UnityEngine.AI;
 
 public class EnemyManager : CharacterManager
 {
-    [HideInInspector] public bool isPerformingAction;
-    [HideInInspector] public bool isInteracting;
-    [HideInInspector] public CharacterStats currentTarget;
-    [HideInInspector] public Rigidbody enemyRigidbody;
+    [System.NonSerialized] public bool isPerformingAction;
+    [System.NonSerialized] public bool isInteracting;
+        public CharacterStats currentTarget;
+    [System.NonSerialized] public Rigidbody enemyRigidbody;
     
     [Header("Variables")]
-    [HideInInspector] public float rotationSpeed = 50f;
-    [HideInInspector] public float maximumAttackRange = 1.5f;
-    [HideInInspector] public float currentRecoveryTime = 0;
+    [System.NonSerialized] public float rotationSpeed = 50f;
+    [System.NonSerialized] public float maximumAttackRange = 1.5f;
+    [System.NonSerialized] public float currentRecoveryTime = 0;
 
     [Header("Combat Flags")]
 
@@ -29,7 +29,7 @@ public class EnemyManager : CharacterManager
     [Header("Detection")]
     EnemyAnimatorManager enemyAnimatorManager;
     EnemyStats enemyStats;
-    [HideInInspector] public NavMeshAgent navMeshAgent;
+    [System.NonSerialized] public NavMeshAgent navMeshAgent;
 
     private void Awake()
     {
@@ -49,6 +49,7 @@ public class EnemyManager : CharacterManager
         HandleRecoveryTimer();
         HandleStateMachine();
 
+        isRotatingWithRootMotion = enemyAnimatorManager.anim.GetBool(DarkSoulsConsts.ISROTATINGWITHROOTMOTION);
         isInteracting = enemyAnimatorManager.anim.GetBool(DarkSoulsConsts.ISINTERACTING);
         canDoCombo = enemyAnimatorManager.anim.GetBool(DarkSoulsConsts.CANDOCOMBO);
         enemyAnimatorManager.anim.SetBool(DarkSoulsConsts.ISDEAD, enemyStats.isDead);
