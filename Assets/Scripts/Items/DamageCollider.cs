@@ -90,5 +90,11 @@ public class DamageCollider : MonoBehaviour
                 enemyStats.TakeDamage(currentWeaponDamage, DarkSoulsConsts.DAMAGE);
             }
         }
+        if (collision.CompareTag(DarkSoulsConsts.ILLUSIONARYWALL))
+        {
+            IllusionaryWall illusionaryWall = collision.GetComponent<IllusionaryWall>();
+
+            illusionaryWall.wallHasBeenHit= true;
+        }
     }
 }

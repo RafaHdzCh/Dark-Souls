@@ -56,6 +56,7 @@ public static class DarkSoulsConsts
     public const string PLAYER = "Player";
     public const string ENEMY = "Enemy";
     public const string INTERACTABLE = "Interactable";
+    public const string ILLUSIONARYWALL = "IllusionaryWall";
 
     //Layers
     public const string ENVIRONMENT = "Environment";
