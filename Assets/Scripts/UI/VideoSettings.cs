@@ -41,7 +41,7 @@ public class VideoSettings : MonoBehaviour
     {
         if(PlayerPrefs.GetInt(DarkSoulsConsts.HASSAVEDSETTINGS) == 0 )
         {
-            print("no tienes settings guardados");
+            SetDefaultSettings();
         }
         else
         {
@@ -300,5 +300,29 @@ public class VideoSettings : MonoBehaviour
         PlayerPrefs.SetString(DarkSoulsConsts.SHADOWQUALITY, shadowQualityTMP.text);
 
         PlayerPrefs.SetInt(DarkSoulsConsts.HASSAVEDSETTINGS, 1);
+    }
+
+    void SetDefaultSettings()
+    {
+        //Save Index
+        PlayerPrefs.SetInt(DarkSoulsConsts.RESOLUTIONINDEX, 0);
+        PlayerPrefs.SetInt(DarkSoulsConsts.FULLSCREENINDEX, 0);
+        PlayerPrefs.SetInt(DarkSoulsConsts.VSYNCINDEX, 0);
+        PlayerPrefs.SetInt(DarkSoulsConsts.QUALITYINDEX, 0);
+        PlayerPrefs.SetInt(DarkSoulsConsts.SHADOWQUALITYINDEX, 0);
+
+        //Save Keywords
+        PlayerPrefs.SetString(DarkSoulsConsts.RESOLUTION, resolutionTMP.text);
+        PlayerPrefs.SetString(DarkSoulsConsts.FULLSCREEN, fullscreenTMP.text);
+        PlayerPrefs.SetString(DarkSoulsConsts.VSYNC, vsyncTMP.text);
+        PlayerPrefs.SetString(DarkSoulsConsts.QUALITY, qualityTMP.text);
+        PlayerPrefs.SetString(DarkSoulsConsts.SHADOWQUALITY, shadowQualityTMP.text);
+
+        PlayerPrefs.SetInt(DarkSoulsConsts.HASSAVEDSETTINGS, 1);
+    }
+
+    public void DeleteSavedSettings()
+    {
+        PlayerPrefs.DeleteAll();
     }
 }

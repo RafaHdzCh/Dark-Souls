@@ -13,7 +13,7 @@ public class EnemyAnimatorManager : AnimatorManager
     }
     public override void TakeCriticalDamageAnimationEvent()
     {
-        enemyStats.TakeDamage(enemyManager.pendingCriticalDamage);
+        enemyStats.TakeDamageNoAnimation(enemyManager.pendingCriticalDamage);
         enemyManager.pendingCriticalDamage = 0;
     }
     private void OnAnimatorMove()

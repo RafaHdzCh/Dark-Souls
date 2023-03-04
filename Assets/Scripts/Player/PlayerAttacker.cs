@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -260,10 +261,8 @@ public class PlayerAttacker : MonoBehaviour
             int criticalDamage = playerInventory.rightWeapon.criticalDamageMultiplier * rightWeapon.currentWeaponDamage;
             enemyCharacterManager.pendingCriticalDamage = criticalDamage;
 
-        animatorHandler.PlayTargetAnimation(DarkSoulsConsts.BACKSTAB, true);
+            animatorHandler.PlayTargetAnimation(DarkSoulsConsts.BACKSTAB, true);
             enemyCharacterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation(DarkSoulsConsts.BACKSTABBED, true);
- 
-            //print("Reproduciendo backstabeo");
         }
         else if (Physics.Raycast(inputHandler.criticalAttackRayCastStartPoint.position,
                  transform.TransformDirection(Vector3.forward), out hit, 0.5f, riposteLayer))
