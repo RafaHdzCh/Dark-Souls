@@ -72,7 +72,6 @@ public class CombatStanceState : State
         //Rotate with pathfinding (navmesh)
         else
         {
-            print("COMBAT: Navmesh rotation");
             Vector3 relativeDirection = transform.InverseTransformDirection(enemyManager.navMeshAgent.desiredVelocity);
             Vector3 targetVelocity = enemyManager.navMeshAgent.desiredVelocity;
 

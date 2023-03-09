@@ -1,27 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro.EditorUtilities;
 using UnityEngine;
-using static TreeEditor.TreeGroup;
 
 public class EnemyStats : CharacterStats
 {
     [Header("Serializables")]
     [Header("Components")]
-    [SerializeField] Transform healthBarTransform;
-    [SerializeField] Transform cameraTransform;
-    [SerializeField] Rigidbody rigi;
+    [SerializeField] Transform healthBarTransform = null;
+    [SerializeField] Transform cameraTransform = null;
+    [SerializeField] Rigidbody rigi = null;
 
     [Header("Scripts")]
     EnemyHealthBar enemyHealthBar;
     EnemyAnimatorManager enemyAnimatorManager;
+    EnemyBossManager enemyBossManager;
+
+    [SerializeField] bool isBoss;
 
 
     public int soulsAwardedOnDeath = 50;
 
     private void Awake()
     {
-        enemyHealthBar = GetComponentInChildren<EnemyHealthBar>();  
+        enemyBossManager = GetComponent<EnemyBossManager>();
+        if(!isBoss)
+        {
+            enemyHealthBar = GetComponentInChildren<EnemyHealthBar>();  
+        }
         enemyAnimatorManager = GetComponent<EnemyAnimatorManager>();
         maxHealth = SetMaxHealthFromHealthLevel();
         currentHealth = maxHealth;
@@ -29,12 +32,18 @@ public class EnemyStats : CharacterStats
 
     void Start()
     {
-        enemyHealthBar.SetMaxHealth(maxHealth);
+        if (!isBoss)
+        {
+            enemyHealthBar.SetMaxHealth(maxHealth);
+        }
     }
 
     private void Update()
     {
-        healthBarTransform.LookAt(cameraTransform);
+        if (!isBoss)
+        {
+            healthBarTransform.LookAt(cameraTransform);
+        }
     }
 
     private int SetMaxHealthFromHealthLevel()
@@ -46,8 +55,14 @@ public class EnemyStats : CharacterStats
     public void TakeDamageNoAnimation(int damage)
     {
         currentHealth = currentHealth - damage;
-
-        enemyHealthBar.SetHealth(currentHealth);
+        if (!isBoss)
+        {
+            enemyHealthBar.SetHealth(currentHealth);
+        }
+        else
+        {
+            enemyBossManager.UpdateBossHealthBar(currentHealth);
+        }
 
         if (currentHealth <= 0)
         {
@@ -61,7 +76,14 @@ public class EnemyStats : CharacterStats
         if (isDead) return;
 
         currentHealth = currentHealth - damage;
-        enemyHealthBar.SetHealth(currentHealth);
+        if (!isBoss)
+        {
+            enemyHealthBar.SetHealth(currentHealth);
+        }
+        else
+        {
+            enemyBossManager.UpdateBossHealthBar(currentHealth);
+        }
 
         enemyAnimatorManager.PlayTargetAnimation(DarkSoulsConsts.DAMAGE, true);
 
