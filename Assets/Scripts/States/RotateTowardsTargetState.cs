@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RotateTowardsTargetState : State
 {
-    CombatStanceState combatStanceState;
+    [SerializeField] CombatStanceState combatStanceState;
 
     public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
     {
@@ -14,28 +14,28 @@ public class RotateTowardsTargetState : State
         Vector3 targetDirection = enemyManager.currentTarget.transform.position - enemyManager.transform.position;
         float viewableAngle = Vector3.SignedAngle(targetDirection, enemyManager.transform.forward, Vector3.up);
 
+        if (enemyManager.isInteracting) return this;
+
         if(viewableAngle >= 100 && viewableAngle <= 180 && !enemyManager.isInteracting)
         {
             enemyAnimatorManager.PlayTargetAnimationWithRootRotation(DarkSoulsConsts.TURNBEHIND, true);
-            return this;
+            return combatStanceState;
         }
         else if(viewableAngle <= -101 & viewableAngle >= -180 && !enemyManager.isInteracting)
         {
             enemyAnimatorManager.PlayTargetAnimationWithRootRotation(DarkSoulsConsts.TURNBEHIND, true);
-            return this;
+            return combatStanceState;
         }
         else if(viewableAngle <= -45 && viewableAngle >= -100 && !enemyManager.isInteracting)
         {
             enemyAnimatorManager.PlayTargetAnimationWithRootRotation(DarkSoulsConsts.TURNRIGHT, true);
-            return this;
+            return combatStanceState;
         }
         else if(viewableAngle >= 45 && viewableAngle <= 100 && !enemyManager.isInteracting)
         {
             enemyAnimatorManager.PlayTargetAnimationWithRootRotation(DarkSoulsConsts.TURNLEFT, true);
-            return this;
+            return combatStanceState;
         }
-
-
-        return this;
+        return combatStanceState;
     }
 }

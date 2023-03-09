@@ -18,6 +18,7 @@ public class CharacterManager : MonoBehaviour
 
     [Header("Movement Flags")]
     [System.NonSerialized] public bool isRotatingWithRootMotion;
+    [System.NonSerialized] public bool canRotate;
 
     [Header("Spells")]
     [System.NonSerialized] public bool isFiringSpell;

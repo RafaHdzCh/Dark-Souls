@@ -101,7 +101,7 @@ BoxCollider:
   m_GameObject: {fileID: 1076004180}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.9, y: 1.25, z: 0.1}
   m_Center: {x: 0, y: 0.75848866, z: 0.3727394}
@@ -860,7 +860,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4300052, guid: b69174d668ba02d44b14a084b217670a, type: 3}
+  m_Mesh: {fileID: 4300070, guid: b69174d668ba02d44b14a084b217670a, type: 3}
   m_Bones:
   - {fileID: 4058946893978200842}
   - {fileID: 4058946893978157620}
@@ -2859,19 +2859,11 @@ MonoBehaviour:
   lockOnTransform: {fileID: 8121742789243380356}
   backstabCollider: {fileID: 906612027}
   riposteCollider: {fileID: 3441362740728242246}
-  isPerformingAction: 0
-  isInteracting: 0
-  currentTarget: {fileID: 0}
-  enemyRigidbody: {fileID: 0}
-  rotationSpeed: 30
-  maximumAttackRange: 1.5
-  currentRecoveryTime: 0
   canDoCombo: 0
   detectionRadius: 20
   minimumDetectionAngle: -50
   maximumDetectionAngle: 50
-  currentState: {fileID: 8827551324450486440}
-  navMeshAgent: {fileID: 0}
+  currentState: {fileID: 8121742788650290333}
 --- !u!114 &4058946893968436045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3271,6 +3263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a40c17cc87bc6a34c9a0417f79431bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  combatStanceState: {fileID: 8121742788556270836}
 --- !u!1 &8121742788386161439
 GameObject:
   m_ObjectHideFlags: 0
@@ -3371,6 +3364,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackState: {fileID: 8121742790248960659}
   pursueTargetState: {fileID: 8121742789075955620}
+  enemyAttacks:
+  - {fileID: 11400000, guid: e4bf88671450c2f4dbe1412d3374dee4, type: 2}
+  - {fileID: 11400000, guid: 893d18303867de1419d5f51edfad1be0, type: 2}
 --- !u!1 &8121742788558432129
 GameObject:
   m_ObjectHideFlags: 0
@@ -3565,6 +3561,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   combatStanceState: {fileID: 8121742788556270836}
+  rotateTowardsTargetState: {fileID: 8827551324450486440}
 --- !u!1 &8121742789188542678
 GameObject:
   m_ObjectHideFlags: 0
@@ -3725,10 +3722,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   combatStanceState: {fileID: 8121742788556270836}
+  pursueTargetState: {fileID: 8121742789075955620}
+  rotateTowardsTargetState: {fileID: 8827551324450486440}
   enemyAttacks:
   - {fileID: 11400000, guid: e4bf88671450c2f4dbe1412d3374dee4, type: 2}
   - {fileID: 11400000, guid: 893d18303867de1419d5f51edfad1be0, type: 2}
-  currentAttack: {fileID: 0}
 --- !u!1 &8189318952124576661
 GameObject:
   m_ObjectHideFlags: 0

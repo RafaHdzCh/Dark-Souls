@@ -6,34 +6,51 @@ using UnityEngine.AI;
 public class PursueTargetState : State
 {
     [SerializeField] CombatStanceState combatStanceState;
+    [SerializeField] RotateTowardsTargetState rotateTowardsTargetState;
 
     public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
     {
+        print("Pursue Target State");
         if (enemyStats.currentHealth <= 0) return null;
-        if (enemyManager.isInteracting) return this;
-        if (enemyManager.isPerformingAction)
-        {
-            enemyAnimatorManager.anim.SetFloat(DarkSoulsConsts.VERTICAL, 0, 0.1f, Time.deltaTime);
-            return this;
-        }
 
         Vector3 targetDirection = enemyManager.currentTarget.transform.position - transform.position;
         float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
-        float viewableAngle = Vector3.Angle(targetDirection, enemyManager.transform.position);
+        float viewableAngle = Vector3.SignedAngle(targetDirection, enemyManager.transform.position, Vector3.up);
 
-        if (distanceFromTarget > enemyManager.maximumAttackRange)
-        {
-            enemyAnimatorManager.anim.SetFloat(DarkSoulsConsts.VERTICAL, 1, 0.1f, Time.deltaTime);
-        }
-        
         HandleRotateTowardsTarget(enemyManager);
 
-        if(distanceFromTarget <= enemyManager.maximumAttackRange)
+        if(viewableAngle > 45 || viewableAngle < -45)
         {
+            return rotateTowardsTargetState;
+        }
+
+        if (enemyManager.isInteracting)
+        {
+            return this;
+        }
+        if (enemyManager.isPerformingAction)
+        {
+            print("PURSUE: Esta realizando accion");
+            enemyAnimatorManager.anim.SetFloat(DarkSoulsConsts.VERTICAL, .5f, 0.1f, Time.deltaTime);
+            return this;
+        }
+
+        if (distanceFromTarget > enemyManager.maximumAggroRadius)
+        {
+            print("PURSUE: Distancia superior al limite para atacar");
+            enemyAnimatorManager.anim.SetFloat(DarkSoulsConsts.VERTICAL, 1, 0.1f, Time.deltaTime);
+            return this;
+        }
+        
+        else if(distanceFromTarget <= enemyManager.maximumAggroRadius)
+        {
+            print("PURSUE: Combat Stance");
             return combatStanceState;
         }
+
         else
         {
+            print("PURSUE: De nuevo pursue");
             return this;
         }
     }

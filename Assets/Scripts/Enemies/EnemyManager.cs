@@ -7,12 +7,12 @@ public class EnemyManager : CharacterManager
 {
     [System.NonSerialized] public bool isPerformingAction;
     [System.NonSerialized] public bool isInteracting;
-        public CharacterStats currentTarget;
+    [System.NonSerialized] public CharacterStats currentTarget;
     [System.NonSerialized] public Rigidbody enemyRigidbody;
     
     [Header("Variables")]
     [System.NonSerialized] public float rotationSpeed = 50f;
-    [System.NonSerialized] public float maximumAttackRange = 1.5f;
+    [System.NonSerialized] public float maximumAggroRadius = 1.5f;
     [System.NonSerialized] public float currentRecoveryTime = 0;
 
     [Header("Combat Flags")]
@@ -52,6 +52,7 @@ public class EnemyManager : CharacterManager
         isRotatingWithRootMotion = enemyAnimatorManager.anim.GetBool(DarkSoulsConsts.ISROTATINGWITHROOTMOTION);
         isInteracting = enemyAnimatorManager.anim.GetBool(DarkSoulsConsts.ISINTERACTING);
         canDoCombo = enemyAnimatorManager.anim.GetBool(DarkSoulsConsts.CANDOCOMBO);
+        canRotate = enemyAnimatorManager.anim.GetBool(DarkSoulsConsts.CANROTATE);
         enemyAnimatorManager.anim.SetBool(DarkSoulsConsts.ISDEAD, enemyStats.isDead);
     }
 
