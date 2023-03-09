@@ -3264,6 +3264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   combatStanceState: {fileID: 8121742788556270836}
+  pursueTargetState: {fileID: 8121742789075955620}
 --- !u!1 &8121742788386161439
 GameObject:
   m_ObjectHideFlags: 0

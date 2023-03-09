@@ -15,7 +15,6 @@ public class CombatStanceState : State
 
     public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
     {
-        print("Combat State Script");
         if (enemyStats.currentHealth <= 0) return null;
 
         float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
@@ -25,7 +24,6 @@ public class CombatStanceState : State
 
         if (enemyManager.isInteracting)
         {
-            print("COMBAT: Is Interacting");
             enemyAnimatorManager.anim.SetFloat(DarkSoulsConsts.VERTICAL, 0);
             enemyAnimatorManager.anim.SetFloat(DarkSoulsConsts.HORIZONTAL, 0);
             return this;
@@ -33,12 +31,10 @@ public class CombatStanceState : State
 
         if (distanceFromTarget > enemyManager.maximumAggroRadius)
         {
-            print("COMBAT: Pursuing target");
             return pursueTargetState;
         }
         if(!randomDestinationSet)
         {
-            print("COMBAT: Random destination");
             randomDestinationSet = true;
             DecideCirclingAction(enemyAnimatorManager);
         }
@@ -47,13 +43,11 @@ public class CombatStanceState : State
 
         if (enemyManager.currentRecoveryTime <= 0 && attackState.currentAttack != null)
         {
-            print("COMBAT: Attack State");
             randomDestinationSet = false;
             return attackState;
         }
         else
         {
-            print("COMBAT: Get New Attack");
             GetNewAttack(enemyManager);
         }
         return this;
@@ -98,8 +92,6 @@ public class CombatStanceState : State
 
     private void WalkAroundTarget(EnemyAnimatorManager enemyAnimatorManager)
     {
-        verticalMovementValue = 0.5f;
-        /*
         verticalMovementValue = Random.Range(0, 1);
         if (verticalMovementValue <= 1 && verticalMovementValue >= 0.51f)
         {
@@ -109,7 +101,7 @@ public class CombatStanceState : State
         {
             verticalMovementValue = 0.5f;
         }
-        */
+
         horizontalMovementValue = Random.Range(0, 1);
         if(horizontalMovementValue <= 1 && horizontalMovementValue >= 0.51f)
         {

@@ -10,7 +10,6 @@ public class PursueTargetState : State
 
     public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
     {
-        print("Pursue Target State");
         if (enemyStats.currentHealth <= 0) return null;
 
         Vector3 targetDirection = enemyManager.currentTarget.transform.position - transform.position;
@@ -19,7 +18,7 @@ public class PursueTargetState : State
 
         HandleRotateTowardsTarget(enemyManager);
 
-        if(viewableAngle > 45 || viewableAngle < -45)
+        if(viewableAngle > 45 && viewableAngle < -45)
         {
             return rotateTowardsTargetState;
         }
@@ -30,27 +29,23 @@ public class PursueTargetState : State
         }
         if (enemyManager.isPerformingAction)
         {
-            print("PURSUE: Esta realizando accion");
             enemyAnimatorManager.anim.SetFloat(DarkSoulsConsts.VERTICAL, .5f, 0.1f, Time.deltaTime);
             return this;
         }
 
         if (distanceFromTarget > enemyManager.maximumAggroRadius)
         {
-            print("PURSUE: Distancia superior al limite para atacar");
             enemyAnimatorManager.anim.SetFloat(DarkSoulsConsts.VERTICAL, 1, 0.1f, Time.deltaTime);
             return this;
         }
         
-        else if(distanceFromTarget <= enemyManager.maximumAggroRadius)
+        else if(distanceFromTarget < enemyManager.maximumAggroRadius)
         {
-            print("PURSUE: Combat Stance");
             return combatStanceState;
         }
 
         else
         {
-            print("PURSUE: De nuevo pursue");
             return this;
         }
     }
