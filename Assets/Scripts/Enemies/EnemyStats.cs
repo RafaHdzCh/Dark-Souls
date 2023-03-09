@@ -23,12 +23,12 @@ public class EnemyStats : CharacterStats
     {
         enemyHealthBar = GetComponentInChildren<EnemyHealthBar>();  
         enemyAnimatorManager = GetComponent<EnemyAnimatorManager>();
+        maxHealth = SetMaxHealthFromHealthLevel();
+        currentHealth = maxHealth;
     }
 
     void Start()
     {
-        maxHealth = SetMaxHealthFromHealthLevel();
-        currentHealth = maxHealth;
         enemyHealthBar.SetMaxHealth(maxHealth);
     }
 
