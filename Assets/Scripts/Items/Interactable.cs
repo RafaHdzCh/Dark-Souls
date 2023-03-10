@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    private const float radius = 0.6f;
+    [SerializeField] float radius = 0.6f;
+    [SerializeField] Vector3 offset;
     public string interactableText;
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, radius);
+        Gizmos.DrawWireSphere(transform.position + offset, radius);
     }
 
     public virtual void Interact(PlayerManager playerManager)

@@ -17,6 +17,7 @@ public static class DarkSoulsConsts
     public const string SLEEP = "Sleep";
     public const string WAKE = "Wake";
     public const string SHRUGGING = "Shrugging";
+    public const string PASSTHROUGHFOGWALL = "Pass Through Fog Wall";
 
     public const string TURNRIGHT = "Turn Right";
     public const string TURNLEFT = "Turn Left";

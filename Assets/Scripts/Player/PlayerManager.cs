@@ -177,5 +177,15 @@ public class PlayerManager : CharacterManager
 
     }
 
+    public void PassThroughFogWallInteraction(Transform fowWallEntrance)
+    {
+        playerLocomotion.rigi.velocity = Vector3.zero;
+        Vector3 rotationDirection = fowWallEntrance.transform.forward;
+        Quaternion turnRotation = Quaternion.LookRotation(rotationDirection);
+        transform.rotation = turnRotation;
+
+        playerAnimatorManager.PlayTargetAnimation(DarkSoulsConsts.PASSTHROUGHFOGWALL, true);
+    }
+
     #endregion
 }

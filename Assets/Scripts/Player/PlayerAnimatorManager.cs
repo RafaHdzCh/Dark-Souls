@@ -134,6 +134,18 @@ public class PlayerAnimatorManager : AnimatorManager
         playerManager.pendingCriticalDamage = 0;
     }
 
+    public void DisableCollision()
+    {
+        playerLocomotion.characterCollider.enabled = false;
+        playerLocomotion.characterCollisionBlocker.enabled = false;
+    }
+
+    public void EnableCollision()
+    {
+        playerLocomotion.characterCollider.enabled = true;
+        playerLocomotion.characterCollisionBlocker.enabled = true;
+    }
+
     public void OnAnimatorMove()
     {
         if(this.gameObject.CompareTag("Enemy"))
