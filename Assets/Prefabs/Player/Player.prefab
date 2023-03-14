@@ -522,6 +522,9 @@ MonoBehaviour:
   rigi: {fileID: 0}
   normalCamera: {fileID: 0}
   inAirTimer: 0
+  ignoreForGroundCheck:
+    serializedVersion: 2
+    m_Bits: 10183
   moveDirection: {x: 0, y: 0, z: 0}
   characterCollider: {fileID: 4813561448268282759}
   characterCollisionBlocker: {fileID: 4591234970709197090}
@@ -783,7 +786,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 120490, guid: 880858dfd9b1e784e89d45242bf78d2b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 121472, guid: 880858dfd9b1e784e89d45242bf78d2b, type: 3}
       propertyPath: m_Layer
@@ -819,7 +822,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 131022, guid: 880858dfd9b1e784e89d45242bf78d2b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 131460, guid: 880858dfd9b1e784e89d45242bf78d2b, type: 3}
       propertyPath: m_Layer
