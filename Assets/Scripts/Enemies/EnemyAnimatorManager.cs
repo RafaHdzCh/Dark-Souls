@@ -6,10 +6,14 @@ public class EnemyAnimatorManager : AnimatorManager
 {
     EnemyManager enemyManager;
     EnemyStats enemyStats;
+    EnemyBossManager enemyBossManager;
+
+
     private void Awake()
     {
         enemyStats = GetComponentInParent<EnemyStats>();
         enemyManager = GetComponentInParent<EnemyManager>();
+        enemyBossManager = GetComponentInParent<EnemyBossManager>();
     }
     public override void TakeCriticalDamageAnimationEvent()
     {
@@ -91,6 +95,14 @@ public class EnemyAnimatorManager : AnimatorManager
     public void DisableIsInvulnerable()
     {
         anim.SetBool(DarkSoulsConsts.ISINVULNERABLE, false);
+    }
+
+    public void InstantiateBossParticleFX()
+    {
+        BossFXTransform bossFXTransform = GetComponentInChildren<BossFXTransform>();
+
+        GameObject phaseFX = bossFXTransform.transform.GetChild(0).gameObject;
+        phaseFX.SetActive(true);
     }
 
 }

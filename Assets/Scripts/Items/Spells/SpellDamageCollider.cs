@@ -9,13 +9,6 @@ public class SpellDamageCollider : DamageCollider
 
     bool hasCollided = false;
 
-    CharacterStats spellTarget;
-    Rigidbody rigi;
-
-    private void Awake()
-    {
-        rigi = GetComponent<Rigidbody>();
-    }
     private void Start()
     {
         if(projectileParticles != null)
@@ -29,10 +22,17 @@ public class SpellDamageCollider : DamageCollider
     {
         if (!hasCollided)
         {
-            spellTarget = collision.transform.GetComponent<CharacterStats>();
-            if (spellTarget != null)
+            EnemyStats enemyStats = collision.transform.GetComponent<EnemyStats>();
+            if (enemyStats != null)
             {
-                spellTarget.TakeDamage(currentWeaponDamage);
+                if(enemyStats.isBoss)
+                {
+                    enemyStats.TakeDamageNoAnimation(currentWeaponDamage);
+                }
+                else
+                {
+                    enemyStats.TakeDamage(currentWeaponDamage);
+                }
             }
             hasCollided = true;
             impactParticles = Instantiate(impactParticles, transform);

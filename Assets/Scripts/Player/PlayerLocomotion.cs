@@ -155,8 +155,6 @@ public class PlayerLocomotion : MonoBehaviour
         {
             animatorHandler.UpdateAnimatorValues(inputHandler.moveAmount, 0, playerManager.isSprinting);
         }
-
-        
     }
 
     public void HandleRollingAndSprinting(float delta)
@@ -221,7 +219,6 @@ public class PlayerLocomotion : MonoBehaviour
             {
                 if(inAirTimer > 0.5f)
                 {
-                    Debug.Log("You were in the air for " + inAirTimer);
                     animatorHandler.PlayTargetAnimation(DarkSoulsConsts.LAND, true);
                     inAirTimer = 0f;
                 }
@@ -253,7 +250,6 @@ public class PlayerLocomotion : MonoBehaviour
             }
         }
 
-        //Makes sure that your model is going to the target position
         if(playerManager.isInteracting || inputHandler.moveAmount > 0)
         {
             myTransform.position = Vector3.Lerp(myTransform.position, targetPosition, Time.deltaTime / 0.1f);

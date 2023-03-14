@@ -12,8 +12,9 @@ public class EnemyStats : CharacterStats
     EnemyHealthBar enemyHealthBar;
     EnemyAnimatorManager enemyAnimatorManager;
     EnemyBossManager enemyBossManager;
+    EnemyManager enemyManager;
 
-    [SerializeField] bool isBoss;
+    public bool isBoss;
 
 
     public int soulsAwardedOnDeath = 50;
@@ -26,6 +27,7 @@ public class EnemyStats : CharacterStats
             enemyHealthBar = GetComponentInChildren<EnemyHealthBar>();  
         }
         enemyAnimatorManager = GetComponent<EnemyAnimatorManager>();
+        enemyManager = GetComponent<EnemyManager>();
         maxHealth = SetMaxHealthFromHealthLevel();
         currentHealth = maxHealth;
     }
@@ -54,14 +56,17 @@ public class EnemyStats : CharacterStats
 
     public void TakeDamageNoAnimation(int damage)
     {
+        if (isDead) return; 
+        if (enemyManager.isPhaseShifting) return;
+
         currentHealth = currentHealth - damage;
         if (!isBoss)
         {
             enemyHealthBar.SetHealth(currentHealth);
         }
-        else
+        else if(isBoss && enemyBossManager!= null)
         {
-            enemyBossManager.UpdateBossHealthBar(currentHealth);
+            enemyBossManager.UpdateBossHealthBar(currentHealth, maxHealth);
         }
 
         if (currentHealth <= 0)
@@ -74,6 +79,7 @@ public class EnemyStats : CharacterStats
     public override void TakeDamage(int damage, string damageAnimation = "Damage")
     {
         if (isDead) return;
+        if (enemyManager.isPhaseShifting) return;
 
         currentHealth = currentHealth - damage;
         if (!isBoss)
@@ -82,7 +88,7 @@ public class EnemyStats : CharacterStats
         }
         else
         {
-            enemyBossManager.UpdateBossHealthBar(currentHealth);
+            enemyBossManager.UpdateBossHealthBar(currentHealth, maxHealth);
         }
 
         enemyAnimatorManager.PlayTargetAnimation(DarkSoulsConsts.DAMAGE, true);

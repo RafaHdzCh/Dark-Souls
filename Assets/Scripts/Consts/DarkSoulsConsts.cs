@@ -24,6 +24,9 @@ public static class DarkSoulsConsts
     public const string TURNBEHIND = "Turn Behind";
     public const string ISROTATINGWITHROOTMOTION = "isRotatingWithRootMotion";
 
+    public const string PHASESHIFT = "Phase Shift";
+    public const string ISPHASESHIFTING = "isPhaseShifting";
+
     //Actions
     public const string LOCOMOTION = "Locomotion";
     public const string ISINTERACTING = "isInteracting";

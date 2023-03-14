@@ -51,6 +51,10 @@ public class AttackState : State
         }
         enemyManager.currentRecoveryTime = currentAttack.recoveryTime;
         hasPerformedAttack = true;
+        if(currentAttack.actionAnimation == null)
+        {
+            return;
+        }
     }
 
     private void AttackTargetWithCombo(EnemyAnimatorManager enemyAnimatorManager, EnemyManager enemyManager)

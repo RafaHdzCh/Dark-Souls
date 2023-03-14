@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ResetAnimatorBool : StateMachineBehaviour
 {
+    [System.NonSerialized] public bool isInvulnerableStatus = false;
     [System.NonSerialized] public bool isInteractingStatus = false;
     [System.NonSerialized] public bool isFiringSpellStatus = false;
     [System.NonSerialized] public bool canRotateStatus = true;
@@ -16,6 +17,7 @@ public class ResetAnimatorBool : StateMachineBehaviour
         animator.SetBool(DarkSoulsConsts.ISFIRINGSPELL, isFiringSpellStatus);
         animator.SetBool(DarkSoulsConsts.CANROTATE, canRotateStatus);
         animator.SetBool(DarkSoulsConsts.ISROTATINGWITHROOTMOTION, isRotatingWithRootMotionStatus);
+        animator.SetBool(DarkSoulsConsts.ISINVULNERABLE, isInvulnerableStatus);
     }
 
 }

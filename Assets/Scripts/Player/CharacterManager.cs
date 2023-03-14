@@ -15,6 +15,7 @@ public class CharacterManager : MonoBehaviour
     [System.NonSerialized] public bool canBeParried;
     [System.NonSerialized] public bool isParrying;
     [System.NonSerialized] public bool isBlocking;
+    [System.NonSerialized] public bool isInvulnerable;
 
     [Header("Movement Flags")]
     [System.NonSerialized] public bool isRotatingWithRootMotion;

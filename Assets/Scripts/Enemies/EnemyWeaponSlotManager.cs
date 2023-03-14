@@ -84,8 +84,14 @@ public class EnemyWeaponSlotManager : MonoBehaviour
 
     public void CloseDamageCollider()
     {
-        rightHandDamageCollider.DisableDamageCollider();
-        leftHandDamageCollider.DisableDamageCollider();
+        if(rightHandDamageCollider != null)
+        {
+            rightHandDamageCollider.DisableDamageCollider();
+        }
+        if(leftHandDamageCollider != null)
+        {
+            leftHandDamageCollider.DisableDamageCollider();
+        }
     }
     public void DrainStaminaLightAttack()
     {

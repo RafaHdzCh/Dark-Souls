@@ -7,6 +7,7 @@ public class EnemyManager : CharacterManager
 {
     [System.NonSerialized] public bool isPerformingAction;
     [System.NonSerialized] public bool isInteracting;
+    [System.NonSerialized] public bool isPhaseShifting;
     [System.NonSerialized] public CharacterStats currentTarget;
     [System.NonSerialized] public Rigidbody enemyRigidbody;
     
@@ -51,6 +52,8 @@ public class EnemyManager : CharacterManager
 
         isRotatingWithRootMotion = enemyAnimatorManager.anim.GetBool(DarkSoulsConsts.ISROTATINGWITHROOTMOTION);
         isInteracting = enemyAnimatorManager.anim.GetBool(DarkSoulsConsts.ISINTERACTING);
+        isPhaseShifting = enemyAnimatorManager.anim.GetBool(DarkSoulsConsts.ISPHASESHIFTING);
+        isInvulnerable = enemyAnimatorManager.anim.GetBool(DarkSoulsConsts.ISINVULNERABLE);
         canDoCombo = enemyAnimatorManager.anim.GetBool(DarkSoulsConsts.CANDOCOMBO);
         canRotate = enemyAnimatorManager.anim.GetBool(DarkSoulsConsts.CANROTATE);
         enemyAnimatorManager.anim.SetBool(DarkSoulsConsts.ISDEAD, enemyStats.isDead);
@@ -72,24 +75,6 @@ public class EnemyManager : CharacterManager
                 SwitchToNextState(nextState);
             }
         }
-        /*
-        if(enemyLocomotionManager.currentTarget != null)
-        {
-            enemyLocomotionManager.distanceFromTarget = Vector3.Distance(enemyLocomotionManager.currentTarget.transform.position, transform.position);
-        }
-        if(enemyLocomotionManager.currentTarget == null)
-        {
-            enemyLocomotionManager.HandleDetection();
-        }
-        else if(enemyLocomotionManager.distanceFromTarget > enemyLocomotionManager.stoppingDistance)
-        {
-            enemyLocomotionManager.HandleMoveToTarget();
-        }
-        else if(enemyLocomotionManager.distanceFromTarget <= enemyLocomotionManager.stoppingDistance)
-        {
-            AttackTarget();
-        }
-        */
     }
 
     private void SwitchToNextState(State state)
@@ -112,5 +97,4 @@ public class EnemyManager : CharacterManager
             }
         }
     }
-    
 }

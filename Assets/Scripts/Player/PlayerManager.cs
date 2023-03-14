@@ -25,7 +25,6 @@ public class PlayerManager : CharacterManager
     [System.NonSerialized] public bool canDoCombo;
     [System.NonSerialized] public bool isUsingRightHand;
     [System.NonSerialized] public bool isUsingLeftHand;
-    [System.NonSerialized] public bool isInvulnerable;
 
     void Start()
     {
@@ -120,15 +119,24 @@ public class PlayerManager : CharacterManager
     }
 
     #region Player Interactions
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, 0.3f);
+
+        Vector3 rayOrigin = transform.position;
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(rayOrigin, 1);
+    }
+
     public void CheckForInteractableObjects()
     {
         Vector3 rayOrigin = transform.position;
-        rayOrigin.y = rayOrigin.y + 2f;
         RaycastHit hit;
 
         //Si generamos una esfera en la posicion del personaje...
         if (Physics.SphereCast(transform.position, 0.3f, transform.forward, out hit, 1f, cameraHandler.ignoreLayers)
-            || Physics.SphereCast(rayOrigin, 0.5f, Vector3.down, out hit, 2.5f, cameraHandler.ignoreLayers))
+            || Physics.SphereCast(rayOrigin, 1, Vector3.down, out hit, 2.5f, cameraHandler.ignoreLayers))
         {
             //Si la detecta un collider con la etiqueta "Interactable"...
             if(hit.collider.CompareTag(DarkSoulsConsts.INTERACTABLE))

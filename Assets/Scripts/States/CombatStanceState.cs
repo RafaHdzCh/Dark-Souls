@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class CombatStanceState : State
 {
-    [SerializeField] AttackState attackState; 
+    [SerializeField] public AttackState attackState; 
     [SerializeField] PursueTargetState pursueTargetState;
 
     public EnemyAttackAction[] enemyAttacks;
 
-    bool randomDestinationSet = false;
-    float verticalMovementValue = 0;
-    float horizontalMovementValue = 0;
+    protected bool randomDestinationSet = false;
+    protected float verticalMovementValue = 0;
+    protected float horizontalMovementValue = 0;
 
     public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
     {
@@ -52,7 +52,7 @@ public class CombatStanceState : State
         }
         return this;
     }
-    private void HandleRotateTowardsTarget(EnemyManager enemyManager)
+    protected private void HandleRotateTowardsTarget(EnemyManager enemyManager)
     {
         //Rotate manually
         if (enemyManager.isPerformingAction)
@@ -84,12 +84,12 @@ public class CombatStanceState : State
         }
     }
 
-    private void DecideCirclingAction(EnemyAnimatorManager enemyAnimatorManager)
+    protected private void DecideCirclingAction(EnemyAnimatorManager enemyAnimatorManager)
     {
         WalkAroundTarget(enemyAnimatorManager);
     }
 
-    private void WalkAroundTarget(EnemyAnimatorManager enemyAnimatorManager)
+    protected private void WalkAroundTarget(EnemyAnimatorManager enemyAnimatorManager)
     {
         verticalMovementValue = Random.Range(0, 1);
         if (verticalMovementValue <= 1 && verticalMovementValue >= 0.51f)
@@ -112,7 +112,7 @@ public class CombatStanceState : State
         }
     }
 
-    private void GetNewAttack(EnemyManager enemyManager)
+    protected virtual private void GetNewAttack(EnemyManager enemyManager)
     {
         Vector3 targetDirection = enemyManager.currentTarget.transform.position - transform.position;
         float viewableAngle = Vector3.Angle(targetDirection, transform.forward);
