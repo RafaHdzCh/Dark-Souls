@@ -10,6 +10,7 @@ public class PassThroughFogWall : Interactable
     {
         base.Interact(playerManager);
         playerManager.PassThroughFogWallInteraction(transform);
+        playerManager.interactableObject = null;
         worldEventManager.ActivateBossFight();
     }
 }

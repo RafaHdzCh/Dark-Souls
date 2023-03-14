@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4591265931195510753}
   - component: {fileID: 4591265931196669087}
   - component: {fileID: 4591265931195510755}
-  - component: {fileID: 254100082438402270}
+  - component: {fileID: 7508937375627189416}
   m_Layer: 14
   m_Name: ChestLoot
   m_TagString: Interactable
@@ -98,12 +98,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac1ccbae754bb984796077564259eef6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.6
-  offset: {x: 0, y: 0, z: 0}
   interactableText: Pick Up Item
   weapon: {fileID: 11400000, guid: a331157931ca1b545844fb36987cb48d, type: 2}
---- !u!135 &254100082438402270
-SphereCollider:
+--- !u!65 &7508937375627189416
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -113,8 +111,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.25
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2, y: 2, z: 2}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &7973091628524259637
 GameObject:
   m_ObjectHideFlags: 0

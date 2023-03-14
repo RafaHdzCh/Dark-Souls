@@ -1,8 +1,10 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.HID;
 
 public class PlayerManager : CharacterManager
 {
@@ -12,6 +14,7 @@ public class PlayerManager : CharacterManager
     PlayerLocomotion playerLocomotion;
     PlayerStats playerStats;
     PlayerAnimatorManager playerAnimatorManager;
+    [System.NonSerialized] public Interactable interactableObject;
 
     InteractableUI interactableUI;
     public GameObject interactableUIGameObject;
@@ -61,8 +64,10 @@ public class PlayerManager : CharacterManager
         playerLocomotion.HandleRollingAndSprinting(delta);
         playerStats.RegenerateStamina();
 
-        //Busca si estas cerca de objetos interactuables como puerats o items.
-        CheckForInteractableObjects();
+        if(interactableObject != null && inputHandler.a_input)
+        {
+            interactableObject.GetComponent<Interactable>().Interact(this);
+        }
     }
 
     private void FixedUpdate()
@@ -119,61 +124,41 @@ public class PlayerManager : CharacterManager
     }
 
     #region Player Interactions
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, 0.3f);
 
-        Vector3 rayOrigin = transform.position;
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(rayOrigin, 1);
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag(DarkSoulsConsts.INTERACTABLE))
+        {
+            print("Puedes interactuar con " + other.name);
+            //Se obitene su componente "Interactable"
+            interactableObject = other.GetComponent<Interactable>();
+
+            //Si este script no es nulo...
+            if (interactableObject != null)
+            {
+                print("presiona A");
+                //Se obtiene componente de tipo texto y se muestra por UI.
+                string interactableText = interactableObject.interactableText;
+                interactableUI.interactableText.text = interactableText;
+                interactableUIGameObject.SetActive(true);
+            }
+        }
     }
 
-    public void CheckForInteractableObjects()
+    private void OnTriggerExit(Collider other)
     {
-        Vector3 rayOrigin = transform.position;
-        RaycastHit hit;
-
-        //Si generamos una esfera en la posicion del personaje...
-        if (Physics.SphereCast(transform.position, 0.3f, transform.forward, out hit, 0.1f, cameraHandler.ignoreLayers)
-            || Physics.SphereCast(rayOrigin, 1, Vector3.down, out hit, 2.5f, cameraHandler.ignoreLayers))
+        if (other.CompareTag(DarkSoulsConsts.INTERACTABLE))
         {
-            print(hit);
-            //Si la detecta un collider con la etiqueta "Interactable"...
-            if(hit.collider.CompareTag(DarkSoulsConsts.INTERACTABLE))
+            interactableObject = null;
+            if (interactableUIGameObject != null)
             {
-                //Se obitene su componente "Interactable"
-                Interactable interactableObject = hit.collider.GetComponent<Interactable>();
-
-                //Si este script no es nulo...
-                if(interactableObject != null)
-                {
-                    //Se obtiene componente de tipo texto y se muestra por UI.
-                    string interactableText = interactableObject.interactableText;
-                    interactableUI.interactableText.text = interactableText;
-                    interactableUIGameObject.SetActive(true);
-
-                    //Si se presiona el boton de Interaccion...
-                    if(inputHandler.a_input)
-                    {
-                        //Ejecutamos del script interactable la funcion de Interactuar.
-                        hit.collider.GetComponent<Interactable>().Interact(this);
-                    }
-                }
+                //Se desactiva el gameobject de UI del objeto interactuable.
+                interactableUIGameObject.SetActive(false);
             }
-            //Si el collider no tiene la etiqueta "Interactable"...
-            else
+            if (itemInteractableGameObject != null && inputHandler.a_input)
             {
-                if (interactableUIGameObject != null)
-                {
-                    //Se desactiva el gameobject de UI del objeto interactuable.
-                    interactableUIGameObject.SetActive(false);
-                }
-                if(itemInteractableGameObject != null && inputHandler.a_input)
-                {
-                    //Se desactiva el gameobject del objeto interactuable.
-                    itemInteractableGameObject.SetActive(false);
-                }
+                //Se desactiva el gameobject del objeto interactuable.
+                itemInteractableGameObject.SetActive(false);
             }
         }
     }
