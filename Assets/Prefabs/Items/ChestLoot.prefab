@@ -12,9 +12,8 @@ GameObject:
   - component: {fileID: 4591265931195510753}
   - component: {fileID: 4591265931196669087}
   - component: {fileID: 4591265931195510755}
-  - component: {fileID: 4591265931195510780}
   - component: {fileID: 254100082438402270}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: ChestLoot
   m_TagString: Interactable
   m_Icon: {fileID: 0}
@@ -99,21 +98,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac1ccbae754bb984796077564259eef6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  radius: 0.6
+  offset: {x: 0, y: 0, z: 0}
   interactableText: Pick Up Item
-  weapon: {fileID: 11400000, guid: ee6d912ff6531e548862512a87cbb33c, type: 2}
---- !u!65 &4591265931195510780
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4591265931198626251}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 2, y: 0.5, z: 2}
-  m_Center: {x: 0, y: 0, z: 0}
+  weapon: {fileID: 11400000, guid: a331157931ca1b545844fb36987cb48d, type: 2}
 --- !u!135 &254100082438402270
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -122,7 +110,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4591265931198626251}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1.25

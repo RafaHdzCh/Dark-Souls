@@ -23,7 +23,7 @@ public class PlayerLocomotion : MonoBehaviour
     float groundDetectionRayStartPoint = 0.5f; //Place our raycast origin 0.5f above our player transform. Placing it where the floating begins
     float minimumdistanceToBeginFall = 1f;
     float groundDirectionRayDistance = 0.2f;
-    LayerMask ignoreForGroundCheck;
+    [SerializeField] LayerMask ignoreForGroundCheck;
 
     [Header("Movement Stats")]
     [HideInInspector] public Vector3 moveDirection;
@@ -53,7 +53,6 @@ public class PlayerLocomotion : MonoBehaviour
         animatorHandler.Initialize();
 
         playerManager.isGrounded = true;
-        ignoreForGroundCheck = ~(1 << 8) | (1 << 11);
 
         Physics.IgnoreCollision(characterCollider, characterCollisionBlocker, true);
     }

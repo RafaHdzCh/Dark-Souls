@@ -22,11 +22,13 @@ public class SpellDamageCollider : DamageCollider
     {
         if (!hasCollided)
         {
+            print(collision);
             EnemyStats enemyStats = collision.transform.GetComponent<EnemyStats>();
             if (enemyStats != null)
             {
                 if(enemyStats.isBoss)
                 {
+                    print("danando al jefe");
                     enemyStats.TakeDamageNoAnimation(currentWeaponDamage);
                 }
                 else

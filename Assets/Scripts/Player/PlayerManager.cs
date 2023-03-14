@@ -135,9 +135,10 @@ public class PlayerManager : CharacterManager
         RaycastHit hit;
 
         //Si generamos una esfera en la posicion del personaje...
-        if (Physics.SphereCast(transform.position, 0.3f, transform.forward, out hit, 1f, cameraHandler.ignoreLayers)
+        if (Physics.SphereCast(transform.position, 0.3f, transform.forward, out hit, 0.1f, cameraHandler.ignoreLayers)
             || Physics.SphereCast(rayOrigin, 1, Vector3.down, out hit, 2.5f, cameraHandler.ignoreLayers))
         {
+            print(hit);
             //Si la detecta un collider con la etiqueta "Interactable"...
             if(hit.collider.CompareTag(DarkSoulsConsts.INTERACTABLE))
             {

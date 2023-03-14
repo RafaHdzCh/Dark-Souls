@@ -7,9 +7,9 @@ public class Interactable : MonoBehaviour
     [SerializeField] float radius = 0.6f;
     [SerializeField] Vector3 offset;
     public string interactableText;
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
-        Gizmos.color = Color.blue;
+        Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position + offset, radius);
     }
 
