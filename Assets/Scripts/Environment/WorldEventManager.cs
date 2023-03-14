@@ -5,6 +5,7 @@ using UnityEngine;
 public class WorldEventManager : MonoBehaviour
 {
     [SerializeField] List<FogWall> fogWalls;
+    [SerializeField] List<Collider> entranceColliders;
     [SerializeField] UIBossHealthBar bossHealthBar;
     [SerializeField] EnemyBossManager enemyBossManager;
 
@@ -23,17 +24,25 @@ public class WorldEventManager : MonoBehaviour
         {
             fogWall.ActivateFogWall();
         }
+
+        foreach(Collider entranceTrigger in entranceColliders)
+        {
+            entranceTrigger.enabled = false;
+        }
     }
 
     public void BossHasBeenDefeated()
     {
         bossFightIsActive = false;
         bossHasBeenDefeated = true;
-        //Deactivate fog walls
 
         foreach (var fogWall in fogWalls)
         {
             fogWall.DeactivateFogWall();
+        }
+        foreach (Collider entranceTrigger in entranceColliders)
+        {
+            entranceTrigger.enabled = true;
         }
     }
 }

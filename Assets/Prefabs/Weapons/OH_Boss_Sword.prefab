@@ -4790,9 +4790,9 @@ GameObject:
   - component: {fileID: 7742371112027394393}
   - component: {fileID: 7742371112026534533}
   - component: {fileID: 7742371112025170963}
-  - component: {fileID: 7751149631903857785}
   - component: {fileID: 1031963378434091905}
   - component: {fileID: 7288571565405901620}
+  - component: {fileID: 7269873301048127655}
   m_Layer: 0
   m_Name: OH_Sword_Prefab
   m_TagString: Untagged
@@ -4866,20 +4866,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7751149631903857785
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7742371112027667953}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43826581424661576, guid: 23c2830330476d8498d6e1378c25bfe6, type: 2}
 --- !u!114 &1031963378434091905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4906,6 +4892,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 201b9612bcb310b448d720469e64f71b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &7269873301048127655
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7742371112027667953}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.85283303, y: 1.1366576, z: 0.10123332}
+  m_Center: {x: 0.056525096, y: 0.41127944, z: 0.01851291}
 --- !u!1 &8208650217418073404
 GameObject:
   m_ObjectHideFlags: 0

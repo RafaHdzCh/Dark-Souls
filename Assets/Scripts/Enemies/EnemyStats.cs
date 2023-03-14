@@ -73,6 +73,7 @@ public class EnemyStats : CharacterStats
         {
             currentHealth = 0;
             isDead = true;
+            HandleDeath();
         }
     }
 
@@ -95,6 +96,8 @@ public class EnemyStats : CharacterStats
 
         if (currentHealth <= 0)
         {
+            currentHealth = 0;
+            isDead = true;
             HandleDeath();
         }
     }
