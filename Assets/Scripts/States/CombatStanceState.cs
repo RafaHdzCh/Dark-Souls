@@ -36,7 +36,7 @@ public class CombatStanceState : State
         if(!randomDestinationSet)
         {
             randomDestinationSet = true;
-            DecideCirclingAction(enemyAnimatorManager);
+            DecideCirclingAction(enemyAnimatorManager, enemyStats);
         }
 
         HandleRotateTowardsTarget(enemyManager);
@@ -84,31 +84,31 @@ public class CombatStanceState : State
         }
     }
 
-    protected private void DecideCirclingAction(EnemyAnimatorManager enemyAnimatorManager)
+    protected private void DecideCirclingAction(EnemyAnimatorManager enemyAnimatorManager, EnemyStats enemyStats)
     {
-        WalkAroundTarget(enemyAnimatorManager);
+        WalkAroundTarget(enemyAnimatorManager, enemyStats);
     }
 
-    protected private void WalkAroundTarget(EnemyAnimatorManager enemyAnimatorManager)
+    protected private void WalkAroundTarget(EnemyAnimatorManager enemyAnimatorManager, EnemyStats enemyStats)
     {
         verticalMovementValue = Random.Range(0, 1);
         if (verticalMovementValue <= 1 && verticalMovementValue >= 0.51f)
         {
-            verticalMovementValue = 1;
+            verticalMovementValue = enemyStats.runSpeed;
         }
         else if (verticalMovementValue >= 0 && verticalMovementValue < 0.50)
         {
-            verticalMovementValue = 0.5f;
+            verticalMovementValue = enemyStats.walkSpeed;
         }
 
         horizontalMovementValue = Random.Range(0, 1);
         if(horizontalMovementValue <= 1 && horizontalMovementValue >= 0.51f)
         {
-            horizontalMovementValue = 1f;
+            horizontalMovementValue = enemyStats.runSpeed;
         }
         else if (horizontalMovementValue >= 0.5f && horizontalMovementValue < 0)
         {
-            horizontalMovementValue = 0.5f;
+            horizontalMovementValue = enemyStats.walkSpeed;
         }
     }
 

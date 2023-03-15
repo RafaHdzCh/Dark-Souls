@@ -29,13 +29,13 @@ public class PursueTargetState : State
         }
         if (enemyManager.isPerformingAction)
         {
-            enemyAnimatorManager.anim.SetFloat(DarkSoulsConsts.VERTICAL, .5f, 0.1f, Time.deltaTime);
+            enemyAnimatorManager.anim.SetFloat(DarkSoulsConsts.VERTICAL, enemyStats.walkSpeed, 0.1f, Time.deltaTime);
             return this;
         }
 
         if (distanceFromTarget > enemyManager.maximumAggroRadius)
         {
-            enemyAnimatorManager.anim.SetFloat(DarkSoulsConsts.VERTICAL, 1, 0.1f, Time.deltaTime);
+            enemyAnimatorManager.anim.SetFloat(DarkSoulsConsts.VERTICAL, enemyStats.runSpeed, 0.1f, Time.deltaTime);
             return this;
         }
         

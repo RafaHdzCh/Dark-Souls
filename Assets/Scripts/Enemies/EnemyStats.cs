@@ -18,6 +18,8 @@ public class EnemyStats : CharacterStats
 
 
     public int soulsAwardedOnDeath = 50;
+    public float walkSpeed = 0.5f;
+    public float runSpeed = 1f;
 
     private void Awake()
     {
