@@ -1,10 +1,4 @@
-using JetBrains.Annotations;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.UIElements;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.HID;
 
 public class PlayerManager : CharacterManager
 {
@@ -129,14 +123,12 @@ public class PlayerManager : CharacterManager
     {
         if (other.CompareTag(DarkSoulsConsts.INTERACTABLE))
         {
-            print("Puedes interactuar con " + other.name);
             //Se obitene su componente "Interactable"
             interactableObject = other.GetComponent<Interactable>();
 
             //Si este script no es nulo...
             if (interactableObject != null)
             {
-                print("presiona A");
                 //Se obtiene componente de tipo texto y se muestra por UI.
                 string interactableText = interactableObject.interactableText;
                 interactableUI.interactableText.text = interactableText;

@@ -28,7 +28,6 @@ public class SpellDamageCollider : DamageCollider
             {
                 if(enemyStats.isBoss)
                 {
-                    print("danando al jefe");
                     enemyStats.TakeDamageNoAnimation(currentWeaponDamage);
                 }
                 else

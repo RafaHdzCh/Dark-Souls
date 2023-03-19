@@ -8,6 +8,7 @@ public class PlayerInventory : MonoBehaviour
 
     [Header("Current Equipment")]
     public HelmetEquipment currentHelmentEquipment;
+    public TorsoEquipment currentTorsoEquipment;
 
     [Header("Current QuickSlot Items")]
     public SpellItem currentSpell;

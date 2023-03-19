@@ -5,9 +5,13 @@ public class PlayerEquipmentManager : MonoBehaviour
     InputHandler inputHandler;
     PlayerInventory playerInventory;
 
+    [Header("Default Naked Model")]
+    public GameObject nakedHeadModel;
+    public GameObject nakedTorsoModel;
+
     [Header("Equipment Model Changers")]
     HelmetModelChanger helmetModelChanger;
-    //Body
+    TorsoModelChanger torsoModelChanger;
     //Legs
     //Hands
 
@@ -18,14 +22,40 @@ public class PlayerEquipmentManager : MonoBehaviour
     {
         inputHandler = GetComponentInParent<InputHandler>();
         playerInventory = GetComponentInParent<PlayerInventory>();
+
         helmetModelChanger = GetComponentInChildren<HelmetModelChanger>();
+        torsoModelChanger = GetComponentInChildren<TorsoModelChanger>();
     }
 
     private void Start()
     {
-        helmetModelChanger.UnequipAllHelmetModels();
+        EquipAllEquipmentModelsOnStart();
+    }
 
-        helmetModelChanger.EquipHelmetModelByName(playerInventory.currentHelmentEquipment.helmetModelName);
+    private void EquipAllEquipmentModelsOnStart()
+    {
+        helmetModelChanger.UnequipAllHelmetModels();
+        torsoModelChanger.UnequipAllTorsoModels();
+
+        if(playerInventory.currentHelmentEquipment != null)
+        {
+            nakedHeadModel.SetActive(false);
+            helmetModelChanger.EquipHelmetModelByName(playerInventory.currentHelmentEquipment.helmetModelName);
+        }
+        else
+        {
+            nakedHeadModel.SetActive(true);
+        }
+
+        if (playerInventory.currentTorsoEquipment != null)
+        {
+            nakedTorsoModel.SetActive(false);
+            torsoModelChanger.EquipTorsoModelByName(playerInventory.currentTorsoEquipment.torsoModelName);
+        }
+        else
+        {
+            nakedTorsoModel.SetActive(true);
+        }
     }
 
     public void OpenBlockingCollider()
