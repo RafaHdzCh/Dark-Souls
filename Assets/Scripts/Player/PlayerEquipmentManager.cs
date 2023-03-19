@@ -8,11 +8,16 @@ public class PlayerEquipmentManager : MonoBehaviour
     [Header("Default Naked Model")]
     public GameObject nakedHeadModel;
     public GameObject nakedTorsoModel;
+    public GameObject nakedHipModel;
+    public GameObject nakedLeftLeg;
+    public GameObject nakedRightLeg;
 
     [Header("Equipment Model Changers")]
     HelmetModelChanger helmetModelChanger;
     TorsoModelChanger torsoModelChanger;
-    //Legs
+    HipModelChanger hipModelChanger;
+    LeftLegModelChanger leftLegModelChanger;
+    RightLegModelChanger rightLegModelChanger;
     //Hands
 
 
@@ -25,6 +30,9 @@ public class PlayerEquipmentManager : MonoBehaviour
 
         helmetModelChanger = GetComponentInChildren<HelmetModelChanger>();
         torsoModelChanger = GetComponentInChildren<TorsoModelChanger>();
+        hipModelChanger = GetComponentInChildren<HipModelChanger>();
+        leftLegModelChanger = GetComponentInChildren<LeftLegModelChanger>();
+        rightLegModelChanger = GetComponentInChildren<RightLegModelChanger>();
     }
 
     private void Start()
@@ -36,8 +44,13 @@ public class PlayerEquipmentManager : MonoBehaviour
     {
         helmetModelChanger.UnequipAllHelmetModels();
         torsoModelChanger.UnequipAllTorsoModels();
+        hipModelChanger.UnequipAllHipModels();
+        leftLegModelChanger.UnequipAllLegModels();
+        rightLegModelChanger.UnequipAllLegModels();
 
-        if(playerInventory.currentHelmentEquipment != null)
+        #region Helmet Equipment
+
+        if (playerInventory.currentHelmentEquipment != null)
         {
             nakedHeadModel.SetActive(false);
             helmetModelChanger.EquipHelmetModelByName(playerInventory.currentHelmentEquipment.helmetModelName);
@@ -46,6 +59,10 @@ public class PlayerEquipmentManager : MonoBehaviour
         {
             nakedHeadModel.SetActive(true);
         }
+
+        #endregion
+
+        #region Torso Equipment
 
         if (playerInventory.currentTorsoEquipment != null)
         {
@@ -56,6 +73,29 @@ public class PlayerEquipmentManager : MonoBehaviour
         {
             nakedTorsoModel.SetActive(true);
         }
+
+        #endregion
+
+        #region Hip Equipment
+
+        if (playerInventory.currentLegEquipment != null)
+        {
+            nakedLeftLeg.SetActive(false);
+            nakedRightLeg.SetActive(false);
+            nakedHipModel.SetActive(false);
+
+            hipModelChanger.EquipHipModelByName(playerInventory.currentLegEquipment.hipModelName);
+            leftLegModelChanger.EquipLegModelByName(playerInventory.currentLegEquipment.leftLegName);
+            rightLegModelChanger.EquipLegModelByName(playerInventory.currentLegEquipment.rightLegName);
+        }
+        else
+        {
+            nakedHipModel.SetActive(true);
+            nakedLeftLeg.SetActive(true);
+            nakedRightLeg.SetActive(true);
+        }
+
+        #endregion
     }
 
     public void OpenBlockingCollider()

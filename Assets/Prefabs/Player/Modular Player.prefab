@@ -230,8 +230,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91d55fec705bab44ca16293b769cf093, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHelmentEquipment: {fileID: 11400000, guid: 6986a38c85cee5d4bacc45d51b9b3ddc, type: 2}
+  currentHelmentEquipment: {fileID: 0}
   currentTorsoEquipment: {fileID: 11400000, guid: 92c853f2238f9384bbe993809de75675, type: 2}
+  currentLegEquipment: {fileID: 11400000, guid: 7b182562efccd9e4ca159e78a928755b, type: 2}
   currentSpell: {fileID: 11400000, guid: 410181619b22a514d9ae959d5b939170, type: 2}
   currentConsumableItem: {fileID: 11400000, guid: 9c93a6f8fa0843f4bb69293f237f4373, type: 2}
   rightWeapon: {fileID: 0}
@@ -727,17 +728,37 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1995892688471184506}
     m_Modifications:
+    - target: {fileID: 1016445341982138, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Left Leg 19
+      objectReference: {fileID: 0}
     - target: {fileID: 1022667229344764, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_Name
       value: Male Torso 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1025743467370066, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Hips 16
       objectReference: {fileID: 0}
     - target: {fileID: 1026126207347518, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_Name
       value: Male Torso 12
       objectReference: {fileID: 0}
     - target: {fileID: 1031443133533250, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Left Leg 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031443133533250, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1037667584004104, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Hips 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1054785148184640, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Right Leg 04
       objectReference: {fileID: 0}
     - target: {fileID: 1063628816075506, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_Name
@@ -747,9 +768,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: Male Helmet
       objectReference: {fileID: 0}
+    - target: {fileID: 1097449134751478, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Right Leg 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103140843332868, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Hips 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105978607306786, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Hips 04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1114209236305460, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Hips 09
+      objectReference: {fileID: 0}
     - target: {fileID: 1117833128208246, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1123099452389960, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Right Leg 03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1123530134655506, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Right Leg 01
       objectReference: {fileID: 0}
     - target: {fileID: 1123530134655506, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_IsActive
@@ -767,6 +812,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Female Helmets
       objectReference: {fileID: 0}
+    - target: {fileID: 1143664878046896, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Right Leg 08
+      objectReference: {fileID: 0}
+    - target: {fileID: 1154968707067320, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Hips 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 1169236762045558, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Left Leg 14
+      objectReference: {fileID: 0}
     - target: {fileID: 1199112475520558, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_Name
       value: Male Helmet 04
@@ -774,6 +831,30 @@ PrefabInstance:
     - target: {fileID: 1206403566103032, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_Name
       value: Male Torso 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 1211610767471322, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Right Leg 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 1224569004850648, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Left Leg 08
+      objectReference: {fileID: 0}
+    - target: {fileID: 1225183212009252, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Hips
+      objectReference: {fileID: 0}
+    - target: {fileID: 1230331366651524, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Right Leg 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1239330763352864, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Hips 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 1240745754712484, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Left Leg 03
       objectReference: {fileID: 0}
     - target: {fileID: 1242060273568668, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_Name
@@ -783,17 +864,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: Male Torso 22
       objectReference: {fileID: 0}
+    - target: {fileID: 1248549086447974, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Hips 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1251303159455610, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Left Leg 16
+      objectReference: {fileID: 0}
     - target: {fileID: 1263825975845442, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_Name
       value: Male Helmet 13
       objectReference: {fileID: 0}
     - target: {fileID: 1264351002942952, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1264816678269154, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1282855638417188, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Hips 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 1313132797267146, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Right Leg 17
       objectReference: {fileID: 0}
     - target: {fileID: 1327716145524270, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_Name
@@ -819,13 +916,33 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1336210497285520, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Right Leg 06
+      objectReference: {fileID: 0}
     - target: {fileID: 1337803979967204, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_Name
       value: Male Helmet 05
       objectReference: {fileID: 0}
+    - target: {fileID: 1339082614081118, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Right Leg 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1345678411376016, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Left Leg 18
+      objectReference: {fileID: 0}
     - target: {fileID: 1352666786536964, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_Name
       value: Male Torso 02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1355262891608106, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Hips 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 1358220227636006, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Hips 03
       objectReference: {fileID: 0}
     - target: {fileID: 1361185751026886, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_IsActive
@@ -835,6 +952,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Male Helmet 08
       objectReference: {fileID: 0}
+    - target: {fileID: 1387428350392902, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Left Leg 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1403318524440260, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Right Leg 19
+      objectReference: {fileID: 0}
     - target: {fileID: 1410616555284012, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_Name
       value: Male Torso 13
@@ -843,9 +968,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: Male Torso 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1424606434224390, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Hips 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1425606490059612, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Left Leg 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428522807545856, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Left Leg 02
+      objectReference: {fileID: 0}
     - target: {fileID: 1435704786015030, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_Name
       value: Male Torso 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1436909048506028, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Hips 06
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447168472984856, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Right Leg 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1448882483812548, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Left Leg 13
       objectReference: {fileID: 0}
     - target: {fileID: 1450674918261958, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_IsActive
@@ -871,6 +1020,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Model
       objectReference: {fileID: 0}
+    - target: {fileID: 1481551678731860, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Hips 29
+      objectReference: {fileID: 0}
     - target: {fileID: 1483367138621048, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -879,13 +1032,25 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1498766590349156, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Hips 08
+      objectReference: {fileID: 0}
     - target: {fileID: 1554173238451020, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1554342952038822, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Hips 05
+      objectReference: {fileID: 0}
     - target: {fileID: 1556885196997672, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_Name
       value: Male Torso 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1561728019368956, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Right Leg 11
       objectReference: {fileID: 0}
     - target: {fileID: 1561728019368956, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_IsActive
@@ -903,6 +1068,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Male Helmet 07
       objectReference: {fileID: 0}
+    - target: {fileID: 1583241345162160, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Right Leg 14
+      objectReference: {fileID: 0}
     - target: {fileID: 1587985151079560, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -910,6 +1079,10 @@ PrefabInstance:
     - target: {fileID: 1597550706993576, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1609551718687238, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Hips 10
       objectReference: {fileID: 0}
     - target: {fileID: 1623867314257774, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_Name
@@ -927,6 +1100,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Male Torso 17
       objectReference: {fileID: 0}
+    - target: {fileID: 1636303494287024, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Left Leg 06
+      objectReference: {fileID: 0}
     - target: {fileID: 1637558249788488, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -935,9 +1112,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: Male Torso 05
       objectReference: {fileID: 0}
+    - target: {fileID: 1643104149472184, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Right Leg 02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1645894470452570, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Right Leg 07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1654363869023746, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Hips 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1656630558937984, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Left Legs
+      objectReference: {fileID: 0}
     - target: {fileID: 1658764442481860, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1677392438683254, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Left Leg 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1679683945260984, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Hips 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 1685816755361358, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Hips 07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1686232719814772, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Right Leg 09
       objectReference: {fileID: 0}
     - target: {fileID: 1707704242069128, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_Name
@@ -947,6 +1156,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Male Torso 16
       objectReference: {fileID: 0}
+    - target: {fileID: 1710402830807524, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Hips 22
+      objectReference: {fileID: 0}
     - target: {fileID: 1726884630627834, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_Name
       value: Male Helmet 11
@@ -955,17 +1168,53 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1728094855998646, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Left Leg 04
+      objectReference: {fileID: 0}
     - target: {fileID: 1740517383982332, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_Name
       value: Female Heads
+      objectReference: {fileID: 0}
+    - target: {fileID: 1742425759847958, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Left Leg 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 1759190086767276, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Left Leg 05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1768948123004100, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Hips 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1769331851222064, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Hips 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1778614563193770, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Right Leg 05
       objectReference: {fileID: 0}
     - target: {fileID: 1788402333928446, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1798714432329830, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Left Leg 15
+      objectReference: {fileID: 0}
     - target: {fileID: 1803761725505754, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_Name
       value: Male Torso 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804063365838942, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Left Leg 07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804169826949650, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Right Leg 20
       objectReference: {fileID: 0}
     - target: {fileID: 1805449713449640, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_IsActive
@@ -983,6 +1232,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1829755867851020, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Hips 23
+      objectReference: {fileID: 0}
     - target: {fileID: 1837887482945598, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_Name
       value: Male Torso 19
@@ -990,6 +1243,14 @@ PrefabInstance:
     - target: {fileID: 1840157846792234, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_Name
       value: Male Torso 07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851060414908646, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Hips 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1879875191637254, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Hips 01
       objectReference: {fileID: 0}
     - target: {fileID: 1879875191637254, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_IsActive
@@ -1008,8 +1269,16 @@ PrefabInstance:
       value: Male Torso 04
       objectReference: {fileID: 0}
     - target: {fileID: 1892980947703912, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Left Leg 01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892980947703912, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1893237324184050, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Right Leg 18
       objectReference: {fileID: 0}
     - target: {fileID: 1914391498302224, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_Name
@@ -1019,6 +1288,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1921626446679638, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Hips 28
+      objectReference: {fileID: 0}
     - target: {fileID: 1927087788716692, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_Name
       value: Male Torso 21
@@ -1027,13 +1300,29 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1956764247543770, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Right Legs
+      objectReference: {fileID: 0}
+    - target: {fileID: 1969891794391966, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Hips 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1972361462087736, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Left Leg 09
+      objectReference: {fileID: 0}
     - target: {fileID: 1972910402188818, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_Name
       value: Male Helmet 01
       objectReference: {fileID: 0}
     - target: {fileID: 1972910402188818, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1977094847720428, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+      propertyPath: m_Name
+      value: Male Hips 02
       objectReference: {fileID: 0}
     - target: {fileID: 1977094847720428, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_IsActive
@@ -1153,6 +1442,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torsoModels: []
+--- !u!1 &3817757350641339382 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1123530134655506, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+  m_PrefabInstance: {fileID: 3816971991065237988}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3817956298894349404 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1267513545395640, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+  m_PrefabInstance: {fileID: 3816971991065237988}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3818139345226690240 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1225183212009252, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+  m_PrefabInstance: {fileID: 3816971991065237988}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1664872576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3818139345226690240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d972ab6c496de0438c0bfe9038d33e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hipModels: []
 --- !u!1 &3818178614603415708 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1265490930506104, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
@@ -1176,11 +1493,24 @@ MonoBehaviour:
   isLeftHandSlot: 0
   isRightHandSlot: 1
   isBackSlot: 0
---- !u!1 &3818179638566962188 stripped
+--- !u!1 &3818341646101269092 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 1264351002942952, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1656630558937984, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
   m_PrefabInstance: {fileID: 3816971991065237988}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1154061117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3818341646101269092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68109d58b243abd4db86d2b4e5c95b64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  legModels: []
 --- !u!1 &3818408039263272938 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1458145671472654, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
@@ -1234,8 +1564,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f53f7a877382544491f83abf462838b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nakedHeadModel: {fileID: 3818179638566962188}
+  nakedHeadModel: {fileID: 3817956298894349404}
   nakedTorsoModel: {fileID: 3818752952504242822}
+  nakedHipModel: {fileID: 3818549397043158242}
+  nakedLeftLeg: {fileID: 3818527374966473100}
+  nakedRightLeg: {fileID: 3817757350641339382}
   blockingCollider: {fileID: 7316509454559745548}
 --- !u!114 &3816971989527055789
 MonoBehaviour:
@@ -1281,6 +1614,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingWeapon: {fileID: 0}
+--- !u!1 &3818527374966473100 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1892980947703912, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+  m_PrefabInstance: {fileID: 3816971991065237988}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3818549397043158242 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1879875191637254, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+  m_PrefabInstance: {fileID: 3816971991065237988}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3818604329152894526 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1956764247543770, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
+  m_PrefabInstance: {fileID: 3816971991065237988}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1259373628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3818604329152894526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da941f04d2d6f1345b050175757b3583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  legModels: []
 --- !u!1 &3818752952504242822 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1816799619468130, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
