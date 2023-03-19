@@ -5,8 +5,12 @@ using UnityEngine;
 public class DamageCollider : MonoBehaviour
 {
     [System.NonSerialized] public CharacterManager characterManager;
+    [System.NonSerialized] public bool enableDamagColliderOnStartUp = false;
     Collider damageCollider;
-    public bool enableDamagColliderOnStartUp = false;
+
+    [Header("Assign Weapon Damage")]
+    public float poiseBreak;
+    public float offensivePoiseBonus;
 
     [Header("Assign Weapon Damage")]
     public int currentWeaponDamage;
@@ -87,7 +91,10 @@ public class DamageCollider : MonoBehaviour
 
             if (enemyStats != null)
             {
-                if(enemyStats.isBoss)
+                enemyStats.poiseResetTimer = enemyStats.totalPoiseResetTime;
+                enemyStats.totalPoiseDefence = enemyStats.armorPoiseBonus - poiseBreak;
+
+                if(enemyStats.totalPoiseDefence > poiseBreak)
                 {
                     enemyStats.TakeDamageNoAnimation(currentWeaponDamage);
                 }
