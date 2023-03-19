@@ -579,16 +579,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9608fcf25080e114382f6db6721a669d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthLevel: 10
-  maxHealth: 0
-  currentHealth: 0
-  staminaLevel: 10
-  maxStamina: 0
-  currentStamina: 0
-  manaLevel: 10
-  maxMana: 0
-  currentMana: 0
-  soulCount: 0
+  totalPoiseDefence: 0
+  offnsivePoiseBonus: 0
+  armorPoiseBonus: 0
+  totalPoiseResetTime: 15
+  poiseResetTimer: 0
+  physicalDamageAbsortionHead: 0
+  physicalDamageAbsortionBody: 0
+  physicalDamageAbsortionLegs: 0
+  physicalDamageAbsortionHands: 0
   isDead: 0
   healthBar: {fileID: 0}
   staminaBar: {fileID: 0}

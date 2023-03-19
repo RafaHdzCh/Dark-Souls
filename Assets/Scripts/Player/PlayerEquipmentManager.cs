@@ -1,17 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerEquipmentManager : MonoBehaviour
 {
     InputHandler inputHandler;
     PlayerInventory playerInventory;
+
+    [Header("Equipment Model Changers")]
+    HelmetModelChanger helmetModelChanger;
+    //Body
+    //Legs
+    //Hands
+
+
     [SerializeField]BlockingCollider blockingCollider;
 
     private void Awake()
     {
         inputHandler = GetComponentInParent<InputHandler>();
         playerInventory = GetComponentInParent<PlayerInventory>();
+        helmetModelChanger = GetComponentInChildren<HelmetModelChanger>();
+    }
+
+    private void Start()
+    {
+        helmetModelChanger.UnequipAllHelmetModels();
+
+        helmetModelChanger.EquipHelmetModelByName(playerInventory.currentHelmentEquipment.helmetModelName);
     }
 
     public void OpenBlockingCollider()
