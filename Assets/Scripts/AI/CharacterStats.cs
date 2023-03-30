@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterStats : MonoBehaviour
@@ -10,6 +7,7 @@ public class CharacterStats : MonoBehaviour
     [System.NonSerialized] public int healthLevel = 10;
     [System.NonSerialized] public int maxHealth;
     [System.NonSerialized] public int currentHealth;
+    [System.NonSerialized] public int maxHalth;
 
     [Header("Stamina")]
     [System.NonSerialized] public int staminaLevel = 10;

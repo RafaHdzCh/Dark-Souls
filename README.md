@@ -1,2 +1,0 @@
-# DarkSouls
- DarkSouls-like game

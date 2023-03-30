@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +9,7 @@ public class PlayerInventory : MonoBehaviour
     public HelmetEquipment currentHelmentEquipment;
     public TorsoEquipment currentTorsoEquipment;
     public LegEquipment currentLegEquipment;
+    public HandEquipment currentHandEquipment;
 
     [Header("Current QuickSlot Items")]
     public SpellItem currentSpell;

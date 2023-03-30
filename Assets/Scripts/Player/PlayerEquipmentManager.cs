@@ -11,6 +11,12 @@ public class PlayerEquipmentManager : MonoBehaviour
     public GameObject nakedHipModel;
     public GameObject nakedLeftLeg;
     public GameObject nakedRightLeg;
+    public GameObject nakedUpperRightArm;
+    public GameObject nakedUpperLeftArm;
+    public GameObject nakedLowerRightArm;
+    public GameObject nakedLowerLeftArm;
+    public GameObject nakedLeftHand;
+    public GameObject nakedRightHand;
 
     [Header("Equipment Model Changers")]
     HelmetModelChanger helmetModelChanger;
@@ -18,8 +24,13 @@ public class PlayerEquipmentManager : MonoBehaviour
     HipModelChanger hipModelChanger;
     LeftLegModelChanger leftLegModelChanger;
     RightLegModelChanger rightLegModelChanger;
-    //Hands
 
+    UpperLeftArmModelChanger upperLeftArmModelChanger;
+    UpperRightArmModelChanger upperRightArmModelChanger;
+    LowerLeftArmModelChanger lowerLeftArmModelChanger;
+    LowerRightArmModelChanger lowerRightArmModelChanger;
+    LeftHandModelChanger leftHandModelChanger;
+    RightHandModelChanger rightHandModelChanger;
 
     [SerializeField]BlockingCollider blockingCollider;
 
@@ -33,6 +44,13 @@ public class PlayerEquipmentManager : MonoBehaviour
         hipModelChanger = GetComponentInChildren<HipModelChanger>();
         leftLegModelChanger = GetComponentInChildren<LeftLegModelChanger>();
         rightLegModelChanger = GetComponentInChildren<RightLegModelChanger>();
+
+        upperRightArmModelChanger = GetComponentInChildren<UpperRightArmModelChanger>();
+        upperLeftArmModelChanger = GetComponentInChildren<UpperLeftArmModelChanger>();
+        lowerRightArmModelChanger = GetComponentInChildren<LowerRightArmModelChanger>();
+        lowerLeftArmModelChanger = GetComponentInChildren<LowerLeftArmModelChanger>();
+        leftHandModelChanger = GetComponentInChildren<LeftHandModelChanger>();
+        rightHandModelChanger = GetComponentInChildren<RightHandModelChanger>();
     }
 
     private void Start()
@@ -47,6 +65,12 @@ public class PlayerEquipmentManager : MonoBehaviour
         hipModelChanger.UnequipAllHipModels();
         leftLegModelChanger.UnequipAllLegModels();
         rightLegModelChanger.UnequipAllLegModels();
+        upperLeftArmModelChanger.UnequipAllModels();
+        upperRightArmModelChanger.UnequipAllModels();
+        lowerRightArmModelChanger.UnequipAllModels();
+        lowerLeftArmModelChanger.UnequipAllModels();
+        leftHandModelChanger.UnequipAllModels();
+        rightHandModelChanger.UnequipAllModels();
 
         #region Helmet Equipment
 
@@ -67,11 +91,44 @@ public class PlayerEquipmentManager : MonoBehaviour
         if (playerInventory.currentTorsoEquipment != null)
         {
             nakedTorsoModel.SetActive(false);
+            nakedUpperLeftArm.SetActive(false);
+            nakedUpperRightArm.SetActive(false);
+            nakedLowerLeftArm.SetActive(false);
+            nakedLowerRightArm.SetActive(false);
+            nakedLeftHand.SetActive(false);
+            nakedRightHand.SetActive(false);
             torsoModelChanger.EquipTorsoModelByName(playerInventory.currentTorsoEquipment.torsoModelName);
+            upperLeftArmModelChanger.EquipModelByName(playerInventory.currentTorsoEquipment.upperLeftArmModelName);
+            upperRightArmModelChanger.EquipModelByName(playerInventory.currentTorsoEquipment.upperRightArmModelName);
         }
         else
         {
             nakedTorsoModel.SetActive(true);
+            nakedUpperLeftArm.SetActive(true);
+            nakedUpperRightArm.SetActive(true);
+        }
+
+        #endregion
+
+        #region Hand Equipment
+
+        if(playerInventory.currentHandEquipment != null)
+        {
+            upperLeftArmModelChanger.EquipModelByName(playerInventory.currentHandEquipment.upperLeftArmModelName);
+            upperRightArmModelChanger.EquipModelByName(playerInventory.currentHandEquipment.upperRightArmModelName);
+            lowerLeftArmModelChanger.EquipModelByName(playerInventory.currentHandEquipment.lowerLeftArmModelName);
+            lowerRightArmModelChanger.EquipModelByName(playerInventory.currentHandEquipment.lowerRightArmModelName);
+            leftHandModelChanger.EquipModelByName(playerInventory.currentHandEquipment.leftHandModelName);
+            rightHandModelChanger.EquipModelByName(playerInventory.currentHandEquipment.rightHandModelName);
+        }
+        else
+        {
+            nakedUpperLeftArm.SetActive(true);
+            nakedUpperRightArm.SetActive(true);
+            nakedLowerLeftArm.SetActive(true);
+            nakedLowerRightArm.SetActive(true);
+            nakedLeftHand.SetActive(true);
+            nakedRightHand.SetActive(true);
         }
 
         #endregion
@@ -96,6 +153,7 @@ public class PlayerEquipmentManager : MonoBehaviour
         }
 
         #endregion
+
     }
 
     public void OpenBlockingCollider()
