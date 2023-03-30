@@ -20,3 +20,5 @@ MonoBehaviour:
   lightningDefense: 0
   darknessDefense: 0
   torsoModelName: Male Torso 26
+  upperLeftArmModelName: Male Upper Left Arm 08
+  upperRightArmModelName: Male Upper Right Arm 08

@@ -19,6 +19,6 @@ MonoBehaviour:
   fireDefense: 0
   lightningDefense: 0
   darknessDefense: 0
-  hipModelName: 
-  leftLegName: 
-  rightLegName: 
+  hipModelName: Male Hips 14
+  leftLegName: Male Left Leg 03
+  rightLegName: Male Right Leg 03

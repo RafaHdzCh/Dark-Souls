@@ -114,8 +114,6 @@ public class PlayerEquipmentManager : MonoBehaviour
 
         if(playerInventory.currentHandEquipment != null)
         {
-            upperLeftArmModelChanger.EquipModelByName(playerInventory.currentHandEquipment.upperLeftArmModelName);
-            upperRightArmModelChanger.EquipModelByName(playerInventory.currentHandEquipment.upperRightArmModelName);
             lowerLeftArmModelChanger.EquipModelByName(playerInventory.currentHandEquipment.lowerLeftArmModelName);
             lowerRightArmModelChanger.EquipModelByName(playerInventory.currentHandEquipment.lowerRightArmModelName);
             leftHandModelChanger.EquipModelByName(playerInventory.currentHandEquipment.leftHandModelName);
@@ -123,8 +121,6 @@ public class PlayerEquipmentManager : MonoBehaviour
         }
         else
         {
-            nakedUpperLeftArm.SetActive(true);
-            nakedUpperRightArm.SetActive(true);
             nakedLowerLeftArm.SetActive(true);
             nakedLowerRightArm.SetActive(true);
             nakedLeftHand.SetActive(true);

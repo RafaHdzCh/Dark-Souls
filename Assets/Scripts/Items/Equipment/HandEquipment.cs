@@ -7,6 +7,4 @@ public class HandEquipment : EquipmentItem
     public string rightHandModelName;
     public string lowerLeftArmModelName;
     public string lowerRightArmModelName;
-    public string upperLeftArmModelName;
-    public string upperRightArmModelName;
 }
