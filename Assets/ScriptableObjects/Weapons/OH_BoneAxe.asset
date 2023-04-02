@@ -18,6 +18,8 @@ MonoBehaviour:
   isUnarmed: 0
   baseDamage: 18
   criticalDamageMultiplier: 3
+  poiseBreak: 110
+  offensivePoiseBonus: 75
   physicalDamageAbsortion: 0
   Right_Arm_Idle: Right_Arm_Idle_0
   Left_Arm_Idle: Left_Arm_Idle_0

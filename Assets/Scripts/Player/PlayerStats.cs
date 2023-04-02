@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerStats : CharacterStats
@@ -40,6 +38,22 @@ public class PlayerStats : CharacterStats
         manaBar.SetCurrentMana(currentMana);
     }
 
+    private void Update()
+    {
+        HandlePoiseResetTimer();
+    }
+    public override void HandlePoiseResetTimer()
+    {
+        if (poiseResetTimer > 0)
+        {
+            poiseResetTimer -= Time.deltaTime;
+        }
+        else if(poiseResetTimer <= 0 && !playerManager.isInteracting)
+        {
+            totalPoiseDefence = armorPoiseBonus;
+        }
+    }
+
     private int SetMaxHealthFromHealthLevel()
     {
         maxHealth = healthLevel * 10;
@@ -57,6 +71,7 @@ public class PlayerStats : CharacterStats
         maxMana = manaLevel * 10;
         return maxMana;
     }
+
     public override void TakeDamage(int damage, string damageAnimation = "Damage") 
     {
         if (playerManager.isInvulnerable) return;

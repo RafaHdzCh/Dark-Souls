@@ -42,8 +42,14 @@ public class EnemyStats : CharacterStats
         }
     }
 
+    public override void HandlePoiseResetTimer()
+    {
+        base.HandlePoiseResetTimer();
+    }
+
     private void Update()
     {
+        HandlePoiseResetTimer();
         if (!isBoss)
         {
             healthBarTransform.LookAt(cameraTransform);

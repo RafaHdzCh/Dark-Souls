@@ -103,6 +103,7 @@ public class DamageCollider : MonoBehaviour
                 enemyStats.poiseResetTimer = enemyStats.totalPoiseResetTime;
                 enemyStats.totalPoiseDefence = enemyStats.totalPoiseDefence - poiseBreak;
                 print("Enemy poise is currently: " + enemyStats.totalPoiseDefence);
+
                 if (enemyStats.totalPoiseDefence > poiseBreak)
                 {
                     enemyStats.TakeDamageNoAnimation(currentWeaponDamage);

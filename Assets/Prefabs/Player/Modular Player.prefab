@@ -230,17 +230,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91d55fec705bab44ca16293b769cf093, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHelmentEquipment: {fileID: 0}
+  currentHelmentEquipment: {fileID: 11400000, guid: 0e968c4278b160749a415672a53259d5, type: 2}
   currentTorsoEquipment: {fileID: 11400000, guid: 92c853f2238f9384bbe993809de75675, type: 2}
-  currentLegEquipment: {fileID: 0}
-  currentHandEquipment: {fileID: 0}
+  currentLegEquipment: {fileID: 11400000, guid: 5309a825f6ce39c458e022bc1ca70370, type: 2}
+  currentHandEquipment: {fileID: 11400000, guid: 5f0cb8969569c5349a04443c1db60274, type: 2}
   currentSpell: {fileID: 11400000, guid: 410181619b22a514d9ae959d5b939170, type: 2}
   currentConsumableItem: {fileID: 11400000, guid: 9c93a6f8fa0843f4bb69293f237f4373, type: 2}
   rightWeapon: {fileID: 0}
   leftWeapon: {fileID: 0}
   unarmedWeapon: {fileID: 11400000, guid: 987b1f82d63c33444bc47e7bb72e5645, type: 2}
   weaponInRightHandSlots:
-  - {fileID: 11400000, guid: 083bb1a2b7e922e4796d27647f4c5b06, type: 2}
+  - {fileID: 11400000, guid: ee6d912ff6531e548862512a87cbb33c, type: 2}
   - {fileID: 11400000, guid: e3c01472b89680441875615630ed5759, type: 2}
   weaponInLeftHandSlots:
   - {fileID: 11400000, guid: 8b4c2450f0c93364e8f138bc1a4e4e13, type: 2}
@@ -258,8 +258,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9608fcf25080e114382f6db6721a669d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalPoiseDefence: 0
-  offnsivePoiseBonus: 0
+  totalPoiseDefence: 150
+  offensivePoiseBonus: 0
   armorPoiseBonus: 0
   totalPoiseResetTime: 15
   poiseResetTimer: 0
@@ -983,7 +983,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1264351002942952, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1264816678269154, guid: a377ac8a1cb35db4d800d254ce63a841, type: 3}
       propertyPath: m_Name

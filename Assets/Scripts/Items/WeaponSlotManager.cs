@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WeaponSlotManager : MonoBehaviour
@@ -137,8 +138,14 @@ public class WeaponSlotManager : MonoBehaviour
 
     public void CloseDamageCollider()
     {
-        rightHandDamageCollider.DisableDamageCollider();
-        leftHandDamageCollider.DisableDamageCollider();
+        if(rightHandDamageCollider != null)
+        {
+            rightHandDamageCollider.DisableDamageCollider();
+        }
+        if(leftHandDamageCollider != null)
+        {
+            leftHandDamageCollider.DisableDamageCollider();
+        }
     }
 
     #endregion
@@ -152,5 +159,19 @@ public class WeaponSlotManager : MonoBehaviour
     {
         playerStats.TakeStaminaDamage(Mathf.RoundToInt(attackingWeapon.baseStamina * attackingWeapon.heavyAttackMultiplier));
     }
+    #endregion
+
+    #region Handle Weapon's Poise Bonus
+
+    public void GrantWeaponAttackingPoiseBonus()
+    {
+        playerStats.totalPoiseDefence += attackingWeapon.offensivePoiseBonus;
+    }
+
+    public void ResetWeaponAttackingPoiseBonus()
+    {
+        playerStats.totalPoiseDefence = playerStats.armorPoiseBonus;
+    }
+
     #endregion
 }

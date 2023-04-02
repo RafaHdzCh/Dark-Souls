@@ -38,11 +38,6 @@ public class CharacterStats : MonoBehaviour
 
     [HideInInspector] public bool isDead;
 
-    protected virtual void Update()
-    {
-        HandlePoiseResetTimer();
-    }
-
     private void Start()
     {
         totalPoiseDefence = armorPoiseBonus;
