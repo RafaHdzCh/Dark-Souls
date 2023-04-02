@@ -24,7 +24,7 @@ public class CharacterStats : MonoBehaviour
 
     [Header("Poise")]
     public float totalPoiseDefence;
-    public float offnsivePoiseBonus;
+    public float offensivePoiseBonus;
     public float armorPoiseBonus;
     public float totalPoiseResetTime = 15;
     public float poiseResetTimer = 0;

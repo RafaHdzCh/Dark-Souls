@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DamageCollider : MonoBehaviour
@@ -8,7 +6,7 @@ public class DamageCollider : MonoBehaviour
     [System.NonSerialized] public bool enableDamagColliderOnStartUp = false;
     Collider damageCollider;
 
-    [Header("Assign Weapon Damage")]
+    [Header("Poise")]
     public float poiseBreak;
     public float offensivePoiseBonus;
 
@@ -62,7 +60,18 @@ public class DamageCollider : MonoBehaviour
 
             if(playerStats != null)
             {
-                playerStats.TakeDamage(currentWeaponDamage, DarkSoulsConsts.DAMAGE);
+                playerStats.poiseResetTimer = playerStats.totalPoiseResetTime;
+                playerStats.totalPoiseDefence = playerStats.totalPoiseDefence - poiseBreak;
+
+                if (playerStats.totalPoiseDefence > poiseBreak)
+                {
+                    playerStats.TakeDamageNoAnimation(currentWeaponDamage);
+                    print("Player poise is currently: " + playerStats.totalPoiseDefence);
+                }
+                else
+                {
+                    playerStats.TakeDamage(currentWeaponDamage, DarkSoulsConsts.DAMAGE);
+                }
             }
         }
         if (collision.CompareTag(DarkSoulsConsts.ENEMY))
@@ -92,9 +101,9 @@ public class DamageCollider : MonoBehaviour
             if (enemyStats != null)
             {
                 enemyStats.poiseResetTimer = enemyStats.totalPoiseResetTime;
-                enemyStats.totalPoiseDefence = enemyStats.armorPoiseBonus - poiseBreak;
-
-                if(enemyStats.totalPoiseDefence > poiseBreak)
+                enemyStats.totalPoiseDefence = enemyStats.totalPoiseDefence - poiseBreak;
+                print("Enemy poise is currently: " + enemyStats.totalPoiseDefence);
+                if (enemyStats.totalPoiseDefence > poiseBreak)
                 {
                     enemyStats.TakeDamageNoAnimation(currentWeaponDamage);
                 }
