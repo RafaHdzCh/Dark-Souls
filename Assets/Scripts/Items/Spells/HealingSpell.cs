@@ -6,7 +6,7 @@ using UnityEngine;
 public class HealingSpell : SpellItem
 {
     public int healAmount;
-    public override void AttemptToCastSpell(PlayerAnimatorManager animatorHandler, PlayerStats playerStats, WeaponSlotManager weaponSlotManager)
+    public override void AttemptToCastSpell(PlayerAnimatorManager animatorHandler, PlayerStatsManager playerStats, PlayerWeaponSlotManager weaponSlotManager)
     {
         base.AttemptToCastSpell(animatorHandler, playerStats, weaponSlotManager);
         if(spellWarmUpFX != null)
@@ -17,7 +17,7 @@ public class HealingSpell : SpellItem
         animatorHandler.PlayTargetAnimation(spellAnimation, true);
         
     }
-    public override void SuccessfullyCastSpell(PlayerAnimatorManager animatorHandler, PlayerStats playerStats, WeaponSlotManager weaponSlotManager, CameraHandler cameraHandler)
+    public override void SuccessfullyCastSpell(PlayerAnimatorManager animatorHandler, PlayerStatsManager playerStats, PlayerWeaponSlotManager weaponSlotManager, CameraHandler cameraHandler)
     {
         base.SuccessfullyCastSpell(animatorHandler, playerStats, weaponSlotManager, cameraHandler);
         GameObject instantiateSpellFX = Instantiate(spellCastFX, animatorHandler.transform);

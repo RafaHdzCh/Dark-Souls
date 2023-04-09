@@ -9,7 +9,7 @@ public class DamagePlayer : MonoBehaviour
     //Aplica dano al jugador al entrar en contacto con este Collider Trigger.
     void OnTriggerEnter(Collider other)
     {
-        PlayerStats playerStats = other.GetComponent<PlayerStats>();
+        PlayerStatsManager playerStats = other.GetComponent<PlayerStatsManager>();
         if(playerStats != null)
         {
             playerStats.TakeDamage(damage);

@@ -22,14 +22,14 @@ public class SpellItem : Item
     public string spellDescription;
 
     public virtual void AttemptToCastSpell(PlayerAnimatorManager animatorHandler, 
-                                            PlayerStats playerStats, 
-                                            WeaponSlotManager weaponSlotManager)
+                                            PlayerStatsManager playerStats, 
+                                            PlayerWeaponSlotManager weaponSlotManager)
     {
 
     }
     public virtual void SuccessfullyCastSpell(PlayerAnimatorManager animatorHandler,
-                                                PlayerStats playerStats,
-                                                WeaponSlotManager weaponSlotManager,
+                                                PlayerStatsManager playerStats,
+                                                PlayerWeaponSlotManager weaponSlotManager,
                                                 CameraHandler cameraHandler)
     {
         playerStats.DeductMana(manaCost);

@@ -33,8 +33,8 @@ public class EnemyBossManager : MonoBehaviour
 
     public void ShiftToSecondPhase()
     {
-        enemyAnimatorManager.anim.SetBool(DarkSoulsConsts.ISINVULNERABLE, true);
-        enemyAnimatorManager.anim.SetBool(DarkSoulsConsts.ISPHASESHIFTING, true);
+        enemyAnimatorManager.animator.SetBool(DarkSoulsConsts.ISINVULNERABLE, true);
+        enemyAnimatorManager.animator.SetBool(DarkSoulsConsts.ISPHASESHIFTING, true);
         enemyAnimatorManager.PlayTargetAnimation(DarkSoulsConsts.PHASESHIFT, true);
     }
 }

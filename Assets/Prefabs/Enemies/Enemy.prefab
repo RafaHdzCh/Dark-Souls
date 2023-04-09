@@ -929,7 +929,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b585a38a2bc026f45b5ff2017133b3e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 4058946893968436040}
+  animator: {fileID: 0}
 --- !u!114 &929883227584466738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2750,14 +2750,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4058946893978219942}
-  - component: {fileID: 4058946893968436041}
-  - component: {fileID: 4058946893968436042}
-  - component: {fileID: 4058946893968436043}
-  - component: {fileID: 4058946893968436044}
-  - component: {fileID: 4058946893968436045}
   - component: {fileID: 4058946893968436040}
-  - component: {fileID: 5969494493747736268}
+  - component: {fileID: 4058946893968436042}
+  - component: {fileID: 4058946893968436041}
   - component: {fileID: 1519783937}
+  - component: {fileID: 4058946893968436045}
+  - component: {fileID: 4058946893968436044}
+  - component: {fileID: 4058946893968436043}
+  - component: {fileID: 5969494493747736268}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
@@ -2787,97 +2787,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &4058946893968436041
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4058946893977939094}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
---- !u!136 &4058946893968436042
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4058946893977939094}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.25
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &4058946893968436043
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4058946893977939094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d9cb9ab2a6bbec489eb3e509de39702, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthLevel: 10
-  maxHealth: 0
-  currentHealth: 0
-  staminaLevel: 10
-  maxStamina: 0
-  currentStamina: 0
-  manaLevel: 10
-  maxMana: 0
-  currentMana: 0
-  soulCount: 0
-  isDead: 0
-  healthBarTransform: {fileID: 2400626767415522420}
-  cameraTransform: {fileID: 0}
-  rigi: {fileID: 4058946893968436041}
-  soulsAwardedOnDeath: 50
---- !u!114 &4058946893968436044
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4058946893977939094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26a4b8f709a558342ac44a70457f5804, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lockOnTransform: {fileID: 8121742789243380356}
-  backstabCollider: {fileID: 906612027}
-  riposteCollider: {fileID: 3441362740728242246}
-  canDoCombo: 0
-  detectionRadius: 20
-  minimumDetectionAngle: -50
-  maximumDetectionAngle: 50
-  currentState: {fileID: 8121742788650290333}
---- !u!114 &4058946893968436045
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4058946893977939094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c324c597a6223ed4488e3ace81d9abcf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterCollider: {fileID: 4058946893968436042}
-  characterCollisionBlocker: {fileID: 8121742788687147783}
 --- !u!95 &4058946893968436040
 Animator:
   serializedVersion: 4
@@ -2898,6 +2807,112 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!136 &4058946893968436042
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4058946893977939094}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.25
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!54 &4058946893968436041
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4058946893977939094}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!114 &1519783937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4058946893977939094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b585a38a2bc026f45b5ff2017133b3e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 4058946893968436040}
+--- !u!114 &4058946893968436045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4058946893977939094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c324c597a6223ed4488e3ace81d9abcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterCollider: {fileID: 4058946893968436042}
+  characterCollisionBlocker: {fileID: 8121742788687147783}
+--- !u!114 &4058946893968436044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4058946893977939094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26a4b8f709a558342ac44a70457f5804, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lockOnTransform: {fileID: 8121742789243380356}
+  backstabCollider: {fileID: 906612027}
+  riposteCollider: {fileID: 3441362740728242246}
+  canDoCombo: 0
+  detectionRadius: 20
+  minimumDetectionAngle: -50
+  maximumDetectionAngle: 50
+  currentState: {fileID: 8121742788650290333}
+--- !u!114 &4058946893968436043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4058946893977939094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d9cb9ab2a6bbec489eb3e509de39702, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalPoiseDefence: 0
+  offensivePoiseBonus: 0
+  armorPoiseBonus: 0
+  totalPoiseResetTime: 15
+  poiseResetTimer: 0
+  physicalDamageAbsortionHead: 0
+  physicalDamageAbsortionBody: 0
+  physicalDamageAbsortionLegs: 0
+  physicalDamageAbsortionHands: 0
+  isDead: 0
+  healthBarTransform: {fileID: 2400626767415522420}
+  cameraTransform: {fileID: 0}
+  rigi: {fileID: 4058946893968436041}
+  isBoss: 0
+  soulsAwardedOnDeath: 50
+  walkSpeed: 0.5
+  runSpeed: 1
 --- !u!114 &5969494493747736268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2914,19 +2929,6 @@ MonoBehaviour:
   leftHandWeapon: {fileID: 11400000, guid: 430d5d2687198a74faf99f6345a45715, type: 2}
   rightHandSlot: {fileID: 4128272116082020726}
   leftHandSlot: {fileID: 3463995741317795353}
---- !u!114 &1519783937
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4058946893977939094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b585a38a2bc026f45b5ff2017133b3e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 4058946893968436040}
 --- !u!1 &4058946893977940240
 GameObject:
   m_ObjectHideFlags: 0

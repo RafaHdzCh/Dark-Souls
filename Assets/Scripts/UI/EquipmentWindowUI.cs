@@ -13,7 +13,7 @@ public class EquipmentWindowUI : MonoBehaviour
     [SerializeField] HandEquipmentSlotUI[] handEquipmentSlotUI;
 
 
-    public void LoadWeaponOnEquipmentSlot(PlayerInventory playerInventory)
+    public void LoadWeaponOnEquipmentSlot(PlayerInventoryManager playerInventory)
     {
         for(int i = 0; i < handEquipmentSlotUI.Length; i++)
         {

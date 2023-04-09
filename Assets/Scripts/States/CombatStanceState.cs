@@ -18,14 +18,14 @@ public class CombatStanceState : State
         if (enemyStats.currentHealth <= 0) return null;
 
         float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
-        enemyAnimatorManager.anim.SetFloat(DarkSoulsConsts.VERTICAL, verticalMovementValue, 0.2f, Time.deltaTime);
-        enemyAnimatorManager.anim.SetFloat(DarkSoulsConsts.HORIZONTAL, horizontalMovementValue, 0.2f, Time.deltaTime);
+        enemyAnimatorManager.animator.SetFloat(DarkSoulsConsts.VERTICAL, verticalMovementValue, 0.2f, Time.deltaTime);
+        enemyAnimatorManager.animator.SetFloat(DarkSoulsConsts.HORIZONTAL, horizontalMovementValue, 0.2f, Time.deltaTime);
         attackState.hasPerformedAttack = false;
 
         if (enemyManager.isInteracting)
         {
-            enemyAnimatorManager.anim.SetFloat(DarkSoulsConsts.VERTICAL, 0);
-            enemyAnimatorManager.anim.SetFloat(DarkSoulsConsts.HORIZONTAL, 0);
+            enemyAnimatorManager.animator.SetFloat(DarkSoulsConsts.VERTICAL, 0);
+            enemyAnimatorManager.animator.SetFloat(DarkSoulsConsts.HORIZONTAL, 0);
             return this;
         }
 

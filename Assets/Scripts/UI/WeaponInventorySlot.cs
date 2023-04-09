@@ -8,15 +8,15 @@ public class WeaponInventorySlot : MonoBehaviour
 {
     [SerializeField] Image icon;
 
-    PlayerInventory playerInventory;
-    WeaponSlotManager weaponSlotManager;
+    PlayerInventoryManager playerInventory;
+    PlayerWeaponSlotManager weaponSlotManager;
     UIManager uiManager;
     WeaponItem item;
 
     private void Awake()
     {
-        playerInventory = FindObjectOfType<PlayerInventory>();
-        weaponSlotManager = FindObjectOfType<WeaponSlotManager>();
+        playerInventory = FindObjectOfType<PlayerInventoryManager>();
+        weaponSlotManager = FindObjectOfType<PlayerWeaponSlotManager>();
         uiManager = FindObjectOfType<UIManager>();
     }
 

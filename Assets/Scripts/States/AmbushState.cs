@@ -24,7 +24,7 @@ public class AmbushState : State
         Collider[] colliders = Physics.OverlapSphere(enemyManager.transform.position, detctionRadius, detectionLayer);
         for(int i = 0; i < colliders.Length; i++)
         {
-            CharacterStats characterStats = colliders[i].transform.GetComponent<CharacterStats>();
+            CharacterStatsManager characterStats = colliders[i].transform.GetComponent<CharacterStatsManager>();
 
             if(characterStats != null)
             {

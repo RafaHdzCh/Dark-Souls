@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyStats : CharacterStats
+public class EnemyStats : CharacterStatsManager
 {
     [Header("Serializables")]
     [Header("Components")]

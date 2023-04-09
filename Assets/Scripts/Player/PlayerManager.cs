@@ -3,10 +3,10 @@ using UnityEngine;
 public class PlayerManager : CharacterManager
 {
     InputHandler inputHandler;
-    Animator anim;
+    Animator animator;
     CameraHandler cameraHandler;
-    PlayerLocomotion playerLocomotion;
-    PlayerStats playerStats;
+    PlayerLocomotionManager playerLocomotion;
+    PlayerStatsManager playerStatsManager;
     PlayerAnimatorManager playerAnimatorManager;
     [System.NonSerialized] public Interactable interactableObject;
 
@@ -28,11 +28,11 @@ public class PlayerManager : CharacterManager
         cameraHandler = FindObjectOfType<CameraHandler>();
         backstabCollider = GetComponentInChildren<CriticalDamageCollider>();
         inputHandler = GetComponent<InputHandler>(); 
-        anim = GetComponentInChildren<Animator>();
-        playerLocomotion = GetComponent<PlayerLocomotion>();
+        animator = GetComponent<Animator>();
+        playerLocomotion = GetComponent<PlayerLocomotionManager>();
         interactableUI = FindObjectOfType<InteractableUI>();
-        playerStats = GetComponent<PlayerStats>();
-        playerAnimatorManager = GetComponentInChildren<PlayerAnimatorManager>();
+        playerStatsManager = GetComponent<PlayerStatsManager>();
+        playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
     }
 
     void Update()
@@ -40,23 +40,23 @@ public class PlayerManager : CharacterManager
         float delta = Time.deltaTime;
 
         //Se establecen los booleanos segun lo que indique la animacion.
-        isInteracting = anim.GetBool(DarkSoulsConsts.ISINTERACTING);
-        isFiringSpell = anim.GetBool(DarkSoulsConsts.ISFIRINGSPELL);
-        canDoCombo = anim.GetBool(DarkSoulsConsts.CANDOCOMBO);
-        anim.SetBool(DarkSoulsConsts.ISINAIR, isInAir);
-        anim.SetBool(DarkSoulsConsts.ISDEAD, playerStats.isDead);
+        isInteracting = animator.GetBool(DarkSoulsConsts.ISINTERACTING);
+        isFiringSpell = animator.GetBool(DarkSoulsConsts.ISFIRINGSPELL);
+        canDoCombo = animator.GetBool(DarkSoulsConsts.CANDOCOMBO);
+        animator.SetBool(DarkSoulsConsts.ISINAIR, isInAir);
+        animator.SetBool(DarkSoulsConsts.ISDEAD, playerStatsManager.isDead);
 
-        anim.SetBool(DarkSoulsConsts.ISBLOCKING, isBlocking);
+        animator.SetBool(DarkSoulsConsts.ISBLOCKING, isBlocking);
 
-        isUsingRightHand = anim.GetBool(DarkSoulsConsts.ISUSINGRIGHTHAND);
-        isUsingLeftHand = anim.GetBool(DarkSoulsConsts.ISUSINGLEFTHAND);
-        isInvulnerable = anim.GetBool(DarkSoulsConsts.ISINVULNERABLE);
-        playerAnimatorManager.canRotate = anim.GetBool(DarkSoulsConsts.CANROTATE);
+        isUsingRightHand = animator.GetBool(DarkSoulsConsts.ISUSINGRIGHTHAND);
+        isUsingLeftHand = animator.GetBool(DarkSoulsConsts.ISUSINGLEFTHAND);
+        isInvulnerable = animator.GetBool(DarkSoulsConsts.ISINVULNERABLE);
+        playerAnimatorManager.canRotate = animator.GetBool(DarkSoulsConsts.CANROTATE);
 
         //Detecta los inputs del control del jugador.
         inputHandler.TickInput(delta);
         playerLocomotion.HandleRollingAndSprinting(delta);
-        playerStats.RegenerateStamina();
+        playerStatsManager.RegenerateStamina();
 
         if(interactableObject != null && inputHandler.a_input)
         {

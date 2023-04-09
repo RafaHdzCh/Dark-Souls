@@ -19,12 +19,12 @@ public class WeaponPickUp : Interactable
 
     private void PickUpItem(PlayerManager playerManager)
     {
-        PlayerInventory playerInventory;
-        PlayerLocomotion playerLocomotion;
+        PlayerInventoryManager playerInventory;
+        PlayerLocomotionManager playerLocomotion;
         PlayerAnimatorManager animatorHandler;
 
-        playerInventory = playerManager.GetComponent<PlayerInventory>();
-        playerLocomotion = playerManager.GetComponent<PlayerLocomotion>();
+        playerInventory = playerManager.GetComponent<PlayerInventoryManager>();
+        playerLocomotion = playerManager.GetComponent<PlayerLocomotionManager>();
         animatorHandler = playerManager.GetComponentInChildren<PlayerAnimatorManager>();
 
         playerLocomotion.rigi.velocity = Vector3.zero;

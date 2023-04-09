@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerEquipmentManager : MonoBehaviour
 {
     InputHandler inputHandler;
-    PlayerInventory playerInventory;
+    PlayerInventoryManager playerInventoryManager;
 
     [Header("Default Naked Model")]
     public GameObject nakedHeadModel;
@@ -36,8 +36,8 @@ public class PlayerEquipmentManager : MonoBehaviour
 
     private void Awake()
     {
-        inputHandler = GetComponentInParent<InputHandler>();
-        playerInventory = GetComponentInParent<PlayerInventory>();
+        inputHandler = GetComponent<InputHandler>();
+        playerInventoryManager = GetComponent<PlayerInventoryManager>();
 
         helmetModelChanger = GetComponentInChildren<HelmetModelChanger>();
         torsoModelChanger = GetComponentInChildren<TorsoModelChanger>();
@@ -74,10 +74,10 @@ public class PlayerEquipmentManager : MonoBehaviour
 
         #region Helmet Equipment
 
-        if (playerInventory.currentHelmentEquipment != null)
+        if (playerInventoryManager.currentHelmentEquipment != null)
         {
             nakedHeadModel.SetActive(false);
-            helmetModelChanger.EquipHelmetModelByName(playerInventory.currentHelmentEquipment.helmetModelName);
+            helmetModelChanger.EquipHelmetModelByName(playerInventoryManager.currentHelmentEquipment.helmetModelName);
         }
         else
         {
@@ -88,7 +88,7 @@ public class PlayerEquipmentManager : MonoBehaviour
 
         #region Torso Equipment
 
-        if (playerInventory.currentTorsoEquipment != null)
+        if (playerInventoryManager.currentTorsoEquipment != null)
         {
             nakedTorsoModel.SetActive(false);
             nakedUpperLeftArm.SetActive(false);
@@ -97,9 +97,9 @@ public class PlayerEquipmentManager : MonoBehaviour
             nakedLowerRightArm.SetActive(false);
             nakedLeftHand.SetActive(false);
             nakedRightHand.SetActive(false);
-            torsoModelChanger.EquipTorsoModelByName(playerInventory.currentTorsoEquipment.torsoModelName);
-            upperLeftArmModelChanger.EquipModelByName(playerInventory.currentTorsoEquipment.upperLeftArmModelName);
-            upperRightArmModelChanger.EquipModelByName(playerInventory.currentTorsoEquipment.upperRightArmModelName);
+            torsoModelChanger.EquipTorsoModelByName(playerInventoryManager.currentTorsoEquipment.torsoModelName);
+            upperLeftArmModelChanger.EquipModelByName(playerInventoryManager.currentTorsoEquipment.upperLeftArmModelName);
+            upperRightArmModelChanger.EquipModelByName(playerInventoryManager.currentTorsoEquipment.upperRightArmModelName);
         }
         else
         {
@@ -112,12 +112,12 @@ public class PlayerEquipmentManager : MonoBehaviour
 
         #region Hand Equipment
 
-        if(playerInventory.currentHandEquipment != null)
+        if(playerInventoryManager.currentHandEquipment != null)
         {
-            lowerLeftArmModelChanger.EquipModelByName(playerInventory.currentHandEquipment.lowerLeftArmModelName);
-            lowerRightArmModelChanger.EquipModelByName(playerInventory.currentHandEquipment.lowerRightArmModelName);
-            leftHandModelChanger.EquipModelByName(playerInventory.currentHandEquipment.leftHandModelName);
-            rightHandModelChanger.EquipModelByName(playerInventory.currentHandEquipment.rightHandModelName);
+            lowerLeftArmModelChanger.EquipModelByName(playerInventoryManager.currentHandEquipment.lowerLeftArmModelName);
+            lowerRightArmModelChanger.EquipModelByName(playerInventoryManager.currentHandEquipment.lowerRightArmModelName);
+            leftHandModelChanger.EquipModelByName(playerInventoryManager.currentHandEquipment.leftHandModelName);
+            rightHandModelChanger.EquipModelByName(playerInventoryManager.currentHandEquipment.rightHandModelName);
         }
         else
         {
@@ -131,15 +131,15 @@ public class PlayerEquipmentManager : MonoBehaviour
 
         #region Hip Equipment
 
-        if (playerInventory.currentLegEquipment != null)
+        if (playerInventoryManager.currentLegEquipment != null)
         {
             nakedLeftLeg.SetActive(false);
             nakedRightLeg.SetActive(false);
             nakedHipModel.SetActive(false);
 
-            hipModelChanger.EquipHipModelByName(playerInventory.currentLegEquipment.hipModelName);
-            leftLegModelChanger.EquipLegModelByName(playerInventory.currentLegEquipment.leftLegName);
-            rightLegModelChanger.EquipLegModelByName(playerInventory.currentLegEquipment.rightLegName);
+            hipModelChanger.EquipHipModelByName(playerInventoryManager.currentLegEquipment.hipModelName);
+            leftLegModelChanger.EquipLegModelByName(playerInventoryManager.currentLegEquipment.leftLegName);
+            rightLegModelChanger.EquipLegModelByName(playerInventoryManager.currentLegEquipment.rightLegName);
         }
         else
         {
@@ -156,11 +156,11 @@ public class PlayerEquipmentManager : MonoBehaviour
     {
         if(inputHandler.twoHandFlag)
         {
-            blockingCollider.SetColliderDamageAbsortion(playerInventory.rightWeapon);
+            blockingCollider.SetColliderDamageAbsortion(playerInventoryManager.rightWeapon);
         }
         else
         {
-            blockingCollider.SetColliderDamageAbsortion(playerInventory.leftWeapon);
+            blockingCollider.SetColliderDamageAbsortion(playerInventoryManager.leftWeapon);
         }
         blockingCollider.EnableBlockingCollider();
     }

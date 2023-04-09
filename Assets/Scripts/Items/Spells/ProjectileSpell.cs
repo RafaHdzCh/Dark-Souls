@@ -16,8 +16,8 @@ public class ProjectileSpell : SpellItem
     Rigidbody rigi;
 
     public override void AttemptToCastSpell(PlayerAnimatorManager animatorHandler, 
-                                            PlayerStats playerStats, 
-                                            WeaponSlotManager weaponSlotManager)
+                                            PlayerStatsManager playerStats, 
+                                            PlayerWeaponSlotManager weaponSlotManager)
     {
         base.AttemptToCastSpell(animatorHandler, playerStats, weaponSlotManager);
         GameObject instantiatedWarmUpSpellVFX = Instantiate(spellWarmUpFX, weaponSlotManager.rightHandSlot.transform);
@@ -28,8 +28,8 @@ public class ProjectileSpell : SpellItem
     }
 
     public override void SuccessfullyCastSpell(PlayerAnimatorManager animatorHandler, 
-                                                PlayerStats playerStats, 
-                                                WeaponSlotManager weaponSlotManager,
+                                                PlayerStatsManager playerStats, 
+                                                PlayerWeaponSlotManager weaponSlotManager,
                                                 CameraHandler cameraHandler)
     {
         base.SuccessfullyCastSpell(animatorHandler, playerStats, weaponSlotManager, cameraHandler);

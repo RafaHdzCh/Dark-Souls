@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    PlayerInventory playerInventory;
+    [SerializeField] PlayerInventoryManager playerInventoryManager;
     public EquipmentWindowUI equipmentWindowUI;
 
     [Header("Serializables")]
@@ -30,14 +30,10 @@ public class UIManager : MonoBehaviour
     public bool leftHandSlot01Selected;
     public bool leftHandSlot02Selected;
 
-    private void Awake()
-    {
-        playerInventory = FindObjectOfType<PlayerInventory>();
-    }
     private void Start()
     {
         weaponInventorySlots = weaponInventorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>();
-        equipmentWindowUI.LoadWeaponOnEquipmentSlot(playerInventory);
+        equipmentWindowUI.LoadWeaponOnEquipmentSlot(playerInventoryManager);
     }
 
     private void OnEnable()
@@ -55,14 +51,14 @@ public class UIManager : MonoBehaviour
 
         for (int i = 0; i < weaponInventorySlots.Length; i++)
         {
-            if(i < playerInventory.weaponsInventory.Count)
+            if(i < playerInventoryManager.weaponsInventory.Count)
             {
-                if(weaponInventorySlots.Length < playerInventory.weaponsInventory.Count)
+                if(weaponInventorySlots.Length < playerInventoryManager.weaponsInventory.Count)
                 {
                     Instantiate(weaponInventorySlotPrefab, weaponInventorySlotsParent);
                     weaponInventorySlots = weaponInventorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>(true);
                 }
-                weaponInventorySlots[i].AddItem(playerInventory.weaponsInventory[i]);
+                weaponInventorySlots[i].AddItem(playerInventoryManager.weaponsInventory[i]);
             }
             else
             {
@@ -101,17 +97,17 @@ public class UIManager : MonoBehaviour
 
     private void UpdateSpellIcon()
     {
-        if (playerInventory.currentSpell == null) return;
+        if (playerInventoryManager.currentSpell == null) return;
 
-        spellIcon.sprite = playerInventory.currentSpell.itemIcon;
+        spellIcon.sprite = playerInventoryManager.currentSpell.itemIcon;
         spellIcon.enabled = true;
     }
 
     private void UpdateConsumableIcon()
     {
-        if (playerInventory.currentConsumableItem == null) return;
+        if (playerInventoryManager.currentConsumableItem == null) return;
 
-        consumableItemIcon.sprite = playerInventory.currentConsumableItem.itemIcon;
+        consumableItemIcon.sprite = playerInventoryManager.currentConsumableItem.itemIcon;
         consumableItemIcon.enabled = true;
     }
 }

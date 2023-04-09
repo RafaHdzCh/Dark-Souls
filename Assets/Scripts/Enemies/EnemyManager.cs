@@ -8,7 +8,7 @@ public class EnemyManager : CharacterManager
     [System.NonSerialized] public bool isPerformingAction;
     [System.NonSerialized] public bool isInteracting;
     [System.NonSerialized] public bool isPhaseShifting;
-    [System.NonSerialized] public CharacterStats currentTarget;
+    [System.NonSerialized] public CharacterStatsManager currentTarget;
     [System.NonSerialized] public Rigidbody enemyRigidbody;
     
     [Header("Variables")]
@@ -50,13 +50,13 @@ public class EnemyManager : CharacterManager
         HandleRecoveryTimer();
         HandleStateMachine();
 
-        isRotatingWithRootMotion = enemyAnimatorManager.anim.GetBool(DarkSoulsConsts.ISROTATINGWITHROOTMOTION);
-        isInteracting = enemyAnimatorManager.anim.GetBool(DarkSoulsConsts.ISINTERACTING);
-        isPhaseShifting = enemyAnimatorManager.anim.GetBool(DarkSoulsConsts.ISPHASESHIFTING);
-        isInvulnerable = enemyAnimatorManager.anim.GetBool(DarkSoulsConsts.ISINVULNERABLE);
-        canDoCombo = enemyAnimatorManager.anim.GetBool(DarkSoulsConsts.CANDOCOMBO);
-        canRotate = enemyAnimatorManager.anim.GetBool(DarkSoulsConsts.CANROTATE);
-        enemyAnimatorManager.anim.SetBool(DarkSoulsConsts.ISDEAD, enemyStats.isDead);
+        isRotatingWithRootMotion = enemyAnimatorManager.animator.GetBool(DarkSoulsConsts.ISROTATINGWITHROOTMOTION);
+        isInteracting = enemyAnimatorManager.animator.GetBool(DarkSoulsConsts.ISINTERACTING);
+        isPhaseShifting = enemyAnimatorManager.animator.GetBool(DarkSoulsConsts.ISPHASESHIFTING);
+        isInvulnerable = enemyAnimatorManager.animator.GetBool(DarkSoulsConsts.ISINVULNERABLE);
+        canDoCombo = enemyAnimatorManager.animator.GetBool(DarkSoulsConsts.CANDOCOMBO);
+        canRotate = enemyAnimatorManager.animator.GetBool(DarkSoulsConsts.CANROTATE);
+        enemyAnimatorManager.animator.SetBool(DarkSoulsConsts.ISDEAD, enemyStats.isDead);
     }
 
     private void LateUpdate()

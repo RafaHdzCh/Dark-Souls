@@ -59,14 +59,14 @@ public class InputHandler : MonoBehaviour
 
     PlayerAnimatorManager playerAnimatorManager;
     PlayerControls inputActions;
-    PlayerAttacker playerAttacker;
-    PlayerInventory playerInventory;
+    PlayerCombatManager playerCombatManager;
+    PlayerInventoryManager playerInventoryManager;
     PlayerManager playerManager;
     PlayerEffectsManager playerEffectsManager;
     UIManager uiManager;
     CameraHandler cameraHandler;
-    WeaponSlotManager weaponSlotManager;
-    PlayerStats playerStats;
+    PlayerWeaponSlotManager playerWeaponSlotManager;
+    PlayerStatsManager playerStatsManager;
     BlockingCollider blockingCollider;
     #endregion
 
@@ -75,15 +75,16 @@ public class InputHandler : MonoBehaviour
 
     private void Start()
     {
+        playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
+        playerCombatManager = GetComponent<PlayerCombatManager>();
+        playerEffectsManager = GetComponent<PlayerEffectsManager>();
+        playerInventoryManager = GetComponent<PlayerInventoryManager>();
         playerManager = GetComponent<PlayerManager>();
-        playerStats = GetComponent<PlayerStats>();
-        playerAttacker = GetComponentInChildren<PlayerAttacker>();
-        playerInventory = GetComponent<PlayerInventory>();
-        playerEffectsManager = GetComponentInChildren<PlayerEffectsManager>();
+        playerStatsManager = GetComponent<PlayerStatsManager>();
+        playerWeaponSlotManager = GetComponent<PlayerWeaponSlotManager>();
+
         uiManager = FindObjectOfType<UIManager>();
         cameraHandler = FindObjectOfType<CameraHandler>();
-        weaponSlotManager = GetComponentInChildren<WeaponSlotManager>();
-        playerAnimatorManager = GetComponentInChildren<PlayerAnimatorManager>();
         blockingCollider = GetComponentInChildren<BlockingCollider>();
     }
 
@@ -160,13 +161,13 @@ public class InputHandler : MonoBehaviour
         {
             rollInputTimer += delta;
 
-            if(playerStats.currentStamina <= 0)
+            if(playerStatsManager.currentStamina <= 0)
             {
                 b_input = false;
                 sprintFlag = false;
             }
 
-            if(moveAmount > 0.5f && playerStats.currentStamina > 0)
+            if(moveAmount > 0.5f && playerStatsManager.currentStamina > 0)
             {
                 sprintFlag = true;
             }
@@ -187,28 +188,28 @@ public class InputHandler : MonoBehaviour
     {
         if(rb_Input)
         {
-            playerAnimatorManager.anim.SetBool(DarkSoulsConsts.ISUSINGRIGHTHAND, true);
-            playerAttacker.HandleRBAction();
+            playerAnimatorManager.animator.SetBool(DarkSoulsConsts.ISUSINGRIGHTHAND, true);
+            playerCombatManager.HandleRBAction();
         }
         if(rt_Input)
         {
             if (playerManager.canDoCombo)
             {
                 comboFlag = true;
-                playerAttacker.HandleWeaponCombo(playerInventory.rightWeapon);
+                playerCombatManager.HandleWeaponCombo(playerInventoryManager.rightWeapon);
                 comboFlag = false;
             }
             else
             {
                 if (playerManager.isInteracting) return;
                 if (playerManager.canDoCombo) return;
-                playerAnimatorManager.anim.SetBool(DarkSoulsConsts.ISUSINGRIGHTHAND, true);
-                playerAttacker.HandleHeavyAttack(playerInventory.rightWeapon);
+                playerAnimatorManager.animator.SetBool(DarkSoulsConsts.ISUSINGRIGHTHAND, true);
+                playerCombatManager.HandleHeavyAttack(playerInventoryManager.rightWeapon);
             }
         }
         if(lb_Input)
         {
-            playerAttacker.HandleLBAction();
+            playerCombatManager.HandleLBAction();
         }
         else
         {
@@ -226,7 +227,7 @@ public class InputHandler : MonoBehaviour
             }
             else
             {
-                playerAttacker.HandleLTAction();
+                playerCombatManager.HandleLTAction();
             }
         }
     }
@@ -235,11 +236,11 @@ public class InputHandler : MonoBehaviour
     {
         if (d_pad_Right)
         {
-            playerInventory.ChangeRightWeapon();
+            playerInventoryManager.ChangeRightWeapon();
         }
         else if(d_pad_Left)
         {
-            playerInventory.ChangeLeftWeapon();
+            playerInventoryManager.ChangeLeftWeapon();
         }
     }
 
@@ -312,12 +313,12 @@ public class InputHandler : MonoBehaviour
             twoHandFlag = !twoHandFlag;
             if(twoHandFlag)
             {
-                weaponSlotManager.LoadWeaponOnSlot(playerInventory.rightWeapon, false);
+                playerWeaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.rightWeapon, false);
             }
             else
             {
-                weaponSlotManager.LoadWeaponOnSlot(playerInventory.rightWeapon, false);
-                weaponSlotManager.LoadWeaponOnSlot(playerInventory.leftWeapon, true);
+                playerWeaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.rightWeapon, false);
+                playerWeaponSlotManager.LoadWeaponOnSlot(playerInventoryManager.leftWeapon, true);
             }
         }
     }
@@ -327,7 +328,7 @@ public class InputHandler : MonoBehaviour
         if(critical_Attack_Input)
         {
             critical_Attack_Input = false;
-            playerAttacker.AttemptBackStabOrRiposte();
+            playerCombatManager.AttemptBackStabOrRiposte();
         }
     }
 
@@ -336,7 +337,7 @@ public class InputHandler : MonoBehaviour
         if(x_input)
         {
             x_input = false;
-            playerInventory.currentConsumableItem.AttemptToConsumeItem(playerAnimatorManager, weaponSlotManager, playerEffectsManager);
+            playerInventoryManager.currentConsumableItem.AttemptToConsumeItem(playerAnimatorManager, playerWeaponSlotManager, playerEffectsManager);
 
         }
     }

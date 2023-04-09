@@ -24,20 +24,20 @@ public class EnemyAnimatorManager : AnimatorManager
     {
         float delta = Time.deltaTime;
         enemyManager.enemyRigidbody.drag = 0;
-        Vector3 deltaPosition = anim.deltaPosition;
+        Vector3 deltaPosition = animator.deltaPosition;
         deltaPosition.y = 0;
         Vector3 velocity = deltaPosition / delta;
         enemyManager.enemyRigidbody.velocity = velocity;
 
         if(enemyManager.isRotatingWithRootMotion)
         {
-            enemyManager.transform.rotation *= anim.deltaRotation;
+            enemyManager.transform.rotation *= animator.deltaRotation;
         }
     }
 
     public void AwardSoulsOnDeath()
     {
-        PlayerStats playerStats = FindObjectOfType<PlayerStats>();
+        PlayerStatsManager playerStats = FindObjectOfType<PlayerStatsManager>();
         SoulCounter soulCounter = FindObjectOfType<SoulCounter>();
         if (playerStats != null)
         {
@@ -70,31 +70,31 @@ public class EnemyAnimatorManager : AnimatorManager
     }
     public void CanRotate()
     {
-        anim.SetBool(DarkSoulsConsts.CANROTATE, true);
+        animator.SetBool(DarkSoulsConsts.CANROTATE, true);
     }
 
     public void StopRotation()
     {
-        anim.SetBool(DarkSoulsConsts.CANROTATE, false);
+        animator.SetBool(DarkSoulsConsts.CANROTATE, false);
     }
 
     public void EnableCombo()
     {
-        anim.SetBool(DarkSoulsConsts.CANDOCOMBO, true);
+        animator.SetBool(DarkSoulsConsts.CANDOCOMBO, true);
     }
 
     public void DisableCombo()
     {
-        anim.SetBool(DarkSoulsConsts.CANDOCOMBO, false);
+        animator.SetBool(DarkSoulsConsts.CANDOCOMBO, false);
     }
 
     public void EnableIsInvulnerable()
     {
-        anim.SetBool(DarkSoulsConsts.ISINVULNERABLE, true);
+        animator.SetBool(DarkSoulsConsts.ISINVULNERABLE, true);
     }
     public void DisableIsInvulnerable()
     {
-        anim.SetBool(DarkSoulsConsts.ISINVULNERABLE, false);
+        animator.SetBool(DarkSoulsConsts.ISINVULNERABLE, false);
     }
 
     public void InstantiateBossParticleFX()

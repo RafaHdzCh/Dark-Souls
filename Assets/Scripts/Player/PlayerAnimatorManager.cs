@@ -6,17 +6,19 @@ public class PlayerAnimatorManager : AnimatorManager
     int vertical;
     int horizontal;
 
-    PlayerLocomotion playerLocomotion;
+    PlayerLocomotionManager playerLocomotionManager;
     PlayerManager playerManager;
-    PlayerStats playerStats;
+    PlayerStatsManager playerStatsManager;
+    InputHandler inputHandler;
 
     public void Initialize()
     {
-        playerLocomotion = GetComponentInParent<PlayerLocomotion>();
+        inputHandler = GetComponent<InputHandler>();
+        playerLocomotionManager = GetComponent<PlayerLocomotionManager>();
         vertical = Animator.StringToHash(DarkSoulsConsts.VERTICAL);
         horizontal = Animator.StringToHash(DarkSoulsConsts.HORIZONTAL);
-        playerManager = GetComponentInParent<PlayerManager>();
-        playerStats = GetComponentInParent<PlayerStats>();
+        playerManager = GetComponent<PlayerManager>();
+        playerStatsManager = GetComponent<PlayerStatsManager>();
     }
 
     //Establecer la velocidad de movimiento en el Animator.
@@ -77,37 +79,37 @@ public class PlayerAnimatorManager : AnimatorManager
             h = horizontalMovement;
         }
 
-        anim.SetFloat(vertical, v, 0.1f, Time.deltaTime);
-        anim.SetFloat(horizontal, h, 0.1f, Time.deltaTime);
+        animator.SetFloat(vertical, v, 0.1f, Time.deltaTime);
+        animator.SetFloat(horizontal, h, 0.1f, Time.deltaTime);
     }
 
     public void CanRotate()
     {
-        anim.SetBool(DarkSoulsConsts.CANROTATE, true);
+        animator.SetBool(DarkSoulsConsts.CANROTATE, true);
     }
 
     public void StopRotation()
     {
-        anim.SetBool(DarkSoulsConsts.CANROTATE, false);
+        animator.SetBool(DarkSoulsConsts.CANROTATE, false);
     }
 
     public void EnableCombo()
     {
-        anim.SetBool(DarkSoulsConsts.CANDOCOMBO, true);
+        animator.SetBool(DarkSoulsConsts.CANDOCOMBO, true);
     }
 
     public void DisableCombo()
     {
-        anim.SetBool(DarkSoulsConsts.CANDOCOMBO, false);
+        animator.SetBool(DarkSoulsConsts.CANDOCOMBO, false);
     }
 
     public void EnableIsInvulnerable()
     {
-        anim.SetBool(DarkSoulsConsts.ISINVULNERABLE, true);
+        animator.SetBool(DarkSoulsConsts.ISINVULNERABLE, true);
     }
     public void DisableIsInvulnerable()
     {
-        anim.SetBool(DarkSoulsConsts.ISINVULNERABLE, false);
+        animator.SetBool(DarkSoulsConsts.ISINVULNERABLE, false);
     }
 
     public void EnableIsParrying()
@@ -130,20 +132,20 @@ public class PlayerAnimatorManager : AnimatorManager
     }
     public override void TakeCriticalDamageAnimationEvent()
     {
-        playerStats.TakeDamageNoAnimation(playerManager.pendingCriticalDamage);
+        playerStatsManager.TakeDamageNoAnimation(playerManager.pendingCriticalDamage);
         playerManager.pendingCriticalDamage = 0;
     }
 
     public void DisableCollision()
     {
-        playerLocomotion.characterCollider.enabled = false;
-        playerLocomotion.characterCollisionBlocker.enabled = false;
+        playerLocomotionManager.characterCollider.enabled = false;
+        playerLocomotionManager.characterCollisionBlocker.enabled = false;
     }
 
     public void EnableCollision()
     {
-        playerLocomotion.characterCollider.enabled = true;
-        playerLocomotion.characterCollisionBlocker.enabled = true;
+        playerLocomotionManager.characterCollider.enabled = true;
+        playerLocomotionManager.characterCollisionBlocker.enabled = true;
     }
 
     public void OnAnimatorMove()
@@ -162,10 +164,10 @@ public class PlayerAnimatorManager : AnimatorManager
     public void Move()
     {
         float delta = Time.deltaTime;
-        playerLocomotion.GetComponent<Rigidbody>().drag = 0;
-        Vector3 deltaPosition = anim.deltaPosition;
+        playerLocomotionManager.GetComponent<Rigidbody>().drag = 0;
+        Vector3 deltaPosition = animator.deltaPosition;
         deltaPosition.y = 0;
         Vector3 velocity = deltaPosition / delta;
-        playerLocomotion.GetComponent<Rigidbody>().velocity = velocity;
+        playerLocomotionManager.GetComponent<Rigidbody>().velocity = velocity;
     }
 }
