@@ -62,11 +62,11 @@ public class DamageCollider : MonoBehaviour
             {
                 playerStats.poiseResetTimer = playerStats.totalPoiseResetTime;
                 playerStats.totalPoiseDefence = playerStats.totalPoiseDefence - poiseBreak;
+                print("Player poise is currently: " + playerStats.totalPoiseDefence);
 
                 if (playerStats.totalPoiseDefence > poiseBreak)
                 {
                     playerStats.TakeDamageNoAnimation(currentWeaponDamage);
-                    print("Player poise is currently: " + playerStats.totalPoiseDefence);
                 }
                 else
                 {
@@ -104,13 +104,28 @@ public class DamageCollider : MonoBehaviour
                 enemyStats.totalPoiseDefence = enemyStats.totalPoiseDefence - poiseBreak;
                 print("Enemy poise is currently: " + enemyStats.totalPoiseDefence);
 
-                if (enemyStats.totalPoiseDefence > poiseBreak)
+                if(enemyStats.isBoss)
                 {
-                    enemyStats.TakeDamageNoAnimation(currentWeaponDamage);
+                    if (enemyStats.totalPoiseDefence > poiseBreak)
+                    {
+                        enemyStats.TakeDamageNoAnimation(currentWeaponDamage);
+                    }
+                    else
+                    {
+                        enemyStats.TakeDamageNoAnimation(currentWeaponDamage);
+                        enemyStats.BreakGuard();
+                    }
                 }
                 else
                 {
-                    enemyStats.TakeDamage(currentWeaponDamage, DarkSoulsConsts.DAMAGE);
+                    if (enemyStats.totalPoiseDefence > poiseBreak)
+                    {
+                        enemyStats.TakeDamageNoAnimation(currentWeaponDamage);
+                    }
+                    else
+                    {
+                        enemyStats.TakeDamage(currentWeaponDamage, DarkSoulsConsts.DAMAGE);
+                    }
                 }
             }
         }

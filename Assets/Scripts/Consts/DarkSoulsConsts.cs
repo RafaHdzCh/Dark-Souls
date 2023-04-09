@@ -46,6 +46,7 @@ public static class DarkSoulsConsts
     public const string RIPOSTED = "Riposted";
     public const string PARRY = "Parry";
     public const string PARRIED = "Parried";
+    public const string BREAKGUARD = "Break Guard";
 
     //BLOCK
     public const string ISBLOCKING = "isBlocking";

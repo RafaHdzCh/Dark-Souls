@@ -13,7 +13,20 @@ public class EnemyWeaponSlotManager : MonoBehaviour
     DamageCollider rightHandDamageCollider;
     DamageCollider leftHandDamageCollider;
 
+    EnemyStats enemyStats;
+
     private void Awake()
+    {
+        enemyStats = GetComponent<EnemyStats>();
+        LoadWeaponHolderSlot();
+    }
+
+    private void Start()
+    {
+        LoadWeaponsOnBothHands();
+    }
+
+    private void LoadWeaponHolderSlot()
     {
         WeaponHolderSlot[] weaponHolderSlots = new WeaponHolderSlot[] { rightHandSlot, leftHandSlot };
 
@@ -29,12 +42,6 @@ public class EnemyWeaponSlotManager : MonoBehaviour
             }
         }
     }
-
-    private void Start()
-    {
-        LoadWeaponsOnBothHands();
-    }
-
     public void LoadWeaponOnSlot(WeaponItem weapon, bool isLeft)
     {
         if (isLeft)
@@ -109,5 +116,15 @@ public class EnemyWeaponSlotManager : MonoBehaviour
     public void DisableCombo()
     {
 
+    }
+
+    public void GrantWeaponAttackingPoiseBonus()
+    {
+        enemyStats.totalPoiseDefence += enemyStats.offensivePoiseBonus;
+    }
+
+    public void ResetWeaponAttackingPoiseBonus()
+    {
+        enemyStats.totalPoiseDefence = enemyStats.armorPoiseBonus;
     }
 }

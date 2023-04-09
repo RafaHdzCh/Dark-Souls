@@ -85,6 +85,11 @@ public class EnemyStats : CharacterStats
         }
     }
 
+    public void BreakGuard()
+    {
+        enemyAnimatorManager.PlayTargetAnimation(DarkSoulsConsts.BREAKGUARD, true);
+    }
+
     public override void TakeDamage(int damage, string damageAnimation = "Damage")
     {
         if (isDead) return;
