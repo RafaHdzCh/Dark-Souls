@@ -14,15 +14,6 @@ public class PlayerManager : CharacterManager
     public GameObject interactableUIGameObject;
     public GameObject itemInteractableGameObject;
 
-    [Header("PlayerFlags")]
-    [System.NonSerialized] public bool isInteracting;
-    [System.NonSerialized] public bool isSprinting;
-    [System.NonSerialized] public bool isInAir;
-    [System.NonSerialized] public bool isGrounded;
-    [System.NonSerialized] public bool canDoCombo;
-    [System.NonSerialized] public bool isUsingRightHand;
-    [System.NonSerialized] public bool isUsingLeftHand;
-
     void Start()
     {
         cameraHandler = FindObjectOfType<CameraHandler>();

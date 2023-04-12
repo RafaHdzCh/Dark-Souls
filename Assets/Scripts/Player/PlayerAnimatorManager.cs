@@ -7,18 +7,13 @@ public class PlayerAnimatorManager : AnimatorManager
     int horizontal;
 
     PlayerLocomotionManager playerLocomotionManager;
-    PlayerManager playerManager;
-    PlayerStatsManager playerStatsManager;
-    InputHandler inputHandler;
 
-    public void Initialize()
+    protected override void Awake()
     {
-        inputHandler = GetComponent<InputHandler>();
+        base.Awake();
         playerLocomotionManager = GetComponent<PlayerLocomotionManager>();
         vertical = Animator.StringToHash(DarkSoulsConsts.VERTICAL);
         horizontal = Animator.StringToHash(DarkSoulsConsts.HORIZONTAL);
-        playerManager = GetComponent<PlayerManager>();
-        playerStatsManager = GetComponent<PlayerStatsManager>();
     }
 
     //Establecer la velocidad de movimiento en el Animator.
@@ -83,59 +78,6 @@ public class PlayerAnimatorManager : AnimatorManager
         animator.SetFloat(horizontal, h, 0.1f, Time.deltaTime);
     }
 
-    public void CanRotate()
-    {
-        animator.SetBool(DarkSoulsConsts.CANROTATE, true);
-    }
-
-    public void StopRotation()
-    {
-        animator.SetBool(DarkSoulsConsts.CANROTATE, false);
-    }
-
-    public void EnableCombo()
-    {
-        animator.SetBool(DarkSoulsConsts.CANDOCOMBO, true);
-    }
-
-    public void DisableCombo()
-    {
-        animator.SetBool(DarkSoulsConsts.CANDOCOMBO, false);
-    }
-
-    public void EnableIsInvulnerable()
-    {
-        animator.SetBool(DarkSoulsConsts.ISINVULNERABLE, true);
-    }
-    public void DisableIsInvulnerable()
-    {
-        animator.SetBool(DarkSoulsConsts.ISINVULNERABLE, false);
-    }
-
-    public void EnableIsParrying()
-    {
-        playerManager.isParrying = true;
-    }
-
-    public void DisableIsParrying()
-    {
-        playerManager.isParrying = false;
-    }
-
-    public void EnableCanBeRiposted()
-    {
-        playerManager.canBeRiposted = true;
-    }
-    public void DisableCanBeRiposted()
-    {
-        playerManager.canBeRiposted = false;
-    }
-    public override void TakeCriticalDamageAnimationEvent()
-    {
-        playerStatsManager.TakeDamageNoAnimation(playerManager.pendingCriticalDamage);
-        playerManager.pendingCriticalDamage = 0;
-    }
-
     public void DisableCollision()
     {
         playerLocomotionManager.characterCollider.enabled = false;
@@ -150,15 +92,8 @@ public class PlayerAnimatorManager : AnimatorManager
 
     public void OnAnimatorMove()
     {
-        if(this.gameObject.CompareTag("Enemy"))
-        {
-
-        }
-        else if (playerManager.isInteracting == false) return;
-        else
-        {
-            Move();
-        }
+        if (characterManager.isInteracting == false) return;
+        Move();
     }
 
     public void Move()

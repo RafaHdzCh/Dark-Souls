@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyManager : CharacterManager
 {
     [System.NonSerialized] public bool isPerformingAction;
-    [System.NonSerialized] public bool isInteracting;
     [System.NonSerialized] public bool isPhaseShifting;
     [System.NonSerialized] public CharacterStatsManager currentTarget;
     [System.NonSerialized] public Rigidbody enemyRigidbody;
@@ -15,10 +12,6 @@ public class EnemyManager : CharacterManager
     [System.NonSerialized] public float rotationSpeed = 50f;
     [System.NonSerialized] public float maximumAggroRadius = 1.5f;
     [System.NonSerialized] public float currentRecoveryTime = 0;
-
-    [Header("Combat Flags")]
-
-    public bool canDoCombo;
 
     [Header("Serializables")]
     [Header("Detection")]
@@ -29,13 +22,13 @@ public class EnemyManager : CharacterManager
 
     [Header("Detection")]
     EnemyAnimatorManager enemyAnimatorManager;
-    EnemyStats enemyStats;
+    EnemyStatsManager enemyStatsManager;
     [System.NonSerialized] public NavMeshAgent navMeshAgent;
 
     private void Awake()
     {
         enemyAnimatorManager = GetComponentInChildren<EnemyAnimatorManager>();
-        enemyStats = GetComponent<EnemyStats>();
+        enemyStatsManager = GetComponent<EnemyStatsManager>();
         navMeshAgent = GetComponentInChildren<NavMeshAgent>();
         enemyRigidbody = GetComponent<Rigidbody>();
         navMeshAgent.enabled = false;
@@ -56,7 +49,7 @@ public class EnemyManager : CharacterManager
         isInvulnerable = enemyAnimatorManager.animator.GetBool(DarkSoulsConsts.ISINVULNERABLE);
         canDoCombo = enemyAnimatorManager.animator.GetBool(DarkSoulsConsts.CANDOCOMBO);
         canRotate = enemyAnimatorManager.animator.GetBool(DarkSoulsConsts.CANROTATE);
-        enemyAnimatorManager.animator.SetBool(DarkSoulsConsts.ISDEAD, enemyStats.isDead);
+        enemyAnimatorManager.animator.SetBool(DarkSoulsConsts.ISDEAD, enemyStatsManager.isDead);
     }
 
     private void LateUpdate()
@@ -69,7 +62,7 @@ public class EnemyManager : CharacterManager
     {
         if(currentState != null)
         {
-            State nextState = currentState.Tick(this, enemyStats, enemyAnimatorManager);
+            State nextState = currentState.Tick(this, enemyStatsManager, enemyAnimatorManager);
             if(nextState != null)
             {
                 SwitchToNextState(nextState);

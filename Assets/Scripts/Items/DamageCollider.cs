@@ -76,7 +76,7 @@ public class DamageCollider : MonoBehaviour
         }
         if (collision.CompareTag(DarkSoulsConsts.ENEMY))
         {
-            EnemyStats enemyStats = collision.GetComponent<EnemyStats>();
+            EnemyStatsManager enemyStats = collision.GetComponent<EnemyStatsManager>();
             CharacterManager enemyCaracterManager = collision.GetComponent<CharacterManager>();
             BlockingCollider shield = collision.transform.GetComponentInChildren<BlockingCollider>();
 

@@ -1,58 +1,23 @@
 using UnityEngine;
 
-public class PlayerWeaponSlotManager : MonoBehaviour
+public class PlayerWeaponSlotManager : CharacterWeaponSlotManager
 {
-    Animator animator;
-    InputHandler inputHandler;
-    PlayerInventoryManager playerInventoryManager;
-    PlayerManager playerManager;
-    PlayerStatsManager playerStatsManager;
     QuickSlotsUI quickSlotsUI;
-    [HideInInspector] public WeaponItem attackingWeapon;
+    InputHandler inputHandler;
+    Animator animator;
+    PlayerManager playerManager;
+    PlayerInventoryManager playerInventoryManager;
+    PlayerStatsManager playerStatsManager;
 
-    [Header("Unnarmed ScriptableObject")]
-    public WeaponItem unarmedWeapon;
-
-    [Header("Weapon Slots")]
-    [System.NonSerialized] public WeaponHolderSlot leftHandSlot;
-    [System.NonSerialized] public WeaponHolderSlot rightHandSlot;
-    [System.NonSerialized] public WeaponHolderSlot backSlot;
-
-    [Header("Damage Colliders")]
-    [System.NonSerialized] public DamageCollider leftHandDamageCollider;
-    [System.NonSerialized] public DamageCollider rightHandDamageCollider;
-
-
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         playerInventoryManager = GetComponent<PlayerInventoryManager>();
         playerManager = GetComponent<PlayerManager>();
         playerStatsManager = GetComponent<PlayerStatsManager>();
         quickSlotsUI = FindObjectOfType<QuickSlotsUI>();
         inputHandler = GetComponent<InputHandler>();
         animator = GetComponent<Animator>();
-
-        LoadWeaponHolderSlots();
-    }
-
-    private void LoadWeaponHolderSlots()
-    {
-        WeaponHolderSlot[] weaponHolderSlots = GetComponentsInChildren<WeaponHolderSlot>();
-        foreach (WeaponHolderSlot weaponSlot in weaponHolderSlots)
-        {
-            if (weaponSlot.isLeftHandSlot)
-            {
-                leftHandSlot = weaponSlot;
-            }
-            else if (weaponSlot.isRightHandSlot)
-            {
-                rightHandSlot = weaponSlot;
-            }
-            else if (weaponSlot.isBackSlot)
-            {
-                backSlot = weaponSlot;
-            }
-        }
     }
 
     public void LoadBothWaponsOnSlots()

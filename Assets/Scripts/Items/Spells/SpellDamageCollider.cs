@@ -23,7 +23,7 @@ public class SpellDamageCollider : DamageCollider
         if (!hasCollided)
         {
             print(collision);
-            EnemyStats enemyStats = collision.transform.GetComponent<EnemyStats>();
+            EnemyStatsManager enemyStats = collision.transform.GetComponent<EnemyStatsManager>();
             if (enemyStats != null)
             {
                 if(enemyStats.isBoss)

@@ -44059,9 +44059,9 @@ GameObject:
   - component: {fileID: 8641507577253119648}
   - component: {fileID: 9005061519955124321}
   - component: {fileID: 6478336032538748665}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44073,7 +44073,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9155430869797823555}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1.053}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -44296,6 +44296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9608fcf25080e114382f6db6721a669d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soulsAwardedOnDeath: 50
   totalPoiseDefence: 0
   offensivePoiseBonus: 0
   armorPoiseBonus: 0
@@ -44321,7 +44322,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de48b423360d1c347af6c2b54d4ebef3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackingWeapon: {fileID: 0}
   unarmedWeapon: {fileID: 11400000, guid: 987b1f82d63c33444bc47e7bb72e5645, type: 2}
 --- !u!1 &9155430924638682285
 GameObject:

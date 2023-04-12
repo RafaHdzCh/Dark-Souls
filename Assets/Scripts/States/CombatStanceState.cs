@@ -13,7 +13,7 @@ public class CombatStanceState : State
     protected float verticalMovementValue = 0;
     protected float horizontalMovementValue = 0;
 
-    public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
+    public override State Tick(EnemyManager enemyManager, EnemyStatsManager enemyStats, EnemyAnimatorManager enemyAnimatorManager)
     {
         if (enemyStats.currentHealth <= 0) return null;
 
@@ -84,12 +84,12 @@ public class CombatStanceState : State
         }
     }
 
-    protected private void DecideCirclingAction(EnemyAnimatorManager enemyAnimatorManager, EnemyStats enemyStats)
+    protected private void DecideCirclingAction(EnemyAnimatorManager enemyAnimatorManager, EnemyStatsManager enemyStats)
     {
         WalkAroundTarget(enemyAnimatorManager, enemyStats);
     }
 
-    protected private void WalkAroundTarget(EnemyAnimatorManager enemyAnimatorManager, EnemyStats enemyStats)
+    protected private void WalkAroundTarget(EnemyAnimatorManager enemyAnimatorManager, EnemyStatsManager enemyStats)
     {
         verticalMovementValue = Random.Range(0, 1);
         if (verticalMovementValue <= 1 && verticalMovementValue >= 0.51f)

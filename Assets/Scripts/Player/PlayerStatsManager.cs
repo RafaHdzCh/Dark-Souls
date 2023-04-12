@@ -52,6 +52,10 @@ public class PlayerStatsManager : CharacterStatsManager
         {
             totalPoiseDefence = armorPoiseBonus;
         }
+        else
+        {
+            return;
+        }
     }
 
     private int SetMaxHealthFromHealthLevel()
@@ -78,7 +82,6 @@ public class PlayerStatsManager : CharacterStatsManager
         if (isDead) return;
 
         currentHealth = currentHealth - damage;
-        healthBar.SetCurrentHealth(currentHealth);
         playerAnimatorManager.PlayTargetAnimation(damageAnimation, true);
 
         if(currentHealth <= 0)
@@ -87,6 +90,7 @@ public class PlayerStatsManager : CharacterStatsManager
             playerAnimatorManager.PlayTargetAnimation(DarkSoulsConsts.DEATH, true);
             isDead = true;
         }
+        healthBar.SetCurrentHealth(currentHealth);
     }
 
     public void TakeStaminaDamage(int damage)
@@ -95,7 +99,7 @@ public class PlayerStatsManager : CharacterStatsManager
         staminaBar.SetCurrentStamina(currentStamina);
     }
 
-    public void TakeDamageNoAnimation(int damage)
+    public override void TakeDamageNoAnimation(int damage)
     {
         currentHealth = currentHealth - damage;
 
@@ -104,6 +108,7 @@ public class PlayerStatsManager : CharacterStatsManager
             currentHealth = 0;
             isDead = true;
         }
+        healthBar.SetCurrentHealth(currentHealth);
     }
 
     public void RegenerateStamina()

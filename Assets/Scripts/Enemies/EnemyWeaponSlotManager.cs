@@ -1,24 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyWeaponSlotManager : MonoBehaviour
+public class EnemyWeaponSlotManager : CharacterWeaponSlotManager
 {
     public WeaponItem rightHandWeapon;
     public WeaponItem leftHandWeapon;
+    EnemyStatsManager enemyStatsManager;
 
-    [SerializeField] WeaponHolderSlot rightHandSlot;
-    [SerializeField] WeaponHolderSlot leftHandSlot;
-
-    DamageCollider rightHandDamageCollider;
-    DamageCollider leftHandDamageCollider;
-
-    EnemyStats enemyStats;
-
-    private void Awake()
+    protected override void Awake()
     {
-        enemyStats = GetComponent<EnemyStats>();
-        LoadWeaponHolderSlot();
+        base.Awake();
+        enemyStatsManager = GetComponent<EnemyStatsManager>();
     }
 
     private void Start()
@@ -26,22 +17,6 @@ public class EnemyWeaponSlotManager : MonoBehaviour
         LoadWeaponsOnBothHands();
     }
 
-    private void LoadWeaponHolderSlot()
-    {
-        WeaponHolderSlot[] weaponHolderSlots = new WeaponHolderSlot[] { rightHandSlot, leftHandSlot };
-
-        foreach (WeaponHolderSlot weaponSlot in weaponHolderSlots)
-        {
-            if (weaponSlot.isLeftHandSlot)
-            {
-                leftHandSlot = weaponSlot;
-            }
-            else if (weaponSlot.isRightHandSlot)
-            {
-                rightHandSlot = weaponSlot;
-            }
-        }
-    }
     public void LoadWeaponOnSlot(WeaponItem weapon, bool isLeft)
     {
         if (isLeft)
@@ -120,11 +95,11 @@ public class EnemyWeaponSlotManager : MonoBehaviour
 
     public void GrantWeaponAttackingPoiseBonus()
     {
-        enemyStats.totalPoiseDefence += enemyStats.offensivePoiseBonus;
+        enemyStatsManager.totalPoiseDefence += enemyStatsManager.offensivePoiseBonus;
     }
 
     public void ResetWeaponAttackingPoiseBonus()
     {
-        enemyStats.totalPoiseDefence = enemyStats.armorPoiseBonus;
+        enemyStatsManager.totalPoiseDefence = enemyStatsManager.armorPoiseBonus;
     }
 }

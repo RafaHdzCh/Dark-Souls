@@ -7,7 +7,7 @@ public class RotateTowardsTargetState : State
     [SerializeField] CombatStanceState combatStanceState;
     [SerializeField] PursueTargetState pursueTargetState;
 
-    public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
+    public override State Tick(EnemyManager enemyManager, EnemyStatsManager enemyStats, EnemyAnimatorManager enemyAnimatorManager)
     {
         enemyAnimatorManager.animator.SetFloat(DarkSoulsConsts.VERTICAL, 0);
         enemyAnimatorManager.animator.SetFloat(DarkSoulsConsts.HORIZONTAL, 0);

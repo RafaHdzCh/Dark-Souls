@@ -8,7 +8,7 @@ public class PursueTargetState : State
     [SerializeField] CombatStanceState combatStanceState;
     [SerializeField] RotateTowardsTargetState rotateTowardsTargetState;
 
-    public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
+    public override State Tick(EnemyManager enemyManager, EnemyStatsManager enemyStats, EnemyAnimatorManager enemyAnimatorManager)
     {
         if (enemyStats.currentHealth <= 0) return null;
 

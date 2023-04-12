@@ -11,7 +11,7 @@ public class AmbushState : State
     [SerializeField] Animator anim;
     [SerializeField] PursueTargetState pursurTargetState;
     [SerializeField] LayerMask detectionLayer;
-    public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
+    public override State Tick(EnemyManager enemyManager, EnemyStatsManager enemyStats, EnemyAnimatorManager enemyAnimatorManager)
     {
         if (enemyStats.currentHealth <= 0) return null;
         if (isSleeping && enemyManager.isInteracting == false)

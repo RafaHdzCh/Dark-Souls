@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro.EditorUtilities;
 using UnityEngine;
 
 public class CharacterManager : MonoBehaviour
@@ -16,10 +13,17 @@ public class CharacterManager : MonoBehaviour
     [System.NonSerialized] public bool isParrying;
     [System.NonSerialized] public bool isBlocking;
     [System.NonSerialized] public bool isInvulnerable;
+    [System.NonSerialized] public bool canDoCombo;
+    [System.NonSerialized] public bool isUsingRightHand;
+    [System.NonSerialized] public bool isUsingLeftHand;
 
     [Header("Movement Flags")]
     [System.NonSerialized] public bool isRotatingWithRootMotion;
     [System.NonSerialized] public bool canRotate;
+    [System.NonSerialized] public bool isInteracting;
+    [System.NonSerialized] public bool isSprinting;
+    [System.NonSerialized] public bool isInAir;
+    [System.NonSerialized] public bool isGrounded;
 
     [Header("Spells")]
     [System.NonSerialized] public bool isFiringSpell;

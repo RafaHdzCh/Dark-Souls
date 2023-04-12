@@ -790,8 +790,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4058946893978266622}
   - component: {fileID: 4058946893972641542}
-  - component: {fileID: 4058946893972641540}
-  - component: {fileID: 929883227584466738}
   m_Layer: 8
   m_Name: EnemyModel
   m_TagString: Untagged
@@ -860,7 +858,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4300070, guid: b69174d668ba02d44b14a084b217670a, type: 3}
+  m_Mesh: {fileID: 4300054, guid: b69174d668ba02d44b14a084b217670a, type: 3}
   m_Bones:
   - {fileID: 4058946893978200842}
   - {fileID: 4058946893978157620}
@@ -917,35 +915,6 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.663044, y: 86.91138, z: -4.5548325}
     m_Extent: {x: 103.130264, y: 97.574615, z: 24.31804}
   m_DirtyAABB: 0
---- !u!114 &4058946893972641540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4058946893977861526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b585a38a2bc026f45b5ff2017133b3e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 0}
---- !u!114 &929883227584466738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4058946893977861526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1652f02b6f808b541adbc4a017a6926f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rightHandWeapon: {fileID: 11400000, guid: 8691774cfc33e524195ef8fecd5867d9, type: 2}
-  leftHandWeapon: {fileID: 11400000, guid: 430d5d2687198a74faf99f6345a45715, type: 2}
-  rightHandSlot: {fileID: 4128272116082020726}
-  leftHandSlot: {fileID: 3463995741317795353}
 --- !u!1 &4058946893977862444
 GameObject:
   m_ObjectHideFlags: 0
@@ -2879,7 +2848,6 @@ MonoBehaviour:
   lockOnTransform: {fileID: 8121742789243380356}
   backstabCollider: {fileID: 906612027}
   riposteCollider: {fileID: 3441362740728242246}
-  canDoCombo: 0
   detectionRadius: 20
   minimumDetectionAngle: -50
   maximumDetectionAngle: 50
@@ -2896,6 +2864,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d9cb9ab2a6bbec489eb3e509de39702, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soulsAwardedOnDeath: 50
   totalPoiseDefence: 0
   offensivePoiseBonus: 0
   armorPoiseBonus: 0
@@ -2906,13 +2875,12 @@ MonoBehaviour:
   physicalDamageAbsortionLegs: 0
   physicalDamageAbsortionHands: 0
   isDead: 0
+  isBoss: 0
+  walkSpeed: 0.5
+  runSpeed: 1
   healthBarTransform: {fileID: 2400626767415522420}
   cameraTransform: {fileID: 0}
   rigi: {fileID: 4058946893968436041}
-  isBoss: 0
-  soulsAwardedOnDeath: 50
-  walkSpeed: 0.5
-  runSpeed: 1
 --- !u!114 &5969494493747736268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2925,10 +2893,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1652f02b6f808b541adbc4a017a6926f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unarmedWeapon: {fileID: 11400000, guid: 987b1f82d63c33444bc47e7bb72e5645, type: 2}
   rightHandWeapon: {fileID: 11400000, guid: 7624d6e48d46f4a468326f08911c845d, type: 2}
   leftHandWeapon: {fileID: 11400000, guid: 430d5d2687198a74faf99f6345a45715, type: 2}
-  rightHandSlot: {fileID: 4128272116082020726}
-  leftHandSlot: {fileID: 3463995741317795353}
 --- !u!1 &4058946893977940240
 GameObject:
   m_ObjectHideFlags: 0

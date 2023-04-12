@@ -15,7 +15,7 @@ public class AttackState : State
     [System.NonSerialized] public bool hasPerformedAttack = false;
     [System.NonSerialized] public bool willDoComboOnNextAttack = false;
 
-    public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
+    public override State Tick(EnemyManager enemyManager, EnemyStatsManager enemyStats, EnemyAnimatorManager enemyAnimatorManager)
     {
         float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
         RotateTowardsTargetWhilstAttacking(enemyManager);

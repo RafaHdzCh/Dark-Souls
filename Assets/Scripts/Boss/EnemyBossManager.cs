@@ -4,13 +4,13 @@ public class EnemyBossManager : MonoBehaviour
 {
     public string bossname = "";
     [SerializeField] UIBossHealthBar bossHealthBar;
-    EnemyStats enemyStats;
+    EnemyStatsManager enemyStats;
     EnemyAnimatorManager enemyAnimatorManager;
     BossCombatStanceState bossCombatStanceState;
 
     private void Awake()
     {
-        enemyStats = GetComponent<EnemyStats>();
+        enemyStats = GetComponent<EnemyStatsManager>();
         enemyAnimatorManager = GetComponent<EnemyAnimatorManager>();
         bossCombatStanceState = GetComponentInChildren<BossCombatStanceState>();
     }

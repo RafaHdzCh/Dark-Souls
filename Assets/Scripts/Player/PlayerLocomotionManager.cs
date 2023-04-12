@@ -47,7 +47,6 @@ public class PlayerLocomotionManager : MonoBehaviour
         cameraHandler = FindObjectOfType<CameraHandler>();
         cameraObject = Camera.main.transform;
         myTransform = transform;
-        playerAnimatorManager.Initialize();
 
         playerManager.isGrounded = true;
 
