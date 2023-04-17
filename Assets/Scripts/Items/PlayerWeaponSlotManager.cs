@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerWeaponSlotManager : CharacterWeaponSlotManager
@@ -5,13 +6,15 @@ public class PlayerWeaponSlotManager : CharacterWeaponSlotManager
     QuickSlotsUI quickSlotsUI;
     InputHandler inputHandler;
     Animator animator;
-    PlayerManager playerManager;
+    PlayerEffectsManager playerEffectsManager;
     PlayerInventoryManager playerInventoryManager;
+    PlayerManager playerManager;
     PlayerStatsManager playerStatsManager;
 
     protected override void Awake()
     {
         base.Awake();
+        playerEffectsManager = GetComponent<PlayerEffectsManager>();
         playerInventoryManager = GetComponent<PlayerInventoryManager>();
         playerManager = GetComponent<PlayerManager>();
         playerStatsManager = GetComponent<PlayerStatsManager>();
@@ -89,12 +92,14 @@ public class PlayerWeaponSlotManager : CharacterWeaponSlotManager
         leftHandDamageCollider = leftHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
         leftHandDamageCollider.currentWeaponDamage = playerInventoryManager.leftWeapon.baseDamage;
         leftHandDamageCollider.poiseBreak = playerInventoryManager.leftWeapon.poiseBreak;
+        playerEffectsManager.leftWeaponFX = leftHandSlot.currentWeaponModel.GetComponentInChildren<WeaponFX>();
     }
     private void LoadRightWeaponDamageCollider()
     {
         rightHandDamageCollider = rightHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
         rightHandDamageCollider.currentWeaponDamage = playerInventoryManager.rightWeapon.baseDamage;
         rightHandDamageCollider.poiseBreak = playerInventoryManager.rightWeapon.poiseBreak;
+        playerEffectsManager.rightWeaponFX = rightHandSlot.currentWeaponModel.GetComponentInChildren<WeaponFX>();
     }
 
     public void OpenDamageCollider()

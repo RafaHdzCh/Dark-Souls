@@ -48,6 +48,7 @@ public class AttackState : State
         if(currentAttack.actionAnimation != null)
         {
             enemyAnimatorManager.PlayTargetAnimation(currentAttack.actionAnimation, true);
+            enemyAnimatorManager.PlayWeaponTrailFX();
         }
         enemyManager.currentRecoveryTime = currentAttack.recoveryTime;
         hasPerformedAttack = true;
@@ -61,6 +62,7 @@ public class AttackState : State
     {
         willDoComboOnNextAttack = false;
         enemyAnimatorManager.PlayTargetAnimation(currentAttack.actionAnimation, true);
+        enemyAnimatorManager.PlayWeaponTrailFX();
         enemyManager.currentRecoveryTime = currentAttack.recoveryTime;
         currentAttack = null;
     }

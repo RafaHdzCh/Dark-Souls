@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerCombatManager : MonoBehaviour
 {
     PlayerAnimatorManager playerAnimatorManager;
+    PlayerEffectsManager playerEffectsManager;
     PlayerEquipmentManager playerEquipmentManager;
     PlayerInventoryManager playerInventoryManager;
     PlayerManager playerManager;
@@ -22,6 +23,7 @@ public class PlayerCombatManager : MonoBehaviour
     private void Awake()
     {
         playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
+        playerEffectsManager = GetComponent<PlayerEffectsManager>();
         playerEquipmentManager= GetComponent<PlayerEquipmentManager>(); 
         playerInventoryManager = GetComponent<PlayerInventoryManager>();
         playerManager = GetComponent<PlayerManager>();
@@ -158,6 +160,8 @@ public class PlayerCombatManager : MonoBehaviour
             if (playerManager.canDoCombo) return;
             HandleLightAttack(playerInventoryManager.rightWeapon);
         }
+
+        playerEffectsManager.PlayWeaponFX(false);
     }
 
     private void PerformRBMagicAction(WeaponItem weapon)

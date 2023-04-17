@@ -3,13 +3,15 @@ using UnityEngine;
 public class EnemyAnimatorManager : AnimatorManager
 {
     EnemyManager enemyManager;
+    EnemyEffectsManager enemyEffectsManager;
     EnemyStatsManager enemyStats;
 
     protected override void Awake()
     {
         base.Awake();
-        enemyStats = GetComponentInParent<EnemyStatsManager>();
-        enemyManager = GetComponentInParent<EnemyManager>();
+        enemyEffectsManager = GetComponent<EnemyEffectsManager>();
+        enemyStats = GetComponent<EnemyStatsManager>();
+        enemyManager = GetComponent<EnemyManager>();
     }
 
     private void OnAnimatorMove()
@@ -40,6 +42,11 @@ public class EnemyAnimatorManager : AnimatorManager
                 soulCounter.SetSoulCountText(characterStatsManager.soulsAwardedOnDeath);
             }
         }
+    }
+
+    public void PlayWeaponTrailFX()
+    {
+        enemyEffectsManager.PlayWeaponFX(false);
     }
 
     public void InstantiateBossParticleFX()

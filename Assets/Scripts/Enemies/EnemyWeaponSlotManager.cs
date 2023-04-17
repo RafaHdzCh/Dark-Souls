@@ -4,11 +4,13 @@ public class EnemyWeaponSlotManager : CharacterWeaponSlotManager
 {
     public WeaponItem rightHandWeapon;
     public WeaponItem leftHandWeapon;
+    EnemyEffectsManager enemyEffectsManager;
     EnemyStatsManager enemyStatsManager;
 
     protected override void Awake()
     {
         base.Awake();
+        enemyEffectsManager = GetComponent<EnemyEffectsManager>();
         enemyStatsManager = GetComponent<EnemyStatsManager>();
     }
 
@@ -51,11 +53,13 @@ public class EnemyWeaponSlotManager : CharacterWeaponSlotManager
         {
             leftHandDamageCollider = leftHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
             leftHandDamageCollider.characterManager = GetComponentInParent<CharacterManager>();
+            enemyEffectsManager.leftWeaponFX = leftHandSlot.currentWeaponModel.GetComponentInChildren<WeaponFX>();
         }
         else
         {
             rightHandDamageCollider = rightHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
             rightHandDamageCollider.characterManager = GetComponentInParent<CharacterManager>();
+            enemyEffectsManager.rightWeaponFX = rightHandSlot.currentWeaponModel.GetComponentInChildren<WeaponFX>();   
         }
     }
 
