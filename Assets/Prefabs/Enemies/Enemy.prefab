@@ -2909,8 +2909,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfa0869efb1ad2c499e16c77b9dbd07f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightWeaponFX: {fileID: 0}
-  leftWeaponFX: {fileID: 0}
+  bloodSplatterFx: {fileID: 4081499006417331697, guid: ff735339d3733904580471f76fccafff, type: 3}
 --- !u!1 &4058946893977940240
 GameObject:
   m_ObjectHideFlags: 0

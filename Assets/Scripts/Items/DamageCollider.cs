@@ -37,17 +37,18 @@ public class DamageCollider : MonoBehaviour
         if (collision.CompareTag(DarkSoulsConsts.PLAYER))
         {
             PlayerStatsManager playerStats = collision.GetComponent<PlayerStatsManager>();
-            CharacterManager enemyCaracterManager = collision.GetComponent<CharacterManager>();
+            CharacterManager playerCaracterManager = collision.GetComponent<CharacterManager>();
+            CharacterEffectsManager playerEffectsManager = collision.GetComponent<CharacterEffectsManager>();
             BlockingCollider shield = collision.transform.GetComponentInChildren<BlockingCollider>();
 
-            if(enemyCaracterManager != null)
+            if(playerCaracterManager != null)
             {
-                if(enemyCaracterManager.isParrying)
+                if(playerCaracterManager.isParrying)
                 {
                     characterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation(DarkSoulsConsts.PARRIED, true);
                     return;
                 }
-                else if(shield != null && enemyCaracterManager.isBlocking)
+                else if(shield != null && playerCaracterManager.isBlocking)
                 {
                     float physicalDamageAfterBlock = currentWeaponDamage - (currentWeaponDamage * shield.blockingPhysicalDamageAbsorbtion) / 100;
                     if (playerStats != null)
@@ -62,7 +63,9 @@ public class DamageCollider : MonoBehaviour
             {
                 playerStats.poiseResetTimer = playerStats.totalPoiseResetTime;
                 playerStats.totalPoiseDefence = playerStats.totalPoiseDefence - poiseBreak;
-                print("Player poise is currently: " + playerStats.totalPoiseDefence);
+
+                Vector3 contactPoint = collision.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position);
+                playerEffectsManager.PlayBloodSplat(contactPoint);
 
                 if (playerStats.totalPoiseDefence > poiseBreak)
                 {
@@ -78,6 +81,7 @@ public class DamageCollider : MonoBehaviour
         {
             EnemyStatsManager enemyStats = collision.GetComponent<EnemyStatsManager>();
             CharacterManager enemyCaracterManager = collision.GetComponent<CharacterManager>();
+            CharacterEffectsManager enemyEffectsManager = collision.GetComponent<CharacterEffectsManager>();
             BlockingCollider shield = collision.transform.GetComponentInChildren<BlockingCollider>();
 
             if (enemyCaracterManager != null)
@@ -102,7 +106,9 @@ public class DamageCollider : MonoBehaviour
             {
                 enemyStats.poiseResetTimer = enemyStats.totalPoiseResetTime;
                 enemyStats.totalPoiseDefence = enemyStats.totalPoiseDefence - poiseBreak;
-                print("Enemy poise is currently: " + enemyStats.totalPoiseDefence);
+
+                Vector3 contactPoint = collision.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position);
+                enemyEffectsManager.PlayBloodSplat(contactPoint);
 
                 if(enemyStats.isBoss)
                 {
