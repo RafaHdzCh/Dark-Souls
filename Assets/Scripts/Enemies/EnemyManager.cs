@@ -22,20 +22,28 @@ public class EnemyManager : CharacterManager
 
     [Header("Detection")]
     EnemyAnimatorManager enemyAnimatorManager;
+    EnemyEffectsManager enemyEffectsManager;
     EnemyStatsManager enemyStatsManager;
     [System.NonSerialized] public NavMeshAgent navMeshAgent;
 
     private void Awake()
     {
-        enemyAnimatorManager = GetComponentInChildren<EnemyAnimatorManager>();
+        enemyAnimatorManager = GetComponent<EnemyAnimatorManager>();
+        enemyEffectsManager = GetComponent<EnemyEffectsManager>();
         enemyStatsManager = GetComponent<EnemyStatsManager>();
         navMeshAgent = GetComponentInChildren<NavMeshAgent>();
         enemyRigidbody = GetComponent<Rigidbody>();
         navMeshAgent.enabled = false;
     }
+
     private void Start()
     {
         enemyRigidbody.isKinematic = false;
+    }
+
+    private void FixedUpdate()
+    {
+        enemyEffectsManager.HandleAllBuildUpEffects();
     }
 
     private void Update()

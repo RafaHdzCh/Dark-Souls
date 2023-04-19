@@ -81,10 +81,39 @@ public class PlayerStatsManager : CharacterStatsManager
         if (playerManager.isInvulnerable) return;
         if (isDead) return;
 
-        currentHealth = currentHealth - damage;
+        currentHealth -= damage;
         playerAnimatorManager.PlayTargetAnimation(damageAnimation, true);
 
         if(currentHealth <= 0)
+        {
+            currentHealth = 0;
+            playerAnimatorManager.PlayTargetAnimation(DarkSoulsConsts.DEATH, true);
+            isDead = true;
+        }
+        healthBar.SetCurrentHealth(currentHealth);
+    }
+
+    public override void TakeDamageNoAnimation(int damage)
+    {
+        if (isDead) return;
+
+        currentHealth -= damage;
+
+        if (currentHealth <= 0)
+        {
+            currentHealth = 0;
+            playerAnimatorManager.PlayTargetAnimation(DarkSoulsConsts.DEATH, true);
+            isDead = true;
+        }
+        healthBar.SetCurrentHealth(currentHealth);
+    }
+    public override void TakePoisonDamage(int damage)
+    {
+        if (isDead) return;
+
+        currentHealth -= damage;
+
+        if (currentHealth <= 0)
         {
             currentHealth = 0;
             playerAnimatorManager.PlayTargetAnimation(DarkSoulsConsts.DEATH, true);
@@ -97,18 +126,6 @@ public class PlayerStatsManager : CharacterStatsManager
     {
         currentStamina = currentStamina - damage;
         staminaBar.SetCurrentStamina(currentStamina);
-    }
-
-    public override void TakeDamageNoAnimation(int damage)
-    {
-        currentHealth = currentHealth - damage;
-
-        if (currentHealth <= 0)
-        {
-            currentHealth = 0;
-            isDead = true;
-        }
-        healthBar.SetCurrentHealth(currentHealth);
     }
 
     public void RegenerateStamina()

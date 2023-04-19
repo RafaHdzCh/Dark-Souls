@@ -60,34 +60,6 @@ public class EnemyStatsManager : CharacterStatsManager
         return maxHealth;
     }
 
-    public override void TakeDamageNoAnimation(int damage)
-    {
-        if (isDead) return; 
-        if (enemyManager.isPhaseShifting) return;
-
-        currentHealth = currentHealth - damage;
-        if (!isBoss)
-        {
-            enemyHealthBar.SetHealth(currentHealth);
-        }
-        else if(isBoss && enemyBossManager!= null)
-        {
-            enemyBossManager.UpdateBossHealthBar(currentHealth, maxHealth);
-        }
-
-        if (currentHealth <= 0)
-        {
-            currentHealth = 0;
-            isDead = true;
-            HandleDeath();
-        }
-    }
-
-    public void BreakGuard()
-    {
-        enemyAnimatorManager.PlayTargetAnimation(DarkSoulsConsts.BREAKGUARD, true);
-    }
-
     public override void TakeDamage(int damage, string damageAnimation = "Damage")
     {
         if (isDead) return;
@@ -112,6 +84,49 @@ public class EnemyStatsManager : CharacterStatsManager
             HandleDeath();
         }
     }
+
+    public override void TakeDamageNoAnimation(int damage)
+    {
+        if (isDead) return; 
+        if (enemyManager.isPhaseShifting) return;
+
+        currentHealth = currentHealth - damage;
+        if (!isBoss)
+        {
+            enemyHealthBar.SetHealth(currentHealth);
+        }
+        else if(isBoss && enemyBossManager!= null)
+        {
+            enemyBossManager.UpdateBossHealthBar(currentHealth, maxHealth);
+        }
+
+        if (currentHealth <= 0)
+        {
+            currentHealth = 0;
+            isDead = true;
+            HandleDeath();
+        }
+    }
+
+    public override void TakePoisonDamage(int damage)
+    {
+        if (isDead) return;
+
+        currentHealth -= damage;
+
+        if (currentHealth <= 0)
+        {
+            currentHealth = 0;
+            isDead = true;
+        }
+        enemyHealthBar.SetHealth(currentHealth);
+    }
+
+    public void BreakGuard()
+    {
+        enemyAnimatorManager.PlayTargetAnimation(DarkSoulsConsts.BREAKGUARD, true);
+    }
+
 
     private void HideHealthBarOnDeath()
     {

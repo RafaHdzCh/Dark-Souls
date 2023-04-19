@@ -8,8 +8,9 @@ public class PlayerEffectsManager : CharacterEffectsManager
     [System.NonSerialized] public GameObject instantiatedFXModel;
     [System.NonSerialized] public int amountToBeHealed;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         playerStatsManager = GetComponent<PlayerStatsManager>();
         playerWeaponSlotManager = GetComponent<PlayerWeaponSlotManager>();
     }

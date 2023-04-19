@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class CharacterStatsManager : MonoBehaviour
 {
-    [Header("Serializables")]
     [Header("Health")]
     [System.NonSerialized] public int healthLevel = 10;
     [System.NonSerialized] public int maxHealth;
@@ -51,6 +50,11 @@ public class CharacterStatsManager : MonoBehaviour
     public virtual void TakeDamageNoAnimation(int damage)
     {
         
+    }
+
+    public virtual void TakePoisonDamage(int damage)
+    {
+
     }
 
     public virtual void HandlePoiseResetTimer()

@@ -5,6 +5,7 @@ public class PlayerManager : CharacterManager
     InputHandler inputHandler;
     Animator animator;
     CameraHandler cameraHandler;
+    PlayerEffectsManager playerEffectsManager;
     PlayerLocomotionManager playerLocomotion;
     PlayerStatsManager playerStatsManager;
     PlayerAnimatorManager playerAnimatorManager;
@@ -14,16 +15,22 @@ public class PlayerManager : CharacterManager
     public GameObject interactableUIGameObject;
     public GameObject itemInteractableGameObject;
 
+    private void Awake()
+    {
+        playerLocomotion = GetComponent<PlayerLocomotionManager>();
+        playerStatsManager = GetComponent<PlayerStatsManager>();
+        playerEffectsManager = GetComponent<PlayerEffectsManager>();
+        playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
+        backstabCollider = GetComponentInChildren<CriticalDamageCollider>();
+        animator = GetComponent<Animator>();
+        inputHandler = GetComponent<InputHandler>();
+
+    }
+
     void Start()
     {
         cameraHandler = FindObjectOfType<CameraHandler>();
-        backstabCollider = GetComponentInChildren<CriticalDamageCollider>();
-        inputHandler = GetComponent<InputHandler>(); 
-        animator = GetComponent<Animator>();
-        playerLocomotion = GetComponent<PlayerLocomotionManager>();
         interactableUI = FindObjectOfType<InteractableUI>();
-        playerStatsManager = GetComponent<PlayerStatsManager>();
-        playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
     }
 
     void Update()
@@ -63,6 +70,7 @@ public class PlayerManager : CharacterManager
         playerLocomotion.HandleMovement(delta);
         playerLocomotion.HandleFalling(delta, playerLocomotion.moveDirection);
         playerLocomotion.HandleRotation(delta);
+        playerEffectsManager.HandleAllBuildUpEffects();
     }
 
     private void LateUpdate()
