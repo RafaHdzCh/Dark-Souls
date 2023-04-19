@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterEffectsManager : MonoBehaviour
 {
-    public WeaponFX rightWeaponFX;
-    public WeaponFX leftWeaponFX;
+    [System.NonSerialized] public WeaponFX rightWeaponFX;
+    [System.NonSerialized] public WeaponFX leftWeaponFX;
     public virtual void PlayWeaponFX(bool isLeft)
     {
         if(!isLeft)

@@ -79,14 +79,17 @@ public class EnemyWeaponSlotManager : CharacterWeaponSlotManager
             leftHandDamageCollider.DisableDamageCollider();
         }
     }
+
     public void DrainStaminaLightAttack()
     {
 
     }
+
     public void DrainStaminaHeavyAttack()
     {
 
     }
+
     public void EnableCombo()
     {
 

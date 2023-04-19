@@ -8,14 +8,24 @@ public class WeaponFX : MonoBehaviour
     [SerializeField] ParticleSystem normalWeaponTrail;
     //fireWeaponTrail
     //...
-
+    private void Start()
+    {
+        StopTrail();
+    }
     public void PlayWeaponFX()
     {
-        normalWeaponTrail.Stop();
+        StopTrail();
 
         if(normalWeaponTrail.isStopped)
         {
             normalWeaponTrail.Play();
         }
+
+        Invoke(nameof(StopTrail), normalWeaponTrail.main.duration);
+    }
+
+    private void StopTrail()
+    {
+        normalWeaponTrail.Stop();
     }
 }
