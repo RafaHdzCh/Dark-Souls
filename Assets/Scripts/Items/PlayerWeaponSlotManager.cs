@@ -10,6 +10,7 @@ public class PlayerWeaponSlotManager : CharacterWeaponSlotManager
     PlayerInventoryManager playerInventoryManager;
     PlayerManager playerManager;
     PlayerStatsManager playerStatsManager;
+    [SerializeField] CameraHandler cameraHandler;
 
     protected override void Awake()
     {
@@ -85,6 +86,15 @@ public class PlayerWeaponSlotManager : CharacterWeaponSlotManager
         }
     }
 
+    public void SuccesfullyThrowFirebom()
+    {
+        Destroy(playerEffectsManager.instantiatedFXModel);
+        BombItem firebombItem = playerInventoryManager.currentConsumableItem as BombItem;
+
+        GameObject activeModelBomb = Instantiate(firebombItem.liveBombModel, rightHandSlot.transform.position, cameraHandler.cameraPivotTransform.rotation);
+        activeModelBomb.transform.rotation = Quaternion.Euler(cameraHandler.cameraPivotTransform.eulerAngles.x, playerManager.lockOnTransform.eulerAngles.y, 0);
+    }
+
     #region Handle Weapon's Damage Collider
 
     private void LoadLeftWeaponDamageCollider()
@@ -94,6 +104,7 @@ public class PlayerWeaponSlotManager : CharacterWeaponSlotManager
         leftHandDamageCollider.poiseBreak = playerInventoryManager.leftWeapon.poiseBreak;
         playerEffectsManager.leftWeaponFX = leftHandSlot.currentWeaponModel.GetComponentInChildren<WeaponFX>();
     }
+
     private void LoadRightWeaponDamageCollider()
     {
         rightHandDamageCollider = rightHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();

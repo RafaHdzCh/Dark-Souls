@@ -44195,6 +44195,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bloodSplatterFx: {fileID: 4081499006417331697, guid: ff735339d3733904580471f76fccafff, type: 3}
+  poisonDamage: 1
+  buildUpTransform: {fileID: 6961043860255764411}
+  defaultPoisonParticlesVFX: {fileID: 3380248407791598886, guid: 2d3bf67e4100f504ca6b94a2dea9a36a, type: 3}
+  poisonBuildUpBar: {fileID: 0}
+  poisonAmountBar: {fileID: 0}
 --- !u!114 &2084156077926522095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44236,11 +44241,11 @@ MonoBehaviour:
   currentLegEquipment: {fileID: 11400000, guid: 5309a825f6ce39c458e022bc1ca70370, type: 2}
   currentHandEquipment: {fileID: 11400000, guid: 5f0cb8969569c5349a04443c1db60274, type: 2}
   currentSpell: {fileID: 11400000, guid: 410181619b22a514d9ae959d5b939170, type: 2}
-  currentConsumableItem: {fileID: 11400000, guid: 9c93a6f8fa0843f4bb69293f237f4373, type: 2}
+  currentConsumableItem: {fileID: 11400000, guid: cb6eefe91ffdc4546939b72ae72e69b5, type: 2}
   rightWeapon: {fileID: 0}
   leftWeapon: {fileID: 0}
   weaponInRightHandSlots:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 083bb1a2b7e922e4796d27647f4c5b06, type: 2}
   - {fileID: 0}
   weaponInLeftHandSlots:
   - {fileID: 0}
@@ -44264,7 +44269,7 @@ MonoBehaviour:
   inAirTimer: 0
   ignoreForGroundCheck:
     serializedVersion: 2
-    m_Bits: 10183
+    m_Bits: 1
   moveDirection: {x: 0, y: 0, z: 0}
   characterCollider: {fileID: 7019248578065417775}
   characterCollisionBlocker: {fileID: 3259465685211337238}
@@ -44324,6 +44329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unarmedWeapon: {fileID: 11400000, guid: 987b1f82d63c33444bc47e7bb72e5645, type: 2}
+  cameraHandler: {fileID: 0}
 --- !u!1 &9155430924638682285
 GameObject:
   m_ObjectHideFlags: 0

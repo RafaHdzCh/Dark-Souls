@@ -47,6 +47,7 @@ public static class DarkSoulsConsts
     public const string PARRY = "Parry";
     public const string PARRIED = "Parried";
     public const string BREAKGUARD = "Break Guard";
+    public const string THROW = "OH_Spell_Attack_1";
 
     //BLOCK
     public const string ISBLOCKING = "isBlocking";

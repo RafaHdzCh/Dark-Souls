@@ -15,8 +15,12 @@ public class CharacterEffectsManager : MonoBehaviour
     [System.NonSerialized] public float poisonBuildUp = 0;
     [System.NonSerialized] public float poisonAmount = 100;
     [System.NonSerialized] public float poisonTimer = 2;
-    [System.NonSerialized] public float defaultPoisonAmount;
+    [System.NonSerialized] public float defaultPoisonAmount = 100;
     [System.NonSerialized] public float timer;
+
+    public Transform buildUpTransform;
+    public GameObject defaultPoisonParticlesVFX;
+    GameObject currentPoisonParticlesVFX;
 
     [Header("Scripts")]
     CharacterStatsManager characterStatsManager;
@@ -67,6 +71,15 @@ public class CharacterEffectsManager : MonoBehaviour
         {
             isPoisoned = true;
             poisonBuildUp = 0;
+
+            if(buildUpTransform != null)
+            {
+                currentPoisonParticlesVFX = Instantiate(defaultPoisonParticlesVFX, buildUpTransform);
+            }
+            else
+            {
+                currentPoisonParticlesVFX = Instantiate(defaultPoisonParticlesVFX, characterStatsManager.transform);
+            }
         }
     }
 
@@ -88,6 +101,8 @@ public class CharacterEffectsManager : MonoBehaviour
             {
                 isPoisoned = false;
                 poisonAmount = defaultPoisonAmount;
+
+                Destroy(currentPoisonParticlesVFX);
             }
         }
     }
