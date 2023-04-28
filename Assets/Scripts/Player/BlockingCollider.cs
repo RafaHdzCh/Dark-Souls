@@ -6,6 +6,7 @@ public class BlockingCollider : MonoBehaviour
 {
     [System.NonSerialized] public BoxCollider blockingCollider;
     [System.NonSerialized] public float blockingPhysicalDamageAbsorbtion;
+    [System.NonSerialized] public float blockingFireDamageAbsortion;
 
     private void Awake()
     {

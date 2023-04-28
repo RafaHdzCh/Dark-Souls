@@ -16,8 +16,11 @@ MonoBehaviour:
   itemIcon: {fileID: 21300000, guid: a18a1bce801bfe247a2c65fb668aff8b, type: 3}
   modelPrefab: {fileID: 2101587472610615574, guid: 06b2d29110ed73d45ab885b9918cdac1, type: 3}
   isUnarmed: 0
-  baseDamage: 7
+  physicalDamage: 5
+  fireDamage: 0
   criticalDamageMultiplier: 3
+  poiseBreak: 0
+  offensivePoiseBonus: 0
   physicalDamageAbsortion: 0
   Right_Arm_Idle: Right_Arm_Idle_0
   Left_Arm_Idle: Left_Arm_Idle_0

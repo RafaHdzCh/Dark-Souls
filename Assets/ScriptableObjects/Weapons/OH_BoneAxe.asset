@@ -16,7 +16,8 @@ MonoBehaviour:
   itemIcon: {fileID: 21300000, guid: e20662f49f44f2f48afcc452320f00c0, type: 3}
   modelPrefab: {fileID: 922192489052387330, guid: 91e1eef8c9ca09d4abe4edc507a1796f, type: 3}
   isUnarmed: 0
-  baseDamage: 18
+  physicalDamage: 25
+  fireDamage: 0
   criticalDamageMultiplier: 3
   poiseBreak: 110
   offensivePoiseBonus: 75

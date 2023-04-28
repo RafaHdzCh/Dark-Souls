@@ -258,7 +258,7 @@ public class PlayerCombatManager : MonoBehaviour
             Quaternion targetRotation = Quaternion.Slerp(playerManager.transform.rotation, tr, 500 * Time.deltaTime);
             playerManager.transform.rotation = targetRotation;
 
-            int criticalDamage = playerInventoryManager.rightWeapon.criticalDamageMultiplier * rightWeapon.currentWeaponDamage;
+            int criticalDamage = playerInventoryManager.rightWeapon.criticalDamageMultiplier * rightWeapon.physicalDamage;
             enemyCharacterManager.pendingCriticalDamage = criticalDamage;
 
             playerAnimatorManager.PlayTargetAnimation(DarkSoulsConsts.BACKSTAB, true);
@@ -283,7 +283,7 @@ public class PlayerCombatManager : MonoBehaviour
             Quaternion targetRotation = Quaternion.Slerp(playerManager.transform.rotation, tr, 500 * Time.deltaTime);
             playerManager.transform.rotation = targetRotation;
 
-            int criticalDamage = playerInventoryManager.rightWeapon.criticalDamageMultiplier * rightWeapon.currentWeaponDamage;
+            int criticalDamage = playerInventoryManager.rightWeapon.criticalDamageMultiplier * rightWeapon.physicalDamage;
             enemyCharacterManager.pendingCriticalDamage = criticalDamage;
 
         playerAnimatorManager.PlayTargetAnimation(DarkSoulsConsts.RIPOSTE, true);

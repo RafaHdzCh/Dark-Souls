@@ -7,7 +7,8 @@ public class WeaponItem : Item
     public bool isUnarmed;
 
     [Header("Damage")]
-    public int baseDamage = 25;
+    public int physicalDamage;
+    public int fireDamage;
     public int criticalDamageMultiplier = 3;
 
     [Header("Poise")]

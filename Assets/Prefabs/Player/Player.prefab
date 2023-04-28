@@ -44061,7 +44061,7 @@ GameObject:
   - component: {fileID: 6478336032538748665}
   m_Layer: 10
   m_Name: Player
-  m_TagString: Player
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44312,6 +44312,10 @@ MonoBehaviour:
   physicalDamageAbsortionBody: 0
   physicalDamageAbsortionLegs: 0
   physicalDamageAbsortionHands: 0
+  fireDamageAbsortionHead: 0
+  fireDamageAbsortionBody: 0
+  fireDamageAbsortionLegs: 0
+  fireDamageAbsortionHands: 0
   isDead: 0
   healthBar: {fileID: 0}
   staminaBar: {fileID: 0}

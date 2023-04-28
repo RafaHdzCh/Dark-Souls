@@ -76,12 +76,27 @@ public class PlayerStatsManager : CharacterStatsManager
         return maxMana;
     }
 
-    public override void TakeDamage(int damage, string damageAnimation = "Damage") 
+    public override void TakeDamage(int physicalDamage, int fireDamage, string damageAnimation = "Damage") 
     {
         if (playerManager.isInvulnerable) return;
         if (isDead) return;
 
-        currentHealth -= damage;
+        float totalPhysicalDamageAbsorption = 1 -
+            (1 - physicalDamageAbsortionHead / 100) *
+            (1 - physicalDamageAbsortionBody / 100) *
+            (1 - physicalDamageAbsortionLegs / 100) *
+            (1 - physicalDamageAbsortionHands / 100);
+        physicalDamage = Mathf.RoundToInt(physicalDamage - (physicalDamage * totalPhysicalDamageAbsorption));
+
+        float totalFireDamageAbsorption = 1 -
+            (1 - fireDamageAbsortionHead / 100) *
+            (1 - fireDamageAbsortionBody / 100) *
+            (1 - fireDamageAbsortionLegs / 100) *
+            (1 - fireDamageAbsortionHands / 100);
+        fireDamage = Mathf.RoundToInt(fireDamage - (fireDamage * totalFireDamageAbsorption));
+
+        float finalDamage = physicalDamage + fireDamage;
+        currentHealth = Mathf.RoundToInt(currentHealth - finalDamage);
         playerAnimatorManager.PlayTargetAnimation(damageAnimation, true);
 
         if(currentHealth <= 0)
@@ -93,11 +108,26 @@ public class PlayerStatsManager : CharacterStatsManager
         healthBar.SetCurrentHealth(currentHealth);
     }
 
-    public override void TakeDamageNoAnimation(int damage)
+    public override void TakeDamageNoAnimation(int physicalDamage, int fireDamage)
     {
         if (isDead) return;
 
-        currentHealth -= damage;
+        float totalPhysicalDamageAbsorption = 1 -
+            (1 - physicalDamageAbsortionHead / 100) *
+            (1 - physicalDamageAbsortionBody / 100) *
+            (1 - physicalDamageAbsortionLegs / 100) *
+            (1 - physicalDamageAbsortionHands / 100);
+        physicalDamage = Mathf.RoundToInt(physicalDamage - (physicalDamage * totalPhysicalDamageAbsorption));
+
+        float totalFireDamageAbsorption = 1 -
+            (1 - fireDamageAbsortionHead / 100) *
+            (1 - fireDamageAbsortionBody / 100) *
+            (1 - fireDamageAbsortionLegs / 100) *
+            (1 - fireDamageAbsortionHands / 100);
+        fireDamage = Mathf.RoundToInt(fireDamage - (fireDamage * totalFireDamageAbsorption));   
+
+        float finalDamage = physicalDamage + fireDamage;
+        currentHealth = Mathf.RoundToInt(currentHealth - finalDamage);
 
         if (currentHealth <= 0)
         {

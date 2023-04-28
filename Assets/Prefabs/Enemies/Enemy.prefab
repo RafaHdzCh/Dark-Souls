@@ -2730,7 +2730,7 @@ GameObject:
   - component: {fileID: 1850913685847406261}
   m_Layer: 8
   m_Name: Enemy
-  m_TagString: Enemy
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2875,6 +2875,10 @@ MonoBehaviour:
   physicalDamageAbsortionBody: 0
   physicalDamageAbsortionLegs: 0
   physicalDamageAbsortionHands: 0
+  fireDamageAbsortionHead: 0
+  fireDamageAbsortionBody: 0
+  fireDamageAbsortionLegs: 0
+  fireDamageAbsortionHands: 0
   isDead: 0
   isBoss: 0
   walkSpeed: 0.5
@@ -2910,6 +2914,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bloodSplatterFx: {fileID: 4081499006417331697, guid: ff735339d3733904580471f76fccafff, type: 3}
+  poisonDamage: 1
+  buildUpTransform: {fileID: 0}
+  defaultPoisonParticlesVFX: {fileID: 0}
 --- !u!1 &4058946893977940240
 GameObject:
   m_ObjectHideFlags: 0

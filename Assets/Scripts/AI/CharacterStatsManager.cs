@@ -35,6 +35,11 @@ public class CharacterStatsManager : MonoBehaviour
     public float physicalDamageAbsortionLegs;
     public float physicalDamageAbsortionHands;
 
+    public float fireDamageAbsortionHead;
+    public float fireDamageAbsortionBody;
+    public float fireDamageAbsortionLegs;
+    public float fireDamageAbsortionHands;
+
     [HideInInspector] public bool isDead;
 
     private void Start()
@@ -42,12 +47,12 @@ public class CharacterStatsManager : MonoBehaviour
         totalPoiseDefence = armorPoiseBonus;
     }
 
-    public virtual void TakeDamage(int damage, string damageAnimation = "Damage")
+    public virtual void TakeDamage(int physicalDamage, int fireDamage, string damageAnimation = "Damage")
     {
-
+        
     }
 
-    public virtual void TakeDamageNoAnimation(int damage)
+    public virtual void TakeDamageNoAnimation(int phyisicalDamage, int fireDamage)
     {
         
     }

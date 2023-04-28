@@ -28,11 +28,11 @@ public class SpellDamageCollider : DamageCollider
             {
                 if(enemyStats.isBoss)
                 {
-                    enemyStats.TakeDamageNoAnimation(currentWeaponDamage);
+                    enemyStats.TakeDamageNoAnimation(0, fireDamage);
                 }
                 else
                 {
-                    enemyStats.TakeDamage(currentWeaponDamage);
+                    enemyStats.TakeDamage(0, fireDamage);
                 }
             }
             hasCollided = true;

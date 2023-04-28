@@ -60,12 +60,12 @@ public class EnemyStatsManager : CharacterStatsManager
         return maxHealth;
     }
 
-    public override void TakeDamage(int damage, string damageAnimation = "Damage")
+    public override void TakeDamage(int physicalDamage, int fireDamage, string damageAnimation = "Damage")
     {
         if (isDead) return;
         if (enemyManager.isPhaseShifting) return;
 
-        currentHealth = currentHealth - damage;
+        currentHealth = currentHealth - physicalDamage;
         if (!isBoss)
         {
             enemyHealthBar.SetHealth(currentHealth);
@@ -85,12 +85,12 @@ public class EnemyStatsManager : CharacterStatsManager
         }
     }
 
-    public override void TakeDamageNoAnimation(int damage)
+    public override void TakeDamageNoAnimation(int physicalDamage, int fireDamage)
     {
         if (isDead) return; 
         if (enemyManager.isPhaseShifting) return;
 
-        currentHealth = currentHealth - damage;
+        currentHealth = currentHealth - physicalDamage;
         if (!isBoss)
         {
             enemyHealthBar.SetHealth(currentHealth);
@@ -126,7 +126,6 @@ public class EnemyStatsManager : CharacterStatsManager
     {
         enemyAnimatorManager.PlayTargetAnimation(DarkSoulsConsts.BREAKGUARD, true);
     }
-
 
     private void HideHealthBarOnDeath()
     {

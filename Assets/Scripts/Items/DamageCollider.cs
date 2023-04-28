@@ -3,17 +3,21 @@ using UnityEngine;
 public class DamageCollider : MonoBehaviour
 {
     [System.NonSerialized] public CharacterManager characterManager;
-    [System.NonSerialized] public bool enableDamagColliderOnStartUp = false;
-    Collider damageCollider;
+    public bool enableDamagColliderOnStartUp = false;
+    protected Collider damageCollider;
 
     [Header("Poise")]
     public float poiseBreak;
     public float offensivePoiseBonus;
 
     [Header("Assign Weapon Damage")]
-    public int currentWeaponDamage;
+    public int physicalDamage;
+    public int fireDamage;
+    public int magicDamage;
+    public int lightningDamage;
+    public int darkDamage;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         damageCollider = GetComponent<Collider>();
         damageCollider.gameObject.SetActive(true);
@@ -34,104 +38,49 @@ public class DamageCollider : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.CompareTag(DarkSoulsConsts.PLAYER))
+        if (collision.CompareTag(DarkSoulsConsts.CHARACTER))
         {
-            PlayerStatsManager playerStats = collision.GetComponent<PlayerStatsManager>();
-            CharacterManager playerCaracterManager = collision.GetComponent<CharacterManager>();
-            CharacterEffectsManager playerEffectsManager = collision.GetComponent<CharacterEffectsManager>();
+            CharacterStatsManager enemyStats = collision.GetComponent<CharacterStatsManager>();
+            CharacterManager enemyManager = collision.GetComponent<CharacterManager>();
+            CharacterEffectsManager enemyEffects = collision.GetComponent<CharacterEffectsManager>();
             BlockingCollider shield = collision.transform.GetComponentInChildren<BlockingCollider>();
 
-            if(playerCaracterManager != null)
+            if(enemyManager != null)
             {
-                if(playerCaracterManager.isParrying)
+                if(enemyManager.isParrying)
                 {
                     characterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation(DarkSoulsConsts.PARRIED, true);
                     return;
                 }
-                else if(shield != null && playerCaracterManager.isBlocking)
+                else if(shield != null && enemyManager.isBlocking)
                 {
-                    float physicalDamageAfterBlock = currentWeaponDamage - (currentWeaponDamage * shield.blockingPhysicalDamageAbsorbtion) / 100;
-                    if (playerStats != null)
+                    float physicalDamageAfterBlock = physicalDamage - (physicalDamage * shield.blockingPhysicalDamageAbsorbtion) / 100;
+                    float fireDamageAfterBlock = fireDamage - (fireDamage * shield.blockingFireDamageAbsortion) / 100;
+
+                    if (enemyStats != null)
                     {
-                        playerStats.TakeDamage(Mathf.RoundToInt(physicalDamageAfterBlock), DarkSoulsConsts.BLOCKIMPACT);
+                        //enemyStats.TakeDamageNoAnimation(Mathf.RoundToInt(fireDamageAfterBlock));
+                        enemyStats.TakeDamage(Mathf.RoundToInt(physicalDamageAfterBlock), Mathf.RoundToInt(fireDamageAfterBlock), DarkSoulsConsts.BLOCKIMPACT);
                         return;
                     }
                 }
             }
 
-            if(playerStats != null)
-            {
-                playerStats.poiseResetTimer = playerStats.totalPoiseResetTime;
-                playerStats.totalPoiseDefence = playerStats.totalPoiseDefence - poiseBreak;
-
-                Vector3 contactPoint = collision.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position);
-                playerEffectsManager.PlayBloodSplat(contactPoint);
-
-                if (playerStats.totalPoiseDefence > poiseBreak)
-                {
-                    playerStats.TakeDamageNoAnimation(currentWeaponDamage);
-                }
-                else
-                {
-                    playerStats.TakeDamage(currentWeaponDamage, DarkSoulsConsts.DAMAGE);
-                }
-            }
-        }
-        if (collision.CompareTag(DarkSoulsConsts.ENEMY))
-        {
-            EnemyStatsManager enemyStats = collision.GetComponent<EnemyStatsManager>();
-            CharacterManager enemyCaracterManager = collision.GetComponent<CharacterManager>();
-            CharacterEffectsManager enemyEffectsManager = collision.GetComponent<CharacterEffectsManager>();
-            BlockingCollider shield = collision.transform.GetComponentInChildren<BlockingCollider>();
-
-            if (enemyCaracterManager != null)
-            {
-                if (enemyCaracterManager.isParrying)
-                {
-                    characterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation(DarkSoulsConsts.PARRIED, true);
-                    return;
-                }
-            }
-            else if (shield != null && enemyCaracterManager.isBlocking)
-            {
-                float physicalDamageAfterBlock = currentWeaponDamage - (currentWeaponDamage * shield.blockingPhysicalDamageAbsorbtion) / 100;
-                if (enemyStats != null)
-                {
-                    enemyStats.TakeDamage(Mathf.RoundToInt(physicalDamageAfterBlock), DarkSoulsConsts.BLOCKIMPACT);
-                    return;
-                }
-            }
-
-            if (enemyStats != null)
+            if(enemyStats != null)
             {
                 enemyStats.poiseResetTimer = enemyStats.totalPoiseResetTime;
                 enemyStats.totalPoiseDefence = enemyStats.totalPoiseDefence - poiseBreak;
 
                 Vector3 contactPoint = collision.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position);
-                enemyEffectsManager.PlayBloodSplat(contactPoint);
+                enemyEffects.PlayBloodSplat(contactPoint);
 
-                if(enemyStats.isBoss)
+                if (enemyStats.totalPoiseDefence > poiseBreak)
                 {
-                    if (enemyStats.totalPoiseDefence > poiseBreak)
-                    {
-                        enemyStats.TakeDamageNoAnimation(currentWeaponDamage);
-                    }
-                    else
-                    {
-                        enemyStats.TakeDamageNoAnimation(currentWeaponDamage);
-                        enemyStats.BreakGuard();
-                    }
+                    enemyStats.TakeDamageNoAnimation(physicalDamage,0);
                 }
                 else
                 {
-                    if (enemyStats.totalPoiseDefence > poiseBreak)
-                    {
-                        enemyStats.TakeDamageNoAnimation(currentWeaponDamage);
-                    }
-                    else
-                    {
-                        enemyStats.TakeDamage(currentWeaponDamage, DarkSoulsConsts.DAMAGE);
-                    }
+                    enemyStats.TakeDamage(physicalDamage, 0, DarkSoulsConsts.DAMAGE);
                 }
             }
         }
