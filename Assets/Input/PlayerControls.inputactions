@@ -527,6 +527,17 @@
                 },
                 {
                     "name": "",
+                    "id": "892789b7-b7dc-4f5c-9d76-7efd3a9d2653",
+                    "path": "<Keyboard>/v",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "X",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "72aa18a3-158e-4288-b7fc-3832d571f78d",
                     "path": "<Gamepad>/buttonNorth",
                     "interactions": "",

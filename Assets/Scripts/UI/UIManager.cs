@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
     [SerializeField] PlayerInventoryManager playerInventoryManager;
+    QuickSlotsUI quickSlotsUI;
     public EquipmentWindowUI equipmentWindowUI;
 
     [Header("Serializables")]
@@ -30,24 +29,25 @@ public class UIManager : MonoBehaviour
     public bool leftHandSlot01Selected;
     public bool leftHandSlot02Selected;
 
+    private void Awake()
+    {
+        quickSlotsUI = GetComponentInChildren<QuickSlotsUI>();
+    }
+
     private void Start()
     {
         weaponInventorySlots = weaponInventorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>();
         equipmentWindowUI.LoadWeaponOnEquipmentSlot(playerInventoryManager);
-    }
 
-    private void OnEnable()
-    {
-        UpdateSpellIcon();
-        UpdateConsumableIcon();
+        quickSlotsUI.UpdateCurrentConsumableIcon(playerInventoryManager.currentConsumableItem);
+        quickSlotsUI.UpdateCurrentSpellIcon(playerInventoryManager.currentSpell);
+
+
     }
 
     public void UpdateUI()
     {
         #region Weapon Inventory Slots
-
-        UpdateSpellIcon();
-        UpdateConsumableIcon();
 
         for (int i = 0; i < weaponInventorySlots.Length; i++)
         {
@@ -93,21 +93,5 @@ public class UIManager : MonoBehaviour
         rightHandSlot02Selected = false;
         leftHandSlot01Selected = false;
         leftHandSlot02Selected = false;
-    }
-
-    private void UpdateSpellIcon()
-    {
-        if (playerInventoryManager.currentSpell == null) return;
-
-        spellIcon.sprite = playerInventoryManager.currentSpell.itemIcon;
-        spellIcon.enabled = true;
-    }
-
-    private void UpdateConsumableIcon()
-    {
-        if (playerInventoryManager.currentConsumableItem == null) return;
-
-        consumableItemIcon.sprite = playerInventoryManager.currentConsumableItem.itemIcon;
-        consumableItemIcon.enabled = true;
     }
 }

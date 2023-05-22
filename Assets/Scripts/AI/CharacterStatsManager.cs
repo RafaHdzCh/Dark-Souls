@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class CharacterStatsManager : MonoBehaviour
 {
+    [Header("Team I.D.")]
+    public int teamIDNumber = 0;
+
     [Header("Health")]
     [System.NonSerialized] public int healthLevel = 10;
     [System.NonSerialized] public int maxHealth;

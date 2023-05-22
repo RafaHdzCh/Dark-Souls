@@ -1,13 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BombDamageCollider : DamageCollider
 {
     [Header("Explosive Damage & radius")]
-    [System.NonSerialized] public int explosiveRadius = 1;
-    [System.NonSerialized] public int explosionDamage;
-    [System.NonSerialized] public int explosionSplashDamage;
+    [System.NonSerialized] public int explosiveRadius = 2;
+    [System.NonSerialized] public int explosionDamage = 20;
+    [System.NonSerialized] public int explosionSplashDamage = 10;
 
     [System.NonSerialized] public int fireExplosionDamage;
     bool hasCollided = false;
@@ -32,11 +30,13 @@ public class BombDamageCollider : DamageCollider
             CharacterStatsManager characterStatsManager = collision.transform.GetComponent<CharacterStatsManager>();
             if(characterStatsManager != null )
             {
-                //check for friendly fire.
-                characterStatsManager.TakeDamage(0, explosionDamage);
+                if(characterStatsManager.teamIDNumber != teamIDNumber)
+                {
+                    characterStatsManager.TakeDamage(0, explosionDamage);
+                }
             }
 
-            Destroy(impactParticles, 5f);
+            Destroy(impactParticles, 2f);
             Destroy(transform.parent.parent.gameObject);
         }
     }
@@ -51,7 +51,10 @@ public class BombDamageCollider : DamageCollider
 
             if(characterStatsManager != null )
             {
-                characterStatsManager.TakeDamage(0, explosionSplashDamage);
+                if(characterStatsManager.teamIDNumber != teamIDNumber)
+                {
+                    characterStatsManager.TakeDamage(0, explosionSplashDamage);
+                }
             }
         }
     }

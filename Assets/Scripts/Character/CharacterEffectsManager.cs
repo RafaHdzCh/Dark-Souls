@@ -20,7 +20,7 @@ public class CharacterEffectsManager : MonoBehaviour
 
     public Transform buildUpTransform;
     public GameObject defaultPoisonParticlesVFX;
-    GameObject currentPoisonParticlesVFX;
+    [System.NonSerialized] public GameObject currentPoisonParticlesVFX;
 
     [Header("Scripts")]
     CharacterStatsManager characterStatsManager;

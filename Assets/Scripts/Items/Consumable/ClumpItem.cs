@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 [CreateAssetMenu(menuName = "Items/Consumables/Clump")]
 public class ClumpItem : ConsumableItem
 {
@@ -24,9 +25,9 @@ public class ClumpItem : ConsumableItem
             playerEffectsManager.poisonAmount = playerEffectsManager.defaultPoisonAmount;
             playerEffectsManager.isPoisoned = false;
 
-            if(playerEffectsManager.currentParticleFX != null)
+            if(playerEffectsManager.currentPoisonParticlesVFX != null)
             {
-                playerEffectsManager.currentParticleFX.SetActive(false);
+                playerEffectsManager.currentPoisonParticlesVFX.SetActive(false);
             }
         }
         weaponSlotManager.rightHandSlot.UnloadWeapon();

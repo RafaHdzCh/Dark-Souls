@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -37,6 +36,34 @@ public class QuickSlotsUI : MonoBehaviour
                 leftWeaponIcon.sprite = null;
                 leftWeaponIcon.enabled = false;
             }
+        }
+    }
+
+    public void UpdateCurrentSpellIcon(SpellItem spell)
+    {
+        if(spell.itemIcon != null)
+        {
+            upItemIcon.sprite = spell.itemIcon;
+            upItemIcon.enabled = true;
+        }
+        else
+        {
+            upItemIcon.sprite = null;
+            upItemIcon.enabled = false;
+        }
+    }
+
+    public void UpdateCurrentConsumableIcon(ConsumableItem consumableItem)
+    {
+        if (consumableItem.itemIcon != null)
+        {
+            downItemIcon.sprite = consumableItem.itemIcon;
+            downItemIcon.enabled = true;
+        }
+        else
+        {
+            downItemIcon.sprite = null;
+            downItemIcon.enabled = false;
         }
     }
 }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpellDamageCollider : DamageCollider
@@ -24,7 +22,7 @@ public class SpellDamageCollider : DamageCollider
         {
             print(collision);
             EnemyStatsManager enemyStats = collision.transform.GetComponent<EnemyStatsManager>();
-            if (enemyStats != null)
+            if (enemyStats != null && enemyStats.teamIDNumber != teamIDNumber)
             {
                 if(enemyStats.isBoss)
                 {

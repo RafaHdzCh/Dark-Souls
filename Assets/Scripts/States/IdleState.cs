@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class IdleState : State
@@ -23,13 +21,15 @@ public class IdleState : State
 
             if (characterStats != null)
             {
-                //Check for TEAM ID
-                Vector3 targetDirection = characterStats.transform.position - transform.position;
-                float viewableAngle = Vector3.Angle(targetDirection, transform.forward);
-
-                if (viewableAngle > enemyManager.minimumDetectionAngle && viewableAngle < enemyManager.maximumDetectionAngle)
+                if (characterStats.teamIDNumber != enemyStats.teamIDNumber)
                 {
-                    enemyManager.currentTarget = characterStats;
+                    Vector3 targetDirection = characterStats.transform.position - transform.position;
+                    float viewableAngle = Vector3.Angle(targetDirection, transform.forward);
+
+                    if (viewableAngle > enemyManager.minimumDetectionAngle && viewableAngle < enemyManager.maximumDetectionAngle)
+                    {
+                        enemyManager.currentTarget = characterStats;
+                    }
                 }
             }
         }

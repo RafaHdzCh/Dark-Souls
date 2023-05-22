@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Spell/Projectile Spell")]
@@ -34,6 +32,8 @@ public class ProjectileSpell : SpellItem
     {
         base.SuccessfullyCastSpell(animatorHandler, playerStats, weaponSlotManager, cameraHandler);
         GameObject instantiateSpellVFX = Instantiate(spellCastFX, weaponSlotManager.rightHandSlot.transform.position, cameraHandler.cameraPivotTransform.transform.rotation);
+        SpellDamageCollider spellDamageCollider = instantiateSpellVFX.GetComponent<SpellDamageCollider>();  
+        spellDamageCollider.teamIDNumber = playerStats.teamIDNumber;
         rigi = instantiateSpellVFX.GetComponent<Rigidbody>();
         //SpellDamageCollider sdc = instantiateSpellVFX.GetComponent<SpellDamagCollider>();
         if(cameraHandler.currentLockOnTarget != null)

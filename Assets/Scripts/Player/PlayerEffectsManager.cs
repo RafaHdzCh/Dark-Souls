@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerEffectsManager : CharacterEffectsManager
 {
     [System.NonSerialized] public int amountToBeHealed;
-
+    
     [System.NonSerialized] public GameObject currentParticleFX;
     [System.NonSerialized] public GameObject instantiatedFXModel;
 
