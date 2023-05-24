@@ -43,26 +43,26 @@ public class PlayerCombatManager : MonoBehaviour
             playerAnimatorManager.animator.SetBool(DarkSoulsConsts.CANDOCOMBO, false);
             //Si el ultimo ataque realizado fue el primer ataque ligero...
 
-            if (lastAttack == weapon.OH_Light_Attack_0)
+            if (lastAttack == DarkSoulsConsts.OH_LIGHT_ATTACK_0)
             {
                 //Se ejecuta el segundo ataque ligero y se activa el bool isInteracting para evitar realizar otras acciones.
-                playerAnimatorManager.PlayTargetAnimation(weapon.OH_Light_Attack_1, true);
+                playerAnimatorManager.PlayTargetAnimation(DarkSoulsConsts.OH_LIGHT_ATTACK_1, true);
             }
             //Si el ultimo ataque realizado fue el primer ataque pesado...
-            if (lastAttack == weapon.OH_Heavy_Attack_0)
+            if (lastAttack == DarkSoulsConsts.OH_HEAVY_ATTACK_0)
             {
                 //Se ejecuta el segundo ataque pesado y se activa el bool isInteracting para evitar realizar otras acciones.
-                playerAnimatorManager.PlayTargetAnimation(weapon.OH_Heavy_Attack_1, true);
+                playerAnimatorManager.PlayTargetAnimation(DarkSoulsConsts.OH_HEAVY_ATTACK_1, true);
             }
 
-            if(lastAttack == weapon.TH_Light_Attack_0)
+            if(lastAttack == DarkSoulsConsts.TH_LIGHT_ATTACK_0)
             {
-                playerAnimatorManager.PlayTargetAnimation(weapon.TH_Light_Attack_1, true);
+                playerAnimatorManager.PlayTargetAnimation(DarkSoulsConsts.TH_LIGHT_ATTACK_1, true);
             }
 
-            if (lastAttack == weapon.TH_Heavy_Attack_0)
+            if (lastAttack == DarkSoulsConsts.TH_HEAVY_ATTACK_0)
             {
-                playerAnimatorManager.PlayTargetAnimation(weapon.TH_Heavy_Attack_1, true);
+                playerAnimatorManager.PlayTargetAnimation(DarkSoulsConsts.TH_HEAVY_ATTACK_1, true);
             }
         }
     }
@@ -76,15 +76,15 @@ public class PlayerCombatManager : MonoBehaviour
 
         if (inputHandler.twoHandFlag)
         {
-            playerAnimatorManager.PlayTargetAnimation(weapon.TH_Light_Attack_0, true);
-            lastAttack = weapon.TH_Light_Attack_0;
+            playerAnimatorManager.PlayTargetAnimation(DarkSoulsConsts.TH_LIGHT_ATTACK_0, true);
+            lastAttack = DarkSoulsConsts.TH_LIGHT_ATTACK_0;
         }
         else
         {
             //Ejecuta su animacion y se activa el bool isInteracting para evitar realizar otras acciones.
-            playerAnimatorManager.PlayTargetAnimation(weapon.OH_Light_Attack_0, true);
+            playerAnimatorManager.PlayTargetAnimation(DarkSoulsConsts.OH_LIGHT_ATTACK_0, true);
             //El ultimo ataque es el ataque realizado.
-            lastAttack = weapon.OH_Light_Attack_0;
+            lastAttack = DarkSoulsConsts.OH_LIGHT_ATTACK_0;
         }
     }
 
@@ -97,28 +97,29 @@ public class PlayerCombatManager : MonoBehaviour
 
         if (inputHandler.twoHandFlag)
         {
-            playerAnimatorManager.PlayTargetAnimation(weapon.TH_Heavy_Attack_0, true);
-            lastAttack = weapon.TH_Heavy_Attack_0;
+            playerAnimatorManager.PlayTargetAnimation(DarkSoulsConsts.TH_HEAVY_ATTACK_0, true);
+            lastAttack = DarkSoulsConsts.TH_HEAVY_ATTACK_0;
         }
         else
         {
             //Ejecuta su animacion y se activa el bool isInteracting para evitar realizar otras acciones.
-            playerAnimatorManager.PlayTargetAnimation(weapon.OH_Heavy_Attack_0, true);
+            playerAnimatorManager.PlayTargetAnimation(DarkSoulsConsts.OH_HEAVY_ATTACK_0, true);
             //El ultimo ataque es el ataque realizado.
-            lastAttack = weapon.OH_Heavy_Attack_0;
+            lastAttack = DarkSoulsConsts.OH_HEAVY_ATTACK_0;
         }
     }
 
     #region Input Actions
     public void HandleRBAction()
     {
-        if(playerInventoryManager.rightWeapon.isMeleeWeapon)
+        if(playerInventoryManager.rightWeapon.weaponType == WeaponType.Melee ||
+           playerInventoryManager.rightWeapon.weaponType == WeaponType.Unarmed)
         {
             PerformRBMeleeAction();
         }
-        else if(playerInventoryManager.leftWeapon.isSpellCaster ||
-                playerInventoryManager.rightWeapon.isFaithCaster ||
-                playerInventoryManager.rightWeapon.isPyroCaster)
+        else if(playerInventoryManager.rightWeapon.weaponType == WeaponType.SpellCaster ||
+                playerInventoryManager.rightWeapon.weaponType == WeaponType.FaithCaster ||
+                playerInventoryManager.rightWeapon.weaponType == WeaponType.PyroCaster)
         {
             PerformRBMagicAction(playerInventoryManager.rightWeapon);
         }
@@ -133,11 +134,12 @@ public class PlayerCombatManager : MonoBehaviour
     {
         if (playerStatsManager.currentStamina <= 0) return;
 
-        if (playerInventoryManager.leftWeapon.isShieldWeapon)
+        if (playerInventoryManager.leftWeapon.weaponType == WeaponType.Shield)
         {
             PerformLTWeaponArt(inputHandler.twoHandFlag);
         }
-        else if(playerInventoryManager.leftWeapon.isMeleeWeapon)
+        else if (playerInventoryManager.leftWeapon.weaponType == WeaponType.Melee ||
+                 playerInventoryManager.rightWeapon.weaponType == WeaponType.Unarmed)
         {
             //Do a light attack
         }
@@ -167,7 +169,7 @@ public class PlayerCombatManager : MonoBehaviour
     private void PerformRBMagicAction(WeaponItem weapon)
     {
         if (playerManager.isInteracting) return;
-        if(weapon.isFaithCaster)
+        if(weapon.weaponType == WeaponType.FaithCaster)
         {
             if (playerInventoryManager.currentSpell != null && playerInventoryManager.currentSpell.isFaithSpell)
             {
@@ -181,7 +183,7 @@ public class PlayerCombatManager : MonoBehaviour
                 }
             }
         }
-        else if (weapon.isPyroCaster)
+        else if (weapon.weaponType == WeaponType.PyroCaster)
         {
             if (playerInventoryManager.currentSpell != null && playerInventoryManager.currentSpell.isPyroSpell)
             {

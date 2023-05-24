@@ -43,6 +43,7 @@ public class PlayerManager : CharacterManager
         canDoCombo = animator.GetBool(DarkSoulsConsts.CANDOCOMBO);
         animator.SetBool(DarkSoulsConsts.ISINAIR, isInAir);
         animator.SetBool(DarkSoulsConsts.ISDEAD, playerStatsManager.isDead);
+        animator.SetBool(DarkSoulsConsts.ISTWOHANDING, isTwoHanding);
 
         animator.SetBool(DarkSoulsConsts.ISBLOCKING, isBlocking);
 

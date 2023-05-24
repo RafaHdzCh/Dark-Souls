@@ -16,6 +16,7 @@ public class CharacterManager : MonoBehaviour
     [System.NonSerialized] public bool canDoCombo;
     [System.NonSerialized] public bool isUsingRightHand;
     [System.NonSerialized] public bool isUsingLeftHand;
+    [System.NonSerialized] public bool isTwoHanding;
 
     [Header("Movement Flags")]
     [System.NonSerialized] public bool isRotatingWithRootMotion;

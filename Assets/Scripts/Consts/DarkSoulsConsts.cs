@@ -36,6 +36,7 @@ public static class DarkSoulsConsts
     public const string ISUSINGRIGHTHAND = "isUsingRightHand";
     public const string ISUSINGLEFTHAND = "isUsingLeftHand";
     public const string ISINVULNERABLE = "isInvulnerable";
+    public const string ISTWOHANDING = "isTwoHanding";
     public const string BACKSTAB = "Backstab";
     public const string BACKSTABBED = "Backstabbed";
     public const string RIPOSTE = "Riposte";
@@ -96,4 +97,24 @@ public static class DarkSoulsConsts
     public const string VSYNCINDEX = "VSync Index";
     public const string QUALITYINDEX = "Quality Index";
     public const string SHADOWQUALITYINDEX = "ShadowQuality Index";
+
+    public const string OH_LIGHT_ATTACK_0 = "OH_Light_Attack_0";
+    public const string OH_LIGHT_ATTACK_1 = "OH_Light_Attack_1";
+    public const string OH_HEAVY_ATTACK_0 = "OH_Heavy_Attack_0";
+    public const string OH_HEAVY_ATTACK_1 = "OH_Heavy_Attack_1";
+
+    public const string TH_LIGHT_ATTACK_0 = "TH_Light_Attack_0";
+    public const string TH_LIGHT_ATTACK_1 = "TH_Light_Attack_1";
+    public const string TH_HEAVY_ATTACK_0 = "TH_Heavy_Attack_0";
+    public const string TH_HEAVY_ATTACK_1 = "TH_Heavy_Attack_1";
+
+    public const string UNARMED_LIGHT_ATTACK_0 = "Unarmed_Light_Attack_0";
+    public const string UNARMED_LIGHT_ATTACK_1 = "Unarmed_Light_Attack_1";
+    public const string UNARMED_HEAVY_ATTACK_0 = "Unarmed_Heavy_Attack_0";
+    public const string UNARMED_HEAVY_ATTACK_1 = "Unarmed_Heavy_Attack_1";
+
+    public const string LEFT_ARM_IDLE_0 = "Left_Arm_Idle_0";
+    public const string RIGHT_ARM_IDLE_0 = "Right_Arm_Idle_0";
+    public const string BOTH_ARMS_IDLE_0 = "Both_Arms_Idle_0";
+
 }

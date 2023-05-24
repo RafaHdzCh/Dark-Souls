@@ -16,29 +16,16 @@ MonoBehaviour:
   itemIcon: {fileID: 21300000, guid: bcf3035aa9aee7946ad4b9ac9648393f, type: 3}
   modelPrefab: {fileID: 8208650217418073404, guid: ffd069b3d22ab6348a71c760d51e6181, type: 3}
   isUnarmed: 0
+  weaponController: {fileID: 22100000, guid: 95bf64d902b108b4dae4b8739eedc2eb, type: 2}
+  weaponType: 0
+  offHandIdleAnimation: 
   physicalDamage: 25
   fireDamage: 0
   criticalDamageMultiplier: 3
   poiseBreak: 25
   offensivePoiseBonus: 0
   physicalDamageAbsortion: 0
-  Right_Arm_Idle: Right_Arm_Idle_0
-  Left_Arm_Idle: Left_Arm_Idle_0
-  TH_Idle: Both_Arms_Idle_0
-  OH_Light_Attack_0: OH_Light_Attack_0
-  OH_Light_Attack_1: OH_Light_Attack_1
-  OH_Heavy_Attack_0: OH_Heavy_Attack_0
-  OH_Heavy_Attack_1: OH_Heavy_Attack_1
-  TH_Light_Attack_0: TH_Light_Attack_0
-  TH_Light_Attack_1: TH_Light_Attack_1
-  TH_Heavy_Attack_0: TH_Heavy_Attack_0
-  TH_Heavy_Attack_1: TH_Heavy_Attack_1
   baseStamina: 30
   lightAttackMultiplier: 1
   heavyAttackMultiplier: 2
-  isSpellCaster: 0
-  isFaithCaster: 0
-  isPyroCaster: 0
-  isMeleeWeapon: 1
-  isShieldWeapon: 0
   Weapon_Art: 

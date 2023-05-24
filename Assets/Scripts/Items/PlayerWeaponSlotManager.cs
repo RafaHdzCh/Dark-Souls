@@ -9,11 +9,13 @@ public class PlayerWeaponSlotManager : CharacterWeaponSlotManager
     PlayerInventoryManager playerInventoryManager;
     PlayerManager playerManager;
     PlayerStatsManager playerStatsManager;
+    PlayerAnimatorManager playerAnimatorManager;
     [SerializeField] CameraHandler cameraHandler;
 
     protected override void Awake()
     {
         base.Awake();
+        playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
         playerEffectsManager = GetComponent<PlayerEffectsManager>();
         playerInventoryManager = GetComponent<PlayerInventoryManager>();
         playerManager = GetComponent<PlayerManager>();
@@ -39,7 +41,7 @@ public class PlayerWeaponSlotManager : CharacterWeaponSlotManager
                 leftHandSlot.LoadWeaponModel(weaponItem);
                 LoadLeftWeaponDamageCollider();
                 quickSlotsUI.UpdateWeaponQuickSlotsUI(true, weaponItem);
-                animator.CrossFade(weaponItem.Left_Arm_Idle, 0.2f);
+                playerAnimatorManager.PlayTargetAnimation(DarkSoulsConsts.LEFT_ARM_IDLE_0, false, true);
             }
             else
             {
@@ -47,19 +49,19 @@ public class PlayerWeaponSlotManager : CharacterWeaponSlotManager
                 {
                     backSlot.LoadWeaponModel(leftHandSlot.currentWeapon);
                     leftHandSlot.UnloadWeaponAndDestroy();
-                    animator.CrossFade(weaponItem.TH_Idle, 0.2f);
+                    playerAnimatorManager.PlayTargetAnimation(DarkSoulsConsts.LEFTARMEMPTY, false, true);
                 }
                 else
                 {
                     animator.CrossFade(DarkSoulsConsts.BOTHARMSEMPTY, 0.2f);
                     backSlot.UnloadWeaponAndDestroy();
-                    animator.CrossFade(weaponItem.Right_Arm_Idle, 0.2f);
                 }
 
                 rightHandSlot.currentWeapon = weaponItem;
                 rightHandSlot.LoadWeaponModel(weaponItem);
                 LoadRightWeaponDamageCollider();
                 quickSlotsUI.UpdateWeaponQuickSlotsUI(false, weaponItem);
+                playerAnimatorManager.animator.runtimeAnimatorController = weaponItem.weaponController;
             }
         }
         else
@@ -72,6 +74,7 @@ public class PlayerWeaponSlotManager : CharacterWeaponSlotManager
                 leftHandSlot.LoadWeaponModel(unarmedWeapon);
                 LoadLeftWeaponDamageCollider();
                 quickSlotsUI.UpdateWeaponQuickSlotsUI(true, unarmedWeapon);
+                playerAnimatorManager.PlayTargetAnimation(DarkSoulsConsts.LEFT_ARM_IDLE_0, false, true);
             }
             else
             {
@@ -81,6 +84,7 @@ public class PlayerWeaponSlotManager : CharacterWeaponSlotManager
                 rightHandSlot.LoadWeaponModel(unarmedWeapon);
                 LoadRightWeaponDamageCollider();
                 quickSlotsUI.UpdateWeaponQuickSlotsUI(false, unarmedWeapon);
+                playerAnimatorManager.animator.runtimeAnimatorController = weaponItem.weaponController;
             }
         }
     }
