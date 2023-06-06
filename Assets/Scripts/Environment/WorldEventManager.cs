@@ -1,5 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WorldEventManager : MonoBehaviour
@@ -7,18 +7,17 @@ public class WorldEventManager : MonoBehaviour
     [SerializeField] List<FogWall> fogWalls;
     [SerializeField] List<Collider> entranceColliders;
     [SerializeField] UIBossHealthBar bossHealthBar;
-    [SerializeField] EnemyBossManager enemyBossManager;
 
-    public bool bossFightIsActive;      //Is currently fighting
-    public bool bossHasBeenAwakened;    //Watched the cutscene
-    public bool bossHasBeenDefeated;
+    [System.NonSerialized] public bool bossFightIsActive;      //Is currently fighting
+    [System.NonSerialized] public bool bossHasBeenAwakened;    //Watched the cutscene
+    [System.NonSerialized] public bool bossHasBeenDefeated;
 
     public void ActivateBossFight()
     {
         bossFightIsActive = true;
+        bossHasBeenDefeated = false;
         bossHasBeenAwakened = true;
         bossHealthBar.SetUIHealthBarToActive();
-        //Activate fog wall
 
         foreach(var fogWall in fogWalls)
         {
@@ -31,18 +30,27 @@ public class WorldEventManager : MonoBehaviour
         }
     }
 
-    public void BossHasBeenDefeated()
+    public void BossHasBeenDefeated(Collider entranceCollider)
     {
         bossFightIsActive = false;
         bossHasBeenDefeated = true;
+        bossHasBeenAwakened = false;
+        bossHealthBar.SetUIHealthBarToInactive();
+        Destroy(entranceCollider.gameObject);
 
         foreach (var fogWall in fogWalls)
         {
-            fogWall.DeactivateFogWall();
+            if(fogWall != null)
+            {
+                fogWall.DeactivateFogWall();
+            }
         }
         foreach (Collider entranceTrigger in entranceColliders)
         {
-            entranceTrigger.enabled = true;
+            if(entranceTrigger != null)
+            {
+                entranceTrigger.enabled = true;
+            }
         }
     }
 }

@@ -4,21 +4,15 @@ public class EnemyBossManager : MonoBehaviour
 {
     public string bossname = "";
     [SerializeField] UIBossHealthBar bossHealthBar;
-    EnemyStatsManager enemyStats;
     EnemyAnimatorManager enemyAnimatorManager;
     BossCombatStanceState bossCombatStanceState;
+    [SerializeField] WorldEventManager worldEventManager;
+    [SerializeField] Collider entranceCollider;
 
     private void Awake()
     {
-        enemyStats = GetComponent<EnemyStatsManager>();
         enemyAnimatorManager = GetComponent<EnemyAnimatorManager>();
         bossCombatStanceState = GetComponentInChildren<BossCombatStanceState>();
-    }
-
-    private void Start()
-    {
-        bossHealthBar.SetBossName(bossname);
-        bossHealthBar.SetBossMaxHealth(enemyStats.maxHealth);
     }
 
     public void UpdateBossHealthBar(int currentHealth, int maxHealth)
@@ -28,6 +22,10 @@ public class EnemyBossManager : MonoBehaviour
         {
             bossCombatStanceState.hasPhaseShifted = true;
             ShiftToSecondPhase();
+        }
+        if(currentHealth <= 0)
+        {
+            worldEventManager.BossHasBeenDefeated(entranceCollider);
         }
     }
 
