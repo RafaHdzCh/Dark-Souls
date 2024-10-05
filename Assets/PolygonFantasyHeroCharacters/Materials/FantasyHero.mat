@@ -142,6 +142,8 @@ Material:
     - _Emission: 0
     - _Emmision: 0
     - _Metallic: 0
+    - _QueueControl: 0
+    - _QueueOffset: 0
     - _Smoothness: 0.2
     - _Tattoo_Amount: 1
     - __dirty: 0
